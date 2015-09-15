@@ -14,19 +14,16 @@ class CreateShopsTable extends Migration {
     {
         Schema::create('shops', function(Blueprint $table) {
         $table->increments('id');
-        $table->integer('user_id')->unsigned();
-        $table->foreign('user_id')
-              ->references('id')->on('users')
-              ->onDelete('cascade');
-        $table->string('name',45);
-        $table->string('description',128);
-        $table->string('address',256);
-        $table->string('contact',256);
-        $table->string('tel',45);
-        $table->string('mobile',45);
-        $table->string('image_url',256);
-        $table->string('lat',256);
-        $table->string('long',256);
+        $table->integer('user_id');
+        $table->string('name',45)->nullable();
+        $table->string('description',128)->nullable();
+        $table->string('address',256)->nullable();
+        $table->string('contact',256)->nullable();
+        $table->string('tel',45)->nullable();
+        $table->string('mobile',45)->nullable();
+        $table->string('image_url',256)->nullable();
+        $table->string('lat',256)->nullable();
+        $table->string('long',256)->nullable();
         $table->softDeletes();
         $table->timestamps();
         });

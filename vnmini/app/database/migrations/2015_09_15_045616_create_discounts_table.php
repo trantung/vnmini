@@ -5,24 +5,29 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateDiscountsTable extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		//
-	}
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('discounts', function(Blueprint $table) {
+            $table->increments('id');
+            $table->integer('percentage')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		//
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('discounts');
+    }
 
 }
