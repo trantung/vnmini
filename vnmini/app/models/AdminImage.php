@@ -4,7 +4,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class Image extends Model
+class AdminImage extends Model
 {
 	use SoftDeletingTrait;
     protected $table = 'images';

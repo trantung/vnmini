@@ -11,7 +11,16 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+// Route::get('/', function()
+// {
+// 	return View::make('hello');
+// });
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('shops', 'ShopController');
+    Route::resource('bannerimage', 'BannerImageController');
+
+});
+
+Route::group(['prefix' => 'frontend'], function () {
+
 });
