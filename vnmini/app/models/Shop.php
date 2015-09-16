@@ -4,7 +4,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class Shop extends Model
+class Shop extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'shops';
@@ -12,6 +12,7 @@ class Shop extends Model
     					'address', 'contact', 'tel', 'mobile',
     					'image_url', 'lat', 'long'
     					];
+    protected $dates = ['deleted_at'];
 
     public function user() 
     {

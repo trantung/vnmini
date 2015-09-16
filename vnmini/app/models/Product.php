@@ -4,7 +4,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class Product extends Model
+class Product extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'products';
@@ -14,6 +14,7 @@ class Product extends Model
     					'image_url', 'description',
     					'introduce', 'information', 'status'
     					];
+    protected $dates = ['deleted_at'];
 
     public function category() 
     {

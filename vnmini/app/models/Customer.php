@@ -4,7 +4,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class Customer extends Model
+class Customer extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'customers';

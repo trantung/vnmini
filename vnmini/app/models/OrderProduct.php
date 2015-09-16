@@ -4,11 +4,12 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class OrderProduct extends Model
+class OrderProduct extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'order_products';
     protected $fillable = ['product_id', 'order_id', 'product_quantity'];
+    protected $dates = ['deleted_at'];
 
     public function product() 
     {
