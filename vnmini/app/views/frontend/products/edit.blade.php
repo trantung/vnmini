@@ -1,0 +1,1 @@
+/var/www/vnmini/vnmini/app/views/frontend/products/edit.blade.php

@@ -1,0 +1,1 @@
+/var/www/vnmini/vnmini/app/views/frontend/categories/show.blade.php
