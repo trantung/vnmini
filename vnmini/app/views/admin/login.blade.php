@@ -2,10 +2,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MPmoda</title>
-    {!! HTML::style('css/bootstrap.min.css') !!}
-    {!! HTML::script('js/jquery-2.1.1.min.js') !!}
-    {!! HTML::script('js/bootstrap.min.js') !!}
+    <title>Vnmini</title>
+   {{ HTML::style('admins/css/bootstrap.min.css') }}
+   {{ HTML::script('admins/js/jquery.js') }}
+   {{ HTML::script('admins/js/bootstrap.min.js') }}
 </head>
 <body>
 <div class="container">
@@ -17,11 +17,13 @@
             </div>
             <div style="padding-top:30px" class="panel-body" >
                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                <form id="loginform" class="form-horizontal" role="form" method = "post" action="{{ route('authLogin') }}">
-                @if($errors->has('login_error'))
+                <form id="loginform" class="form-horizontal" role="form" method = "post" action="{{ route('post.admin.login') }}">
+                @if($errors->has())
+                    @foreach ($errors->all() as $error)
                     <span style="color:red; font-size:bold;">
-                        {{ $errors->first('login_error') }}
+                        {{ $error }}
                     </span>
+                    @endforeach
                 @endif
                     <div style="margin-bottom: 25px" class="input-group ">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>

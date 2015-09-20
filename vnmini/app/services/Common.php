@@ -25,10 +25,18 @@ class Common
 
 	public static function create($input)
 	{
+		$name = self::commonName();
+		$name::firstOrCreate($input);
+	}
+
+	public static function commonName()
+	{
 		$name = Request::segment(2);
 		if ($name == 'category') {
-			Category::firstOrCreate($input);
+			return 'Category';
 		}
-		//
+		if ($name == 'products') {
+			return 'Product';		
+		}
 	}
 }

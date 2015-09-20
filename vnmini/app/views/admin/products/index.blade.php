@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@include('admin.message')
 <div class="manage-menu">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-7.5">
@@ -10,27 +11,33 @@
 			<span>Select category: </span>
 		</div>
 	  	<div class="col-xs-6 col-md-4">
-	  	<form action="#" method="get" accept-charset="utf-8">
-		  	<div class="row">
-		  			<div class="col-sm-10">
-					<select class="form-control" name="category">
-						<option selected="true">....</option>
-						@foreach($categories as $category)
-							<option value="{{$category->id}}">{{$category->name}}</option>
-						@endforeach
-					</select>
-					</div>
-			        <div class="col-sm-2">
-			        	<input type="submit" name="search" id="search" class='btn btn-primary' value="Search"/>
-			        </div>
-		  	</div>
-	  	</form>
-			
+		  	<form action="{{ route('admin.products.search') }}" method="GET" accept-charset="utf-8">
+			  	<div class="row">
+			  			<div class="col-sm-10">
+						<select class="form-control" name="category_id">
+							<option selected="true"></option>
+							@foreach($categories as $category)
+								<option value="{{$category->id}}">{{$category->name}}</option>
+							@endforeach
+						</select>
+						</div>
+				        <div class="col-sm-2">
+				        	<input type="submit" id="search" class='btn btn-primary'>
+				        </div>
+			  	</div>
+			  	<div>
+              		<input type="text" class="form-control" id="product_name" name="name" placeholder = "tên sản phẩm" >
+			  	</div>
+			  	<div>
+              		<input type="text" class="form-control" id="product_code" name="code" placeholder = "mã sản phẩm" >
+			  	</div>
+		  	</form>
 	  	</div>
 	</div>
 	<table class="table table-hover" style="margin-top: 10px;">
 	    <tr>
 	        <th>Tên</th>
+	        <th>Mã sản phẩm</th>
 	        <th>Loại sản phẩm</th>
 	        <th>Giá gốc</th>
 	        <th>Giá KM</th>
@@ -43,6 +50,7 @@
 	    	?>
 	    	<tr>
 	        <td><a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}">{{$product->name}}</a></td>
+	        <td>{{ $product->code }}</td>
 	        <td>{{ $product->category->name }}</td>
 	        <td>{{ $product->origin_price }}</td>
 	        <td>{{ $product->new_price }}</td>
@@ -69,13 +77,4 @@
 	</table>
     <center>{{ $products->appends(Request::except('page'))->links() }}</center>
 </div>
-<script type="text/javascript">
-	$(".compress").hover(function(){
-  	$(".image").show();
-},
-function(){
-   $(".image").hide()
-}
-);
-</script>
 @stop

@@ -20,7 +20,6 @@ class AdminController extends BaseController {
             return Redirect::route('get.admin.index');
         }
         else{
-            
             return View::make('admin.login')->withErrors('Sai email hoặc password');
         }
 	}

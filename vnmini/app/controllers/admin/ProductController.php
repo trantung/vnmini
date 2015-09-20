@@ -9,7 +9,7 @@ class ProductController extends AdminController {
 	 */
 	public function index()
 	{
-		$products = Product::paginate(PAGINATE_PRODUCT);
+		$products = Product::orderBy('created_at', 'desc')->paginate(PAGINATE_PRODUCT);
 		$categories = Category::all(['id', 'name']);
 		return View::make('admin.products.index')->with(compact('products', 'categories'));
 	}
@@ -22,7 +22,8 @@ class ProductController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		$categories = Category::all();
+		return View::make('admin.products.create')->with(compact('categories'));
 	}
 
 
@@ -33,7 +34,10 @@ class ProductController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::except('_token');
+		$input['status'] = CommonProduct::getStatus($input);
+		Common::create($input);
+		return Redirect::route('admin.products.index')->with('message', 'Tạo mới thành công');
 	}
 
 
@@ -84,5 +88,15 @@ class ProductController extends AdminController {
 		//
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		if (!$input['category_id'] && !$input['name']) {
+			return Redirect::route('admin.products.index');
+		}
+		$products = CommonProduct::search($input);
+		$categories = Category::all(['id', 'name']);
+		return View::make('admin.products.index')->with(compact('products', 'categories'));
+	}
 
 }
