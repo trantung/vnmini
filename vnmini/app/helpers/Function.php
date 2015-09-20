@@ -1,8 +1,8 @@
 <?php
-function statusName($input)
+function statusName($input, $msg1, $msg2)
 {
 	if ($input == 0) {
-		return NO_PROMOTION;
+		return $msg1;
 	}
-	return PROMOTION;
+	return $msg2;
 }
