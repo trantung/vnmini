@@ -23,7 +23,8 @@
 			"app/tests/TestCase.php"
 		],
 		"files": [
-            "app/helpers/Constant.php"
+            "app/helpers/Constant.php",
+            "app/helpers/Function.php"
         ]
 	},
 	"scripts": {

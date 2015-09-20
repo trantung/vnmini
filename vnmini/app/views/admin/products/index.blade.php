@@ -30,12 +30,12 @@
 	</div>
 	<table class="table table-hover" style="margin-top: 10px;">
 	    <tr>
-	        <th>NAME</th>
-	        <th>PRICE</th>
-	        <th>CATEGORY</th>
-	        <th>DESCRIPTION</th>
-	        <th>IMAGE</th>
-	        <th>ACTION</th>
+	        <th>Tên</th>
+	        <th>Loại sản phẩm</th>
+	        <th>Giá gốc</th>
+	        <th>Giá KM</th>
+	        <th>Khuyến Mại</th>
+	        <th>Hành động</th>
 	    </tr>
 	    @foreach($products as $product)
 	    	<?php 
@@ -43,13 +43,10 @@
 	    	?>
 	    	<tr>
 	        <td><a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}">{{$product->name}}</a></td>
-	        <td>{{$product->category->name}}</td>
-	        <td>{{$product->description}}</td>
-	        <td>
-	        	<a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}">
-	        		<img src="{{ $img }}" class="img-rounded compress" style="width:7em; height:5em;"/>
-	        	</a>
-	        </td>
+	        <td>{{ $product->category->name }}</td>
+	        <td>{{ $product->origin_price }}</td>
+	        <td>{{ $product->new_price }}</td>
+	        <td>{{statusName($product->status)}}</td>
 	        <td>
 	            <div style=" display: table" >
 			        <div style = "display: table-cell;  vertical-align: center;">
@@ -68,7 +65,9 @@
 	        </td>
 	      </tr>
 		@endforeach
+    	{{ $products->appends(Request::except('page'))->links() }}
 	</table>
+    <center>{{ $products->appends(Request::except('page'))->links() }}</center>
 </div>
 <script type="text/javascript">
 	$(".compress").hover(function(){

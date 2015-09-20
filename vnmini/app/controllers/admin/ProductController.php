@@ -9,15 +9,9 @@ class ProductController extends AdminController {
 	 */
 	public function index()
 	{
-		$products = Product::all();
-		// $products = Product::find(1);
-		// foreach ($products as $product) {
-		// 	dd($product->category->name);
-		// }
-		$categories = Category::all();
+		$products = Product::paginate(PAGINATE_PRODUCT);
+		$categories = Category::all(['id', 'name']);
 		return View::make('admin.products.index')->with(compact('products', 'categories'));
-					// ->with('products',$products)
-					// ->with('categories', $categories);
 	}
 
 
