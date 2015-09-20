@@ -54,7 +54,7 @@
 	        <td>{{ $product->category->name }}</td>
 	        <td>{{ $product->origin_price }}</td>
 	        <td>{{ $product->new_price }}</td>
-	        <td>{{statusName($product->status)}}</td>
+	        <td>{{statusName($product->status, NO_PROMOTION, PROMOTION)}}</td>
 	        <td>
 	            <div style=" display: table" >
 			        <div style = "display: table-cell;  vertical-align: center;">

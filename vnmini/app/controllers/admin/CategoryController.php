@@ -9,8 +9,8 @@ class CategoryController extends AdminController {
 	 */
 	public function index()
 	{
-		// Common::delete
-		// return View::make('admin.category.index');
+		$categories = Category::paginate(PAGINATE_PRODUCT);
+		return View::make('admin.category.index')->with(compact('categories'));
 	}
 
 
@@ -21,7 +21,7 @@ class CategoryController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.categories.create');
 	}
 
 
@@ -32,8 +32,9 @@ class CategoryController extends AdminController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
+		$input = Input::except("_token");
 		Common::create($input);
+		return Redirect::route('admin.category.index')->with('message','Tạo mới thành công!');
 	}
 
 
@@ -45,7 +46,8 @@ class CategoryController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$category = Category::findOrFail($id);
+		return View::make('admin.category.show')->with(compact('category'));
 	}
 
 
@@ -57,7 +59,8 @@ class CategoryController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$input = Input::all();
+		$category = Category::findOrFail($id);
+		return View::make('admin.category.edit')->with(compact('category'));
 	}
 
 
@@ -69,8 +72,9 @@ class CategoryController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::all();
+		$input = Input::except('_token');
 		Common::update($id, $input);
+		return Redirect::route('admin.category.index')->with('message','Update thành công!');
 	}
 
 
@@ -83,6 +87,7 @@ class CategoryController extends AdminController {
 	public function destroy($id)
 	{
 		Common::delete($id);
+		return Redirect::route('admin.category.index')->with('message','Xóa thành công!');
 	}
 
 
