@@ -3,7 +3,7 @@
 class AdminController extends BaseController {
 	public function __construct()
 	{
-        $this->beforeFilter('admin', array('except'=>array('getLogin','postLogin')));
+        // $this->beforeFilter('admin', array('except'=>array('getLogin','postLogin')));
 	}
 
 	public function getLogin()

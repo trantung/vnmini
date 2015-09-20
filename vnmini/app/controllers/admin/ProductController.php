@@ -1,6 +1,6 @@
 <?php
 
-class ShopController extends AdminController {
+class ProductController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,15 @@ class ShopController extends AdminController {
 	 */
 	public function index()
 	{
-		dd(123);
+		$products = Product::all();
+		// $products = Product::find(1);
+		// foreach ($products as $product) {
+		// 	dd($product->category->name);
+		// }
+		$categories = Category::all();
+		return View::make('admin.products.index')->with(compact('products', 'categories'));
+					// ->with('products',$products)
+					// ->with('categories', $categories);
 	}
 
 
