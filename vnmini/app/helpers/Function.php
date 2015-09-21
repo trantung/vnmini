@@ -6,3 +6,11 @@ function statusName($input, $msg1, $msg2)
 	}
 	return $msg2;
 }
+
+function statusNewPrice($input)
+{
+	if ($input) {
+		return $input;
+	}
+	return NO_PROMOTION;
+}

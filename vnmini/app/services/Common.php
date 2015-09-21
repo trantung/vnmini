@@ -4,29 +4,21 @@ class Common
 {
 	public static function delete($id)
 	{
-		$name = Request::segment(2);
-		if ($name == 'category') {
-			Category::find($id)->delete();
-		}
-		if ($name == 'bannerimage') {
-			BannerImage::find($id)->delete();
-		}
-		//
+		$name = self::commonName();
+		$name::find($id)->delete();
 	}
 
 	public static function update($id, $input)
 	{
-		$name = Request::segment(2);
-		if ($name == 'category') {
-			Category::find($id)->update($input);
-		}
-		//
+		$name = self::commonName();
+		$name::find($id)->update($input);
 	}
 
 	public static function create($input)
 	{
 		$name = self::commonName();
-		$name::firstOrCreate($input);
+		$id = $name::firstOrCreate($input)->id;
+		return $id;
 	}
 
 	public static function commonName()

@@ -23,7 +23,7 @@
     <link href="{{ asset('admins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
     <link href="{{ asset('admins/css/main.css') }}" rel="stylesheet">
-        <script src="{{ asset('admins/js/jquery.js') }}"></script>
+    <script src="{{ asset('admins/js/jquery.js') }}"></script>
     <script>
         $(function() {
             var current = $(location).attr('href');

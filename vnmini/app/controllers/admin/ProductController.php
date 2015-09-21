@@ -22,8 +22,7 @@ class ProductController extends AdminController {
 	 */
 	public function create()
 	{
-		$categories = Category::all();
-		return View::make('admin.products.create')->with(compact('categories'));
+		return View::make('admin.products.create');
 	}
 
 
@@ -34,9 +33,24 @@ class ProductController extends AdminController {
 	 */
 	public function store()
 	{
-		$input = Input::except('_token');
+		$input = Input::except('_token', 'image_relate');
+		$validator = CommonProduct::validate($input);
+		if ($validator->fails()) {
+            return Redirect::route('admin.products.create')
+                ->withInput($input)
+                ->withErrors($validator);
+        }
+        $destinationPath = public_path().'/img/products';
+        $filename = 'nothumnail.jpg';
+        if(Input::hasFile('image_url')){
+            $file = Input::file('image_url');
+            $filename        =$file->getClientOriginalName();
+            $uploadSuccess   =  $file->move($destinationPath, $filename);
+        }
 		$input['status'] = CommonProduct::getStatus($input);
-		Common::create($input);
+		$productId = Common::create($input);
+		//TODO: create image relate with product
+		CommonProduct::createImageRelate(Input::only('image_relate'), $productId);
 		return Redirect::route('admin.products.index')->with('message', 'Tạo mới thành công');
 	}
 
@@ -49,7 +63,8 @@ class ProductController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$product = Product::find($id);
+		return View::make('admin.products.show')->with(compact('product'));
 	}
 
 

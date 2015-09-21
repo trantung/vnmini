@@ -22,7 +22,7 @@
         <td>
             <div class="form-group">
               <select class="form-control" id="category" name="category">
-            @foreach(App\Category::all() as $category)
+            @foreach($categories as $category)
                 <option value="{{ $category->id }}" 
                 @if($category->id == $product->category->id)
                     {{ " selected" }}

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-@include('admin.message')
+@include('admin.error-message')
 <div class="manage-menu">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-7.5">

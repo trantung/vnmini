@@ -21,7 +21,7 @@ class CategoryController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.categories.create');
+		return View::make('admin.category.create');
 	}
 
 
