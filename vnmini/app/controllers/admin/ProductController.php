@@ -106,7 +106,7 @@ class ProductController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
-		if (!$input['category_id'] && !$input['name']) {
+		if (!$input['category_id'] && !$input['name'] && !$input['code']) {
 			return Redirect::route('admin.products.index');
 		}
 		$products = CommonProduct::search($input);

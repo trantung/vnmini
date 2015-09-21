@@ -34,6 +34,7 @@
 		  	</form>
 	  	</div>
 	</div>
+	<div style="color: red">{{ $products->getTotal() }} sản phẩm</div>
 	<table class="table table-hover" style="margin-top: 10px;">
 	    <tr>
 	        <th>Tên</th>
