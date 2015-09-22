@@ -10,14 +10,18 @@
       <tr>
         <th>ID</th>
         <th>Tên</th>
-        <th>Trạng thái</th>
+        <th>Thể loại</th>
       </tr>
     </thead>
     <tbody>
       <tr class="success">
         <td>{{$category->id}}</td>
         <td>{{$category->name}}</td>
-        <td>{{$category->status}}</td>
+        <td>
+            @if($category->sort_id)
+                {{ $category->sort->name }}
+            @endif
+        </td>
       </tr>
     </tbody>
   </table>
