@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@include('admin.error-message')
     <div class="page-header">
         <h1>Categories / Create </h1>
     </div>

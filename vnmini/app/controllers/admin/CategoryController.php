@@ -9,7 +9,7 @@ class CategoryController extends AdminController {
 	 */
 	public function index()
 	{
-		$categories = Category::orderBy('created_at', 'desc')->paginate(PAGINATE_PRODUCT);
+		$categories = Category::orderBy('created_at', 'desc')->paginate(PAGINATE_CATEGORY);
 		return View::make('admin.category.index')->with(compact('categories'));
 	}
 
@@ -33,9 +33,10 @@ class CategoryController extends AdminController {
 	public function store()
 	{
 		$input = Input::except("_token");
-		// dd($input['sort_id']);
-		Common::create($input);
-		// dd($input['sort_id']);
+		$categoryId = Common::create($input);
+		if (!$categoryId) {
+			return Redirect::route('admin.category.create')->with('message', 'Tạo mới thất bại, xin thử lại');
+		}
 		return Redirect::route('admin.category.index')->with('message','Tạo mới thành công!');
 	}
 

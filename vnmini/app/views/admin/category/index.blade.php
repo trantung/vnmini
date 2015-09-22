@@ -3,12 +3,7 @@
     <div class="page-header">
         <h1>Categories</h1>
     </div>
-    @if(Session::has('message'))
-        <div class="alert alert-success">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>{{ Session::get('message') }}</strong>
-        </div>
-    @endif
+@include('admin.error-message')
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped">
