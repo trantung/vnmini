@@ -46,6 +46,8 @@ class CommonProduct
             'file_extension' => "required_with:image_url|in:$mimeTypes",
             ];
         $rule = array_merge($rule, $imageRule);
+
+		 
 		$message = [
 			'category_id.required' => 'Phải chọn loại sản phẩm',
 			'name.required' => 'Tên sản phẩm phải có',
@@ -65,9 +67,31 @@ class CommonProduct
 			];
 		return Validator::make($input, $rule, $message);
 	}
-
+	
 	public static function createImageRelate($input, $productId)
 	{
+		$imageRelateId = [];
+		foreach ($input['image_relate'] as $key => $value) {
+			$path = PATH_PRODUCT;
+			$destinationPath = public_path().$path.'/'.$productId;
+            $filename = $value->getClientOriginalName();
+            $uploadSuccess   =  $value->move($destinationPath, $filename);
+            $adminImage['product_id'] = $productId;
+            $adminImage['image_url'] = $filename;
+            $imageRelateId[] = AdminImage::firstOrCreate($adminImage)->id;
+		}
+		return $imageRelateId;
+	}
 
+	public static function uploadImage($input, $path)
+	{
+		$destinationPath = public_path().$path;
+        $filename = 'nothumnail.jpg';
+        if(Input::hasFile('image_url')){
+            $file = Input::file('image_url');
+            $filename = $file->getClientOriginalName();
+            $uploadSuccess   =  $file->move($destinationPath, $filename);
+        }
+        return $filename;
 	}
 }

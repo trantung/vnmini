@@ -40,16 +40,9 @@ class ProductController extends AdminController {
                 ->withInput($input)
                 ->withErrors($validator);
         }
-        $destinationPath = public_path().'/img/products';
-        $filename = 'nothumnail.jpg';
-        if(Input::hasFile('image_url')){
-            $file = Input::file('image_url');
-            $filename        =$file->getClientOriginalName();
-            $uploadSuccess   =  $file->move($destinationPath, $filename);
-        }
+        $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT);
 		$input['status'] = CommonProduct::getStatus($input);
 		$productId = Common::create($input);
-		//TODO: create image relate with product
 		CommonProduct::createImageRelate(Input::only('image_relate'), $productId);
 		return Redirect::route('admin.products.index')->with('message', 'Tạo mới thành công');
 	}
@@ -100,7 +93,8 @@ class ProductController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Common::delete($id);
+		return Redirect::route('admin.products.index')->with('message', 'Xoá thành công');
 	}
 
 	public function search()
