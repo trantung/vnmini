@@ -24,8 +24,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('category', 'CategoryController');
     Route::resource('bannerimage', 'BannerImageController');
     Route::resource('bannerslide', 'BannerSlideController');
+    Route::resource('discount', 'DiscountController');
     Route::resource('sort', 'SortController');
-
+    Route::resource('user', 'UserController');
+    Route::resource('account', 'AccountController');
+    Route::resource('comment', 'CommentController');
+    Route::resource('order', 'OrderController');
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));
     Route::resource('products', 'ProductController');
 

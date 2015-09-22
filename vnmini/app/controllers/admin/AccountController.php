@@ -1,6 +1,6 @@
 <?php
 
-class BannerSlideController extends AdminController {
+class AccountController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
