@@ -22,13 +22,10 @@
                             <input type="text" name = "name" value="{{ $category->name }}" required>
                         </td>
                     </tr>
-                        <td>Trạng thái</td>
+                        <td>Thể loại</td>
                         <td>
                             <div class="row form-group  col-md-3 col-sm-3">
-                              <select class="form-control" name="status">
-                                <option value="1"<?php if($category->status == 1) {echo"selected";}?>>Hiện</option>
-                                <option value="0" <?php if($category->status == 0){ echo"selected";}?>>Ẩn</option>
-                              </select>
+                                {{ Form::select('sort_id' , [$category->sort_id => $category->sort->name] + CommonCategory::getSortCategory(), null, ['class' => 'form-control']) }}
                             </div>
                         </td>
                       </tr>

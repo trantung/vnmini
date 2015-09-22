@@ -17,7 +17,7 @@
                         <th>ID</th>
                         <th>Tên</th>
                         <th>Thể loại</th>
-                        <th class="text-">OPTIONS</th>
+                        <th class="text-right">OPTIONS</th>
                     </tr>
                 </thead>
 
