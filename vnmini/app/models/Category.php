@@ -8,11 +8,15 @@ class Category extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'categories';
-    protected $fillable = ['name', 'status'];
+    protected $fillable = ['name', 'status', 'sort_id'];
     protected $dates = ['deleted_at'];
 
     public function products()
     {
         return $this->hasMany('Product', 'category_id', 'id');
+    }
+    public function sort() 
+    {
+        return $this->belongsTo('Sort', 'sort_id', 'id');
     }
 }

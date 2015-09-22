@@ -7,4 +7,11 @@ class CommonCategory
 		$categories = $categories->lists('name', 'id');
 		return $categories;
 	}
+
+	public static function getSortCategory()
+	{
+		$sort = Sort::orderBy('id', 'asc');
+		$sort = $sort->lists('name', 'id');
+		return $sort;
+	}
 }

@@ -16,7 +16,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Tên</th>
-                        <th>Trạng thái</th>
+                        <th>Thể loại</th>
                         <th class="text-">OPTIONS</th>
                     </tr>
                 </thead>
@@ -27,8 +27,10 @@
                 <tr>
                     <td>{{$category->id}}</td>
                     <td>{{$category->name}}</td>
-                    <td>{{ statusName($category->status, 'đang ẩn', 'đang hiện')}}</td>
-
+                    <td>@if($category->sort_id)
+                        {{ $category->sort->name }}
+                        @endif
+                    </td>
                     <td class="text-right">
                         <a class="btn btn-primary" href="{{ action('CategoryController@show', $category->id) }}">View</a>
                         <a class="btn btn-warning " href="{{ action('CategoryController@edit', $category->id) }}">Edit</a>

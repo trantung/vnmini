@@ -10,10 +10,13 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group">
-                     <label for="name">NAME</label>
+                     <label>NAME</label>
                      <input type="text" name="name" class="form-control" value="{{  Session::getOldInput('name') }}"/>
                 </div>
-
+                <div class="form-group">
+                    <label>Thể loại</label>
+                    {{ Form::select('sort_id' , ['' => 'Chọn thể loại'] + CommonCategory::getSortCategory(), null, ['class' => 'form-control']) }}
+                </div>
             <a class="btn btn-default" href="{{ action('CategoryController@index') }}">Back</a>
             <button class="btn btn-primary" type="submit" >Create</a>
             </form>
