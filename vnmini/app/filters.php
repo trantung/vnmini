@@ -47,7 +47,13 @@ Route::filter('auth', function()
 		}
 	}
 });
+Route::filter('admin', function()
+{
+	if (Auth::guest()){
+		return Redirect::route('get.admin.login');
+	} 
 
+});
 
 Route::filter('auth.basic', function()
 {

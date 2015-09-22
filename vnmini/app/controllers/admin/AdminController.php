@@ -3,7 +3,7 @@
 class AdminController extends BaseController {
 	public function __construct()
 	{
-        // $this->beforeFilter('admin', array('except'=>array('getLogin','postLogin')));
+        $this->beforeFilter('admin', array('except'=>array('getLogin','postLogin')));
 	}
 
 	public function getLogin()
@@ -26,6 +26,14 @@ class AdminController extends BaseController {
 
 	public function getIndex()
 	{
-		return View::make('admin.index');
+		$products = Product::orderBy('created_at', 'desc')->paginate(PAGINATE_PRODUCT);
+		$categories = Category::all(['id', 'name']);
+		return View::make('admin.products.index')->with(compact('products', 'categories'));
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+        return Redirect::route('get.admin.login');
 	}
 }

@@ -65,7 +65,7 @@
                      <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Logout</a>
+                            <a href="{{ route('get.logout') }}"><i class="fa fa-fw fa-user"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
