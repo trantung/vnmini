@@ -24,7 +24,7 @@ class AddRememberTokenUser extends Migration {
 	 */
 	public function down()
 	{
-        $table->dropColumn('remember_token');
+		
 	}
 
 }

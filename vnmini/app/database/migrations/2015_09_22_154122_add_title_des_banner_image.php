@@ -14,7 +14,7 @@ class AddTitleDesBannerImage extends Migration {
 	{
 		Schema::table('banner_images', function(Blueprint $table) {
             $table->string('title', 256)->after('image_url')->nullable();
-            $table->string('description', 256)->nullable();
+            $table->string('description', 256)->after('image_url')->nullable();
         });		
 	}
 
@@ -25,8 +25,7 @@ class AddTitleDesBannerImage extends Migration {
 	 */
 	public function down()
 	{
-        $table->dropColumn('title');
-        $table->dropColumn('description');
+
 	}
 
 }

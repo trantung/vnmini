@@ -24,7 +24,7 @@ class AddMoreSortCategoryTable extends Migration {
 	 */
 	public function down()
 	{
-        $table->dropColumn('sort_id');
+
 	}
 
 }

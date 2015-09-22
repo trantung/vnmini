@@ -24,7 +24,7 @@ class AddMoreFieldOrder extends Migration {
 	 */
 	public function down()
 	{
-        $table->dropColumn('money_ship');
+
 	}
 
 }
