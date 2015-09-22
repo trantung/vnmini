@@ -5,21 +5,16 @@
 <div class="manage-menu">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-7.5">
-			<a href="{{ route('admin.products.create') }}" class="btn btn-info">Create New Product</a>
+			<a href="{{ route('admin.products.create') }}" class="btn btn-info">Tạo mới sản phẩm</a>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-1.5">
-			<span>Select category: </span>
+			<span>Chọn category: </span>
 		</div>
 	  	<div class="col-xs-6 col-md-4">
 		  	<form action="{{ route('admin.products.search') }}" method="GET" accept-charset="utf-8">
 			  	<div class="row">
 			  			<div class="col-sm-10">
-						<select class="form-control" name="category_id">
-							<option selected="true"></option>
-							@foreach($categories as $category)
-								<option value="{{$category->id}}">{{$category->name}}</option>
-							@endforeach
-						</select>
+        					{{ Form::select('category_id' , ['' => 'Chọn category'] + CommonCategory::getCategories(), returnInputSelect('category_id'), ['class' => 'form-control']) }}
 						</div>
 				        <div class="col-sm-2">
 				        	<input type="submit" id="search" class='btn btn-primary'>
@@ -59,15 +54,15 @@
 	        <td>
 	            <div style=" display: table" >
 			        <div style = "display: table-cell;  vertical-align: center;">
-		                <a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}" class="btn btn-info">View</a>
+		                <a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}" class="btn btn-info">Chi tiết</a>
 		            </div>
 		            <div style = "display: table-cell;  vertical-align: center;">
-		                <a href="{{ route('admin.products.edit',['product_id'=>$product->id]) }}" class="btn btn-warning">Edit</a>
+		                <a href="{{ route('admin.products.edit',['product_id'=>$product->id]) }}" class="btn btn-warning">Sửa</a>
 		            </div>
 		            <div style = "display: table-cell;  vertical-align: center;">
-		            <form action="{{ route('admin.products.destroy',['product_id'=>$product->id]) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
+		            <form action="{{ route('admin.products.destroy',['product_id'=>$product->id]) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Xoá sản phẩm này? Bạn có chắc chắn không?')) { return true } else {return false };">
 		            	<input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        	<input type="submit" class = "btn btn-danger" value="Delete" />
+                        	<input type="submit" class = "btn btn-danger" value="Xoá" />
 			            </form>
 			         </div>
 	            </div>

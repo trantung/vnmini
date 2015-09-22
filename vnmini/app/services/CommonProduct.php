@@ -72,13 +72,15 @@ class CommonProduct
 	{
 		$imageRelateId = [];
 		foreach ($input['image_relate'] as $key => $value) {
-			$path = PATH_PRODUCT;
-			$destinationPath = public_path().$path.'/'.$productId;
-            $filename = $value->getClientOriginalName();
-            $uploadSuccess   =  $value->move($destinationPath, $filename);
-            $adminImage['product_id'] = $productId;
-            $adminImage['image_url'] = $filename;
-            $imageRelateId[] = AdminImage::firstOrCreate($adminImage)->id;
+			if ($value) {
+				$path = PATH_PRODUCT;
+				$destinationPath = public_path().$path.'/'.$productId;
+	            $filename = $value->getClientOriginalName();
+	            $uploadSuccess   =  $value->move($destinationPath, $filename);
+	            $adminImage['product_id'] = $productId;
+	            $adminImage['image_url'] = $filename;
+	            $imageRelateId[] = AdminImage::firstOrCreate($adminImage)->id;
+			}
 		}
 		return $imageRelateId;
 	}

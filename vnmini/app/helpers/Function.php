@@ -14,3 +14,12 @@ function statusNewPrice($input)
 	}
 	return NO_PROMOTION;
 }
+
+function returnInputSelect($key)
+{
+    $input = Input::all();
+    if (isset($input[$key])) {
+        return $input[$key];
+    }
+    return null;
+}

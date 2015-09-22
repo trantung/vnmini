@@ -35,6 +35,18 @@
         {{ Form::text('new_price', '', ['class' => 'form-control']) }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
+        <label>Description</label>
+        {{Form::textarea('description',"", array('class'=>'form-control',"rows"=>6, "id"=>'editor1'))}}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Introduce</label>
+        {{ Form::text('introduce', '', ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Information</label>
+        {{ Form::text('information', '', ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
         <label>Ảnh đại diện</label>
         {{Form::file('image_url',"", array('class'=>'form-control','id'=>'imgInp'))}}
     </div>
@@ -47,4 +59,5 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>           
 </form>
+@include('admin.script')
 @stop
