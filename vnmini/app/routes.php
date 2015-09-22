@@ -23,6 +23,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('shops', 'ShopController');
     Route::resource('category', 'CategoryController');
     Route::resource('bannerimage', 'BannerImageController');
+    Route::resource('bannerslide', 'BannerSlideController');
+    Route::resource('sort', 'SortController');
 
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));
     Route::resource('products', 'ProductController');
