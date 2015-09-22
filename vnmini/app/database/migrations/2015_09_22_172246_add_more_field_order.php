@@ -12,9 +12,8 @@ class AddMoreFieldOrder extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('comments', function(Blueprint $table) {
-            $table->string('name', 256)->after('status')->nullable();
-            $table->string('email', 256)->after('status')->nullable();
+		Schema::table('orders', function(Blueprint $table) {
+            $table->integer('money_ship')->after('status')->nullable();
         });
 	}
 
@@ -25,8 +24,7 @@ class AddMoreFieldOrder extends Migration {
 	 */
 	public function down()
 	{
-        $table->dropColumn('name');
-        $table->dropColumn('email');
+        $table->dropColumn('money_ship');
 	}
 
 }

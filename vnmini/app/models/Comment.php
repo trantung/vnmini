@@ -8,7 +8,7 @@ class Comment extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'comments';
-    protected $fillable = ['product_id', 'content', 'status'];
+    protected $fillable = ['product_id', 'content', 'status', 'name', 'email'];
     protected $dates = ['deleted_at'];
 
     public function product() 

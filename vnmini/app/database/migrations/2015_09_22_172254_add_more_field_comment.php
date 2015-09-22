@@ -12,8 +12,10 @@ class AddMoreFieldComment extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('orders', function(Blueprint $table) {
-            $table->integer('money_ship')->after('status')->nullable();
+		
+        Schema::table('comments', function(Blueprint $table) {
+            $table->string('name', 256)->after('status')->nullable();
+            $table->string('email', 256)->after('status')->nullable();
         });
 	}
 
@@ -24,7 +26,9 @@ class AddMoreFieldComment extends Migration {
 	 */
 	public function down()
 	{
-        $table->dropColumn('money_ship');
+        
+        $table->dropColumn('name');
+        $table->dropColumn('email');
 	}
 
 }
