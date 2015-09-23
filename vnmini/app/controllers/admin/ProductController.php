@@ -115,6 +115,11 @@ class ProductController extends AdminController {
 	 */
 	public function destroy($id)
 	{
+		$product = Product::find($id);
+		$imageRelates = $product->images;
+		foreach ($imageRelates as $key => $value) {
+			AdminImage::find($value->id)->delete();
+		}
 		Common::delete($id);
 		return Redirect::route('admin.products.index')->with('message', 'Xoá thành công');
 	}
