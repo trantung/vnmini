@@ -44,7 +44,8 @@ class SortController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$sort = Sort::find($id);
+		return View::make('admin.sort.show')->with(compact('sort'));
 	}
 
 
@@ -56,7 +57,8 @@ class SortController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$sort = Sort::find($id);
+		return View::make('admin.sort.edit')->with(compact('sort'));
 	}
 
 
@@ -68,7 +70,9 @@ class SortController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::except('_token');
+		Common::update($id, $input);
+		return Redirect::route('admin.sort.index')->with('message','Update thành công!');
 	}
 
 
@@ -80,7 +84,8 @@ class SortController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Common::delete($id);
+		return Redirect::route('admin.sort.index')->with('message', 'Xoá thành công');
 	}
 
 

@@ -30,5 +30,8 @@ class Common
 		if ($name == 'products') {
 			return 'Product';		
 		}
+		if ($name == 'sort') {
+			return 'Sort';		
+		}
 	}
 }

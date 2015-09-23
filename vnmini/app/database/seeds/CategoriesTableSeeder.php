@@ -9,11 +9,12 @@ class CategoriesTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
+		foreach(range(1, 3) as $index)
 		{
 			Category::create([
 				'name'=>"Category".$index,
-				'status'=>1
+				'status' => 1,
+				'sort_id' => $index
 			]);
 		}
 	}
