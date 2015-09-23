@@ -9,7 +9,8 @@ class UserController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$users = User::paginate(PAGINATE_USER);
+		return View::make('admin.users.index')->with(compact('users'));
 	}
 
 
@@ -43,7 +44,8 @@ class UserController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$user = User::findOrFail($id);
+		return View::make('admin.users.show')->with(compact('user'));
 	}
 
 
@@ -55,7 +57,9 @@ class UserController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = User::findOrFail($id);
+		$roles = Role::all(['id', 'name']);
+		return View::make('admin.users.edit')->with(compact('user', 'roles'));
 	}
 
 
@@ -67,7 +71,10 @@ class UserController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$user = User::findOrFail($id);
+		$data = Input::except('_token','_method');
+		$user->update($data);
+		return Redirect::route('admin.user.show', $id)->with('message','Update thành công!');
 	}
 
 
@@ -79,7 +86,9 @@ class UserController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$user->findOrFail($id);
+		$user->delete();
+		return Redirect::route('admin.users.index')->with('message','Xóa thành công!');
 	}
 
 
