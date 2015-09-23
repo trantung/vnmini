@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>MPMODA ADMIN</title>
+    <title>VN STONE ADMIN</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('admins/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -58,7 +58,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Social News Admin</a>
+                <a class="navbar-brand" href="#">VN Stone Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -97,10 +97,7 @@
                         <a href="{{ route('admin.order.index') }}"><i class="fa fa-fw fa-dashboard"></i>Order Management</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-dashboard"></i>Account Management</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-dashboard"></i>User Management</a>
+                        <a href="{{ route('admin.user.index') }}"><i class="fa fa-fw fa-dashboard"></i>User Management</a>
                     </li>
                 </ul>
             </div>
