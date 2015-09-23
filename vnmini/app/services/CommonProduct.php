@@ -42,7 +42,7 @@ class CommonProduct
             $input['file_extension'] = strtolower(Input::file('image_url')->getClientOriginalExtension());
         }
         $imageRule = [			
-        	'image_url' => "required|image|max:$maxSize",
+        	'image_url' => "image|max:$maxSize",
             'file_extension' => "required_with:image_url|in:$mimeTypes",
             ];
         $rule = array_merge($rule, $imageRule);
@@ -61,7 +61,6 @@ class CommonProduct
 			'new_price.integer' => 'Giá khuyến mãi phải là số nguyên',
 			'new_price.min' => 'Giá khuyến mãi phải lớn hơn 1000',
 			'origin_price.greater_than' => 'Giá gốc phải lớn hơn giá khuyến mãi',
-			'image_url.required' => 'Ảnh sản phẩm phải có',
 			'image_url.image' => 'Ảnh sản phẩm phải đúng định dạng',
 			'image_url.max' => 'Ảnh sản phẩm có dung lượng lớn nhất là ',
 			];
@@ -95,5 +94,20 @@ class CommonProduct
             $uploadSuccess   =  $file->move($destinationPath, $filename);
         }
         return $filename;
+	}
+
+	public static function updateRelateImage($input, $productId)
+	{
+		foreach ($input['image'] as $key => $value) {
+			if ($value) {
+				$path = PATH_PRODUCT;
+				$destinationPath = public_path().$path.'/'.$productId;
+	            $filename = $value->getClientOriginalName();
+	            $uploadSuccess   =  $value->move($destinationPath, $filename);
+	            $adminImage['product_id'] = $productId;
+	            $adminImage['image_url'] = $filename;
+	            AdminImage::find($key)->update($adminImage);
+			}
+		}
 	}
 }

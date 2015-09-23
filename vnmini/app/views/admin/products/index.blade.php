@@ -62,8 +62,8 @@
 		            <div style = "display: table-cell;  vertical-align: center;">
 		            <form action="{{ route('admin.products.destroy',['product_id'=>$product->id]) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Xoá sản phẩm này? Bạn có chắc chắn không?')) { return true } else {return false };">
 		            	<input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        	<input type="submit" class = "btn btn-danger" value="Xoá" />
-			            </form>
+                        <input type="submit" class = "btn btn-danger" value="Xoá" />
+			        </form>
 			         </div>
 	            </div>
 	        </td>

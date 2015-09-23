@@ -33,6 +33,9 @@ class Common
 		if ($name == 'sort') {
 			return 'Sort';		
 		}
+		if ($name == 'image') {
+			return 'AdminImage';		
+		}
 	}
 
 	public static function deleteRelate($list, $modelName)

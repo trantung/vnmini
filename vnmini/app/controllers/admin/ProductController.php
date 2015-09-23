@@ -87,8 +87,24 @@ class ProductController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::all();
-		dd($input['image']);
+		$input = Input::except('_token','image', 'image_relate');
+		$validator = CommonProduct::validate($input);
+		if ($validator->fails()) {
+            return Redirect::route('admin.products.edit', $id)
+                ->withInput($input)
+                ->withErrors($validator);
+        }
+		CommonProduct::createImageRelate(Input::only('image_relate'), $id);
+		CommonProduct::updateRelateImage(Input::only('image'), $id);
+		if ($input['image_url']) {
+        	$input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT);
+			Common::update($id, $input);
+		}
+		else {
+			$input['image_url'] = Product::find($id)->image_url;
+			Common::update($id, $input);
+		}
+		return Redirect::route('admin.products.index')->with('message', 'Update thành công');
 	}
 
 	/**

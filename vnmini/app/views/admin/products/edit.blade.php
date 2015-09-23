@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@include('admin.error-message')
 {{Form::open(array("route"=>array('admin.products.update', $product->id), 'method' => 'PUT', "class"=>"form-horizontal",'files'=>true))}}
     <div class="form-group col-sm-4 col-md-8">
         <label for="category">Select Category:</label>
@@ -56,8 +57,9 @@
         @foreach($imageRelates as $key => $image)
             <div>
                 Ảnh liên quan thứ {{ $key + 1 }}
-                {{ Form::file("image[$key]", "", array('class'=>'btn btn-success')) }}
+                {{ Form::file("image[$image->id]", "", array('class'=>'btn btn-success')) }}
                 <img src="{{ asset('img/products/'.$product->id).'/'.$image->image_url }}" class="img-rounded" width="304" height="236">
+                <div class="btn btn-primary" id="delete" value="{{$image->id}}">Xoá</div>
             </div>
             <br/>
         @endforeach
