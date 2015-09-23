@@ -60,7 +60,8 @@ class ProductController extends AdminController {
 	public function show($id)
 	{
 		$product = Product::find($id);
-		return View::make('admin.products.show')->with(compact('product'));
+		$imageRelates = $product->images;
+		return View::make('admin.products.show')->with(compact('product', 'imageRelates'));
 	}
 
 
@@ -72,7 +73,9 @@ class ProductController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$product = Product::find($id);
+		$imageRelates = $product->images;
+		return View::make('admin.products.edit')->with(compact('product', 'imageRelates'));
 	}
 
 
@@ -84,9 +87,9 @@ class ProductController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::all();
+		dd($input['image']);
 	}
-
 
 	/**
 	 * Remove the specified resource from storage.

@@ -1,91 +1,74 @@
-@extends('layouts.admin')
+@extends('layouts.master')
 
 @section('content')
-<div id="content">
-    <div class="page-header">
-        <h1>Product / Edit </h1>
+{{Form::open(array("route"=>array('admin.products.update', $product->id), 'method' => 'PUT', "class"=>"form-horizontal",'files'=>true))}}
+    <div class="form-group col-sm-4 col-md-8">
+        <label for="category">Select Category:</label>
+        {{ Form::select('category_id' , ['' => 'Select category'] + CommonCategory::getCategories(), $product->category->id, ['class' => 'form-control']) }}
     </div>
-<form action="{{ route('admin.products.update', ['product_id'=>$product->id]) }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
-
-<table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Category</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="success">
-        <td>{{$product->id}}</td>
-        <td>
-            <div class="form-group">
-              <select class="form-control" id="category" name="category">
-            @foreach($categories as $category)
-                <option value="{{ $category->id }}" 
-                @if($category->id == $product->category->id)
-                    {{ " selected" }}
-                @endif
-                >{{ $category->name }}</option>
-            @endforeach
-              </select>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Tên sản phẩm:</label>
+        {{ Form::text('name', $product->name, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Mã sản phẩm:</label>
+        {{ Form::text('code', $product->code, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Kích cỡ:</label>
+        {{ Form::text('size', $product->size, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Chất liệu:</label>
+        {{ Form::text('material', $product->material, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Số lượng:</label>
+        {{ Form::text('quantity', $product->quantity, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Giá gốc:</label>
+        {{ Form::text('origin_price', $product->origin_price, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Giá Khuyến Mãi</label>
+        {{ Form::text('new_price', $product->new_price, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Description</label>
+        {{Form::textarea('description', $product->description, array('class'=>'form-control',"rows"=>6, "id"=>'editor1'))}}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Introduce</label>
+        {{ Form::text('introduce', $product->introduce, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Information</label>
+        {{ Form::text('information', $product->information, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Ảnh đại diện</label>
+        {{Form::file('image_url',"", array('class'=>'form-control','id'=>'imgInp'))}}
+        <img src="{{ asset('img/products').'/'.$product->image_url }}" class="img-rounded" width="304" height="236" id="blah">
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Ảnh liên quan</label>
+        @foreach($imageRelates as $key => $image)
+            <div>
+                Ảnh liên quan thứ {{ $key + 1 }}
+                {{ Form::file("image[$key]", "", array('class'=>'btn btn-success')) }}
+                <img src="{{ asset('img/products/'.$product->id).'/'.$image->image_url }}" class="img-rounded" width="304" height="236">
             </div>
-        </td>
-        <td><input type="text" value="{{$product->name}}" name="name"/></td>
-        <td><textarea  name="description">{{$product->description}}</textarea> </td>
-      </tr>
-    </tbody>
-  </table>
-  <center><h3>Product image</h3></center><br/>
-      <?php 
-        $img_src = asset('/images/products/product'.$product->id).'/';
-      ?>
-            <div class = "row">
-        @foreach($product->productColor as $key => $product_color)
-              <div class="col-md-4 col-sm-2 thumbnail">
-                <div class="col-md-4"><span>Show index
-                <input type="checkbox" class="radio" 
-                value="{{ $product_color->id }}" name="index_show" 
-                    @if($product->getIndexImage() === $product_color->picture)
-                        {{ " checked" }}
-                    @endif
-                ></span></div>
-                <img src="{{ $img_src.$product_color->picture }}" alt="{{ $product_color->name }}" style="width:40%; height:40%;" id="image{{ $product_color->id }}" class="img-responsive">
-                <input type="file" name="image[{{ $product_color->id }}]" id="{{ $product_color->id }}" accept="image/*" onchange="readURL(this);" />
-              </div>
+            <br/>
         @endforeach
-            </div>
-
-        <div class ="row">
-            <a class="btn btn-default" href="{{ action('Admin\ProductController@index') }}">Back</a>
-            <input type="hidden" name="_method" value="PUT">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <button class="btn btn-warning" type="submit">Update</button>
+        <div>Thêm ảnh
+            {{ Form::file('image_relate[]', ['id' => 'files', 'multiple' => true]) }}
         </div>
-</form>
-</div>
-
-<script type="text/javascript">
-    $("input:checkbox").click(function() {
-    if ($(this).is(":checked")) {
-        var group = "input:checkbox[name='" + $(this).attr("name") + "']";
-        $(group).prop("checked", false);
-        $(this).prop("checked", true);
-    } else {
-        $(this).prop("checked", false);
-    }
-});
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        console.log(input.id);
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#image'+ input.id).attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-</script>
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <a class="btn btn-success" href="{{route('admin.products.index')}}">Back</a>
+        {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
+    </div>           
+{{ Form::close() }}
+@include('admin.script')
 @endsection

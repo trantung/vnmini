@@ -28,6 +28,6 @@ class Product extends Eloquent
 
     public function images()
     {
-        return $this->hasMany('Image', 'product_id', 'id');
+        return $this->hasMany('AdminImage', 'product_id', 'id');
     }
 }
