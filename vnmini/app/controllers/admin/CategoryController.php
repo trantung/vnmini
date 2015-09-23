@@ -89,6 +89,8 @@ class CategoryController extends AdminController {
 	 */
 	public function destroy($id)
 	{
+		$listProductId = Category::find($id)->products;
+		Common::deleteRelate($listProductId, 'Product');
 		Common::delete($id);
 		return Redirect::route('admin.category.index')->with('message','Xóa thành công!');
 	}

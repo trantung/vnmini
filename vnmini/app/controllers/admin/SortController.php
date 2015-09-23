@@ -84,6 +84,12 @@ class SortController extends AdminController {
 	 */
 	public function destroy($id)
 	{
+		$listCategoryId = Sort::find($id)->categories;
+		foreach ($listCategoryId as $key => $value) {
+			$listProductId = Category::find($value->id)->products;
+			Common::deleteRelate($listProductId, 'Product');
+		}
+		Common::deleteRelate($listCategoryId, 'Category');
 		Common::delete($id);
 		return Redirect::route('admin.sort.index')->with('message', 'Xoá thành công');
 	}

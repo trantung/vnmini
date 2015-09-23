@@ -34,4 +34,11 @@ class Common
 			return 'Sort';		
 		}
 	}
+
+	public static function deleteRelate($list, $modelName)
+	{
+		foreach ($list as $key => $value) {
+			$modelName::find($value->id)->delete();
+		}
+	}
 }
