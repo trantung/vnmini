@@ -8,6 +8,6 @@ class BannerImage extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'banner_images';
-    protected $fillable = ['image_url', 'title', 'description'];
+    protected $fillable = ['image_url', 'title', 'description', 'position'];
     protected $dates = ['deleted_at'];
 }

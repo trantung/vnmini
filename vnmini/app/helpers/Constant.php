@@ -12,3 +12,7 @@ define(USING, 0);
 define(LOCK, 1);
 define(USER_USING, 'Đang sử dụng');
 define(USER_LOCK, 'Khoá');
+//BannerImage
+define(LEFT_BANNER_IMAGE, 0);
+define(CENTER_BANNER_IMAGE, 1);
+define(RIGHT_BANNER_IMAGE, 2);

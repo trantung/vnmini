@@ -36,6 +36,12 @@ class Common
 		if ($name == 'image') {
 			return 'AdminImage';		
 		}
+		if ($name == 'discount') {
+			return 'Discount';
+		}
+		if ($name == 'bannerimage') {
+			return 'BannerImage';
+		}
 	}
 
 	public static function deleteRelate($list, $modelName)

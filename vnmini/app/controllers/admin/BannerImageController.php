@@ -9,7 +9,8 @@ class BannerImageController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$bannerImages = BannerImage::all();
+		return View::make('admin.banner_image.index')->with(compact('bannerImages'));
 	}
 
 
@@ -43,7 +44,8 @@ class BannerImageController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$bannerImage = BannerImage::findOrFail($id);
+		return View::make('admin.banner_image.show')->with(compact('bannerImage'));
 	}
 
 
@@ -55,7 +57,8 @@ class BannerImageController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$bannerImage = BannerImage::findOrFail($id);
+		return View::make('admin.banner_image.edit')->with(compact('bannerImage'));
 	}
 
 
@@ -67,7 +70,9 @@ class BannerImageController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::only('title', 'description');
+		Common::update($id, $input);
+		return Redirect::route('admin.bannerimage.index')->with('message','Update thành công!');
 	}
 
 

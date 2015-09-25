@@ -58,3 +58,16 @@ function checkPassword($pwd, $re_pwd) {
     }
     return array('success'=>'Thay đổi mật khẩu thành công!');
 }
+
+function returnPositionBannerImage($position)
+{
+    if ($position == LEFT_BANNER_IMAGE) {
+        return 'Trái';
+    }
+    if ($position == CENTER_BANNER_IMAGE) {
+        return 'Giữa';
+    }
+    if ($position == RIGHT_BANNER_IMAGE) {
+        return 'Phải';
+    }
+}
