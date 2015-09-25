@@ -38,15 +38,15 @@
         {{ $product->new_price }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Description</label>
+        <label>Chi tiết</label>
         {{ $product->description }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Introduce</label>
+        <label>Giới thiệu</label>
         {{ $product->introduce }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Information</label>
+        <label>Thông tin khác</label>
         {{ $product->information }}
     </div>
     <div class="form-group col-sm-4 col-md-8">

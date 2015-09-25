@@ -178,40 +178,40 @@ $(document).ready(function(){
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="{{ route('admin.products.index') }}"><i class="fa fa-fw fa-dashboard"></i>Product Management</a>
+                        <a href="{{ route('admin.products.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý sản phẩm </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.sort.index') }}"><i class="fa fa-fw fa-dashboard"></i>Sort Management</a>
+                        <a href="{{ route('admin.sort.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý loại sản phẩm</a>
                     </li>
                     <li>
-                        <a href="{{ action('CategoryController@index') }}"><i class="fa fa-fw fa-dashboard"></i>Category Management</a>
+                        <a href="{{ action('CategoryController@index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý nhóm sản phẩm</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.bannerimage.index') }}"><i class="fa fa-fw fa-dashboard"></i>BannerImage Management</a>
+                        <a href="{{ route('admin.bannerimage.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý ảnh bannner</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.bannerslide.index') }}"><i class="fa fa-fw fa-dashboard"></i>BannerSlider Management</a>
+                        <a href="{{ route('admin.bannerslide.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý slide</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.discount.index') }}"><i class="fa fa-fw fa-dashboard"></i>Discount Management</a>
+                        <a href="{{ route('admin.discount.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý chiết khấu</a>
                     </li>
                     
 
                     <li>
-                        <a href="{{ route('admin.order.index') }}"><i class="fa fa-fw fa-dashboard"></i>Order Management</a>
+                        <a href="{{ route('admin.order.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý hoá đơn</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.comment.index') }}"><i class="fa fa-fw fa-dashboard"></i>Comment Management</a>
+                        <a href="{{ route('admin.comment.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý comment</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.new.index') }}"><i class="fa fa-fw fa-dashboard"></i>New Management</a>
+                        <a href="{{ route('admin.new.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý tin tức</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.shop.index') }}"><i class="fa fa-fw fa-dashboard"></i>Shop Management</a>
+                        <a href="{{ route('admin.shop.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin cửa hàng</a>
                     </li>
                     @if(Auth::user()->isAdmin())
                         <li>
-                            <a href="{{ route('admin.user.index') }}"><i class="fa fa-fw fa-dashboard"></i>User Management</a>
+                            <a href="{{ route('admin.user.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý user</a>
                         </li>
                     @endif
                 </ul>

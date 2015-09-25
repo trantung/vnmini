@@ -36,15 +36,15 @@
         {{ Form::text('new_price', $product->new_price, ['class' => 'form-control']) }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Description</label>
+        <label>Chi tiết</label>
         {{Form::textarea('description', $product->description, array('class'=>'form-control',"rows"=>6, "id"=>'editor1'))}}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Introduce</label>
+        <label>Giới thiệu</label>
         {{ Form::text('introduce', $product->introduce, ['class' => 'form-control']) }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Information</label>
+        <label>Thông tin khác</label>
         {{ Form::text('information', $product->information, ['class' => 'form-control']) }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
