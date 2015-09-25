@@ -72,6 +72,21 @@ class UserController extends AdminController {
 	public function update($id)
 	{
 		$user = User::findOrFail($id);
+		if (Request::ajax())
+		{
+			$data = Input::all();
+			$errors = array();
+			if(Hash::check($data['old_password'], $user->password)){
+				$message = checkPassword($data['new_password'], $data['re_password']);
+				if(isset($message['success'])){
+					$user->password = Hash::make($data['new_password']);
+					$user->save();			}
+				return Response::json($message);
+			}else{
+				return Response::json(['error'=>"Mật khẩu cũ sai!"]);
+			}
+
+		}
 		$data = Input::except('_token','_method');
 		$user->update($data);
 		return Redirect::route('admin.user.show', $id)->with('message','Update thành công!');
@@ -90,6 +105,5 @@ class UserController extends AdminController {
 		$user->delete();
 		return Redirect::route('admin.users.index')->with('message','Xóa thành công!');
 	}
-
 
 }

@@ -40,4 +40,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     {
         return $this->hasMany('New', 'user_id', 'id');
     }
+    
+	public function isAdmin(){
+		if($this->role_id == 1){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }

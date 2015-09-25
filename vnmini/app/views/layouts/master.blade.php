@@ -31,6 +31,100 @@
             var current = $(location).attr('href');
             $($("a[href='"+current+"']")).parents('li').addClass('active');
         });
+$(document).ready(function(){
+    $('#btnUpdatePassWord').prop('disabled', true);
+    function showError(obj, removeClass, addClass, color){
+        obj.removeClass(removeClass);
+        obj.addClass(addClass);
+        obj.css("color",color);
+
+    };
+    var hasError = true;
+    $("input[type=password]").keyup(function(){
+    var ucase = new RegExp("[A-Z]+");
+    var lcase = new RegExp("[a-z]+");
+    var num = new RegExp("[0-9]+");
+    
+    if($("#password").val().length <= 6){
+        hasError = false;
+        showError($("#oldPass"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#oldPass"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    if($("#password1").val().length >= 6){
+        hasError = false;
+        showError($("#6char"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#6char"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    
+    if(ucase.test($("#password1").val())){
+        hasError = false;
+        showError($("#ucase"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#ucase"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    
+    if(lcase.test($("#password1").val())){
+        hasError = false;
+        showError($("#lcase"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#lcase"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    
+    if(num.test($("#password1").val())){
+        hasError = false;
+        showError($("#num"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#num"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    
+    if($("#password1").val() == $("#password2").val() && $("#password1").val().length>=6){
+        hasError = false;
+        showError($("#pwmatch"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#pwmatch"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    };
+
+    $('#btnUpdatePassWord').prop('disabled', hasError);
+});
+    $('#passwordForm').submit(function(event) {
+
+        var formData = {
+            'old_password'      : $('#password').val(),
+            'new_password'      : $('#password1').val(),
+            're_password'       : $('#password2').val(),
+        };
+        // process the form
+        $.ajax({
+            type        : 'PUT',
+            url         : $(this).attr('action'), // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode      : true,
+            beforeSend: function() {
+                $('#btnUpdatePassWord').prop('disabled', true);
+            },
+        })
+        // using the done promise callback
+        .done(function(data) {
+            if(data['error']){
+                $('#err_msg').text(data['error']);
+            }
+            if(data['success']){
+                $('#err_msg').text(data['success']);
+                window.setTimeout('location.reload()', 5000);
+            }
+        });
+        event.preventDefault();
+    });
+});
     </script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -69,6 +163,15 @@
                         <li>
                             <a href="{{ route('get.logout') }}"><i class="fa fa-fw fa-user"></i> Logout</a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.user.show', Auth::user()->id) }}"><i class="glyphicon glyphicon-pencil"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#" data-target="#pwdModal" data-toggle="modal">
+                                <i class="glyphicon glyphicon-cog"></i>
+                                Update-Pass
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -96,9 +199,11 @@
                     <li>
                         <a href="{{ route('admin.order.index') }}"><i class="fa fa-fw fa-dashboard"></i>Order Management</a>
                     </li>
-                    <li>
-                        <a href="{{ route('admin.user.index') }}"><i class="fa fa-fw fa-dashboard"></i>User Management</a>
-                    </li>
+                    @if(Auth::user()->isAdmin())
+                        <li>
+                            <a href="{{ route('admin.user.index') }}"><i class="fa fa-fw fa-dashboard"></i>User Management</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -107,7 +212,52 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-
+                <!--modal-->
+                <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                          <h1 class="text-center">Đổi Mật Khẩu</h1>
+                          <h5 style="color:red; text-align:center " id="err_msg"></h5>
+                      </div>
+                      <div class="modal-body">
+                            <form method="post" id="passwordForm" action="{{ route('admin.user.update', Auth::user()->id) }}">
+                                <input type="password" class="input-lg form-control" name="password" id="password" placeholder="Mật khẩu cũ">
+                                <div class="col-sm-6">
+                                 <span id="oldPass" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span>Mật khẩu cũ
+                                </div>
+                                <input type="password" class="input-lg form-control" name="password1" id="password1" placeholder="Mật khẩu mới">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <span id="6char" class="glyphicon glyphicon-remove" style="color:#FF0004;">
+                                        </span> 6 ký tự<br>
+                                        <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;">
+                                        </span> viết hoa 1 ký tự
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> kí tự viết thường<br>
+                                        <span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> kí tự số
+                                    </div>
+                                </div>
+                                <input type="password" class="input-lg form-control" name="password2" id="password2" placeholder="nhập lại mật khẩu" autocomplete="off">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <span id="pwmatch" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> mật khẩu không trùng nhau
+                                    </div>
+                                </div>
+                                <br />
+                                <input type="submit" class="col-xs-12 btn btn-primary btn-load btn-lg" data-loading-text="Loading..." value="Cập nhật" id="btnUpdatePassWord">
+                            </form>
+                      </div>
+                      <div class="modal-footer">
+                          <div class="col-md-12">
+                          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                          </div>    
+                      </div>
+                  </div>
+                  </div>
+                </div>
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
