@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('user', 'UserController');
     Route::resource('account', 'AccountController');
     Route::resource('comment', 'CommentController');
+    Route::resource('new', 'AdminNewController');
     Route::resource('order', 'OrderController');
     Route::resource('shop', 'ShopController', ['index', 'update']);
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));

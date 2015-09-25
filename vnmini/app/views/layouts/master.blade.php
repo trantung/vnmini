@@ -181,6 +181,9 @@ $(document).ready(function(){
                         <a href="{{ route('admin.products.index') }}"><i class="fa fa-fw fa-dashboard"></i>Product Management</a>
                     </li>
                     <li>
+                        <a href="{{ route('admin.sort.index') }}"><i class="fa fa-fw fa-dashboard"></i>Sort Management</a>
+                    </li>
+                    <li>
                         <a href="{{ action('CategoryController@index') }}"><i class="fa fa-fw fa-dashboard"></i>Category Management</a>
                     </li>
                     <li>
@@ -192,12 +195,16 @@ $(document).ready(function(){
                     <li>
                         <a href="{{ route('admin.discount.index') }}"><i class="fa fa-fw fa-dashboard"></i>Discount Management</a>
                     </li>
-                    <li>
-                        <a href="{{ route('admin.sort.index') }}"><i class="fa fa-fw fa-dashboard"></i>Sort Management</a>
-                    </li>
+                    
 
                     <li>
                         <a href="{{ route('admin.order.index') }}"><i class="fa fa-fw fa-dashboard"></i>Order Management</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.comment.index') }}"><i class="fa fa-fw fa-dashboard"></i>Comment Management</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.new.index') }}"><i class="fa fa-fw fa-dashboard"></i>New Management</a>
                     </li>
                     <li>
                         <a href="{{ route('admin.shop.index') }}"><i class="fa fa-fw fa-dashboard"></i>Shop Management</a>
