@@ -199,6 +199,9 @@ $(document).ready(function(){
                     <li>
                         <a href="{{ route('admin.order.index') }}"><i class="fa fa-fw fa-dashboard"></i>Order Management</a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.shop.index') }}"><i class="fa fa-fw fa-dashboard"></i>Shop Management</a>
+                    </li>
                     @if(Auth::user()->isAdmin())
                         <li>
                             <a href="{{ route('admin.user.index') }}"><i class="fa fa-fw fa-dashboard"></i>User Management</a>

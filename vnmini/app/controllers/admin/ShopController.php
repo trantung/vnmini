@@ -9,7 +9,8 @@ class ShopController extends AdminController {
 	 */
 	public function index()
 	{
-		dd(123);
+		$shop = Shop::first();
+		return View::make('admin.shop.index')->with(compact('shop'));
 	}
 
 
