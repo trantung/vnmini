@@ -58,8 +58,8 @@
                             <td>
                                 <div class="form-group col-md-5 col-sm-5">
                                 <select class="form-control" required name ="status">
-                                    <option value = "0" <?php if($user->status ==0){echo "selected";} ?>>Khóa</option>
-                                    <option value = "1" <?php if($user->status ==1){echo "selected";} ?>>Đang sử dụng</option>
+                                    <option value = "0" <?php if($user->status == USING){echo "selected";} ?>>{{ USER_USING }} </option>
+                                    <option value = "1" <?php if($user->status == LOCK){echo "selected";} ?>>{{ USER_LOCK }} </option>
                                   </select>
                                 </div>
                             </td>

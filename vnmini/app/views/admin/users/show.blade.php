@@ -20,18 +20,12 @@
     </thead>
     <tbody>
       <tr class="success">
-        <td>{{$user->id}}</td>
-        <td>{{$user->name}}</td>
+        <td>{{ $user->id }}</td>
+        <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
         <td>{{ $user->role->name }}</td>
         <td>{{ $user->phone }}</td>
-        <td>
-            @if($user->status== 0)
-                {{ 'Khóa' }}
-            @else
-                {{ 'Đang sử dụng' }}
-            @endif
-        </td>
+        <td>{{ returnStatusUser($user->status) }}</td>
         <td>{{ $user->created_at }}</td>
         <td>{{ $user->updated_at }}</td>
       </tr>

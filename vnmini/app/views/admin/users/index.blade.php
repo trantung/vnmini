@@ -30,12 +30,12 @@
                     </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
-                    <td>{{ $user->status }}</td>
+                    <td>{{ returnStatusUser($user->status) }}</td>
                     <td class="text-left">
                         <a class="btn btn-primary" href="{{ action('UserController@show', $user->id) }}">Chi tiết</a>
                         <a class="btn btn-warning " href="{{ action('UserController@edit', $user->id) }}">Sửa</a>
                         @if(Auth::user()->isAdmin() && Auth::user()->id != $user->id)
-                        <form action="{{ action('UserController@destroy', $user->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <button class="btn btn-danger" type="submit">Xoá</button></form>
+                        <form action="{{ action('UserController@destroy', $user->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Xoá user này')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <button class="btn btn-danger" type="submit">Xoá</button></form>
                         @endif
                     </td>
                 </tr>

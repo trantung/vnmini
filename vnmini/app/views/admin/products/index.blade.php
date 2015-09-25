@@ -41,9 +41,6 @@
 	        <th>Hành động</th>
 	    </tr>
 	    @foreach($products as $product)
-	    	<?php 
-	    		$img = '/';
-	    	?>
 	    	<tr>
 	        <td><a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}">{{$product->name}}</a></td>
 	        <td>{{ $product->code }}</td>

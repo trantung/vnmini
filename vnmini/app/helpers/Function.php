@@ -24,6 +24,14 @@ function returnInputSelect($key)
     return null;
 }
 
+function returnStatusUser($status)
+{
+    if ($status == USING) {
+        return USER_USING;
+    }
+    return USER_LOCK;
+}
+
 function checkPassword($pwd, $re_pwd) {
     $errors = array();
 
