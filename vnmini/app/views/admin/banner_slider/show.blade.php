@@ -21,5 +21,6 @@
     </tbody>
 </table>
 <a class="btn btn-default" href="{{ action('BannerSlideController@index') }}">Back</a>
-<a class="btn btn-warning" href="{{ action('BannerSlideController@destroy', $bannerSlide->id) }}">Xoá</a>
+<form action="{{ action('BannerSlideController@destroy', $bannerSlide->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <button class="btn btn-danger" type="submit">Delete</button></form>
+
 @endsection
