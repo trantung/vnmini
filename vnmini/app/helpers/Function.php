@@ -71,3 +71,13 @@ function returnPositionBannerImage($position)
         return 'Phải';
     }
 }
+
+function returnPositionBannerSlide($position)
+{
+    if ($position == 0) {
+        return 'VN Stone';
+    }
+    if ($position == 1) {
+        return 'Đối tác';
+    }
+}

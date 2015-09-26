@@ -9,7 +9,8 @@ class BannerSlideController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$bannerSlides = BannerSlider::all();
+		return View::make('admin.banner_slider.index')->with(compact('bannerSlides'));
 	}
 
 
@@ -20,7 +21,7 @@ class BannerSlideController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.banner_slider.create');
 	}
 
 
@@ -31,7 +32,13 @@ class BannerSlideController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::except('_token');
+        $input['image_url'] = CommonProduct::uploadImage($input, PATH_BANNER_SLIDE);
+        $bannerSlideId = Common::create($input);
+        if (!$bannerSlideId) {
+			return Redirect::route('admin.bannerslide.index')->with('message', 'Tạo mới thất bại');
+		}
+		return Redirect::route('admin.bannerslide.index')->with('message', 'Tạo mới thành công');
 	}
 
 
@@ -43,7 +50,8 @@ class BannerSlideController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$bannerSlide = BannerSlider::findOrFail($id);
+		return View::make('admin.banner_slider.show')->with(compact('bannerSlide'));
 	}
 
 
@@ -55,7 +63,7 @@ class BannerSlideController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+
 	}
 
 
@@ -79,7 +87,8 @@ class BannerSlideController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Common::delete($id);
+		return Redirect::route('admin.bannerslide.index')->with('message', 'Xoá thành công');
 	}
 
 

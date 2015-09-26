@@ -46,7 +46,9 @@ class ProductController extends AdminController {
 		if (!$productId) {
 			return Redirect::route('admin.products.index')->with('message', 'Tạo mới thất bại');
 		}
-		CommonProduct::createImageRelate(Input::only('image_relate'), $productId);
+		if (Input::get('image_relate')) {
+			CommonProduct::createImageRelate(Input::only('image_relate'), $productId);
+		}
 		return Redirect::route('admin.products.index')->with('message', 'Tạo mới thành công');
 	}
 
