@@ -3,6 +3,16 @@
     <div class="page-header">
         <h1>Ảnh Slide</h1>
     </div>
+    {{ Form::open(['route' => 'admin.bannerslide.search', 'method' => 'GET']) }}
+        <div class="row">
+            <div class="col-sm-10">
+                {{ Form::select('position' , ['' => 'Chọn vị trí'] + CommonBannerSlide::getPosition(), null, ['class' => 'form-control']) }}
+            </div>
+            <div class="col-sm-2">
+                <input type="submit" id="search" class='btn btn-primary'>
+            </div>
+        </div>
+    {{ Form::close() }}
 @include('admin.error-message')
     <div class="row">
         <div class="col-md-12">

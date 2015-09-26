@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('shops', 'ShopController');
     Route::resource('category', 'CategoryController');
     Route::resource('bannerimage', 'BannerImageController');
+    Route::get('bannerslide/search', array('as' => 'admin.bannerslide.search', 'uses' => 'BannerSlideController@search'));
     Route::resource('bannerslide', 'BannerSlideController');
     Route::resource('discount', 'DiscountController');
     Route::resource('sort', 'SortController');

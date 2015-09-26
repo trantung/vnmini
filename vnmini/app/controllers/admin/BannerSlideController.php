@@ -91,5 +91,14 @@ class BannerSlideController extends AdminController {
 		return Redirect::route('admin.bannerslide.index')->with('message', 'Xoá thành công');
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		if ($input['position'] == '') {
+			return Redirect::route('admin.bannerslide.index');
+		}
+		$bannerSlides = CommonBannerSlide::search($input['position']); 
+		return View::make('admin.banner_slider.index')->with(compact('bannerSlides'));
+	}
 
 }
