@@ -54,15 +54,19 @@
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Ảnh liên quan</label>
-        @foreach($imageRelates as $key => $image)
-            <div>
-                Ảnh liên quan thứ {{ $key + 1 }}
-                {{ Form::file("image[$image->id]", "", array('class'=>'btn btn-success')) }}
-                <img src="{{ asset('img/products/'.$product->id).'/'.$image->image_url }}" class="img-rounded" width="304" height="236">
-                <div class="btn btn-primary" id="delete" value="{{$image->id}}">Xoá</div>
-            </div>
-            <br/>
-        @endforeach
+        @if($imageRelates->count() > 0)
+            @foreach($imageRelates as $key => $image)
+                <div>
+                    Ảnh liên quan thứ {{ $key + 1 }}
+                    {{ Form::file("image[$image->id]", "", array('class'=>'btn btn-success')) }}
+                    <img src="{{ asset('img/products/'.$product->id).'/'.$image->image_url }}" class="img-rounded" width="304" height="236">
+                    <div class="btn btn-primary" id="delete" value="{{$image->id}}">Xoá</div>
+                </div>
+                <br/>
+            @endforeach
+        @else
+            Không có ảnh liên quan
+        @endif
         <div>Thêm ảnh
             {{ Form::file('image_relate[]', ['id' => 'files', 'multiple' => true]) }}
         </div>

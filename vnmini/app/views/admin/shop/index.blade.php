@@ -49,4 +49,5 @@
             </form>
         </div>
     </div>
+@include('admin.script')
 @endsection

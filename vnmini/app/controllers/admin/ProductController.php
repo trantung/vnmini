@@ -94,13 +94,17 @@ class ProductController extends AdminController {
                 ->withInput($input)
                 ->withErrors($validator);
         }
-		CommonProduct::createImageRelate(Input::only('image_relate'), $id);
-		CommonProduct::updateRelateImage(Input::only('image'), $id);
+        if (Input::get('image_relate')) {
+			CommonProduct::createImageRelate(Input::only('image_relate'), $id);
+        }
+        if (Input::get('image')) {
+			CommonProduct::updateRelateImage(Input::only('image'), $id);
+        }
 		if ($input['image_url']) {
         	$input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT);
 			Common::update($id, $input);
 		}
-		else {
+		if (!$input['image_url']) {
 			$input['image_url'] = Product::find($id)->image_url;
 			Common::update($id, $input);
 		}
