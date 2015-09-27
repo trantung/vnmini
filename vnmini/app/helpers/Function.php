@@ -81,3 +81,13 @@ function returnPositionBannerSlide($position)
         return 'Đối tác';
     }
 }
+
+function returnStatusComment($status)
+{
+    if ($status == ACCEPT) {
+        return 'Đã xử lý';
+    }
+    if ($status == NO_ACCEPT) {
+        return 'Chưa xử lý';
+    }
+}

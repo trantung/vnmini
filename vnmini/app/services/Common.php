@@ -48,6 +48,9 @@ class Common
 		if ($name == 'new') {
 			return 'AdminNew';
 		}
+		if ($name == 'comment') {
+			return 'Comment';
+		}
 
 	}
 

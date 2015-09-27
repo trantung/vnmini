@@ -9,7 +9,8 @@ class CommentController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$comments = Comment::orderBy('created_at', 'desc')->paginate(PAGINATE_COMMENT);
+		return View::make('admin.comment.index')->with(compact('comments'));
 	}
 
 
@@ -43,7 +44,8 @@ class CommentController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$comment = Comment::findOrFail($id);
+		return View::make('admin.comment.show')->with(compact('comment'));
 	}
 
 
@@ -55,7 +57,8 @@ class CommentController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$comment = Comment::findOrFail($id);
+		return View::make('admin.comment.edit')->with(compact('comment'));
 	}
 
 
@@ -67,7 +70,9 @@ class CommentController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::only('status');
+		Common::update($id, $input);
+		return Redirect::route('admin.comment.index')->with('message', 'Sửa thành công');
 	}
 
 
@@ -79,8 +84,13 @@ class CommentController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Common::delete($id);
+		return Redirect::route('admin.comment.index')->with('message', 'Xoá thành công');
 	}
 
+	public function search()
+	{
+
+	}
 
 }

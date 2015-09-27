@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('sort', 'SortController');
     Route::resource('user', 'UserController');
     Route::resource('account', 'AccountController');
+    Route::get('comment/search', array('as' => 'admin.comment.search', 'uses' => 'CommentController@search'));
     Route::resource('comment', 'CommentController');
     Route::resource('new', 'AdminNewController');
     Route::resource('order', 'OrderController');

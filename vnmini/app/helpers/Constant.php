@@ -5,6 +5,7 @@ define(PAGINATE_PRODUCT, 10);
 define(PAGINATE_CATEGORY, 10);
 define(PAGINATE_USER, 10);
 define(PAGINATE_SORT, 10);
+define(PAGINATE_COMMENT, 10);
 define(MAX_SIZE_IMAGE, 5000);
 define(MIME_TYPES, 'jpg,jpeg,png,gif');
 define(PATH_PRODUCT, '/img/products');
@@ -20,3 +21,6 @@ define(RIGHT_BANNER_IMAGE, 2);
 //Banner Slide
 define(SLIDE, 0);
 define(PARTNER, 1);
+//Comment status
+define(NO_ACCEPT, 0);
+define(ACCEPT, 1);
