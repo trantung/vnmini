@@ -51,6 +51,9 @@ class Common
 		if ($name == 'comment') {
 			return 'Comment';
 		}
+		if ($name == 'order') {
+			return 'Order';
+		}
 
 	}
 

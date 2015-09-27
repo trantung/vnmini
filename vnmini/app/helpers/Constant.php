@@ -24,3 +24,9 @@ define(PARTNER, 1);
 //Comment status
 define(NO_ACCEPT, 0);
 define(ACCEPT, 1);
+//Order
+define(NO_APPROVE, 1);
+define(APPROVE, 2);
+define(NO_SHIP, 3);
+define(SHIP, 4);
+define(PAY, 5);

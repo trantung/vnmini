@@ -9,7 +9,8 @@ class OrderController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$orders = Order::all();
+		return View::make('admin.order.index')->with(compact('orders'));
 	}
 
 
@@ -43,7 +44,8 @@ class OrderController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$order = Order::findOrFail($id);
+		return View::make('admin.order.show')->with(compact('order'));
 	}
 
 
@@ -79,7 +81,8 @@ class OrderController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Common::delete($id);
+		return Redirect::route('admin.order.index')->with('message', 'Xoá thành công');
 	}
 
 

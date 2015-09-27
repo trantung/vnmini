@@ -91,3 +91,22 @@ function returnStatusComment($status)
         return 'Chưa xử lý';
     }
 }
+
+function returnStatusOrder($status)
+{
+    if ($status == NO_APPROVE) {
+        return 'Chưa xử lý';
+    }
+    if ($status == APPROVE) {
+        return 'Đã xử lý';
+    }
+    if ($status == NO_SHIP) {
+        return 'Chưa chuyển hàng';
+    }
+    if ($status == SHIP) {
+        return 'Đã chuyển hàng';
+    }
+    if ($status == PAY) {
+        return 'Thanh toán';
+    }
+}

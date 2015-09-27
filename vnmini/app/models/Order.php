@@ -8,11 +8,15 @@ class Order extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'orders';
-    protected $fillable = ['customer_id', 'code', 'value', 'discount', 'status', 'money_ship'];
+    protected $fillable = ['customer_id', 'code', 'value', 'discount', 'status', 'money_ship', 'note'];
     protected $dates = ['deleted_at'];
 
     public function orderproducts()
     {
         return $this->hasMany('OrderProduct', 'order_id', 'id');
+    }
+    public function customer() 
+    {
+        return $this->belongsTo('Customer', 'customer_id', 'id');
     }
 }
