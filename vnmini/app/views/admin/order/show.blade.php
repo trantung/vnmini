@@ -10,40 +10,40 @@
         {{ $order->customer->fullname }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Mã sản phẩm:</label>
-        {{ $order->code }}
+        <label>Số điện thoại</label>
+        {{ $order->customer->phone }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Kích cỡ:</label>
-        {{ $order->size }}
+        <label>Email</label>
+        {{ $order->customer->email }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Chất liệu:</label>
-        {{ $order->material }}
+        <label>Địa chỉ</label>
+        {{ $order->customer->address }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Số lượng:</label>
-        {{ $order->quantity }}
+        <label>Ghi chú</label>
+        {{ $order->note }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Giá gốc:</label>
-        {{ $order->origin_price }}
+        <label>Tiền chiết khấu</label>
+        {{ $order->value_discount }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Giá Khuyến Mãi</label>
-        {{ $order->new_price }}
+        <label>Tiền chưa chiết khấu</label>
+        {{ $order->value_origin }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Chi tiết</label>
-        {{ $order->description }}
+        <label>Tiền thực</label>
+        {{ $order->value }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Giới thiệu</label>
-        {{ $order->introduce }}
+        <label>Trạng thái</label>
+        {{ returnStatusOrder($order->status) }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Thông tin khác</label>
-        {{ $order->information }}
+        <label>Ngày tạo hoá đơn</label>
+        {{ $order->created_at }}
     </div>
     <div class="form-group col-sm-4 col-md-8"> 
         <a class="btn btn-default" href="{{ route('admin.order.index') }}">Quay lại</a>

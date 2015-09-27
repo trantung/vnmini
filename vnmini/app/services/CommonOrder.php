@@ -12,9 +12,10 @@ class CommonOrder
 	{
 		$valueOrigin = self::valueOrigin();
 		$discountCommon = Discount::findOrFail(1)->percentage;
-		$discountOrder = Order::findOrFail($orderId)->discount;
+		// $discountOrder = Order::findOrFail($orderId)->discount;
 		$valueDiscountCommon =  $valueOrigin - ($valueOrigin * $discountCommon/100);
-		$valueDiscount = $valueDiscountCommon - ($valueDiscountCommon * $discountOrder/100);
+		// $valueDiscount = $valueDiscountCommon - ($valueDiscountCommon * $discountOrder/100);
+		$valueDiscount = $valueDiscountCommon;
 		return $valueDiscount;
 	}
 
@@ -22,8 +23,9 @@ class CommonOrder
 	{
 		$valueDiscount = self::valueDiscount($orderId);
 		$valueOrigin = self::valueOrigin($orderId);
-		$moneyShip = Order::findOrFail($orderId)->money_ship;
-		$valueReal = ($valueOrigin - $valueDiscount) + $moneyShip;
+		// $moneyShip = Order::findOrFail($orderId)->money_ship;
+		// $valueReal = ($valueOrigin - $valueDiscount) + $moneyShip;
+		$valueReal = $valueOrigin - $valueDiscount;
 		return $valueReal;
 	}
 }
