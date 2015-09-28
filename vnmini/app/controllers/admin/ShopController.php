@@ -105,7 +105,8 @@ class ShopController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// $shop = Shop::findOrFail($id);
+		// $shop->delete();
 	}
 
 
