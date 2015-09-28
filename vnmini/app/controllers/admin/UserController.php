@@ -106,4 +106,11 @@ class UserController extends AdminController {
 		return Redirect::route('admin.users.index')->with('message','Xóa thành công!');
 	}
 
+	public function getForgotPassword() {
+		dd('thai');
+	}
+	public function postForgotPassword() {
+
+	}
+
 }
