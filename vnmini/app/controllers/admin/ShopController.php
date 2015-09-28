@@ -1,5 +1,5 @@
 <?php
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 class ShopController extends AdminController {
 
 	/**
@@ -68,7 +68,32 @@ class ShopController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$data = (Input::except('_method'));
+		$shop = Shop::findOrFail($id);
+		$shop->name=trim($data['name']);
+		$shop->description=trim($data['description']);
+		$shop->address=trim($data['address']);
+		$shop->contact=trim($data['contact']);
+		$shop->tel=trim($data['tel']);
+		$shop->mobile=trim($data['mobile']);
+		$shop->lat=trim($data['lat']);
+		$shop->long=trim($data['long']);
+		// dd($data);
+		if(Input::hasFile('image')){
+		    $destinationPath = public_path().'/img/shops/';
+		    $name = Input::file('image')->getClientOriginalName();
+		    Input::file('image')->move($destinationPath, $name);
+		    $extends = Input::file('image')->getClientOriginalExtension();
+		    $ex = array('jpg', 'png', 'jpeg', 'gif');
+		    if(in_array(strtolower($extends),$ex)){
+		    	$shop->image_url = '/img/shops/'.Input::file('image')->getClientOriginalName();
+		    }else{
+		    	return Redirect::route('admin.shop.index')->with('message', 'Định dạng ảnh không đúng');
+		    }
+			$shop->image_url='/img/shops/'.Input::file('image')->getClientOriginalName();
+		}
+		$shop->save();
+		return Redirect::route('admin.shop.index')->with('message', 'Update thành công');
 	}
 
 
