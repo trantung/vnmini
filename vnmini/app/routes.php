@@ -15,6 +15,8 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+Route::resource('password', 'PasswordController', array('only'=>array('store', 'index')));
+Route::get('/changepass', array('as'=>'user.change.pass','uses'=>'PasswordController@getChangePass'));
 Route::group(['prefix' => 'admin'], function () {
 	Route::get('/login', array('as'=>'get.admin.login','uses'=>'AdminController@getLogin'));
     Route::post('/login', array('as'=>'post.admin.login','uses'=>'AdminController@postLogin'));
@@ -33,14 +35,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('comment', 'CommentController');
     Route::resource('new', 'AdminNewController');
     Route::resource('order', 'OrderController');
-    Route::resource('shop', 'ShopController', ['index', 'update']);
+    Route::resource('shop', 'ShopController', array('only' => array('index', 'update')));
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));
     Route::resource('products', 'ProductController');
     Route::post('/admin/image/delete/{id}', 'ImageController@delete');
-    // Route::resource('image', 'ImageController');
+    
 
 });
-
 Route::group(['prefix' => 'frontend'], function () {
 
 });

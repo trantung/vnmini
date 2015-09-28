@@ -66,7 +66,6 @@
 	        </td>
 	      </tr>
 		@endforeach
-    	{{ $products->appends(Request::except('page'))->links() }}
 	</table>
     <center>{{ $products->appends(Request::except('page'))->links() }}</center>
 </div>

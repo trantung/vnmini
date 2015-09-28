@@ -9,7 +9,8 @@ class AdminNewController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$news = AdminNew::paginate(PAGINATE_NEWS);
+		return View::make('admin.news.index')->with(compact('news'));
 	}
 
 
@@ -43,7 +44,8 @@ class AdminNewController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$new = AdminNew::findOrFail($id);
+		return View::make('admin.news.show')->with(compact('new'));
 	}
 
 
@@ -55,7 +57,9 @@ class AdminNewController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$new = AdminNew::findOrFail($id);
+		return View::make('admin.news.edit')->with(compact('new'));
+
 	}
 
 
@@ -67,7 +71,27 @@ class AdminNewController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$data = Input::except('_token', '_method');
+		
+		$new = AdminNew::findOrFail($id);
+		$new->title = $data['title'];
+		$new->description = $data['description'];
+		if(Input::hasFile('image')){
+		    $destinationPath = public_path().'/img/news/';
+		    $name = Input::file('image')->getClientOriginalName();
+		    Input::file('image')->move($destinationPath, $name);
+		    $extends = Input::file('image')->getClientOriginalExtension();
+		    $ex = array('jpg', 'png', 'jpeg', 'gif');
+		    if(in_array(strtolower($extends),$ex)){
+		    	$new->image_url = '/img/news/'.Input::file('image')->getClientOriginalName();
+		    }else{
+		    	return Redirect::route('admin.new.edit', $id)->with('message', 'Định dạng ảnh không đúng');
+		    }
+			$new->image_url='/img/news/'.Input::file('image')->getClientOriginalName();
+		}
+		$new->save();
+		return Redirect::route('admin.new.edit', $id)->with('message', 'Update thành công');
+
 	}
 
 
@@ -79,7 +103,9 @@ class AdminNewController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$new = AdminNew::findOrFail($id);
+		$new->delete();
+		return Redirect::route('admin.new.index');
 	}
 
 

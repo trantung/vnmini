@@ -26,6 +26,7 @@
     <script src="{{ asset('admins/js/jquery.js') }}"></script>
     <script src="{{ asset('admins/ckeditor/ckeditor.js')}}"></script>
     <script src="{{ asset('admins/ckeditor/adapters/jquery.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places" style=""></script>
     <script>
         $(function() {
             var current = $(location).attr('href');
