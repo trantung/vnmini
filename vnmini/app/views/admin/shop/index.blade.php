@@ -38,9 +38,9 @@
                 </div>
                 <div class="form-group"> 
                     <label>Ảnh cửa hàng</label>
-                    <input type ="file" id = "img" name ="image" accept="image/*"/>
+                    {{Form::file('image_url',"", array('class'=>'form-control','id'=>'img'))}}
                     <br />
-                    <img src="{{asset($shop->image_url)}}" class="img-rounded" alt="Cinque Terre" width="500" height="236" id="blah">
+                    <img src="{{ asset('img/shops/').'/'.$shop->image_url }}" class="img-rounded" alt="Cinque Terre" width="500" height="236" id="blah">
                 </div>
                 <div class="form-group">
                     <label>Vị trí</label>
@@ -79,7 +79,7 @@ var defaultLng = (document.getElementById('longitude').value!=0) ? document.getE
                     reader.readAsDataURL(input.files[0]);
                 }
             }
-        $('[name="image"]').change(function(){
+        $('[name="image_url"]').change(function(){
         readURL(this);
     });
         initSample();

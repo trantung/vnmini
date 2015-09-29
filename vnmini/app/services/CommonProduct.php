@@ -17,19 +17,31 @@ class CommonProduct
 				$query->where('category_id', $searchInput['category_id']);
 			}
 			if (strlen($searchInput['name'])) {
-                $query->where('name', 'LIKE', '%'.$searchInput['name'].'%');
+				$query->where('name', 'LIKE', '%'.$searchInput['name'].'%');
 			}
 			if (strlen($searchInput['code'])) {
-                $query->where('code', 'LIKE', '%'.$searchInput['code'].'%');
+				$query->where('code', 'LIKE', '%'.$searchInput['code'].'%');
 			}
 		})->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
 		return $products;
 	}
 
-	public static function validate($input)
+	public static function validateImage($input)
 	{
 		$maxSize = MAX_SIZE_IMAGE;
 		$mimeTypes = MIME_TYPES;
+		if ($input['image_url']) {
+			$input['file_extension'] = strtolower(Input::file('image_url')->getClientOriginalExtension());
+		}
+		$imageRule = [			
+			'image_url' => "image|max:$maxSize",
+			'file_extension' => "$mimeTypes",
+			];
+		return $imageRule;
+	}
+
+	public static function validate($input)
+	{
 		$rule = [
 			'category_id' => 'required',
 			'name' => 'required',
@@ -38,16 +50,8 @@ class CommonProduct
 			'origin_price' => 'required|integer|min:1000|'.'greater_than:new_price,' . $input['new_price'],
 			'new_price' => 'integer|min:0',
 			];
-		if ($input['image_url']) {
-            $input['file_extension'] = strtolower(Input::file('image_url')->getClientOriginalExtension());
-        }
-        $imageRule = [			
-        	'image_url' => "image|max:$maxSize",
-            'file_extension' => "required_with:image_url|in:$mimeTypes",
-            ];
-        $rule = array_merge($rule, $imageRule);
-
-		 
+		$imageRule = self::validateImage($input);
+		$rule = array_merge($rule, $imageRule);
 		$message = [
 			'category_id.required' => 'Phải chọn loại sản phẩm',
 			'name.required' => 'Tên sản phẩm phải có',
@@ -74,11 +78,11 @@ class CommonProduct
 			if ($value) {
 				$path = PATH_PRODUCT;
 				$destinationPath = public_path().$path.'/'.$productId;
-	            $filename = $value->getClientOriginalName();
-	            $uploadSuccess   =  $value->move($destinationPath, $filename);
-	            $adminImage['product_id'] = $productId;
-	            $adminImage['image_url'] = $filename;
-	            $imageRelateId[] = AdminImage::firstOrCreate($adminImage)->id;
+				$filename = $value->getClientOriginalName();
+				$uploadSuccess   =  $value->move($destinationPath, $filename);
+				$adminImage['product_id'] = $productId;
+				$adminImage['image_url'] = $filename;
+				$imageRelateId[] = AdminImage::firstOrCreate($adminImage)->id;
 			}
 		}
 		return $imageRelateId;
@@ -87,13 +91,13 @@ class CommonProduct
 	public static function uploadImage($input, $path)
 	{
 		$destinationPath = public_path().$path;
-        $filename = 'nothumnail.jpg';
-        if(Input::hasFile('image_url')){
-            $file = Input::file('image_url');
-            $filename = $file->getClientOriginalName();
-            $uploadSuccess   =  $file->move($destinationPath, $filename);
-        }
-        return $filename;
+		$filename = 'nothumnail.jpg';
+		if(Input::hasFile('image_url')){
+			$file = Input::file('image_url');
+			$filename = $file->getClientOriginalName();
+			$uploadSuccess   =  $file->move($destinationPath, $filename);
+		}
+		return $filename;
 	}
 
 	public static function updateRelateImage($input, $productId)
@@ -102,11 +106,11 @@ class CommonProduct
 			if ($value) {
 				$path = PATH_PRODUCT;
 				$destinationPath = public_path().$path.'/'.$productId;
-	            $filename = $value->getClientOriginalName();
-	            $uploadSuccess   =  $value->move($destinationPath, $filename);
-	            $adminImage['product_id'] = $productId;
-	            $adminImage['image_url'] = $filename;
-	            AdminImage::find($key)->update($adminImage);
+				$filename = $value->getClientOriginalName();
+				$uploadSuccess   =  $value->move($destinationPath, $filename);
+				$adminImage['product_id'] = $productId;
+				$adminImage['image_url'] = $filename;
+				AdminImage::find($key)->update($adminImage);
 			}
 		}
 	}

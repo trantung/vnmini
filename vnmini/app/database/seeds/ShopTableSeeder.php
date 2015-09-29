@@ -8,6 +8,12 @@ class ShopTableSeeder extends Seeder {
 					'name' => 'shop',
 					'description'=>'description',
 					'image_url'=>'img/shops/shop_stone.jpg',
+					'lat' => 21.00296184,
+					'long' => 105.85202157,
+					'address' => 'Ha Noi',
+					'contact' => 'Anh Hùng',
+					'tel' => 0949998587,
+					'mobile' => 0949998587,
 			]);
 	}
 

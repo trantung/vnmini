@@ -31,3 +31,6 @@ define(APPROVE, 2);
 define(NO_SHIP, 3);
 define(SHIP, 4);
 define(PAY, 5);
+//Shop
+define(PATH_SHOP, '/img/shops');
+

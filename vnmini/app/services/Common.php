@@ -54,6 +54,9 @@ class Common
 		if ($name == 'order') {
 			return 'Order';
 		}
+		if ($name == 'shop') {
+			return 'Shop';
+		}
 
 	}
 
