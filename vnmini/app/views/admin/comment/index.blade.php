@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="page-header">
-        <h1>Ảnh Slide</h1>
+        <h1>Comment</h1>
     </div>
     {{ Form::open(['route' => 'admin.comment.search', 'method' => 'GET']) }}
         <div class="row">
@@ -17,6 +17,7 @@
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped">
+            Số lượng comments {{ $comments->getTotal() }}
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -44,6 +45,7 @@
                 @endforeach
                 </tbody>
             </table>
+            <center>{{ $comments->appends(Request::except('page'))->links() }}</center>
         </div>
     </div>
 @endsection

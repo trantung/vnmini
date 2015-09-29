@@ -33,18 +33,20 @@
                                 </div>
                             </td>
                         </tr>
-                        </tr>
-                            <td>Quyền</td>
-                            <td>
-                                <div class="form-group col-md-5 col-sm-5">
-                                  <select class="form-control" required name="role">
-                                        @foreach($roles as $role)
-                                            <option value = "{{ $role->id }}" <?php if($role->id == $user->role->id){echo "selected";} ?>>{{ $role->name }}</option>
-                                        @endforeach
-                                  </select>
-                                </div>
-                            </td>
-                        </tr>
+                        @if(Auth::user()->role_id !=2)
+                            <tr>
+                                <td>Quyền</td>
+                                <td>
+                                    <div class="form-group col-md-5 col-sm-5">
+                                      <select class="form-control" required name="role">
+                                            @foreach($roles as $role)
+                                                <option value = "{{ $role->id }}" <?php if($role->id == $user->role->id){echo "selected";} ?>>{{ $role->name }}</option>
+                                            @endforeach
+                                      </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
                         <tr>
                             <td>Điện thoại</td>
                             <td>
@@ -53,17 +55,19 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Trạng thái</td>
-                            <td>
-                                <div class="form-group col-md-5 col-sm-5">
-                                <select class="form-control" required name ="status">
-                                    <option value = "0" <?php if($user->status == USING){echo "selected";} ?>>{{ USER_USING }} </option>
-                                    <option value = "1" <?php if($user->status == LOCK){echo "selected";} ?>>{{ USER_LOCK }} </option>
-                                  </select>
-                                </div>
-                            </td>
-                        </tr>
+                        @if(Auth::user()->role_id !=2)
+                            <tr>
+                                <td>Trạng thái</td>
+                                <td>
+                                    <div class="form-group col-md-5 col-sm-5">
+                                    <select class="form-control" required name ="status">
+                                        <option value = "0" <?php if($user->status == USING){echo "selected";} ?>>{{ USER_USING }} </option>
+                                        <option value = "1" <?php if($user->status == LOCK){echo "selected";} ?>>{{ USER_LOCK }} </option>
+                                      </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
                     </tbody>
                   </table>
             <a class="btn btn-default" href="{{ action('UserController@index') }}">Back</a>

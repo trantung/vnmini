@@ -90,7 +90,12 @@ class CommentController extends AdminController {
 
 	public function search()
 	{
-
+		$input = Input::get('status');
+		if ($input == '') {
+			return Redirect::route('admin.comment.index');
+		}
+		$comments = Comment::where('status', $input)->orderBy('created_at', 'desc')->paginate(PAGINATE_COMMENT);
+		return View::make('admin.comment.index')->with(compact('comments'));
 	}
 
 }
