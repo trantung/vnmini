@@ -70,6 +70,7 @@
                         </div>
                         @if($key%4 == 0)
                             </div> {{-- close row and create new row (line) --}}
+                            <div class="row">
                         @endif
                     @endforeach    
                     </div>
