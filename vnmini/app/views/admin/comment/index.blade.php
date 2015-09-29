@@ -17,6 +17,8 @@
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped">
+            Số lượng comments {{ $comments->getTotal() }}
+
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -44,6 +46,7 @@
                 @endforeach
                 </tbody>
             </table>
+            <center>{{ $comments->appends(Request::except('page'))->links() }}</center>
         </div>
     </div>
 @endsection
