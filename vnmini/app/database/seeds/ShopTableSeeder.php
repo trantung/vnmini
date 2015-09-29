@@ -7,13 +7,13 @@ class ShopTableSeeder extends Seeder {
 		Shop::create(['user_id' => 1,
 					'name' => 'shop',
 					'description'=>'description',
-					'image_url'=>'img/shops/shop_stone.jpg',
+					'image_url'=>'shop_stone.jpg',
 					'lat' => 21.00296184,
 					'long' => 105.85202157,
 					'address' => 'Ha Noi',
 					'contact' => 'Anh Hùng',
-					'tel' => 0949998587,
-					'mobile' => 0949998587,
+					'tel' => '0949998587',
+					'mobile' => '0949998587',
 			]);
 	}
 
