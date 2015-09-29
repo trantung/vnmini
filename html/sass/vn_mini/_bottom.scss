@@ -1,0 +1,17 @@
+.bottom{ border-top: 3px solid $sub-color-3; background:$sub-color-12;font-family:$sub-font-1 ; padding:25px 0;line-height:1.5;color: $sub-color-11;
+    h4 { font-size:$font-size-4; text-transform: uppercase; }
+    .contact{
+        @media (max-width:768px) {
+            margin-bottom: 15px;
+        }
+        span{text-decoration: underline;text-transform: uppercase;}
+        address{ font-size:$font-size-1;
+            a{ color:$sub-color-11; text-decoration: none;
+                &:hover{color:$sub-color-11; }
+            }
+        }
+    }    
+    .map{
+        img{width:100%;}
+    }
+}

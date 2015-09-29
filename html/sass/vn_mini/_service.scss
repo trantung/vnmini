@@ -1,0 +1,76 @@
+.services{background:$sub-color-3; border-top: 4px solid $sub-color-4;border-bottom: 4px solid $sub-color-4; color:$sub-color-11; font-family:$primary-font; text-align: center; line-height:1.5; padding-bottom:25px;
+    .service { width:72px; height:72px; display:block; margin:0 auto; margin-top:12px;
+        &.ship { background:$ship-background;}
+        &.pay { background:$pay-background;}
+        &.phone { background:$phone-background;}
+    }
+    h4{ text-transform: uppercase; font-size:$font-size-5; margin-bottom:10px;}
+    p{font-size:$font-size-4; color:$sub-color-11;}    
+}
+@media (max-width:767px) {
+    .services {
+        .text-center{ display: table; margin-top: 20px; margin-right:auto; margin-left:auto;
+            .service { display:table-cell; margin-bottom:25px;
+            }
+            h4{ margin-top:15px; vertical-align: middle; padding-left: 20px; display:table-cell; color:$sub-color-11;}
+        }
+    }
+}
+
+
+
+.cd-top {
+  display: inline-block;
+  // height: 40px;
+  // width: 40px;
+  position: fixed;
+  bottom: 100px;
+  right: 10px;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  /* image replacement properties */
+  overflow: hidden;
+  // text-indent: 100%;
+  white-space: nowrap;
+  background: rgba(232, 98, 86, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  -moz-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+  color:$sub-color-11; text-align: center; padding: 2px 4px 4px;
+  i { font-size: $font-size-6; color:$sub-color-11; /* padding: 2px 3px; */}
+}
+.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
+  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+  -moz-transition: opacity .3s 0s, visibility 0s 0s;
+  transition: opacity .3s 0s, visibility 0s 0s;
+}
+.cd-top.cd-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+.cd-top.cd-fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+.no-touch .cd-top:hover {
+  background-color: #e86256;
+  opacity: 1;
+}
+@media only screen and (min-width: 768px) {
+  .cd-top {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .cd-top {
+    padding: 6px 12px 10px;
+    // height: 60px;
+    // width: 60px;
+    // right: 30px;
+    // bottom: 30px;
+  }
+}

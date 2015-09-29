@@ -1,0 +1,83 @@
+/* VARIABLE */
+// @font-face {
+//     font-family: 'Vcooperb';
+//     src: url('../font/Vcooperb.eot');
+//     src: local('UTM Neo Sans Intel'), 
+//     url('../font/Vcooperb.woff') format('woff'), 
+//     url('../font/Vcooperb.ttf') format('truetype'), 
+//     url('../font/Vcooperb.svg') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+// };
+
+@font-face {
+    font-family: 'VNI-Univer';
+    src: url('../font/Vuniver.eot');
+    src: local('UTM Neo Sans Intel'), 
+    url('../font/Vuniver.woff') format('woff'), 
+    url('../font/Vuniver.ttf') format('truetype'), 
+    url('../font/Vuniver.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+};
+@font-face {
+    font-family: 'VNI-Revue';
+    src: url('../font/Vrevue.eot');
+    src: local('UTM Neo Sans Intel'), 
+    url('../font/Vrevue.woff') format('woff'), 
+    url('../font/Vrevue.ttf') format('truetype'), 
+    url('../font/Vrevue.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+};
+@import url(https://fonts.googleapis.com/css?family=Roboto&subset=latin,vietnamese);
+//Font family.
+$primary-font:  'VNI-Univer', sans-serif;
+$sub-font-1:  'Arial', sans-serif;
+$sub-font-2:  'Myriad Pro', sans-serif;
+$sub-font-3:  'Hobo Std', sans-serif;
+$sub-font-4:  'Minion Pro', sans-serif;
+$sub-font-5:  'VNI-Revue', sans-serif;
+
+
+// $primary-font:'Vcooperb', serif;
+// $sub-font-1:  'Arial', sans-serif;
+// $sub-font-2:  'Myriad Pro', sans-serif;
+// $sub-font-3:  'Hobo Std', sans-serif;
+// $sub-font-4:  'Minion Pro', sans-serif;
+// $sub-font-5:  $primary-font;
+
+//Font size.
+$font-size-0: 12px;
+$font-size-1: 14px;
+$font-size-2: 15px;
+$font-size-3: 17px;
+$font-size-4: 18px;
+$font-size-5: 20px;
+$font-size-6: 22px;
+
+// Color.
+$primary-color: #ff0000;
+$sub-color-1: #575757;
+$sub-color-2: #767676;
+$sub-color-3: #ed564b;
+$sub-color-4: #f96b61;
+$sub-color-5: #c0001c;
+$sub-color-6: #cacaca;
+$sub-color-7: #0476c6;
+$sub-color-8: #c0001c;
+$sub-color-9: #c51230;
+$sub-color-10: black;
+$sub-color-11: white;
+$sub-color-12: #3b3b3b;
+
+
+
+$search-background : $sub-color-11 url("../images/search-bg.png")0  5px no-repeat;
+$cart-background :  url("../images/cart.png")0  0 no-repeat;
+$ship-background:  url("../images/ship.png")0  0 no-repeat;
+$pay-background:  url("../images/pay.png")0  0 no-repeat;
+$phone-background:  url("../images/phone.png")0  0 no-repeat;
+$bottom-background:  url("../images/bottom-bg.png")right bottom no-repeat;
+$arrow-right : url("../images/arrow-right.png")0 0 no-repeat;
+$arrow-down : url("../images/arrow-down.png")0 0 no-repeat;
