@@ -18,7 +18,6 @@
         <div class="col-md-12">
             <table class="table table-striped">
             Số lượng comments {{ $comments->getTotal() }}
-
                 <thead>
                     <tr>
                         <th>ID</th>
