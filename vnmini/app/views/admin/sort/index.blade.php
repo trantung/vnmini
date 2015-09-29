@@ -24,7 +24,9 @@
                     <td class="text-right">
                         <a class="btn btn-primary" href="{{ action('SortController@show', $sort->id) }}">View</a>
                         <a class="btn btn-warning " href="{{ action('SortController@edit', $sort->id) }}">Edit</a>
+                        @if($sort->id !=3)
                         <form action="{{ action('SortController@destroy', $sort->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <button class="btn btn-danger" type="submit">Delete</button></form>
+                        @endif
                     </td>
                 </tr>
 

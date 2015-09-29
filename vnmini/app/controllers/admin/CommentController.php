@@ -90,7 +90,9 @@ class CommentController extends AdminController {
 
 	public function search()
 	{
-
+		$input = Input::all();
+		dd($input);
+		// $comments = Comment::
 	}
 
 }

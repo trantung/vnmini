@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="page-header">
-        <h1>Ảnh Slide</h1>
+        <h1>Comment</h1>
     </div>
     {{ Form::open(['route' => 'admin.comment.search', 'method' => 'GET']) }}
         <div class="row">
