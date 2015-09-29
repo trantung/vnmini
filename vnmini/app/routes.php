@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('shop', 'ShopController', array('only' => array('index', 'update')));
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));
     Route::resource('products', 'ProductController');
-    Route::post('/admin/image/delete/{id}', 'ImageController@delete');
+    Route::post('image/delete/{id}', array('uses' => 'ImageController@delete', 'as' => 'admin.image.delete'));
     
 
 });

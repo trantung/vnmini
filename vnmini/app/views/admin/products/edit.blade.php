@@ -58,9 +58,8 @@
             @foreach($imageRelates as $key => $image)
                 <div>
                     Ảnh liên quan thứ {{ $key + 1 }}
-                    {{ Form::file("image[$image->id]", "", array('class'=>'btn btn-success')) }}
                     <img src="{{ asset('img/products/'.$product->id).'/'.$image->image_url }}" class="img-rounded" width="304" height="236">
-                    <div class="btn btn-primary" id="delete" value="{{$image->id}}">Xoá</div>
+                    <a href="javascript:;" onclick="deleteImageRelate()" data-id="{{ $image->id }}" class="image_relate btn btn-danger">Xoá</a>
                 </div>
                 <br/>
             @endforeach
@@ -77,19 +76,5 @@
     </div>           
 {{ Form::close() }}
 @include('admin.script')
- <script type="text/javascript">
-            function readURL(input, id) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $(id).attr('src', e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-        $('[name="image_url"]').change(function(){
-        readURL(this, '#blah');
-    });
-        initSample();
-    </script>
-@endsection
+@include('admin.image_relate')
+@stop
