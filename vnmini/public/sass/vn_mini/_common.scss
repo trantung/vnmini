@@ -1,0 +1,66 @@
+body { font-family: $sub-font-1; line-height:1.5; font-size:$font-size-1;}
+a {text-decoration: none;}
+p { color:$sub-color-10;}
+h2 { font-family: $sub-font-5; font-size: $font-size-6; color:$sub-color-10; text-transform: uppercase;}
+.page-title { font-family: $primary-font; font-size: $font-size-6; color:$sub-color-10; text-transform: uppercase;}
+th,strong { font-weight: bold;}
+.text-note { color:$sub-color-9; }
+p.text-note { margin-top:10px; margin-bottom:10px; }
+.tabs{ margin-bottom:30px; border-bottom: 1px solid $sub-color-6; width:100%;
+    li a{ color: $sub-color-2;text-transform: uppercase;background:$sub-color-11; font-family:$sub-font-1; font-size:$font-size-0;
+        &:hover,
+        &:focus{ color:$primary-color; background:$sub-color-11;}
+        @media (min-width: 768px) {
+            &.first{ padding-left:0;}
+        }
+    }
+}
+
+.slick-auto{ position:relative; margin:10px 0 30px;
+    .slick-arrow { position: absolute; top:50%; z-index:10; padding:0; text-indent:-9999px;width: 0;height: 0; border-top: 5px solid $sub-color-11; border-bottom: 5px solid $sub-color-11; 
+        &.slick-prev{left:-10px;border-left: 5px solid $sub-color-11; border-right:5px solid $sub-color-10; }
+        &.slick-next{ right:-10px; border-left: 5px solid $sub-color-10;  border-right:5px solid $sub-color-11; }
+        &:focus{ outline:none;}
+    }
+    div:focus{ outline:none;}
+    img {display: block;margin: 0 auto;
+        &:focus{ outline:none;}
+    } 
+}
+.slick-auto-2 {
+    @extend .slick-auto;
+    margin-top: 38px;
+    .item { padding:0 5px; }
+    .slick-arrow { top: 120px; border-width:10px ;
+        &.slick-prev{ left:-20px;border-width:10px ;
+            @media (max-width: 768px) { display:none !important; }
+        }
+        &.slick-next{ right:-20px;border-width:10px ;
+            @media (max-width: 768px) { display:none !important; }
+        }
+    }
+}
+
+.form-control{ border-color:$sub-color-9;}
+
+
+.form-quantity {
+    .quantity { position: relative; max-width:210px;
+        input{ width:100%; font-family:$sub-font-1; font-size:$font-size-4; border:1px solid $sub-color-9; border-radius:4px;line-height:2; padding-left:5px; padding-right:10px; }
+        span { right: 165px; position: absolute;  z-index:10; padding:0; text-indent:-9999px;width: 0;height: 0; border-left: 5px solid $sub-color-11; border-right:5px solid $sub-color-11;
+            &#add-quantity { border-top: 5px solid $sub-color-11; border-bottom: 5px solid $sub-color-10; top:5px; }
+            &#sub-quantity { border-top: 5px solid $sub-color-10; border-bottom: 5px solid $sub-color-11; bottom:5px; }
+            &:focus{ outline:none;}
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        .navbar-default .navbar-collapse .navbar-nav li.first a{margin-left:0;}
+    }
+    .bottom {
+        .contact{margin-left: -15px;}
+    }
+    .right{ float:right; }
+ }

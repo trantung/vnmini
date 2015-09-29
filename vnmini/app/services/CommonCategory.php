@@ -14,4 +14,8 @@ class CommonCategory
 		$sort = $sort->lists('name', 'id');
 		return $sort;
 	}
+
+	public static function getProduct(Category $category){
+		return $category->products()->paginate(FRONTEND_PAGINATE_PRODUCT);
+	}
 }

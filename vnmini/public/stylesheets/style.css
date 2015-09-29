@@ -1,0 +1,1213 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto&subset=latin,vietnamese);
+/* line 5, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* VARIABLE */
+@font-face {
+  font-family: 'VNI-Univer';
+  src: url("../font/Vuniver.eot");
+  src: local("UTM Neo Sans Intel"), url("../font/Vuniver.woff") format("woff"), url("../font/Vuniver.ttf") format("truetype"), url("../font/Vuniver.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'VNI-Revue';
+  src: url("../font/Vrevue.eot");
+  src: local("UTM Neo Sans Intel"), url("../font/Vrevue.woff") format("woff"), url("../font/Vrevue.ttf") format("truetype"), url("../font/Vrevue.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 1, ../sass/vn_mini/_common.scss */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* line 2, ../sass/vn_mini/_common.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 3, ../sass/vn_mini/_common.scss */
+p {
+  color: black;
+}
+
+/* line 4, ../sass/vn_mini/_common.scss */
+h2 {
+  font-family: "VNI-Revue", sans-serif;
+  font-size: 22px;
+  color: black;
+  text-transform: uppercase;
+}
+
+/* line 5, ../sass/vn_mini/_common.scss */
+.page-title {
+  font-family: "VNI-Univer", sans-serif;
+  font-size: 22px;
+  color: black;
+  text-transform: uppercase;
+}
+
+/* line 6, ../sass/vn_mini/_common.scss */
+th, strong {
+  font-weight: bold;
+}
+
+/* line 7, ../sass/vn_mini/_common.scss */
+.text-note {
+  color: #c51230;
+}
+
+/* line 8, ../sass/vn_mini/_common.scss */
+p.text-note {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 9, ../sass/vn_mini/_common.scss */
+.tabs {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #cacaca;
+  width: 100%;
+}
+/* line 10, ../sass/vn_mini/_common.scss */
+.tabs li a {
+  color: #767676;
+  text-transform: uppercase;
+  background: white;
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+}
+/* line 11, ../sass/vn_mini/_common.scss */
+.tabs li a:hover, .tabs li a:focus {
+  color: #ff0000;
+  background: white;
+}
+@media (min-width: 768px) {
+  /* line 14, ../sass/vn_mini/_common.scss */
+  .tabs li a.first {
+    padding-left: 0;
+  }
+}
+
+/* line 19, ../sass/vn_mini/_common.scss */
+.slick-auto, .slick-auto-2 {
+  position: relative;
+  margin: 10px 0 30px;
+}
+/* line 20, ../sass/vn_mini/_common.scss */
+.slick-auto .slick-arrow, .slick-auto-2 .slick-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  padding: 0;
+  text-indent: -9999px;
+  width: 0;
+  height: 0;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+}
+/* line 21, ../sass/vn_mini/_common.scss */
+.slick-auto .slick-arrow.slick-prev, .slick-auto-2 .slick-arrow.slick-prev {
+  left: -10px;
+  border-left: 5px solid white;
+  border-right: 5px solid black;
+}
+/* line 22, ../sass/vn_mini/_common.scss */
+.slick-auto .slick-arrow.slick-next, .slick-auto-2 .slick-arrow.slick-next {
+  right: -10px;
+  border-left: 5px solid black;
+  border-right: 5px solid white;
+}
+/* line 23, ../sass/vn_mini/_common.scss */
+.slick-auto .slick-arrow:focus, .slick-auto-2 .slick-arrow:focus {
+  outline: none;
+}
+/* line 25, ../sass/vn_mini/_common.scss */
+.slick-auto div:focus, .slick-auto-2 div:focus {
+  outline: none;
+}
+/* line 26, ../sass/vn_mini/_common.scss */
+.slick-auto img, .slick-auto-2 img {
+  display: block;
+  margin: 0 auto;
+}
+/* line 27, ../sass/vn_mini/_common.scss */
+.slick-auto img:focus, .slick-auto-2 img:focus {
+  outline: none;
+}
+
+/* line 30, ../sass/vn_mini/_common.scss */
+.slick-auto-2 {
+  margin-top: 38px;
+}
+/* line 33, ../sass/vn_mini/_common.scss */
+.slick-auto-2 .item {
+  padding: 0 5px;
+}
+/* line 34, ../sass/vn_mini/_common.scss */
+.slick-auto-2 .slick-arrow {
+  top: 120px;
+  border-width: 10px;
+}
+/* line 35, ../sass/vn_mini/_common.scss */
+.slick-auto-2 .slick-arrow.slick-prev {
+  left: -20px;
+  border-width: 10px;
+}
+@media (max-width: 768px) {
+  /* line 35, ../sass/vn_mini/_common.scss */
+  .slick-auto-2 .slick-arrow.slick-prev {
+    display: none !important;
+  }
+}
+/* line 38, ../sass/vn_mini/_common.scss */
+.slick-auto-2 .slick-arrow.slick-next {
+  right: -20px;
+  border-width: 10px;
+}
+@media (max-width: 768px) {
+  /* line 38, ../sass/vn_mini/_common.scss */
+  .slick-auto-2 .slick-arrow.slick-next {
+    display: none !important;
+  }
+}
+
+/* line 44, ../sass/vn_mini/_common.scss */
+.form-control {
+  border-color: #c51230;
+}
+
+/* line 48, ../sass/vn_mini/_common.scss */
+.form-quantity .quantity {
+  position: relative;
+  max-width: 210px;
+}
+/* line 49, ../sass/vn_mini/_common.scss */
+.form-quantity .quantity input {
+  width: 100%;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  border: 1px solid #c51230;
+  border-radius: 4px;
+  line-height: 2;
+  padding-left: 5px;
+  padding-right: 10px;
+}
+/* line 50, ../sass/vn_mini/_common.scss */
+.form-quantity .quantity span {
+  right: 165px;
+  position: absolute;
+  z-index: 10;
+  padding: 0;
+  text-indent: -9999px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid white;
+  border-right: 5px solid white;
+}
+/* line 51, ../sass/vn_mini/_common.scss */
+.form-quantity .quantity span#add-quantity {
+  border-top: 5px solid white;
+  border-bottom: 5px solid black;
+  top: 5px;
+}
+/* line 52, ../sass/vn_mini/_common.scss */
+.form-quantity .quantity span#sub-quantity {
+  border-top: 5px solid black;
+  border-bottom: 5px solid white;
+  bottom: 5px;
+}
+/* line 53, ../sass/vn_mini/_common.scss */
+.form-quantity .quantity span:focus {
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  /* line 60, ../sass/vn_mini/_common.scss */
+  header .navbar-default .navbar-collapse .navbar-nav li.first a {
+    margin-left: 0;
+  }
+
+  /* line 63, ../sass/vn_mini/_common.scss */
+  .bottom .contact {
+    margin-left: -15px;
+  }
+
+  /* line 65, ../sass/vn_mini/_common.scss */
+  .right {
+    float: right;
+  }
+}
+/* line 1, ../sass/vn_mini/_service.scss */
+.services {
+  background: #ed564b;
+  border-top: 4px solid #f96b61;
+  border-bottom: 4px solid #f96b61;
+  color: white;
+  font-family: "VNI-Univer", sans-serif;
+  text-align: center;
+  line-height: 1.5;
+  padding-bottom: 25px;
+}
+/* line 2, ../sass/vn_mini/_service.scss */
+.services .service {
+  width: 72px;
+  height: 72px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 12px;
+}
+/* line 3, ../sass/vn_mini/_service.scss */
+.services .service.ship {
+  background: url("../images/ship.png") 0 0 no-repeat;
+}
+/* line 4, ../sass/vn_mini/_service.scss */
+.services .service.pay {
+  background: url("../images/pay.png") 0 0 no-repeat;
+}
+/* line 5, ../sass/vn_mini/_service.scss */
+.services .service.phone {
+  background: url("../images/phone.png") 0 0 no-repeat;
+}
+/* line 7, ../sass/vn_mini/_service.scss */
+.services h4 {
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+/* line 8, ../sass/vn_mini/_service.scss */
+.services p {
+  font-size: 18px;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  /* line 12, ../sass/vn_mini/_service.scss */
+  .services .text-center {
+    display: table;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  /* line 13, ../sass/vn_mini/_service.scss */
+  .services .text-center .service {
+    display: table-cell;
+    margin-bottom: 25px;
+  }
+  /* line 15, ../sass/vn_mini/_service.scss */
+  .services .text-center h4 {
+    margin-top: 15px;
+    vertical-align: middle;
+    padding-left: 20px;
+    display: table-cell;
+    color: white;
+  }
+}
+/* line 22, ../sass/vn_mini/_service.scss */
+.cd-top {
+  display: inline-block;
+  position: fixed;
+  bottom: 100px;
+  right: 10px;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  /* image replacement properties */
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(232, 98, 86, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  -moz-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+  color: white;
+  text-align: center;
+  padding: 2px 4px 4px;
+}
+/* line 42, ../sass/vn_mini/_service.scss */
+.cd-top i {
+  font-size: 22px;
+  color: white;
+  /* padding: 2px 3px; */
+}
+
+/* line 44, ../sass/vn_mini/_service.scss */
+.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
+  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+  -moz-transition: opacity .3s 0s, visibility 0s 0s;
+  transition: opacity .3s 0s, visibility 0s 0s;
+}
+
+/* line 49, ../sass/vn_mini/_service.scss */
+.cd-top.cd-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+
+/* line 54, ../sass/vn_mini/_service.scss */
+.cd-top.cd-fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+
+/* line 58, ../sass/vn_mini/_service.scss */
+.no-touch .cd-top:hover {
+  background-color: #e86256;
+  opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 63, ../sass/vn_mini/_service.scss */
+  .cd-top {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  /* line 69, ../sass/vn_mini/_service.scss */
+  .cd-top {
+    padding: 6px 12px 10px;
+  }
+}
+/* line 1, ../sass/vn_mini/_main-content.scss */
+.main-content {
+  padding-top: 30px;
+  margin-top: 33px;
+}
+/* line 2, ../sass/vn_mini/_main-content.scss */
+.main-content .item {
+  text-align: center;
+  margin-bottom: 45px;
+}
+/* line 3, ../sass/vn_mini/_main-content.scss */
+.main-content .item img {
+  width: 100%;
+  max-width: 260px;
+}
+/* line 4, ../sass/vn_mini/_main-content.scss */
+.main-content .item h3 {
+  height: 60px;
+  overflow: hidden;
+  font-family: "VNI-Univer", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: black;
+  line-height: 1.5;
+  margin: 5px 0;
+}
+/* line 5, ../sass/vn_mini/_main-content.scss */
+.main-content .item button {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border: 1px solid black;
+  color: black;
+  background: white;
+}
+/* line 8, ../sass/vn_mini/_main-content.scss */
+.main-content .cost {
+  font-family: "Hobo Std", sans-serif;
+  font-size: 20px;
+  color: #0476c6;
+}
+/* line 9, ../sass/vn_mini/_main-content.scss */
+.main-content .cost span.price {
+  color: #ff0000;
+  margin-right: 20px;
+  text-decoration: line-through;
+}
+@media (max-width: 786px) {
+  /* line 13, ../sass/vn_mini/_main-content.scss */
+  .main-content .item h3 {
+    font-size: 15px;
+    height: 45px;
+  }
+  /* line 15, ../sass/vn_mini/_main-content.scss */
+  .main-content .cost {
+    font-size: 12px;
+    max-height: 20px;
+    overflow: hidden;
+  }
+  /* line 16, ../sass/vn_mini/_main-content.scss */
+  .main-content .cost span.price {
+    margin-right: 0;
+  }
+}
+/* line 20, ../sass/vn_mini/_main-content.scss */
+.main-content .order {
+  min-height: 750px;
+}
+/* line 21, ../sass/vn_mini/_main-content.scss */
+.main-content .order h2 {
+  color: #c0001c;
+}
+/* line 22, ../sass/vn_mini/_main-content.scss */
+.main-content .order .content {
+  margin-top: 20px;
+}
+/* line 23, ../sass/vn_mini/_main-content.scss */
+.main-content .order .content p {
+  line-height: 1.5;
+  font-size: 12px;
+}
+/* line 24, ../sass/vn_mini/_main-content.scss */
+.main-content .order .content p strong {
+  font-weight: bold;
+}
+/* line 27, ../sass/vn_mini/_main-content.scss */
+.main-content .order button {
+  background: #c51230;
+  color: white;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: none;
+  line-height: 1;
+  padding: 10px;
+  float: right;
+  margin-top: 20px;
+}
+/* line 29, ../sass/vn_mini/_main-content.scss */
+.main-content .production {
+  font-family: "Arial", sans-serif;
+  min-height: 990px;
+}
+/* line 30, ../sass/vn_mini/_main-content.scss */
+.main-content .production h2 {
+  color: #c0001c;
+}
+/* line 31, ../sass/vn_mini/_main-content.scss */
+.main-content .production .description {
+  line-height: 1.6;
+  font-size: 15px;
+  color: black;
+  margin: 10px 0;
+}
+/* line 32, ../sass/vn_mini/_main-content.scss */
+.main-content .production .description label {
+  color: #c0001c;
+}
+/* line 35, ../sass/vn_mini/_main-content.scss */
+.main-content .production .item-thumbnail {
+  margin: 20px 0 25px;
+}
+/* line 36, ../sass/vn_mini/_main-content.scss */
+.main-content .production .item-thumbnail ul {
+  display: inline-block;
+}
+/* line 37, ../sass/vn_mini/_main-content.scss */
+.main-content .production .item-thumbnail ul li {
+  display: inline-block;
+}
+/* line 41, ../sass/vn_mini/_main-content.scss */
+.main-content .production .detail-image {
+  text-align: center;
+}
+/* line 42, ../sass/vn_mini/_main-content.scss */
+.main-content .production .detail-image img {
+  width: 100%;
+  max-width: 625px;
+}
+/* line 45, ../sass/vn_mini/_main-content.scss */
+.main-content .production .detail {
+  max-width: 720px;
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+/* line 47, ../sass/vn_mini/_main-content.scss */
+.main-content .production .detail ul.tabs li {
+  margin-right: 28px;
+  float: left;
+}
+/* line 48, ../sass/vn_mini/_main-content.scss */
+.main-content .production .detail ul.tabs li a {
+  font-family: "VNI-Univer", sans-serif;
+  font-size: 22px;
+  padding: 3px 5px;
+  line-height: 1.2;
+  color: black;
+  font-weight: bold;
+}
+/* line 49, ../sass/vn_mini/_main-content.scss */
+.main-content .production .detail ul.tabs li a:hover, .main-content .production .detail ul.tabs li a[aria-expanded="true"] {
+  background: #c51230;
+}
+/* line 50, ../sass/vn_mini/_main-content.scss */
+.main-content .production .detail ul.tabs li a:hover:after, .main-content .production .detail ul.tabs li a[aria-expanded="true"]:after {
+  content: "";
+  border-top: 16px solid #c51230;
+  border-bottom: 16px solid white;
+  border-left: 14px solid #c51230;
+  border-right: 14px solid white;
+  height: 0;
+  width: 0;
+  display: block;
+  padding: 0;
+  position: absolute;
+  right: -28px;
+  top: 0;
+}
+/* line 55, ../sass/vn_mini/_main-content.scss */
+.main-content .production .detail button {
+  line-height: 1;
+  padding: 7px 20px;
+  text-align: center;
+  color: white;
+  background: #c51230;
+  border: 1px solid #c51230;
+  float: right;
+}
+/* line 58, ../sass/vn_mini/_main-content.scss */
+.main-content .production .form-quantity {
+  width: 255px;
+  margin-bottom: 20px;
+}
+/* line 60, ../sass/vn_mini/_main-content.scss */
+.main-content .production .form-quantity .quantity span {
+  right: 5px;
+}
+/* line 62, ../sass/vn_mini/_main-content.scss */
+.main-content .production .form-quantity .input-group {
+  margin-top: 25px;
+  max-width: 205px;
+}
+/* line 63, ../sass/vn_mini/_main-content.scss */
+.main-content .production .form-quantity .input-group .input-group-addon {
+  border: 1px solid #c51230;
+  text-indent: -9999px;
+  min-width: 47px;
+}
+/* line 64, ../sass/vn_mini/_main-content.scss */
+.main-content .production .form-quantity .input-group .input-group-addon.arrow-right {
+  background: url("../images/arrow-right.png") 0 0 no-repeat;
+}
+/* line 65, ../sass/vn_mini/_main-content.scss */
+.main-content .production .form-quantity .input-group .input-group-addon.arrow-down {
+  background: url("../images/arrow-down.png") 0 0 no-repeat;
+}
+/* line 67, ../sass/vn_mini/_main-content.scss */
+.main-content .production .form-quantity .input-group button {
+  width: 100%;
+  line-height: 1;
+  padding: 7px 0;
+  text-align: center;
+  color: white;
+  background: #c51230;
+  border: 1px solid #c51230;
+  border-radius: 0 4px 4px 0;
+}
+/* line 72, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill {
+  margin-bottom: 80px;
+  min-height: 600px;
+}
+/* line 73, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill h2 {
+  color: #c51230;
+  margin-bottom: 20px;
+}
+/* line 74, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .title-buttom {
+  background: #c51230;
+  padding: 10px 15px;
+  color: white;
+  width: 100%;
+  display: block;
+  margin-bottom: 1px;
+}
+/* line 75, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item {
+  position: relative;
+  margin-top: 10px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #cacaca;
+}
+/* line 76, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item:last-child {
+  border-bottom: none;
+}
+/* line 77, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item .title {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  color: #767676;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  margin-right: 85px;
+}
+/* line 79, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item .cost {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  font-family: "Arial", sans-serif;
+  font-size: 15px;
+  color: black;
+  font-weight: normal;
+}
+/* line 81, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item .form-quantity label {
+  margin-top: 10px;
+  line-height: 1;
+}
+/* line 82, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item .form-quantity input {
+  line-height: 1;
+  border-right: none;
+}
+/* line 83, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item .form-quantity .input-group-addon {
+  padding: 0;
+  border-color: #c51230;
+  width: 79%;
+}
+/* line 84, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item .form-quantity .input-group-addon button {
+  width: 100%;
+  border: none;
+  color: white;
+  background: #c51230;
+  padding: 9px 0;
+}
+/* line 87, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item img {
+  width: 100%;
+}
+@media (max-width: 480px) {
+  /* line 89, ../sass/vn_mini/_main-content.scss */
+  .main-content.cart-bill .cart-item .form-quantity label {
+    margin-top: 0;
+  }
+}
+/* line 91, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .cart-item .quantity span {
+  right: 79%;
+  margin-right: 2px;
+}
+/* line 93, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .table-bordered {
+  max-width: 680px;
+  margin-left: 10px;
+  border-style: dotted;
+}
+/* line 94, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .table-bordered td, .main-content.cart-bill .table-bordered tr, .main-content.cart-bill .table-bordered th {
+  border-style: dotted;
+  text-align: center;
+}
+/* line 95, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .table-bordered th {
+  background: #f2f2f2;
+}
+/* line 96, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .table-bordered .text-right {
+  text-align: right;
+}
+/* line 98, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .left-bill {
+  max-width: 690px;
+}
+@media (max-width: 480px) {
+  /* line 100, ../sass/vn_mini/_main-content.scss */
+  .main-content.cart-bill .left-bill .note {
+    display: none;
+  }
+}
+@media (max-width: 765px) {
+  /* line 104, ../sass/vn_mini/_main-content.scss */
+  .main-content.cart-bill .cart-right h2 {
+    margin-top: 20px;
+  }
+}
+/* line 106, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill button {
+  border: none;
+  color: white;
+  background: #c51230;
+  padding: 5px 10px;
+  float: right;
+  border-radius: 0;
+}
+/* line 107, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill a {
+  color: #c51230;
+}
+/* line 108, ../sass/vn_mini/_main-content.scss */
+.main-content.cart-bill .form-bottom {
+  margin-top: 60px;
+}
+/* line 111, ../sass/vn_mini/_main-content.scss */
+.main-content .form-control {
+  border-radius: 0;
+}
+
+/* line 115, ../sass/vn_mini/_main-content.scss */
+.correlate {
+  margin-top: 30px;
+}
+/* line 117, ../sass/vn_mini/_main-content.scss */
+.correlate h2 {
+  border-bottom: 1px solid #cacaca;
+}
+
+/* line 121, ../sass/vn_mini/_main-content.scss */
+.contact-us h1 {
+  display: block;
+  text-align: center;
+}
+/* line 122, ../sass/vn_mini/_main-content.scss */
+.contact-us img {
+  display: block;
+  margin: 25px auto;
+  max-width: 100%;
+}
+/* line 123, ../sass/vn_mini/_main-content.scss */
+.contact-us .content {
+  margin: 35px 35px 60px;
+  font-size: 18px;
+}
+/* line 124, ../sass/vn_mini/_main-content.scss */
+.contact-us .content address {
+  margin-bottom: 25px;
+  word-break: break-all;
+}
+/* line 125, ../sass/vn_mini/_main-content.scss */
+.contact-us .content address span {
+  color: #ff0000;
+}
+/* line 126, ../sass/vn_mini/_main-content.scss */
+.contact-us .content address a {
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+}
+/* line 127, ../sass/vn_mini/_main-content.scss */
+.contact-us .content address a:hover {
+  color: black;
+}
+
+/* line 133, ../sass/vn_mini/_main-content.scss */
+.page-new h1 {
+  max-width: 500px;
+}
+/* line 134, ../sass/vn_mini/_main-content.scss */
+.page-new .new {
+  margin-top: 55px;
+}
+/* line 135, ../sass/vn_mini/_main-content.scss */
+.page-new .new .content {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: black;
+  margin-bottom: 100px;
+}
+/* line 136, ../sass/vn_mini/_main-content.scss */
+.page-new .new .content img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 640px;
+}
+/* line 139, ../sass/vn_mini/_main-content.scss */
+.page-new .sidebar {
+  margin-bottom: 50px;
+}
+@media (min-width: 786px) {
+  /* line 139, ../sass/vn_mini/_main-content.scss */
+  .page-new .sidebar {
+    margin-left: 20px;
+  }
+}
+/* line 143, ../sass/vn_mini/_main-content.scss */
+.page-new .sidebar h2 {
+  font-family: "VNI-Univer", sans-serif;
+  color: black;
+  margin-bottom: 20px;
+}
+/* line 145, ../sass/vn_mini/_main-content.scss */
+.page-new .sidebar .popular-posts a {
+  color: #888;
+  text-decoration: underline;
+}
+/* line 146, ../sass/vn_mini/_main-content.scss */
+.page-new .sidebar .popular-posts .item {
+  margin: 10px 0 0;
+  padding: 0 0 10px 0;
+}
+/* line 147, ../sass/vn_mini/_main-content.scss */
+.page-new .sidebar .popular-posts .item .item-content {
+  text-align: left;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: #444;
+  background-color: #fff;
+  line-height: 24px;
+}
+/* line 148, ../sass/vn_mini/_main-content.scss */
+.page-new .sidebar .popular-posts .item .item-content .item-thumbnail {
+  float: left;
+  margin: 0 15px 5px 0;
+}
+@media (max-width: 786px) {
+  /* line 150, ../sass/vn_mini/_main-content.scss */
+  .page-new .sidebar .popular-posts .item .item-content .item-thumbnail img {
+    width: 50px;
+    height: 50px;
+  }
+}
+/* line 153, ../sass/vn_mini/_main-content.scss */
+.page-new .sidebar .popular-posts .item .item-content .item-title {
+  text-align: left;
+}
+/* line 157, ../sass/vn_mini/_main-content.scss */
+.page-new .sidebar nav {
+  text-align: center;
+}
+
+/* line 2, ../sass/vn_mini/_partner.scss */
+.partner h2 {
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: black;
+  line-height: 1.5;
+  margin: 5px 0;
+  text-align: center;
+  border-top: 1px solid #cacaca;
+  position: relative;
+}
+/* line 3, ../sass/vn_mini/_partner.scss */
+.partner h2 span {
+  display: block;
+  background-color: #fff;
+  width: 100px;
+  margin-left: -50px;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+}
+@media (min-width: 768px) {
+  /* line 6, ../sass/vn_mini/_partner.scss */
+  .partner .slick-auto, .partner .slick-auto-2 {
+    max-width: 840px;
+    margin: 10px auto 30px;
+  }
+  /* line 7, ../sass/vn_mini/_partner.scss */
+  .partner .slick-auto button.slick-prev, .partner .slick-auto-2 button.slick-prev {
+    left: -30px;
+  }
+  /* line 8, ../sass/vn_mini/_partner.scss */
+  .partner .slick-auto button.slick-next, .partner .slick-auto-2 button.slick-next {
+    right: -30px;
+  }
+}
+
+/* line 1, ../sass/vn_mini/_bottom.scss */
+.bottom {
+  border-top: 3px solid #ed564b;
+  background: #3b3b3b;
+  font-family: "Arial", sans-serif;
+  padding: 25px 0;
+  line-height: 1.5;
+  color: white;
+}
+/* line 2, ../sass/vn_mini/_bottom.scss */
+.bottom h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  /* line 3, ../sass/vn_mini/_bottom.scss */
+  .bottom .contact {
+    margin-bottom: 15px;
+  }
+}
+/* line 7, ../sass/vn_mini/_bottom.scss */
+.bottom .contact span {
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+/* line 8, ../sass/vn_mini/_bottom.scss */
+.bottom .contact address {
+  font-size: 14px;
+}
+/* line 9, ../sass/vn_mini/_bottom.scss */
+.bottom .contact address a {
+  color: white;
+  text-decoration: none;
+}
+/* line 10, ../sass/vn_mini/_bottom.scss */
+.bottom .contact address a:hover {
+  color: white;
+}
+/* line 15, ../sass/vn_mini/_bottom.scss */
+.bottom .map img {
+  width: 100%;
+}
+
+/* line 1, ../sass/vn_mini/_header.scss */
+header {
+  padding-left: 0;
+}
+/* line 2, ../sass/vn_mini/_header.scss */
+header .logo {
+  margin-top: 15px;
+}
+/* line 3, ../sass/vn_mini/_header.scss */
+header .logo img {
+  display: block;
+}
+/* line 5, ../sass/vn_mini/_header.scss */
+header .navbar-default {
+  background-color: white;
+  background-image: none;
+  border-color: white;
+  box-shadow: none;
+  margin-bottom: 10px;
+  min-height: auto;
+}
+/* line 6, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse {
+  border-color: white;
+  background-color: white;
+  padding-left: 0;
+}
+/* line 7, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav {
+  margin-top: 18px;
+}
+/* line 9, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav li a {
+  color: black;
+  text-shadow: none;
+  text-transform: uppercase;
+  font-family: "VNI-Univer", sans-serif;
+  font-size: 15px;
+  padding: 0;
+  margin: 0 0 0 20px;
+  line-height: 1;
+}
+/* line 10, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav li a:hover {
+  color: #ff0000;
+}
+@media (max-width: 1208px) {
+  /* line 9, ../sass/vn_mini/_header.scss */
+  header .navbar-default .navbar-collapse .navbar-nav li a {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 9, ../sass/vn_mini/_header.scss */
+  header .navbar-default .navbar-collapse .navbar-nav li a {
+    line-height: 1.5;
+  }
+}
+/* line 17, ../sass/vn_mini/_header.scss */
+header .navbar-default .header-right {
+  position: relative;
+}
+/* line 19, ../sass/vn_mini/_header.scss */
+header .navbar-default .cart {
+  margin-left: 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+  color: black;
+  position: absolute;
+  top: 0;
+  right: -80px;
+}
+@media (max-width: 1350px) {
+  /* line 19, ../sass/vn_mini/_header.scss */
+  header .navbar-default .cart {
+    top: -40px;
+    right: 15px;
+  }
+}
+@media (max-width: 770px) {
+  /* line 19, ../sass/vn_mini/_header.scss */
+  header .navbar-default .cart {
+    right: 15px;
+  }
+}
+/* line 22, ../sass/vn_mini/_header.scss */
+header .navbar-default .cart label {
+  vertical-align: middle;
+}
+/* line 23, ../sass/vn_mini/_header.scss */
+header .navbar-default .cart label .cart-item {
+  display: block;
+}
+/* line 25, ../sass/vn_mini/_header.scss */
+header .navbar-default .cart a {
+  display: inline-block;
+  vertical-align: middle;
+  background: url("../images/cart.png") 0 0 no-repeat;
+  text-indent: -9999px;
+  height: 39px;
+  width: 39px;
+}
+@media (max-width: 1208px) {
+  /* line 25, ../sass/vn_mini/_header.scss */
+  header .navbar-default .cart a {
+    width: 25px;
+    height: 25px;
+    background-size: 100%;
+  }
+}
+/* line 30, ../sass/vn_mini/_header.scss */
+header .navbar-default .home-search {
+  margin-top: 7px;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
+  margin-right: 0;
+  /*  padding-right:0; */
+}
+@media (min-width: 1280px) {
+  /* line 30, ../sass/vn_mini/_header.scss */
+  header .navbar-default .home-search {
+    margin-right: 15px;
+  }
+}
+/* line 32, ../sass/vn_mini/_header.scss */
+header .navbar-default .home-search input[type="text"] {
+  width: 100%;
+  border-color: #575757;
+  border-right: none;
+  box-shadow: none;
+}
+@media (min-width: 1208px) {
+  /* line 32, ../sass/vn_mini/_header.scss */
+  header .navbar-default .home-search input[type="text"] {
+    width: 300px;
+  }
+}
+/* line 35, ../sass/vn_mini/_header.scss */
+header .navbar-default .home-search .input-group-addon {
+  background-color: white;
+  padding: 0;
+  border-color: #575757;
+}
+/* line 36, ../sass/vn_mini/_header.scss */
+header .navbar-default .home-search .input-group-addon input[type="submit"] {
+  background: white url("../img/search-bg.png") 0 5px no-repeat;
+  border: none;
+  text-indent: -9999px;
+  padding: 6px 15px;
+  border-left: 1px solid #575757;
+  box-shadow: none;
+}
+/* line 37, ../sass/vn_mini/_header.scss */
+header .navbar-default .home-search .input-group-addon input[type="submit"]:focus {
+  outline: none;
+}
+
+/* line 44, ../sass/vn_mini/_header.scss */
+.slide img {
+  width: 100%;
+}
+/* line 45, ../sass/vn_mini/_header.scss */
+.slide .carousel-control {
+  width: 50px;
+  height: 100px;
+  background: #ed564b;
+  top: 50%;
+  margin-top: -50px;
+}
+
+@media (max-width: 767px) {
+  /* line 49, ../sass/vn_mini/_header.scss */
+  .logo {
+    width: 200px;
+  }
+
+  /* line 50, ../sass/vn_mini/_header.scss */
+  .navbar-toggle {
+    margin-left: 15px;
+    margin-right: 0;
+  }
+}
+@media (max-width: 480px) {
+  /* line 54, ../sass/vn_mini/_header.scss */
+  .logo {
+    width: 185px;
+  }
+  /* line 55, ../sass/vn_mini/_header.scss */
+  .logo img {
+    width: 100%;
+  }
+
+  /* line 57, ../sass/vn_mini/_header.scss */
+  .cart label {
+    line-height: 1.2;
+  }
+}

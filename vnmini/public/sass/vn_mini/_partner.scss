@@ -1,0 +1,12 @@
+.partner{
+    h2{ font-family:$sub-font-1; font-size:$font-size-4; text-transform: uppercase; color:$sub-color-10; line-height:1.5; margin:5px 0; text-align:center; border-top: 1px solid $sub-color-6;position:relative;
+        span{display: block;background-color: #fff; width: 100px;margin-left: -50px; position:absolute; top:-15px;left:50%; }
+    }
+    @media (min-width: 768px) {
+        .slick-auto{ max-width:840px; margin:10px auto 30px;
+            button.slick-prev{ left:-30px;}
+            button.slick-next{ right:-30px;}
+        }
+    }
+}
+

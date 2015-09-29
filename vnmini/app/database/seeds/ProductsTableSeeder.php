@@ -1,29 +1,118 @@
 <?php
 
-use Faker\Factory as Faker;
-
 class ProductsTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
-		foreach(range(1, 3) as $index)
-		{
-			Product::create([
-				'category_id'	=>rand(1, 3),
-				'code'			=>'code'.$index,
-				'name'			=>'product'.$index,
-				'size'			=>rand(5, 15)+$index,
-				'material'		=>'material'.$index,
-				'quantity'		=>$index,
-				'origin_price'	=>rand(10,15)*1000,
-				'new_price'		=>rand(1,5)*1000,
-				'description'	=>'this is description for Product'.$index,
-				'introduce'		=>'this is introduce for Product'.$index,
-				'information'	=>'this is information for Product'.$index,
-				'status'		=>1,
-			]);
+		Product::truncate();
+        $data = 
+        [
+        	[
+        		"category_id"=> 1,
+        		"code"		=> 123,
+                "name"     =>"VÒNG ĐÁ MĂT HÔ NÂU VÀNG",
+                "size"   =>23,
+                "material"=>"Đá",
+        		"quantity"=>123,
+        		"origin_price"	=> 121,
+        		"new_price"	=> 120,
+                "image_url"        =>"img/page-image/item-1.png",
+                "description"        =>"Đá đẹp",
+                "introduce"        =>"Đây là đá đẹp 1",
+                "status"        =>1,
+                "created_at"        =>date('Y-m-d : H-i-s'),
+        	],
+        	[
+        		"category_id"=> 2,
+        		"code"		=> 2222,
+                "name"     =>"VÒNG ĐÁ NHAM THẠCH NÚI LƯẢ",
+                "size"   =>23,
+                "material"=>"Đá",
+        		"quantity"=>123,
+        		"origin_price"	=> 121,
+        		"new_price"	=> 120,
+                "image_url"        =>"img/page-image/item-2.png",
+                "description"        =>"Đá đẹp",
+                "introduce"        =>"Đây là đá đẹp 2",
+                "status"        =>1,
+                "created_at"        =>date('Y-m-d : H-i-s'),
+        	],
+        	[
+        		"category_id"=> 3,
+        		"code"		=> 333,
+                "name"     =>"VÒNG ĐÁ THẠCH ANH TÍM",
+                "size"   =>23,
+                "material"=>"Đá",
+        		"quantity"=>123,
+        		"origin_price"	=> 121,
+        		"new_price"	=> 120,
+                "image_url"        =>"img/page-image/item-3.png",
+                "description"        =>"Đá đẹp",
+                "introduce"        =>"Đây là đá đẹp 3",
+                "status"        =>1,
+                "created_at"        =>date('Y-m-d : H-i-s'),
+        	],
+        	[
+        		"category_id"=> 4,
+        		"code"		=> 4444,
+                "name"     =>"VÒNG ĐÁ THẠCH ANH HÔNG",
+                "size"   =>23,
+                "material"=>"Đá",
+        		"quantity"=>123,
+        		"origin_price"	=> 121,
+        		"new_price"	=> 120,
+                "image_url"        =>"img/page-image/item-4.png",
+                "description"        =>"Đá đẹp",
+                "introduce"        =>"Đây là đá đẹp 4",
+                "status"        =>1,
+                "created_at"        =>date('Y-m-d : H-i-s'),
+        	],
+        	[
+        		"category_id"=> 5,
+        		"code"		=> 5555,
+                "name"     =>"VÒNG ĐÁ MĂT HÔ NÂU VÀNG 5",
+                "size"   =>23,
+                "material"=>"Đá",
+        		"quantity"=>123,
+        		"origin_price"	=> 121,
+        		"new_price"	=> 120,
+                "image_url"        =>"img/page-image/item-1.png",
+                "description"        =>"Đá đẹp",
+                "introduce"        =>"Đây là đá đẹp 5",
+                "status"        =>1,
+                "created_at"        =>date('Y-m-d : H-i-s'),
+        	],
+        	[
+        		"category_id"=> 6,
+        		"code"		=> 6666,
+                "name"     =>"VÒNG ĐÁ NHAM THẠCH NÚI LƯẢ 6",
+                "size"   =>23,
+                "material"=>"Đá",
+        		"quantity"=>123,
+        		"origin_price"	=> 121,
+        		"new_price"	=> 120,
+                "image_url"        =>"img/page-image/item-2.png",
+                "description"        =>"Đá đẹp",
+                "introduce"        =>"Đây là đá đẹp 6",
+                "status"        =>1,
+                "created_at"        =>date('Y-m-d : H-i-s'),
+        	],
+        	[
+        		"category_id"=> 7,
+        		"code"		=> 7777,
+                "name"     =>"VÒNG ĐÁ THẠCH ANH TÍM 7",
+                "size"   =>23,
+                "material"=>"Đá",
+        		"quantity"=>123,
+        		"origin_price"	=> 121,
+        		"new_price"	=> 120,
+                "image_url"        =>"img/page-image/item-3.png",
+                "description"        =>"Đá đẹp",
+                "introduce"        =>"Đây là đá đẹp 7",
+                "status"        =>1,
+                "created_at"        =>date('Y-m-d : H-i-s'),
+        	],
+        ];
+        Product::insert($data);
 		}
-	}
-
 }

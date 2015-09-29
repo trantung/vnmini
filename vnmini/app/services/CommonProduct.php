@@ -114,4 +114,8 @@ class CommonProduct
 			}
 		}
 	}
+
+	public static function getAllProduct(array $category_ids){
+        return Product::whereIn('category_id', $category_ids)->paginate(FRONTEND_PAGINATE_PRODUCT);
+    }
 }

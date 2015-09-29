@@ -2,6 +2,7 @@
 define(NO_PROMOTION, 'Không');
 define(PROMOTION, 'Có');
 define(PAGINATE_PRODUCT, 10);
+define(FRONTEND_PAGINATE_PRODUCT, 8);
 define(PAGINATE_CATEGORY, 10);
 define(PAGINATE_USER, 10);
 define(PAGINATE_SORT, 10);

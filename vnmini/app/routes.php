@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', array('as'=>'frontend.product.index','uses'=>'ProductsController@index'));
+
+
 Route::resource('password', 'PasswordController', array('only'=>array('store', 'index')));
 Route::get('/changepass', array('as'=>'user.change.pass','uses'=>'PasswordController@getChangePass'));
 Route::group(['prefix' => 'admin'], function () {
