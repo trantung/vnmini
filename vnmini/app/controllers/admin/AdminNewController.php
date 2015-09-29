@@ -21,7 +21,7 @@ class AdminNewController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.news.create');
 	}
 
 
@@ -32,7 +32,27 @@ class AdminNewController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+		$data = Input::all();
+		$new = new AdminNew();
+		$new->title = trim($data['title']);
+		$new->description = trim($data['description']);
+		$new->user_id = Auth::user()->id;
+		if(Input::hasFile('image')){
+		    $destinationPath = public_path().'/img/news/';
+		    $name = Input::file('image')->getClientOriginalName();
+		    Input::file('image')->move($destinationPath, $name);
+		    $extends = Input::file('image')->getClientOriginalExtension();
+		    $ex = array('jpg', 'png', 'jpeg', 'gif');
+		    if(in_array(strtolower($extends),$ex)){
+		    	$new->image_url = '/img/news/'.Input::file('image')->getClientOriginalName();
+		    }else{
+		    	return Redirect::route('admin.new.create', $id)->with('message', 'Định dạng ảnh không đúng');
+		    }
+			$new->image_url='/img/news/'.Input::file('image')->getClientOriginalName();
+		}
+		$new->save();
+		return Redirect::route('admin.new.edit', $new->id)->with('message', 'Tạo bài viết thành công!');
+
 	}
 
 

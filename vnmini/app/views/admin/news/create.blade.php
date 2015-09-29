@@ -1,28 +1,47 @@
 @extends('layouts.master')
-
 @section('content')
-@include('admin.error-message')
     <div class="page-header">
-        <h1>Categories / Create </h1>
+        <h1>News</h1>
     </div>
+@include('admin.error-message')
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ action('CategoryController@store') }}" method="POST">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+            <form role="form" action="{{ route('admin.new.store') }}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                     <label>NAME</label>
-                     <input type="text" name="name" class="form-control" value="{{  Session::getOldInput('name') }}"/>
+                    <label for="title">Tiêu đề: </label>
+                    <input type="text" class="form-control" id="title" value="" name="title" required>
                 </div>
                 <div class="form-group">
-                    <label>Thể loại</label>
-                    {{ Form::select('sort_id' , ['' => 'Chọn thể loại'] + CommonCategory::getSortCategory(), null, ['class' => 'form-control']) }}
+                <label>Chi tiết: </label>
+                <textarea class="form-control" rows="6" id="editor1" name="description" required></textarea>
                 </div>
-            <a class="btn btn-default" href="{{ action('CategoryController@index') }}">Back</a>
-            <button class="btn btn-primary" type="submit" >Create</a>
+                <div class="form-group"> 
+                    <label>Ảnh: </label>
+                    <input type ="file" id = "img" name ="image" accept="image/*"/>
+                    <br />
+                    <img src="" class="img-rounded" alt="Image" width="500" height="236" id="blah">
+                </div>
+                <div class="form-group col-sm-4 col-md-8">
+                    <a class="btn btn-success" href="{{route('admin.new.index')}}">Back</a>
+                    <input type="submit" value ="Submit" class ="btn btn-primary" />
+                </div>
             </form>
         </div>
     </div>
-
-
-@stop
+@include('admin.script')
+<script type="text/javascript">
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        $('[name="image"]').change(function(){
+        readURL(this);
+    });
+        initSample();
+    </script>
+@endsection
