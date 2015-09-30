@@ -1,7 +1,7 @@
 @extends('layouts.frontend_master')
 
 @section('css')
-	
+
 @stop
 
 @section('banner')
@@ -11,9 +11,15 @@
 @section('content')
     <section class="main-content">
     <div class="container">
-            @include('frontend.container.article', $product)
-        @if(!$product_relates->isEmpty())
-        	@include('frontend.container.article_relate', $product_relates)
+        @if(Cart::count() > 0)
+            <?php $items = Cart::content(); ?>
+            @if(isset($customer))
+                @include('frontend.container.cart_order', [$items, $customer])
+            @else
+                @include('frontend.container.cart_customer', $items)
+            @endif
+        @else
+            {{ 'KHÔNG CÓ SẢN PHÂM NÀO TRONG GIỎ HÀNG' }}
         @endif
         <!-- block 1 -->
         {{-- @include('frontend.container.section2') --}}

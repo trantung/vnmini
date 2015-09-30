@@ -9,7 +9,7 @@ class CartController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+        return View::make('frontend.carts.index');
 	}
 
 	 /**
@@ -90,5 +90,19 @@ class CartController extends \BaseController {
 		//
 	}
 
+    public function postInfoCustomer(){
+
+        $data = Input::all();
+        $customer = new Customer;
+
+        $customer->fullname = $data['name'];
+        $customer->email = $data['email'];
+        $customer->address = $data['address'];
+        $customer->phone = $data['phone'];
+        $customer->note = $data['note'];
+        $customer->save();
+
+        return View::make('frontend.carts.index')->with(compact('customer'));
+    }
 
 }
