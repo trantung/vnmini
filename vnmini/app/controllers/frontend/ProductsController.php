@@ -51,8 +51,8 @@ class ProductsController extends \BaseController {
 	public function show($id)
 	{
 		$product = Product::findOrFail($id);
-
-		return View::make('frontend.products.show', compact('product'));
+		$product_relates = CommonProduct::getRelateProduct($product);
+		return View::make('frontend.products.show', compact('product', 'product_relates'));
 	}
 
 	/**

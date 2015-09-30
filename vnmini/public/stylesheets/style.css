@@ -324,15 +324,15 @@ p.text-note {
 }
 /* line 3, ../sass/vn_mini/_service.scss */
 .services .service.ship {
-  background: url("../images/ship.png") 0 0 no-repeat;
+  background: url("../img/ship.png") 0 0 no-repeat;
 }
 /* line 4, ../sass/vn_mini/_service.scss */
 .services .service.pay {
-  background: url("../images/pay.png") 0 0 no-repeat;
+  background: url("../img/pay.png") 0 0 no-repeat;
 }
 /* line 5, ../sass/vn_mini/_service.scss */
 .services .service.phone {
-  background: url("../images/phone.png") 0 0 no-repeat;
+  background: url("../img/phone.png") 0 0 no-repeat;
 }
 /* line 7, ../sass/vn_mini/_service.scss */
 .services h4 {
@@ -644,11 +644,11 @@ p.text-note {
 }
 /* line 64, ../sass/vn_mini/_main-content.scss */
 .main-content .production .form-quantity .input-group .input-group-addon.arrow-right {
-  background: url("../images/arrow-right.png") 0 0 no-repeat;
+  background: url("../img/arrow-right.png") 0 0 no-repeat;
 }
 /* line 65, ../sass/vn_mini/_main-content.scss */
 .main-content .production .form-quantity .input-group .input-group-addon.arrow-down {
-  background: url("../images/arrow-down.png") 0 0 no-repeat;
+  background: url("../img/arrow-down.png") 0 0 no-repeat;
 }
 /* line 67, ../sass/vn_mini/_main-content.scss */
 .main-content .production .form-quantity .input-group button {
@@ -1109,7 +1109,7 @@ header .navbar-default .cart label .cart-item {
 header .navbar-default .cart a {
   display: inline-block;
   vertical-align: middle;
-  background: url("../images/cart.png") 0 0 no-repeat;
+  background: url("../img/cart.png") 0 0 no-repeat;
   text-indent: -9999px;
   height: 39px;
   width: 39px;

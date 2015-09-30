@@ -26,8 +26,12 @@
                         @foreach($products as $product)
                             <div class="col-md-3 col-sm-3 col-xs-6">
                                 <div class="item">
-                                    <img src="{{ asset($product->image_url) }}">
-                                    <h3>{{ $product->name }}</h3>
+                                    <a href ="{{ route('frontend.product.show', $product->id) }}">
+                                        <img src="{{ asset($product->image_url) }}">
+                                    </a>
+                                    <a href ="{{ route('frontend.product.show', $product->id) }}">
+                                        <h3>{{ $product->name }}</h3>
+                                    </a>
                                     <div class="cost">
                                     @if(!empty($product->new_price))
                                         <span class="price">
@@ -37,7 +41,7 @@
                                         </span>{{ $product->origin_price }}<span>đ</span>
                                     @endif
                                     </div>
-                                    <button class="add-to-cart">Thêm vào giỏ</button>
+                                    <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', $product->id) }}');">Thêm vào giỏ</button>
                                 </div>
                             </div>
                         @endforeach
@@ -54,8 +58,12 @@
                     @foreach($products as $key => $product)
                         <div class="col-md-3 col-sm-3 col-xs-6">
                             <div class="item">
-                                <img src="{{ asset($product->image_url) }}">
-                                <h3>{{ $product->name }}</h3>
+                                <a href ="{{ route('frontend.product.show', $product->id) }}">
+                                    <img src="{{ asset($product->image_url) }}">
+                                </a>
+                                <a href ="{{ route('frontend.product.show', $product->id) }}">
+                                    <h3>{{ $product->name }}</h3>
+                                </a>
                                 <div class="cost">
                                     @if(!empty($product->new_price))
                                         <span class="price">
@@ -65,7 +73,7 @@
                                         </span>{{ $product->origin_price }}<span>đ</span>
                                     @endif
                                 </div>
-                                <button class="add-to-cart">Thêm vào giỏ</button>
+                                <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', $product->id) }}');">Thêm vào giỏ</button>
                             </div>
                         </div>
                         @if($key%4 == 0)

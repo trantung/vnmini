@@ -1,5 +1,9 @@
 <header class="container">
-    <div class="logo"> <img src="{{ asset('img/logo.png') }}"></div>
+    <div class="logo"> 
+        <a href="/">
+            <img src="{{ asset('img/logo.png') }}">
+        </a>
+    </div>
     <div class="row">
         <nav class="navbar navbar-default col-xs-12">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -19,12 +23,12 @@
                     </div>
                 </form>
                 <!-- form search -->
-                <div class="cart">
+                <div class="cart" id="cart">
                     <label>
                         Giỏ hàng
-                        <span class="cart-item">0 item</span>
+                        <span class="cart-item">{{ Cart::count() }} item</span>
                     </label>
-                    <a href="#">cart</a>
+                    <a href="{{ route('cart.index') }}">cart</a>
                 </div>
                 <!-- .cart -->
             </div>

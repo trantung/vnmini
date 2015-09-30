@@ -5,13 +5,13 @@
 @stop
 
 @section('banner')
-    @include('frontend.container.frontend_banner')
+    @include('layouts.frontend_banner')
 @stop
 
 @section('content')
     <section class="main-content">
     <div class="container">
-        @include('frontend.container.section1', $sorts)
+        @include('frontend.container.content', $sorts)
         <!-- block 1 -->
         {{-- @include('frontend.container.section2') --}}
         <!-- block 2 -->

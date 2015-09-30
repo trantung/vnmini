@@ -12,6 +12,8 @@
 */
 
 Route::get('/', array('as'=>'frontend.product.index','uses'=>'ProductsController@index'));
+Route::get('/product/{product}', array('as'=>'frontend.product.show','uses'=>'ProductsController@show'));
+Route::resource('/cart','CartController', array('only'=>['index', 'update', 'destroy','store']));
 
 
 Route::resource('password', 'PasswordController', array('only'=>array('store', 'index')));
