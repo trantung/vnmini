@@ -37,12 +37,12 @@ class CartController extends \BaseController {
         }
         else
         {
-        	if(!empty($product->new_price)){
-        		$price = $product->new_price;
-        	}
-        	else{
-        		$price = $product->origin_price;
-        	}
+            if(!empty($product->new_price)){
+                $price = $product->new_price;
+            }
+            else{
+                $price = $product->origin_price;
+            }
             Cart::associate('Product')->add(array('id'=>$product->id,
                             'name' => $product->name,
                             'qty' => $data['quantity'],
@@ -66,16 +66,12 @@ class CartController extends \BaseController {
 	public function update($id)
 	{
 		$data = Input::all();
-		if(!$data['quantity']>0){
-			return Response::json(['error'=>'Bạn phải chọn số lượng sản phẩm']);
-		}
-		$product = Product::find($id)->first();
-		if(is_null($product)){
-			
-			return Response::json(['error'=>'Sản phẩm bạn đặt đã không còn!']);
-		}
-
-		$cart = new Cart;
+		$item = Cart::get($id);
+        if(is_null($item)){
+            return Response::json(['error'=>'Không tồn tại sản phẩm']);
+        }
+		Cart::update($id, $data['quantity']);
+        return Response::json(['success'=>'Cập nhật thành công!', 'total'=>Cart::count()]);
 	}
 
 
@@ -94,7 +90,6 @@ class CartController extends \BaseController {
 
         $data = Input::all();
         $customer = new Customer;
-
         $customer->fullname = $data['name'];
         $customer->email = $data['email'];
         $customer->address = $data['address'];
