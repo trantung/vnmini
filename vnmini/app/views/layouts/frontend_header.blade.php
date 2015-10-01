@@ -26,7 +26,7 @@
                 <div class="cart" id="cart">
                     <label>
                         Giỏ hàng
-                        <span class="cart-item">{{ Cart::count() }} item</span>
+                        <span class="cart-item">{{ Cart::count() }} item(s)</span>
                     </label>
                     <a href="{{ route('cart.index') }}">cart</a>
                 </div>

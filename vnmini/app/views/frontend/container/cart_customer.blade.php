@@ -65,21 +65,21 @@
                         <div class="title">{{ $item->product->name }}</div>
                         <div class="content row">
                             <div class="col-xs-4  col-sm-12 col-md-4">
-                                <img src="{{ $item->product->image_url }}">
+                                <img src="{{ asset($item->product->image_url) }}">
                             </div>
                             <!-- left -->
                             <div class="col-xs-8  col-sm-12 col-md-8">
-                                <form class="form-quantity">
+                                <div class="form-quantity">
                                     <label>Số lượng</label>
                                     <div class="quantity input-group">
-                                        <input type="text" id="quantity" value="{{ $item->qty }}" class="form-control">
-                                        <span type="button" id="add-quantity">Click me</span>
-                                        <span type="button" id="sub-quantity">Click me</span>
+                                        <input type="text" id="quantity{{ $item->product->id }}" value="{{ $item->qty }}" name = "quantity{{ $item->product->id }}" class="form-control">
+                                        <span type="button" class="add-quantity" onclick="addQuantity('{{ 'quantity'. $item->product->id }}');">Click me</span>
+                                        <span type="button" class="sub-quantity" onclick="subQuantity('{{ 'quantity'.$item->product->id }}');">Click me</span>
                                         <div class="input-group-addon">
-                                            <button type="submit" value="1" class="input-group-addon arrow-right">Thay đổi giỏ hàng</button>
+                                            <button value="1" class="input-group-addon arrow-right" onclick="cart.update('{{ route('cart.update', $item->rowid) }}', '{{ $item->product->id }}');">Thay đổi giỏ hàng</button>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                             <!-- right -->
                         </div>

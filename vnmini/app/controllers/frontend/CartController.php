@@ -89,6 +89,7 @@ class CartController extends \BaseController {
     public function postInfoCustomer(){
 
         $data = Input::all();
+        $code = $data['code'];
         $customer = new Customer;
         $customer->fullname = $data['name'];
         $customer->email = $data['email'];
@@ -96,8 +97,18 @@ class CartController extends \BaseController {
         $customer->phone = $data['phone'];
         $customer->note = $data['note'];
         $customer->save();
+        Session::put('customer', $customer);
+        Session::put('code_off', $data['code']);
+        return Redirect::route('cart.order.add');
+    }
+    public function getCreateOrder(){
+        $customer = Session::get('customer');
+        $code = Session::get('code_off');
 
-        return View::make('frontend.carts.index')->with(compact('customer'));
+        return View::make('frontend.carts.index')->with(compact('customer', 'code'));
     }
 
+    public function postCreateOrder(){
+        
+    }
 }

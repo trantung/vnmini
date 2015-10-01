@@ -276,8 +276,18 @@ p.text-note {
   border-bottom: 5px solid black;
   top: 5px;
 }
+.form-quantity .quantity span.add-quantity {
+  border-top: 5px solid white;
+  border-bottom: 5px solid black;
+  top: 5px;
+}
 /* line 52, ../sass/vn_mini/_common.scss */
 .form-quantity .quantity span#sub-quantity {
+  border-top: 5px solid black;
+  border-bottom: 5px solid white;
+  bottom: 5px;
+}
+.form-quantity .quantity span.sub-quantity {
   border-top: 5px solid black;
   border-bottom: 5px solid white;
   bottom: 5px;

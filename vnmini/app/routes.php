@@ -15,6 +15,8 @@ Route::get('/', array('as'=>'frontend.product.index','uses'=>'ProductsController
 Route::get('/product/{product}', array('as'=>'frontend.product.show','uses'=>'ProductsController@show'));
 Route::resource('/cart','CartController', array('only'=>['index', 'update', 'destroy','store']));
 Route::post('/cart/customer', array('as'=>'cart.customer.add','uses'=>'CartController@postInfoCustomer'));
+Route::get('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@getCreateOrder'));
+Route::post('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@postCreateOrder'));
 
 
 Route::resource('password', 'PasswordController', array('only'=>array('store', 'index')));

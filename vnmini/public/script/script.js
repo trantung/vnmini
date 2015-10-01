@@ -110,25 +110,14 @@ var cart = {
   'add': function(url){
     location=url;
   },
-  'update': function(url) {
-
+  'update': function(url,key) {
     $.ajax({
       url: url,
       type: 'PUT',
-      data: 'quantity=' + $('#quantity').val(),
+      data: 'quantity=' + $('input[name=quantity'+key+']').val(),
       dataType: 'json',
-      beforeSend: function() {
-        console.log($('#quantity').val());
-        $('#cart > button').button('');
-      },
       success: function(json) {
-        $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-        $('#cart > button').button('reset');
-        $('#cart-total').html(json['total']);
-        var url      = window.location.href;
-        $('#cart').load(url+' #cart');
-        $('#content').load(url+' #content');
-        setTimeout(function() {$('.alert').fadeOut(1000)},3000)
+        window.location.reload(); 
       }
     });
   },
