@@ -40,8 +40,8 @@
                     @foreach($sorts as $sort)
                         <li><a href="{{ route('frontend.sort.show', $sort->id) }}">{{ $sort->name }}</a></li>
                     @endforeach
-                    <li><a href="#">Tin töùc</a></li>
-                    <li><a href="#">Lieân heä</a></li>
+                    <li><a href="{{ route('frontend.tintuc') }}">Tin töùc</a></li>
+                    <li><a href="{{ route('frontend.lienhe') }}">Lieân heä</a></li>
                 </ul>
                 <!-- menu -->
             </div>

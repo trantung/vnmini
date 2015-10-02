@@ -17,6 +17,8 @@ Route::get('/Sort/{category}', array('as'=>'frontend.sort.show','uses'=>'Product
 Route::resource('/cart','CartController', array('only'=>['index', 'update', 'destroy','store']));
 Route::post('/cart/customer', array('as'=>'cart.customer.add','uses'=>'CartController@postInfoCustomer'));
 Route::get('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@getCreateOrder'));
+Route::get('/lienhe', array('as'=>'frontend.lienhe','uses'=>'ProductsController@getLienhe'));
+Route::get('/tintuc', array('as'=>'frontend.tintuc','uses'=>'ProductsController@getTintuc'));
 Route::post('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@postCreateOrder'));
 
 

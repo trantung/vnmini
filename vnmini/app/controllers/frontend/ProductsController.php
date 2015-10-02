@@ -59,4 +59,12 @@ class ProductsController extends \BaseController {
 		$sort = Sort::findOrFail($id);
 		return View::make('frontend.categories.show', compact('sort'));
 	}
+
+	public function getLienhe(){
+		return View::make('frontend.lienhe');
+	}
+
+	public function getTintuc(){
+		return View::make('frontend.tintuc');
+	}
 }
