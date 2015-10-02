@@ -140,7 +140,7 @@ class CartController extends \BaseController {
 
             Cart::destroy();
 
-            return Redirect::route('frontend.product.index');
+            return View::make('frontend.carts.cart_complete');
         }
     }
 }

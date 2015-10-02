@@ -36,10 +36,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="first"><a href="#">Home</a></li>
-                    <li><a href="#">trang söùc</a></li>
-                    <li><a href="#">Phuï kieän thôøi trang</a></li>
-                    <li><a href="#">khuyeán maõi</a></li>
+                    <li class="first"><a href="/">Home</a></li>
+                    @foreach($sorts as $sort)
+                        <li><a href="{{ route('frontend.category.show', $sort->id) }}">{{ $sort->name }}</a></li>
+                    @endforeach
                     <li><a href="#">Tin töùc</a></li>
                     <li><a href="#">Lieân heä</a></li>
                 </ul>
