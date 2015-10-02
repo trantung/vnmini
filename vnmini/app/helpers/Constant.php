@@ -36,3 +36,7 @@ define('PAY', 5);
 //Shop
 define('PATH_SHOP', '/img/shops');
 
+define('ITEM_DISCOUNT', 2);
+define('DISCOUNT', 0.1);
+define('SHIP', 100);
+
