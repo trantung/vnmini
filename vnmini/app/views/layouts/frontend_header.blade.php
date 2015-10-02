@@ -38,7 +38,7 @@
                 <ul class="nav navbar-nav">
                     <li class="first"><a href="/">Home</a></li>
                     @foreach($sorts as $sort)
-                        <li><a href="{{ route('frontend.category.show', $sort->id) }}">{{ $sort->name }}</a></li>
+                        <li><a href="{{ route('frontend.sort.show', $sort->id) }}">{{ $sort->name }}</a></li>
                     @endforeach
                     <li><a href="#">Tin töùc</a></li>
                     <li><a href="#">Lieân heä</a></li>
