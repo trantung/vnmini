@@ -42,7 +42,7 @@ class PasswordController extends BaseController {
 		$url.=$encoded;
 		$mailData = ['url'=>$url];
 		
-		Mail::send('emails.changepass', $mailData, function($message) use ($user) {
+		Mail::send('emails.changepass', $mailData, function($message) use ($user,$data) {
 		    $message->to($data['email'], 'Hello'.$user->name)->subject('VNMINI Authorize password');
 		});
 		if(Mail::failures()){
