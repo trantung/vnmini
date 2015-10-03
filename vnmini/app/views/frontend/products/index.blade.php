@@ -11,7 +11,7 @@
 @section('content')
     <section class="main-content">
     <div class="container">
-        @include('frontend.container.main', $sorts)
+        @include('frontend.container.main')
         <!-- block 1 -->
         {{-- @include('frontend.container.section2') --}}
         <!-- block 2 -->

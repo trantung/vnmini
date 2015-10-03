@@ -2,6 +2,10 @@
 
 class BaseController extends Controller {
 
+	public function __construct(){
+		$sorts = Sort::all(['name', 'id']);
+		View::share('sorts',$sorts);
+	}
 	/**
 	 * Setup the layout used by the controller.
 	 *

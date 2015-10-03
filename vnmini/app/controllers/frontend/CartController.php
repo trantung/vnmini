@@ -88,16 +88,18 @@ class CartController extends \BaseController {
 
     public function postInfoCustomer(){
 
+        $customer = Session::get('customer', null);
         $data = Input::all();
-        $code = $data['code'];
-        $customer = new Customer;
-        $customer->fullname = $data['name'];
-        $customer->email = $data['email'];
-        $customer->address = $data['address'];
-        $customer->phone = $data['phone'];
-        $customer->note = $data['note'];
-        $customer->save();
-        Session::put('customer', $customer);
+        if(is_null($customer)){
+            $customer = new Customer;
+            $customer->fullname = $data['name'];
+            $customer->email = $data['email'];
+            $customer->address = $data['address'];
+            $customer->phone = $data['phone'];
+            $customer->note = $data['note'];
+            $customer->save();
+            Session::put('customer', $customer);
+        }
         Session::put('code_off', $data['code']);
         return Redirect::route('cart.order.add');
     }
@@ -109,6 +111,36 @@ class CartController extends \BaseController {
     }
 
     public function postCreateOrder(){
-        
+        $customer = Session::get('customer', null);
+        $code = Session::get('code_off', null);
+        if(!is_null($customer)){
+
+            $order = new Order;
+
+            $order->customer_id = $customer->id;
+            $order->code = $code;
+            $order->value_origin = Cart::total();
+            if(Cart::count()>=ITEM_DISCOUNT){
+                $order->discount = DISCOUNT;
+                $order->value_discount = Cart::total()*DISCOUNT;
+            }
+            $order->money_ship = SHIP;
+            $order->value = $order->value_origin - $order->value_discount + $order->money_ship;
+            $order->status = NO_APPROVE;
+
+            $order->save();
+
+            foreach(Cart::content() as $item){
+                $order_product = new OrderProduct;
+                $order_product->product_id = $item->product->id;
+                $order_product->order_id = $order->id;
+                $order_product->product_quantity = $item->qty;
+                $order_product->save();
+            }
+
+            Cart::destroy();
+
+            return View::make('frontend.carts.cart_complete');
+        }
     }
 }
