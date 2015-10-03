@@ -128,10 +128,8 @@ class CartController extends \BaseController {
                 $code = date("YmdHis");
                 $order['code'] = $code;
                 $order['note'] = $note;
-
                 $order['customer_id'] = $customerId;
                 $orderId = Common::create($order, 'order');
-
                 foreach($items as $item){
                     $input['product_id'] = $item->product->id;
                     $input['order_id'] = $orderId;
@@ -141,11 +139,11 @@ class CartController extends \BaseController {
                 DB::commit();
                 //send email
                 $data = array(
-                            'items' => 'test',
-                            'order' => 'order',
+                            'items' => Cart::content(),
+                            'order' => $order,
                         );
-                Mail::send('emails.template_email', $data, function($message){
-                    $message->to('trantunghn196@gmail.com')
+                Mail::send('emails.email', $data, function($message) use ($customer){
+                    $message->to($customer['email'])
                             ->subject(SUBJECT_EMAIL);
                 });
                 Cart::destroy();
