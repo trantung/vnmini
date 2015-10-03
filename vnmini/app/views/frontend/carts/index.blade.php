@@ -14,7 +14,7 @@
         @if(Cart::count() > 0)
             <?php $items = Cart::content(); ?>
             @if(isset($customer))
-                @include('frontend.container.cart_order', [$items, $customer, $code])
+                @include('frontend.container.cart_order', [$items, $customer])
             @else
                 @include('frontend.container.cart_customer', $items)
             @endif

@@ -13,8 +13,8 @@ class AddMoreValueOrder extends Migration {
 	public function up()
 	{
 		Schema::table('orders', function(Blueprint $table) {
-            $table->integer('value_discount')->after('value')->nullable();
-            $table->integer('value_origin')->after('value')->nullable();
+            $table->string('value_discount', 256)->after('value')->nullable();
+            $table->string('value_origin', 256)->after('value')->nullable();
         });
 	}
 

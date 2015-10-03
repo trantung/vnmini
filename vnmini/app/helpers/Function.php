@@ -110,3 +110,20 @@ function returnStatusOrder($status)
         return 'Thanh toán';
     }
 }
+
+function returnDiscount($items)
+{
+    $arrayPromotion = [];
+    $number = 0;
+    foreach ($items as $key => $item) {
+        if ($item->product->new_price) {
+            $arrayPromotion[$key] = $item->products;
+        }
+        else{
+           $number += $item->qty;
+        }
+    }
+    $countPromotion = count($arrayPromotion);
+    $countNormal = count($items) - $countPromotion;
+    return [$countNormal, $countPromotion, $number];
+}

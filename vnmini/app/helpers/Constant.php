@@ -39,4 +39,6 @@ define('PATH_SHOP', '/img/shops');
 define('ITEM_DISCOUNT', 2);
 define('DISCOUNT', 0.1);
 define('SHIP', 100);
+//subject email
+define('SUBJECT_EMAIL', 'Vnmini thông báo');
 

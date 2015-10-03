@@ -10,7 +10,7 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
                                 <label>Họ và tên đệm <span class="text-note">*</span></label>
-                                <input type="text" class="form-control" name='name' required>
+                                <input type="text" class="form-control" name='fullname' required>
                             </div>
                             <div class="form-group">
                                 <label>Địa chỉ email</label>
@@ -40,7 +40,7 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
                                 <label>Mã khuyến mãi</label>
-                                <input type="text" class="form-control" name='code'>
+                                <input type="text" class="form-control">
                             </div>
                         </div>
                     </div>

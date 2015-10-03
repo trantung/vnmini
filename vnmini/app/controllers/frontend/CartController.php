@@ -9,6 +9,8 @@ class CartController extends \BaseController {
 	 */
 	public function index()
 	{
+        // Session::forget('customer');
+        // Cart::destroy();
         return View::make('frontend.carts.index');
 	}
 
@@ -88,59 +90,71 @@ class CartController extends \BaseController {
 
     public function postInfoCustomer(){
 
-        $customer = Session::get('customer', null);
         $data = Input::all();
+        $customer = Session::get('customer', null);
         if(is_null($customer)){
-            $customer = new Customer;
-            $customer->fullname = $data['name'];
-            $customer->email = $data['email'];
-            $customer->address = $data['address'];
-            $customer->phone = $data['phone'];
-            $customer->note = $data['note'];
-            $customer->save();
-            Session::put('customer', $customer);
+            Session::put('customer', $data);
         }
-        Session::put('code_off', $data['code']);
         return Redirect::route('cart.order.add');
     }
     public function getCreateOrder(){
         $customer = Session::get('customer');
-        $code = Session::get('code_off');
-
-        return View::make('frontend.carts.index')->with(compact('customer', 'code'));
+        $items = Cart::content();
+        $order = [];
+        //count sp thuong
+        $number = returnDiscount($items)[2];
+        //neu sl sp thuong >=2 xu ly (order_discount)
+        $value_discount = CommonOrder::orderDiscount($items, $number);
+        //gia tri nguyen goc
+        $value_origin = Cart::total();
+        //gia tri thuc
+        $value = $value_origin - $value_discount;
+        return View::make('frontend.carts.index')->with(compact('customer', 'value', 'value_origin', 'value_discount'));
     }
 
     public function postCreateOrder(){
         $customer = Session::get('customer', null);
-        $code = Session::get('code_off', null);
         if(!is_null($customer)){
+            DB::beginTransaction();
+            try {
+                $note = $customer['note'];
+                unset($customer['note']);
+                $customerId = Common::create($customer, 'customer');
+                $items = Cart::content();
+                $order['value_origin'] = Input::get('value_origin');
+                $order['value_discount'] = Input::get('value_discount');
+                $order['value'] = Input::get('value');
+                $order['status'] = NO_APPROVE;
+                $code = date("YmdHis");
+                $order['code'] = $code;
+                $order['note'] = $note;
 
-            $order = new Order;
+                $order['customer_id'] = $customerId;
+                $orderId = Common::create($order, 'order');
 
-            $order->customer_id = $customer->id;
-            $order->code = $code;
-            $order->value_origin = Cart::total();
-            if(Cart::count()>=ITEM_DISCOUNT){
-                $order->discount = DISCOUNT;
-                $order->value_discount = Cart::total()*DISCOUNT;
+                foreach($items as $item){
+                    $input['product_id'] = $item->product->id;
+                    $input['order_id'] = $orderId;
+                    $input['product_quantity'] = $item->qty;
+                    Common::create($input, 'orderProduct');
+                }
+                DB::commit();
+                //send email
+                $data = array(
+                            'items' => 'test',
+                            'order' => 'order',
+                        );
+                Mail::send('emails.template_email', $data, function($message){
+                    $message->to('trantunghn196@gmail.com')
+                            ->subject(SUBJECT_EMAIL);
+                });
+                Cart::destroy();
+                return View::make('frontend.carts.cart_complete')->with(compact('code'));
+            } catch (\Exception $e) {
+                DB::rollback();
+                return false;
             }
-            $order->money_ship = SHIP;
-            $order->value = $order->value_origin - $order->value_discount + $order->money_ship;
-            $order->status = NO_APPROVE;
-
-            $order->save();
-
-            foreach(Cart::content() as $item){
-                $order_product = new OrderProduct;
-                $order_product->product_id = $item->product->id;
-                $order_product->order_id = $order->id;
-                $order_product->product_quantity = $item->qty;
-                $order_product->save();
-            }
-
-            Cart::destroy();
-
-            return View::make('frontend.carts.cart_complete');
         }
+        return Redirect::route('frontend.product.index');
     }
 }

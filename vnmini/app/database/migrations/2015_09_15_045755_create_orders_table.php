@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration {
             $table->integer('customer_id');
             $table->string('code', 256)->nullable();
             $table->string('value', 256)->nullable();
-            $table->integer('discount')->nullable();
+            $table->string('discount', 256)->nullable();
             $table->integer('status')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'kyppyly@gmail.com', 'name' => 'vnmini send email change password'),
+	'from' => array('address' => 'kyppyly@gmail.com', 'name' => 'Vnmini'),
 
 	/*
 	|--------------------------------------------------------------------------

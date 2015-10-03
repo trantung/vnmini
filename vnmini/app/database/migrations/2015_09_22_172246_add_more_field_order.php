@@ -13,7 +13,7 @@ class AddMoreFieldOrder extends Migration {
 	public function up()
 	{
 		Schema::table('orders', function(Blueprint $table) {
-            $table->integer('money_ship')->after('status')->nullable();
+            $table->string('money_ship', 256)->after('status')->nullable();
         });
 	}
 

@@ -41,9 +41,9 @@ class PasswordController extends BaseController {
 		$encoded =( urlencode(base64_encode($parram)));
 		$url.=$encoded;
 		$mailData = ['url'=>$url];
-		
+		// dd($data['email']);
 		Mail::send('emails.changepass', $mailData, function($message) use ($user) {
-		    $message->to($data['email'], 'Hello'.$user->name)->subject('VNMINI Authorize password');
+		    $message->to('trantunghn196@gmail.com')->subject('VNMINI Authorize password');
 		});
 		if(Mail::failures()){
 			return Redirect::route('password.index')->with('message', 'Email không đúng!');

@@ -10,4 +10,9 @@ class Discount extends Eloquent
     protected $table = 'discounts';
     protected $fillable = ['percentage'];
     protected $dates = ['deleted_at'];
+
+    public static function getDiscount()
+    {
+    	return Discount::findOrFail(1)->percentage;
+    }
 }

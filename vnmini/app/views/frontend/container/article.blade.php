@@ -32,10 +32,11 @@
                              <br>
                     </div>
                     <div class="cost">
-                        @if(!empty($product->new_price))
-                            <span class="price">{{ $product->origin_price }}<span>đ</span></span> {{ $product->new_price }} <span>đ</span>
-                        @else
+                        @if($product->new_price)
+                            <span class="price">{{ $product->origin_price }}<span>đ</span></span>
                             {{ $product->new_price }} <span>đ</span>
+                        @else
+                            {{ $product->origin_price }} <span>đ</span>
                         @endif
                     </div>
                 @if(!is_null($product->images))

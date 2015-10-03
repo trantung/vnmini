@@ -13,7 +13,6 @@
                                 <th width="50%"> Tên sản phẩm </th>
                                 <th > Giá tiền</th>
                                 <th > Số lượng</th>
-                                <th > Ck %</th>
                                 <th > Tổng tiền</th>
                             </tr>
                         </thead>
@@ -23,23 +22,39 @@
                                 <td width="50%">{{ $item->name }}</td>
                                 <td >{{ $item->price }} đ</td>
                                 <td >{{ $item->qty }}</td>
-                                <td >0%</td>
                                 <td >{{ $item->subtotal }} đ</td>
                             </tr>
                         @endforeach
                             <tr>
-                                <td colspan="4" class="text-right">Tổng cộng</td>
+                                <td colspan="4" class="text-left"><strong>
+                                Có {{returnDiscount($items)[0]}} sản phẩm thường 
+                                @if(returnDiscount($items)[0] >1)
+                                    (khuyến mãi {{ Discount::getDiscount() }}%)
+                                @endif
+                                và {{ returnDiscount($items)[1] }} sản phẩm khuyến mãi
+                               </strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right">Tổng cộng</td>
                                 <td >{{ Cart::total() }} đ</td>
                             </tr>
                             <tr>
-                                <td colspan="4" class="text-right"><strong>Tổng tiền thanh toán</strong></td>
-                                <td ><strong>{{ Cart::total() }} đ</strong></td>
+                                <td colspan="3" class="text-right">Chiết khấu</td>
+                                <td>{{ Discount::getDiscount() }}%</td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="3" class="text-right"><strong>Tổng tiền thanh toán</strong></td>
+                                <td ><strong>{{ $value }} đ</strong></td>
                             </tr>
                         </tbody>
                     </table>
                    
                 </div>
                  <button type="submit" class="pull-right">Nhận hóa đơn</button>
+                 <input type="hidden" value="{{ $value }}" name="value">
+                 <input type="hidden" value="{{ $value_origin }}" name="value_origin">
+                 <input type="hidden" value="{{ $value_discount }}" name="value_discount">
                 </form>
                 <div class="note"> Bạn quên sản phẩm mình đang mua là gì ? <a href="#"> Sửa giỏ hàng</a></div>
             </div>

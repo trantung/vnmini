@@ -14,16 +14,18 @@ class Common
 		$name::find($id)->update($input);
 	}
 
-	public static function create($input)
+	public static function create($input, $name = NULL)
 	{
-		$name = self::commonName();
-		$id = $name::firstOrCreate($input)->id;
+		$name = self::commonName($name);
+		$id = $name::create($input)->id;
 		return $id;
 	}
 
-	public static function commonName()
+	public static function commonName($name = NULL)
 	{
-		$name = Request::segment(2);
+		if ($name == NULL) {
+			$name = Request::segment(2);
+		}
 		if ($name == 'category') {
 			return 'Category';
 		}
@@ -62,6 +64,12 @@ class Common
 		}
 		if ($name == 'user') {
 			return 'User';
+		}
+		if ($name == 'orderProduct') {
+			return 'OrderProduct';
+		}
+		if ($name = 'customer') {
+			return 'Customer';
 		}
 	}
 

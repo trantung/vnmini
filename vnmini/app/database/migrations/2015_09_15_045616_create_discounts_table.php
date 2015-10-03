@@ -14,7 +14,7 @@ class CreateDiscountsTable extends Migration {
     {
         Schema::create('discounts', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('percentage')->nullable();
+            $table->string('percentage', 256)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
