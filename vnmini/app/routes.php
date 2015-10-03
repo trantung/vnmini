@@ -43,7 +43,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));
     Route::resource('products', 'ProductController');
     Route::post('image/delete/{id}', array('uses' => 'ImageController@delete', 'as' => 'admin.image.delete'));
-    
+    Route::resource('promotion', 'PromotionController');
 
 });
 Route::group(['prefix' => 'frontend'], function () {

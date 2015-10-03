@@ -21,7 +21,7 @@ class UserController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.users.create');
 	}
 
 
@@ -32,7 +32,10 @@ class UserController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::except('_token');
+		$input['password'] = Hash::make($input['password']);
+		Common::create($input);
+		return Redirect::route('admin.user.index')->with('message', 'Tạo mới user thành công');
 	}
 
 
@@ -101,9 +104,8 @@ class UserController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		$user->findOrFail($id);
-		$user->delete();
-		return Redirect::route('admin.users.index')->with('message','Xóa thành công!');
+		Common::delete($id);
+		return Redirect::route('admin.user.index')->with('message','Xóa thành công!');
 	}
 
 	public function getForgotPassword() {

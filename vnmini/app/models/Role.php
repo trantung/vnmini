@@ -15,4 +15,9 @@ class Role extends Eloquent
     {
         return $this->hasMany('User', 'role_id', 'id');
     }
+
+    public static function getRoleName()
+    {
+    	return self::orderBy('id', 'asc')->lists('name', 'id');
+    }
 }

@@ -211,6 +211,9 @@ $(document).ready(function(){
                     <li>
                         <a href="{{ route('admin.shop.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin cửa hàng</a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.promotion.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin khuyến mãi</a>
+                    </li>
                     @if(Auth::user()->isAdmin())
                         <li>
                             <a href="{{ route('admin.user.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý user</a>

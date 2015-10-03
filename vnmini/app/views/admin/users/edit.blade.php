@@ -63,7 +63,7 @@
                                     <select class="form-control" required name ="status">
                                         <option value = "0" <?php if($user->status == USING){echo "selected";} ?>>{{ USER_USING }} </option>
                                         <option value = "1" <?php if($user->status == LOCK){echo "selected";} ?>>{{ USER_LOCK }} </option>
-                                      </select>
+                                    </select>
                                     </div>
                                 </td>
                             </tr>
