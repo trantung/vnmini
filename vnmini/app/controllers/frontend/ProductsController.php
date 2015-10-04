@@ -68,4 +68,12 @@ class ProductsController extends \BaseController {
 	public function getTintuc(){
 		return View::make('frontend.tintuc');
 	}
+
+	public function search()
+	{
+		$input = Input::all();
+		// dd($input);
+		$results = CommonProduct::search($input);
+		return View::make('frontend.search')->with(compact('results'));
+	}
 }

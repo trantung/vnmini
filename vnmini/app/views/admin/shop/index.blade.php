@@ -54,7 +54,7 @@
                         <input class="form-control" id="longitude" value="{{ $shop->long }}" name="long" required>
                 </div>
                 <div class = "form-group">
-                    <div class="col-md-3 col-md-offset-3" id="mapview" style="width:500px;height:500px"></div>
+                    <div id="mapview" style="width:100%;height:500px"></div>
                 </div>
                 <div class="form-group col-sm-4 col-md-8">
                     <a class="btn btn-success" href="{{route('admin.shop.index')}}">Back</a>

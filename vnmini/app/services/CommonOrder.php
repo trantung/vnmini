@@ -108,4 +108,23 @@ class CommonOrder
         }
         return $id;
 	}
+
+	public static function getSearchResult($input)
+	{
+		$orders = Order::where(function ($query) use ($input) {
+			if ($input['status']) {
+				$query->where('status', $input['status']);
+			}
+			if ($input['code']) {
+				$query->where('code', 'LIKE', '%'.$input['code'].'%');
+			}
+			if ($input['startDate']) {
+                $query->where('created_at', '>=', $input['startDate']);
+			}
+			if ($input['endDate']) {
+                $query->where('created_at', '<=', $input['endDate']);
+			}
+		})->orderBy('created_at', 'desc')->paginate(PAGINATE_ORDER);
+		return $orders;
+	}
 }

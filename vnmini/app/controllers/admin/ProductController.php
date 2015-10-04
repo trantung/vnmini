@@ -101,6 +101,7 @@ class ProductController extends AdminController {
         if (Input::only('image_relate')) {
 			CommonProduct::createImageRelate(Input::only('image_relate'), $id);
         }
+		$input['status'] = CommonProduct::getStatus($input);
 		if ($input['image_url']) {
         	$input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$id);
 			Common::update($id, $input);

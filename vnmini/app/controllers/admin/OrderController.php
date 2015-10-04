@@ -96,4 +96,13 @@ class OrderController extends AdminController {
 		OrderProduct::find($id)->delete();
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		if (!$input['status'] && !$input['code'] && !$input['startDate'] && !$input['endDate']) {
+			return Redirect::route('admin.order.index');
+		}
+		$orders = CommonOrder::getSearchResult($input);
+		return View::make('admin.order.index')->with(compact('orders'));
+	}
 }

@@ -4,6 +4,38 @@
 		<h1>Hoá đơn</h1>
 	</div>
 @include('admin.error-message')
+	<link href="{{ asset('admins/css/jquery-ui.css') }}" rel="stylesheet">
+	<script src="{{ asset('admins/js/jquery-ui.min.js')}}"></script>
+	<div class="row">
+	  	<div class="col-xs-6 col-md-4">
+		  	<form action="{{ route('admin.order.search') }}" method="GET" accept-charset="utf-8">
+			  	<div class="row">
+		  			<div class="col-sm-10">
+						{{ Form::select('status' , ['' => 'Chọn trạng thái'] + CommonOrder::getStatusOrder(), returnInputSelect('category_id'), ['class' => 'form-control']) }}
+					</div>
+			        <div class="col-sm-2">
+			        	<input type="submit" id="search" class='btn btn-primary'>
+			        </div>
+			  	</div>
+			  	<div class="row">
+				  	<div class="col-sm-10">
+		          		<input type="text" class="form-control" id="product_name" name="code" placeholder = "mã hoá đơn" >
+				  	</div>
+			  	</div>
+			  	<div class="row">
+				  	<div class="col-sm-10">
+		          		<input type="text" class="form-control datepicker" name="startDate" placeholder = "ngày bắt đầu" >
+		          		<input type="text" class="form-control datepicker" name="endDate" placeholder = "ngày kết thúc" >
+				  	</div>
+			  	</div>
+		  	</form>
+	  	</div>
+	</div>
+	<div class="row">
+	  	<div class="col-xs-6 col-md-4">
+		 	Có tổng cộng <span style = "color:red">{{ count($orders) }}</span> hoá đơn
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<table class="table table-striped">
@@ -41,4 +73,9 @@
 			<center>{{ $orders->appends(Request::except('page'))->links() }}</center>
 		</div>
 	</div>
+<script type="text/javascript">
+	$( '.datepicker' ).datepicker({
+	  	dateFormat: "yy-mm-dd"
+	});
+</script>
 @endsection

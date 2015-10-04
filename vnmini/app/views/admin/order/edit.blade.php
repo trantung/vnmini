@@ -41,7 +41,9 @@
     </div>
     @foreach($order->orderproducts as $key => $orderProduct)
         <div class="form-group col-sm-4 col-md-8">
-        <span style = "color: blue">Sản phẩm thứ {{ $key+1 }}</span>
+            <a href="{{ route('admin.products.show', $orderProduct->product_id) }} ">
+                <span>Sản phẩm thứ {{ $key+1 }}</span>
+            </a>
             <div>
                 <label>Mã Sản phẩm</label>
                 {{ $orderProduct->product->code }}
@@ -55,7 +57,8 @@
                 {{ Form::text($orderProduct->product->id, CommonOrder::getQuantityProduct($order->id, $orderProduct->product->id), ['class' => 'form-control']) }}
                 <label>Số lượng sản phẩm trong kho</label>
                 {{ $orderProduct->product->quantity }}
-                Xoá sản phẩm<a href="javascript:;" onclick="deleteOrderProduct()" data-id="{{ returnOrderProductId($orderProduct->product->id, $order->id) }}" class="order_product btn btn-danger">{{ $orderProduct->product->name }}</a>trong đơn hàng
+                <br/>
+                <a href="javascript:;" onclick="deleteOrderProduct()" data-id="{{ returnOrderProductId($orderProduct->product->id, $order->id) }}" class="order_product btn btn-danger">Xoá</a> sản phẩm <span style = "color:blue">{{ $orderProduct->product->name }}</span> trong đơn hàng
             </div>
         </div>
     @endforeach

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://localhost:8000/admin/order/1/edit -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="_token" content="yCvOMHVsXOZsgzgA1Z9woBhWRSKM7abEPizw6gE6">
+    <title>VN STONE ADMIN</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="./VN STONE ADMIN_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="./VN STONE ADMIN_files/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="./VN STONE ADMIN_files/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="./VN STONE ADMIN_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost:8000/ckeditor/samples/css/samples.css">
+    <link href="./VN STONE ADMIN_files/main.css" rel="stylesheet">
+    <script src="./VN STONE ADMIN_files/jquery.js"></script>
+    <script src="./VN STONE ADMIN_files/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
+    <script src="./VN STONE ADMIN_files/jquery(1).js"></script>
+    <script src="./VN STONE ADMIN_files/js" style=""></script><script src="./VN STONE ADMIN_files/main.js"></script><script src="./VN STONE ADMIN_files/places.js"></script>
+    <script>
+        $(function() {
+            var current = $(location).attr('href');
+            $($("a[href='"+current+"']")).parents('li').addClass('active');
+        });
+$(document).ready(function(){
+    $('#btnUpdatePassWord').prop('disabled', true);
+    function showError(obj, removeClass, addClass, color){
+        obj.removeClass(removeClass);
+        obj.addClass(addClass);
+        obj.css("color",color);
+
+    };
+    var hasError = true;
+    $("input[type=password]").keyup(function(){
+    var ucase = new RegExp("[A-Z]+");
+    var lcase = new RegExp("[a-z]+");
+    var num = new RegExp("[0-9]+");
+    
+    if($("#password").val().length <= 6){
+        hasError = false;
+        showError($("#oldPass"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#oldPass"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    if($("#password1").val().length >= 6){
+        hasError = false;
+        showError($("#6char"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#6char"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    
+    if(ucase.test($("#password1").val())){
+        hasError = false;
+        showError($("#ucase"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#ucase"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    
+    if(lcase.test($("#password1").val())){
+        hasError = false;
+        showError($("#lcase"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#lcase"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    
+    if(num.test($("#password1").val())){
+        hasError = false;
+        showError($("#num"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#num"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    }
+    
+    if($("#password1").val() == $("#password2").val() && $("#password1").val().length>=6){
+        hasError = false;
+        showError($("#pwmatch"),'glyphicon-remove', 'glyphicon-ok','#00A41E');
+    }else{
+        hasError = true;
+        showError($("#pwmatch"),'glyphicon-ok', 'glyphicon-remove','#FF0004');
+    };
+
+    $('#btnUpdatePassWord').prop('disabled', hasError);
+});
+    $('#passwordForm').submit(function(event) {
+
+        var formData = {
+            'old_password'      : $('#password').val(),
+            'new_password'      : $('#password1').val(),
+            're_password'       : $('#password2').val(),
+        };
+        // process the form
+        $.ajax({
+            type        : 'PUT',
+            url         : $(this).attr('action'), // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode      : true,
+            beforeSend: function() {
+                $('#btnUpdatePassWord').prop('disabled', true);
+            },
+        })
+        // using the done promise callback
+        .done(function(data) {
+            if(data['error']){
+                $('#err_msg').text(data['error']);
+            }
+            if(data['success']){
+                $('#err_msg').text(data['success']);
+                window.setTimeout('location.reload()', 5000);
+            }
+        });
+        event.preventDefault();
+    });
+});
+    </script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./VN STONE ADMIN_files/bootstrap.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/22/7/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/22/7/util.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/22/7/stats.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2Flocalhost%3A8000%2Fadmin%2Forder%2F1%2Fedit&callback=_xdc_._816kwu&token=76280"></script></head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:8000/admin/order/1/edit#">VN Stone Admin</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="http://localhost:8000/admin/order/1/edit#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                     <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="http://localhost:8000/admin/logout"><i class="fa fa-fw fa-user"></i> Logout</a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:8000/admin/user/1"><i class="glyphicon glyphicon-pencil"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:8000/admin/order/1/edit#" data-target="#pwdModal" data-toggle="modal">
+                                <i class="glyphicon glyphicon-cog"></i>
+                                Update-Pass
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="http://localhost:8000/admin/products"><i class="fa fa-fw fa-dashboard"></i>Quản lý sản phẩm </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8000/admin/sort"><i class="fa fa-fw fa-dashboard"></i>Quản lý loại sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8000/admin/category"><i class="fa fa-fw fa-dashboard"></i>Quản lý nhóm sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8000/admin/bannerimage"><i class="fa fa-fw fa-dashboard"></i>Quản lý ảnh bannner</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8000/admin/bannerslide"><i class="fa fa-fw fa-dashboard"></i>Quản lý slide</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8000/admin/discount"><i class="fa fa-fw fa-dashboard"></i>Quản lý chiết khấu</a>
+                    </li>
+                    
+
+                    <li>
+                        <a href="http://localhost:8000/admin/order"><i class="fa fa-fw fa-dashboard"></i>Quản lý hoá đơn</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8000/admin/comment"><i class="fa fa-fw fa-dashboard"></i>Quản lý comment</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8000/admin/new"><i class="fa fa-fw fa-dashboard"></i>Quản lý tin tức</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8000/admin/shop"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin cửa hàng</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8000/admin/promotion"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin khuyến mãi</a>
+                    </li>
+                                            <li>
+                            <a href="http://localhost:8000/admin/user"><i class="fa fa-fw fa-dashboard"></i>Quản lý user</a>
+                        </li>
+                                    </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <!--modal-->
+                <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                          <h1 class="text-center">Đổi Mật Khẩu</h1>
+                          <h5 style="color:red; text-align:center " id="err_msg"></h5>
+                      </div>
+                      <div class="modal-body">
+                            <form method="post" id="passwordForm" action="http://localhost:8000/admin/user/1">
+                                <input type="password" class="input-lg form-control" name="password" id="password" placeholder="Mật khẩu cũ">
+                                <div class="col-sm-6">
+                                 <span id="oldPass" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span>Mật khẩu cũ
+                                </div>
+                                <input type="password" class="input-lg form-control" name="password1" id="password1" placeholder="Mật khẩu mới">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <span id="6char" class="glyphicon glyphicon-remove" style="color:#FF0004;">
+                                        </span> 6 ký tự<br>
+                                        <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;">
+                                        </span> viết hoa 1 ký tự
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> kí tự viết thường<br>
+                                        <span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> kí tự số
+                                    </div>
+                                </div>
+                                <input type="password" class="input-lg form-control" name="password2" id="password2" placeholder="nhập lại mật khẩu" autocomplete="off">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <span id="pwmatch" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> mật khẩu không trùng nhau
+                                    </div>
+                                </div>
+                                <br>
+                                <input type="submit" class="col-xs-12 btn btn-primary btn-load btn-lg" data-loading-text="Loading..." value="Cập nhật" id="btnUpdatePassWord" disabled="">
+                            </form>
+                      </div>
+                      <div class="modal-footer">
+                          <div class="col-md-12">
+                          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                          </div>    
+                      </div>
+                  </div>
+                  </div>
+                </div>
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" action="http://localhost:8000/admin/order/1" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data"><input name="_method" type="hidden" value="PUT"><input name="_token" type="hidden" value="yCvOMHVsXOZsgzgA1Z9woBhWRSKM7abEPizw6gE6">
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Mã đơn hàng:</label>
+        <input class="form-control" name="code" type="text" value="20151004214225">
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Tên khách hàng:</label>
+        <input class="form-control" name="fullname" type="text" value="tung">
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Số điện thoại</label>
+        <input class="form-control" name="phone" type="text" value="0912957368">
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Email</label>
+        <input class="form-control" name="email" type="text" value="trantunghn196@gmail.com">
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Địa chỉ</label>
+        <input class="form-control" name="address" type="text" value="dfgsfdgsdfgsdfg">
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Ghi chú</label>
+        <input class="form-control" name="note" type="text" value="sdfgsdfgsdfgs">
+    </div>
+        <div class="form-group col-sm-4 col-md-8">
+        <label>Tiền chiết khấu</label>
+        <input class="form-control" name="value_discount" type="text" value="20000">
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Tiền chưa chiết khấu</label>
+        <input class="form-control" name="value_origin" type="text" value="1100000">
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Tiền thực</label>
+        <input class="form-control" name="value" type="text" value="1080000">
+    </div>
+            <div class="form-group col-sm-4 col-md-8">
+            <a href="http://localhost:8000/admin/products/1">
+                <span>Sản phẩm thứ 1</span>
+            </a>
+            <div>
+                <label>Mã Sản phẩm</label>
+                123
+            </div>
+            <div>
+                <label>Tên Sản phẩm</label>
+                VÒNG ĐÁ MĂT HÔ NÂU VÀNG
+            </div>
+            <div>
+                <label>Số lượng sản phẩm đặt mua</label>
+                <input class="form-control" name="1" type="text" value="2">
+                <label>Số lượng sản phẩm trong kho</label>
+                123
+                <br>
+                <a href="javascript:;" onclick="deleteOrderProduct()" data-id="1" class="order_product btn btn-danger">Xoá</a> sản phẩm <span style="color:blue">VÒNG ĐÁ MĂT HÔ NÂU VÀNG</span> trong đơn hàng
+            </div>
+        </div>
+            <div class="form-group col-sm-4 col-md-8">
+            <a href="http://localhost:8000/admin/products/2">
+                <span>Sản phẩm thứ 2</span>
+            </a>
+            <div>
+                <label>Mã Sản phẩm</label>
+                2222
+            </div>
+            <div>
+                <label>Tên Sản phẩm</label>
+                VÒNG ĐÁ NHAM THẠCH NÚI LƯẢ
+            </div>
+            <div>
+                <label>Số lượng sản phẩm đặt mua</label>
+                <input class="form-control" name="2" type="text" value="3">
+                <label>Số lượng sản phẩm trong kho</label>
+                123
+                <br>
+                <a href="javascript:;" onclick="deleteOrderProduct()" data-id="2" class="order_product btn btn-danger">Xoá</a> sản phẩm <span style="color:blue">VÒNG ĐÁ NHAM THẠCH NÚI LƯẢ</span> trong đơn hàng
+            </div>
+        </div>
+        <div class="form-group col-sm-4 col-md-8">
+        <label>Trạng thái</label>
+        <select class="form-control" name="status"><option value="">Chọn trạng thái</option><option value="1" selected="selected">Chưa xử lý</option><option value="2">Đã xử lý</option><option value="3">Chưa chuyển hàng</option><option value="4">Đã chuyển hàng</option><option value="5">Thanh toán</option></select>
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <a class="btn btn-success" href="http://localhost:8000/admin/order">Back</a>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </div>           
+</form>
+<script>
+    CKEDITOR.replace( 'editor1',
+                {
+                filebrowserBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html',
+                filebrowserImageBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html?type=Images',
+                filebrowserFlashBrowseUrl : '/admins/ckeditor/ckfinder/ckfinder.html?type=Flash',
+                filebrowserUploadUrl : '/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                filebrowserImageUploadUrl : '/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                filebrowserFlashUploadUrl : '/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                } 
+                );
+</script><script type="text/javascript">
+    function deleteOrderProduct() {
+        var id = $('.order_product').data("id");
+        $.ajax(
+            {
+                url: '/admin/order_product/delete/' + id,
+                type: 'POST',
+                dataType: "JSON",
+                data: {
+                    "id": id
+                },
+                success: function ()
+                {
+                    console.log("it Work");
+                }
+        	}
+        );
+        window.location.reload();
+    }
+</script>                    </div>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+
+    
+
+</body></html>

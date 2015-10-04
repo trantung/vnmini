@@ -14,10 +14,10 @@
                 <span class="icon-bar"></span>
             </button>
             <div class="navbar-right">
-                <form class="home-search navbar-form" role="search">
+                <form class="home-search navbar-form" role="search" action="{{ route('frontend.search') }}" method="GET"> 
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm" name="name">
                             <div class="input-group-addon"><input type="submit" value="submit" ></div>
                         </div>
                     </div>

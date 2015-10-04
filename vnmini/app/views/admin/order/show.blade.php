@@ -44,9 +44,9 @@
     @foreach($order->orderproducts as $key => $orderProduct)
         <div class="form-group col-sm-4 col-md-8">
             <label>Mã Sản phẩm</label>
-            {{ $$orderProduct->product->code }}
+            {{ $orderProduct->product->code }}
             <label>Tên Sản phẩm</label>
-            {{ $$orderProduct->product->name }}
+            {{ $orderProduct->product->name }}
             <label>Số lượng sản phẩm đặt mua</label>
             {{ CommonOrder::getQuantityProduct($order->id, $orderProduct->product->id) }}
         </div>
