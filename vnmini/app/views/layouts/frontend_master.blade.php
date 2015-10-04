@@ -27,7 +27,14 @@
          <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places" style=""></script>
     </head>
 <body>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.4&appId=1609703232582143";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 @include('layouts.frontend_header')
 <!-- .header -->
 
@@ -41,7 +48,7 @@
 
 @yield('content')
 <!-- .main-content -->
-
+<a href="#0" class="cd-top"><i class="fa fa-chevron-up"></i></a>
 @include('layouts.frontend_partner')
 <!-- .partner -->
 
