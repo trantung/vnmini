@@ -40,7 +40,7 @@
                     <label>Ảnh cửa hàng</label>
                     {{Form::file('image_url',"", array('class'=>'form-control','id'=>'img'))}}
                     <br />
-                    <img src="{{ asset('img/shops/').'/'.$shop->image_url }}" class="img-rounded" alt="Cinque Terre" width="500" height="236" id="blah">
+                    <img src="{{ asset( $shop->image_url) }}" class="img-rounded" alt="Cinque Terre" width="500" height="236" id="blah">
                 </div>
                 <div class="form-group">
                     <label>Vị trí</label>
@@ -64,24 +64,5 @@
         </div>
     </div>
 @include('admin.script')
-<script type="text/javascript">
-        var defaultLat = (document.getElementById('latitude').value!=0) ? document.getElementById('latitude').value : 21.00296184;
-var defaultLng = (document.getElementById('longitude').value!=0) ? document.getElementById('longitude').value : 105.85202157;
- </script>
-<script type="text/javascript" src="{{ asset('admins/js/gmap.js') }}"></script>
-    <script type="text/javascript">
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $('#blah').attr('src', e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-        $('[name="image_url"]').change(function(){
-        readURL(this);
-    });
-        initSample();
-    </script>
+@include('googlemap_script')
 @endsection

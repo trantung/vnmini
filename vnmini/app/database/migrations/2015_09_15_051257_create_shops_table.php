@@ -16,7 +16,7 @@ class CreateShopsTable extends Migration {
         $table->increments('id');
         $table->integer('user_id');
         $table->string('name',45)->nullable();
-        $table->string('description',128)->nullable();
+        $table->text('description')->nullable();
         $table->string('address',256)->nullable();
         $table->string('contact',256)->nullable();
         $table->string('tel',45)->nullable();

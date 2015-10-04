@@ -40,9 +40,11 @@ class ProductController extends AdminController {
                 ->withInput($input)
                 ->withErrors($validator);
         }
-        $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT);
-		$input['status'] = CommonProduct::getStatus($input);
 		$productId = Common::create($input);
+        $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId);
+		// dd($input['image_url']);
+		Common::update($productId, ['image_url' => $input['image_url']]);
+		$input['status'] = CommonProduct::getStatus($input);
 		if (!$productId) {
 			return Redirect::route('admin.products.index')->with('message', 'Tạo mới thất bại');
 		}
@@ -100,7 +102,7 @@ class ProductController extends AdminController {
 			CommonProduct::createImageRelate(Input::only('image_relate'), $id);
         }
 		if ($input['image_url']) {
-        	$input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT);
+        	$input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$id);
 			Common::update($id, $input);
 		}
 		if (!$input['image_url']) {

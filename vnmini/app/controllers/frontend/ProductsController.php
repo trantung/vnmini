@@ -61,6 +61,7 @@ class ProductsController extends \BaseController {
 	}
 
 	public function getLienhe(){
+		
 		return View::make('frontend.lienhe');
 	}
 
