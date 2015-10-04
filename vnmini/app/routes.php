@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('comment/search', array('as' => 'admin.comment.search', 'uses' => 'CommentController@search'));
     Route::resource('comment', 'CommentController');
     Route::resource('new', 'AdminNewController');
+    Route::post('order_product/delete/{id}', array('uses' => 'OrderController@deleteProduct', 'as' => 'admin.order_product.delete'));
     Route::resource('order', 'OrderController');
     Route::resource('shop', 'ShopController', array('only' => array('index', 'update')));
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));

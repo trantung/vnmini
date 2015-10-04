@@ -43,4 +43,69 @@ class CommonOrder
         }
         return 0;
 	}
+
+	public static function getStatusOrder()
+	{
+		$statusOrder = [
+						NO_APPROVE => 'Chưa xử lý',
+						APPROVE => 'Đã xử lý',
+						NO_SHIP => 'Chưa chuyển hàng',
+						SHIP => 'Đã chuyển hàng',
+						PAY => 'Thanh toán',
+			];
+		return $statusOrder;
+	}
+
+	public static function getQuantityProduct($orderId, $productId)
+	{
+		$orderProduct = OrderProduct::where('product_id', $productId)->where('order_id', $orderId)->first();
+		$quantity = OrderProduct::findOrFail($orderProduct->id)->product_quantity;
+		return $quantity;
+	}
+
+	public static function updateOrder($input, $id)
+	{
+		$customerId = Order::findOrFail($id)->customer_id;
+		$inputOrder = [
+				'code' => Input::get('code'),
+				'note' => Input::get('note'),
+				'value_origin' => Input::get('value_origin'),
+				'value_discount' => Input::get('value_discount'),
+				'value' => Input::get('value'),
+				'status' => Input::get('status'),
+			];
+		$customerInput = [
+				'fullname' => Input::get('fullname'),
+				'phone' => Input::get('phone'),
+				'email' => Input::get('email'),
+				'address' => Input::get('address'),
+			];
+		$productInput = [
+				'name' => Input::get('name'),
+				'code' => Input::get('productCode'),
+			];
+		$orderProduct = Input::except('_method', '_token', 'code', 'fullname', 'phone', 'email', 'address', 'note', 'value_discount', 'value', 'value_origin', 'status', 'updated_at');
+        DB::beginTransaction();
+        try {
+        	Common::update($id, $inputOrder);
+        	Customer::findOrFail($customerId)->update($customerInput);
+        	foreach ($orderProduct as $key => $value) {
+        		$orderProductId = OrderProduct::where('product_id', $key)->where('order_id', $id)->first()->id;
+        		OrderProduct::findOrFail($orderProductId)->update(['product_quantity' => $value]);
+        	    	$quantityOld = Product::findOrFail($key)->quantity;
+        	    	$quantityNew = $quantityOld - $value;
+        	    	if ($quantityNew < 0) {
+        	    		return false;
+        	    	}
+        	    	if ($inputOrder['status'] == SHIP) {
+        	    		Product::findOrFail($key)->update(['quantity' => $quantityNew]);
+        			}
+        	}
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return false;
+        }
+        return $id;
+	}
 }

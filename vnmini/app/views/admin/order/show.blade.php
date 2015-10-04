@@ -6,6 +6,10 @@
         <h1>Chi tiết hoá đơn </h1>
     </div>
     <div class="form-group col-sm-4 col-md-8">
+        <label>Mã đơn hàng:</label>
+        {{ $order->code }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
         <label>Tên khách hàng:</label>
         {{ $order->customer->fullname }}
     </div>
@@ -37,6 +41,16 @@
         <label>Tiền thực</label>
         {{ $order->value }}
     </div>
+    @foreach($order->orderproducts as $key => $orderProduct)
+        <div class="form-group col-sm-4 col-md-8">
+            <label>Mã Sản phẩm</label>
+            {{ $$orderProduct->product->code }}
+            <label>Tên Sản phẩm</label>
+            {{ $$orderProduct->product->name }}
+            <label>Số lượng sản phẩm đặt mua</label>
+            {{ CommonOrder::getQuantityProduct($order->id, $orderProduct->product->id) }}
+        </div>
+    @endforeach
     <div class="form-group col-sm-4 col-md-8">
         <label>Trạng thái</label>
         {{ returnStatusOrder($order->status) }}
@@ -44,6 +58,10 @@
     <div class="form-group col-sm-4 col-md-8">
         <label>Ngày tạo hoá đơn</label>
         {{ $order->created_at }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Ngày update hoá đơn</label>
+        {{ $order->updated_at }}
     </div>
     <div class="form-group col-sm-4 col-md-8"> 
         <a class="btn btn-default" href="{{ route('admin.order.index') }}">Quay lại</a>

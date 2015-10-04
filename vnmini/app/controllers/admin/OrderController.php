@@ -9,7 +9,7 @@ class OrderController extends AdminController {
 	 */
 	public function index()
 	{
-		$orders = Order::all();
+		$orders = Order::orderBy('created_at', 'desc')->paginate(PAGINATE_ORDER);
 		return View::make('admin.order.index')->with(compact('orders'));
 	}
 
@@ -57,7 +57,8 @@ class OrderController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$order = Order::findOrFail($id);
+		return View::make('admin.order.edit')->with(compact('order'));
 	}
 
 
@@ -69,7 +70,12 @@ class OrderController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::all();
+		$orderId = CommonOrder::updateOrder($input, $id);
+		if(!$orderId) {
+			return Redirect::route('admin.order.edit', $id)->with('message', 'Lỗi: Số lượng sản phẩm đặt mua vượt quá số lượng trong kho/lỗi không mong muốn');
+		}
+		return Redirect::route('admin.order.index')->with('message', 'update hoá đơn thành công');
 	}
 
 
@@ -85,5 +91,9 @@ class OrderController extends AdminController {
 		return Redirect::route('admin.order.index')->with('message', 'Xoá thành công');
 	}
 
+	public function deleteProduct($id)
+	{
+		OrderProduct::find($id)->delete();
+	}
 
 }

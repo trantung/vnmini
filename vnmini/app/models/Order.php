@@ -19,4 +19,9 @@ class Order extends Eloquent
     {
         return $this->belongsTo('Customer', 'customer_id', 'id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany('Product', 'order_products', 'order_id', 'product_id');
+    }
 }

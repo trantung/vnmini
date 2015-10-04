@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@include('admin.error-message')
 <div id="content">
     <div class="page-header">
         <h1>Chi tiết sản phẩm </h1>

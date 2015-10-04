@@ -127,3 +127,9 @@ function returnDiscount($items)
     $countNormal = count($items) - $countPromotion;
     return [$countNormal, $countPromotion, $number];
 }
+
+function returnOrderProductId($productId, $orderId)
+{
+    $id = OrderProduct::where('product_id', $productId)->where('order_id', $orderId)->first()->id;
+    return $id;
+}

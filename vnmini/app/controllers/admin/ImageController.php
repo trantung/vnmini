@@ -6,6 +6,4 @@ class ImageController extends AdminController {
 	{
 		AdminImage::find($id)->delete();
 	}
-
-
 }

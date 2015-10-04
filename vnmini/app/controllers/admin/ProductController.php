@@ -120,8 +120,13 @@ class ProductController extends AdminController {
 	{
 		$product = Product::find($id);
 		$imageRelates = $product->images;
-		foreach ($imageRelates as $key => $value) {
-			AdminImage::find($value->id)->delete();
+		// dd($product->images->toArray());
+		$orders = $product->orders;
+		if (!empty($orders->toArray())) {
+			return Redirect::route('admin.products.show', $id)->with('message', 'Không thế xoá sản phẩm đã có trong hoá đơn');
+		}
+		if (!empty($product->images->toArray())) {
+			Common::deleteRelate($imageRelates, 'AdminImage');
 		}
 		Common::delete($id);
 		return Redirect::route('admin.products.index')->with('message', 'Xoá thành công');

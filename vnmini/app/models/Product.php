@@ -30,4 +30,9 @@ class Product extends Eloquent
     {
         return $this->hasMany('AdminImage', 'product_id', 'id');
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany('Order', 'order_products', 'product_id', 'order_id');
+    }
 }

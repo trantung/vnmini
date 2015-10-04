@@ -33,6 +33,7 @@ define('APPROVE', 2);
 define('NO_SHIP', 3);
 define('SHIP', 4);
 define('PAY', 5);
+define('PAGINATE_ORDER', 10);
 //Shop
 define('PATH_SHOP', '/img/shops');
 
