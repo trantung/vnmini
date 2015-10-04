@@ -8,7 +8,7 @@ define('PAGINATE_CATEGORY', 10);
 define('PAGINATE_USER', 10);
 define('PAGINATE_SORT', 10);
 define('PAGINATE_COMMENT', 10);
-define('PAGINATE_NEWS', 10);
+define('PAGINATE_NEWS', 5);
 define('MAX_SIZE_IMAGE', 5000);
 define('MIME_TYPES', 'jpg,jpeg,png,gif');
 define('PATH_PRODUCT', '/img/products');
