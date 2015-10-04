@@ -15,7 +15,7 @@
       <tr class="success">
         <td>{{ $bannerSlide->id }}</td>
         <td>
-            <img src="{{ asset(PATH_BANNER_SLIDE).'/'.$bannerSlide->image_url }}" class="img-rounded" width="150" height="100">
+            <img src="{{ asset($bannerSlide->image_url) }}" class="img-rounded" width="150" height="100">
         </td>
       </tr>
     </tbody>

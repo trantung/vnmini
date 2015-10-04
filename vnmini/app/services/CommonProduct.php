@@ -81,7 +81,7 @@ class CommonProduct
 				$filename = $value->getClientOriginalName();
 				$uploadSuccess   =  $value->move($destinationPath, $filename);
 				$adminImage['product_id'] = $productId;
-				$adminImage['image_url'] = $filename;
+				$adminImage['image_url'] = PATH_PRODUCT.'/'.$productId.'/'.$filename;
 				$imageRelateId[] = AdminImage::firstOrCreate($adminImage)->id;
 			}
 		}
@@ -97,7 +97,7 @@ class CommonProduct
 			$filename = $file->getClientOriginalName();
 			$uploadSuccess   =  $file->move($destinationPath, $filename);
 		}
-		return $filename;
+		return $path.'/'.$filename;
 	}
 
 	public static function updateRelateImage($input, $productId)
@@ -109,7 +109,7 @@ class CommonProduct
 				$filename = $value->getClientOriginalName();
 				$uploadSuccess   =  $value->move($destinationPath, $filename);
 				$adminImage['product_id'] = $productId;
-				$adminImage['image_url'] = $filename;
+				$adminImage['image_url'] = $path.'/'.$productId.'/'.$filename;
 				AdminImage::find($key)->update($adminImage);
 			}
 		}

@@ -51,14 +51,14 @@
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Ảnh đại diện</label>
-        <img src="{{ asset('img/products').'/'.$product->image_url }}" class="img-rounded" width="304" height="236" id="blah">
+        <img src="{{ asset( $product->image_url ) }}" class="img-rounded" width="304" height="236" id="blah">
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Ảnh liên quan</label>
         @foreach($imageRelates as $key => $image)
             <div>
                 Ảnh liên quan thứ {{ $key + 1 }}
-                <img src="{{ asset('img/products/'.$product->id).'/'.$image->image_url }}" class="img-rounded" width="304" height="236">
+                <img src="{{ asset($image->image_url) }}" class="img-rounded" width="304" height="236">
             </div>
         @endforeach
     </div>

@@ -77,6 +77,7 @@ class ShopController extends AdminController {
 	                ->withInput($input)
 	                ->withErrors($validator);
 	        }
+			$shop = new Shop;
 	        $input['image_url'] = CommonProduct::uploadImage($input, PATH_SHOP);
 			Common::update($id, $input);
 			return Redirect::route('admin.shop.index')->with('message', 'Update thành công');

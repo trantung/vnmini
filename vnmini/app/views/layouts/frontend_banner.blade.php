@@ -3,24 +3,20 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="{{ asset('img/slide/slide1.png') }}" alt="Slide 1">
+        @foreach($galary_slider as $key => $slider)
+            <div class="item 
+                <?php 
+                    if($key == 0){
+                        echo 'active';
+                    }
+                ?>
+            ">
+                <img src="{{ asset($slider->image_url) }}" alt="Slide {{ $key }}">
                 <div class="carousel-caption">
                 
                 </div>
             </div>
-            <div class="item">
-                <img src="{{ asset('img/slide/slide1.png') }}" alt="Slide 2">
-                <div class="carousel-caption">
-                
-                </div>
-            </div>
-            <div class="item">
-                <img src="{{ asset('img/slide/slide1.png') }}" alt="Slide 3">
-                <div class="carousel-caption">
-                
-                </div>
-            </div>
+        @endforeach
         </div>
 
         <!-- Controls -->

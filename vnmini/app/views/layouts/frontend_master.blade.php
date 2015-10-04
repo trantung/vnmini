@@ -23,6 +23,8 @@
         <link rel="stylesheet" href="{{ asset('stylesheets/style.css') }}">
         @yield('css')
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places" style=""></script>
     </head>
 <body>
 
@@ -49,12 +51,12 @@
 
 </body>
     <!-- include jQuery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
                 
    <script type="text/javascript" src="{{ asset('script/script.js') }}"></script>
-
+   
    @yield('script')
 </html>

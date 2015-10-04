@@ -50,7 +50,7 @@
     <div class="form-group col-sm-4 col-md-8">
         <label>Ảnh đại diện</label>
         {{Form::file('image_url',"", array('class'=>'form-control','id'=>'imgInp'))}}
-        <img src="{{ asset('img/products').'/'.$product->image_url }}" class="img-rounded" width="304" height="236" id="blah">
+        <img src="{{ asset($product->image_url) }}" class="img-rounded" width="304" height="236" id="blah">
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Ảnh liên quan</label>
@@ -58,7 +58,7 @@
             @foreach($imageRelates as $key => $image)
                 <div>
                     Ảnh liên quan thứ {{ $key + 1 }}
-                    <img src="{{ asset('img/products/'.$product->id).'/'.$image->image_url }}" class="img-rounded" width="304" height="236">
+                    <img src="{{ asset($image->image_url) }}" class="img-rounded" width="304" height="236">
                     <a href="javascript:;" onclick="deleteImageRelate()" data-id="{{ $image->id }}" class="image_relate btn btn-danger">Xoá</a>
                 </div>
                 <br/>
