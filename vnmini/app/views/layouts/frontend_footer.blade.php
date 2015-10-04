@@ -11,7 +11,9 @@
                         Email : <a href="mailto:vnmini18@gmail.com">vnmini18@gmail.com</a> <br>
                         Web : <a href ="{{ route('frontend.product.index') }}" >{{ url() }}</a><br>
                     </address>
-                    <div class="fb-like">like facebook</div>
+                    <div class="fb-like"></div>
+                    <br />
+                    <div class="fb-share-button" data-href="{{ FB_PAGE }}" data-layout="button_count"></div>
                 </div>
             </div>
             <input id = "latitude" type="hidden" value="{{ $info->lat }}">

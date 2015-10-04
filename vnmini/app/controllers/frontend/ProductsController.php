@@ -66,7 +66,19 @@ class ProductsController extends \BaseController {
 	}
 
 	public function getTintuc(){
-		return View::make('frontend.tintuc');
+		$news = AdminNew::orderBy('created_at', 'DESC')->paginate(PAGINATE_NEWS);
+		$article = null;
+		foreach ($news as $key =>$val) {
+			if($key == 0){
+				$article =$val;
+			}
+		}
+		return View::make('frontend.tintuc')->with(compact('news', 'article'));
+	}
+	public function showTintuc($id){
+		$news = AdminNew::orderBy('created_at', 'DESC')->paginate(PAGINATE_NEWS);
+		$article = AdminNew::findOrFail($id);
+		return View::make('frontend.tintuc')->with(compact('news', 'article'));
 	}
 
 	public function search()

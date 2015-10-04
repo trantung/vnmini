@@ -20,6 +20,7 @@ Route::post('/cart/customer', array('as'=>'cart.customer.add','uses'=>'CartContr
 Route::get('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@getCreateOrder'));
 Route::get('/lienhe', array('as'=>'frontend.lienhe','uses'=>'ProductsController@getLienhe'));
 Route::get('/tintuc', array('as'=>'frontend.tintuc','uses'=>'ProductsController@getTintuc'));
+Route::get('/tintuc/{tintuc}', array('as'=>'frontend.tintuc.show','uses'=>'ProductsController@showTintuc'));
 Route::post('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@postCreateOrder'));
 Route::get('/search', array('as' => 'frontend.search', 'uses' => 'ProductsController@search'));
 
