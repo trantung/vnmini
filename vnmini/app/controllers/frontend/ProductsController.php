@@ -1,6 +1,6 @@
 <?php
 
-class ProductsController extends \BaseController {
+class ProductsController extends \FrontendController {
 
 	/**
 	 * Display a listing of frontend.products
@@ -9,8 +9,8 @@ class ProductsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$sorts = Sort::all(['name', 'id']);
-		return View::make('frontend.products.index', compact('sorts'));
+		// $sorts = Sort::all(['name', 'id']);
+		return View::make('frontend.products.index');
 	}
 
 	/**
@@ -55,7 +55,7 @@ class ProductsController extends \BaseController {
 		return View::make('frontend.products.show', compact('product', 'product_relates'));
 	}
 
-	public function getProductBySort($id){
+	public function getProductBySort($name, $id){
 		$sort = Sort::findOrFail($id);
 		return View::make('frontend.categories.show', compact('sort'));
 	}
@@ -84,7 +84,6 @@ class ProductsController extends \BaseController {
 	public function search()
 	{
 		$input = Input::all();
-		// dd($input);
 		$results = CommonProduct::search($input);
 		return View::make('frontend.search')->with(compact('results'));
 	}

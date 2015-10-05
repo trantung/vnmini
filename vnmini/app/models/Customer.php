@@ -12,7 +12,8 @@ class Customer extends Eloquent
     					'password', 'phone',
      					'address', 'city', 'note'
      					];
-
+    protected $dates = ['deleted_at'];
+                        
     public function orders()
     {
         return $this->hasMany('Order', 'customer_id', 'id');

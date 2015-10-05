@@ -49,7 +49,15 @@
                 {{ $orderProduct->product->code }}
             </div>
             <div>
-                <label>Tên Sản phẩm</label>
+                <label>Giá Sản phẩm</label>
+                @if($orderProduct->product->new_price)
+                    {{ $orderProduct->product->new_price }}
+                @else
+                    {{ $orderProduct->product->origin_price }}
+                @endif
+            </div>
+            <div>
+                <label>Tên Sản phẩm </label>
                 {{ $orderProduct->product->name }}
             </div>
             <div>

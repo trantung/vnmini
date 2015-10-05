@@ -8,7 +8,7 @@ class Sort extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'sorts';
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'name_seo'];
     protected $dates = ['deleted_at'];
 
     public function categories()

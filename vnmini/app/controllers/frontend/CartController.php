@@ -1,6 +1,6 @@
 <?php
 
-class CartController extends \BaseController {
+class CartController extends \FrontendController {
 
 	/**
 	 * Display a listing of the resource.
@@ -136,17 +136,17 @@ class CartController extends \BaseController {
                     $input['product_quantity'] = $item->qty;
                     Common::create($input, 'orderProduct');
                 }
-                DB::commit();
                 //send email
-                $data = array(
-                            'items' => Cart::content(),
-                            'order' => $order,
-                        );
-                Mail::send('emails.email', $data, function($message) use ($customer){
+                $data = [
+                        'items' => Cart::content(),
+                        'order' => $order
+                    ];
+                Mail::send('emails.email', $data, function($message) use ($customer, $data){
                     $message->to($customer['email'])
                             ->subject(SUBJECT_EMAIL);
                 });
                 Cart::destroy();
+                DB::commit();
                 return View::make('frontend.carts.cart_complete')->with(compact('code'));
             } catch (\Exception $e) {
                 DB::rollback();

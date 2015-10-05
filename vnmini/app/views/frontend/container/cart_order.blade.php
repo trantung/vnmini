@@ -40,7 +40,12 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="text-right">Chiết khấu</td>
-                                <td>{{ Discount::getDiscount() }}%</td>
+                                <td>@if($value_discount)
+                                        {{ Discount::getDiscount() }}%
+                                    @else
+                                        Không có discount
+                                    @endif
+                                </td>
                             </tr>
                             
                             <tr>

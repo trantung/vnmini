@@ -1,4 +1,6 @@
 <?php
+use Anhskohbo\UConvert\UConvert;
+
 function statusName($input, $msg1, $msg2)
 {
 	if ($input == 0) {
@@ -132,4 +134,10 @@ function returnOrderProductId($productId, $orderId)
 {
     $id = OrderProduct::where('product_id', $productId)->where('order_id', $orderId)->first()->id;
     return $id;
+}
+
+function uniToVni($unicode)
+{
+    $vni = UConvert::toVni($unicode, UConvert::UNICODE);
+    return $vni;
 }

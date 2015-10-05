@@ -7,9 +7,10 @@
         <!-- <meta charset="utf-8"> -->
         <!-- <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-        <title></title>
+        <title>vnnote</title>
+        <link rel="shortcut icon" href="img/logo.png" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <meta name="description" content="">
+        <meta name="description" content="{{ $des->description }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">

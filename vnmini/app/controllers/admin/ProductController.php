@@ -42,7 +42,6 @@ class ProductController extends AdminController {
         }
 		$productId = Common::create($input);
         $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId);
-		// dd($input['image_url']);
 		Common::update($productId, ['image_url' => $input['image_url']]);
 		$input['status'] = CommonProduct::getStatus($input);
 		if (!$productId) {

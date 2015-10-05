@@ -30,7 +30,7 @@
                                         <img src="{{ asset($product->image_url) }}">
                                     </a>
                                     <a href ="{{ route('frontend.product.show', $product->id) }}">
-                                        <h3>{{ $product->name }}</h3>
+                                        <h3>{{ uniToVni($product->name) }}</h3>
                                     </a>
                                     <div class="cost">
                                     @if(!empty($product->new_price))

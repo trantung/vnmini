@@ -9,43 +9,45 @@
 @stop
 
 @section('content')
-    <div id="section-1">
-        <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="item">
-                    <img src="images/page-image/item-1.png">
-                    <h3>Voøng ñaù maét hoå naâu vaøng</h3>
-                    <div class="cost"> 300.000 <span>đ</span></div>
-                    <button class="add-to-cart">Thêm vào giỏ</button>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="item">
-                    <img src="images/page-image/item-2.png">
-                    <h3>Voøng ñaù nham thaïch nuùi löûa</h3>
-                    <div class="cost"> 300.000 <span>đ</span></div>
-                    <button class="add-to-cart">Thêm vào giỏ</button>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="item">
-                    <img src="images/page-image/item-3.png">
-                    <h3>Voøng ñaù thaïch anh tím</h3>
-                    <div class="cost"> 300.000 <span>đ</span></div>
-                    <button class="add-to-cart">Thêm vào giỏ</button>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="item">
-                    <img src="images/page-image/item-4.png">
-                    <h3>Voøng ñaù thaïch anh hoàng</h3>
-                    <div class="cost"> 300.000 <span>đ</span></div>
-                    <button class="add-to-cart">Thêm vào giỏ</button>
+<section class="main-content">
+    <div class="container">
+        <div class="block-1">
+            <h2 class="block-title search-result">{{ uniToVni('KẾT QUẢ') }}</h2>
+
+            <div class="bs-example">
+           
+                <div class="tab-content">
+                    <div id="all-item" class="tab-pane fade in active">
+                        <div class="row">
+                        @foreach($results as $product)
+                            <div class="col-md-3 col-sm-3 col-xs-6">
+                                <div class="item">
+                                    <a href ="{{ route('frontend.product.show', $product->id) }}">
+                                        <img src="{{ asset($product->image_url) }}">
+                                    </a>
+                                    <a href ="{{ route('frontend.product.show', $product->id) }}">
+                                        <h3>{{ uniToVni($product->name) }}</h3>
+                                    </a>
+                                    <div class="cost">
+                                    @if(!empty($product->new_price))
+                                        <span class="price">
+                                            {{ $product->origin_price }}<span>đ</span>
+                                        </span>{{ $product->new_price }}<span>đ</span>
+                                    @else
+                                        </span>{{ $product->origin_price }}<span>đ</span>
+                                    @endif
+                                    </div>
+                                    <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', $product->id) }}');">Thêm vào giỏ</button>
+                                </div>
+                            </div>
+                        @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- row 1 -->
     </div>
+</section>
 @stop
 
 @section('script')
