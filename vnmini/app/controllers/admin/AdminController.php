@@ -8,6 +8,7 @@ class AdminController extends BaseController {
 
 	public function getLogin()
 	{
+		// dd(123);
         return View::make('admin.login');
 	}
 

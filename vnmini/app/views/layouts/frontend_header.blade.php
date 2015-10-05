@@ -14,7 +14,11 @@
                 <span class="icon-bar"></span>
             </button>
             <div class="navbar-right">
-                <form class="home-search navbar-form" role="search" action="{{ route('frontend.search') }}" method="GET"> 
+                @if(Request::segments() == null || Request::segments()[0] != 'tin-tuc' )
+                    <form class="home-search navbar-form" role="search" action="{{ route('frontend.search') }}" method="GET"> 
+                @else
+                    <form class="home-search navbar-form" role="search" action="{{ route('frontend.search.new') }}" method="GET"> 
+                @endif
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Tìm kiếm" name="name">
