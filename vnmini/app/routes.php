@@ -55,3 +55,4 @@ Route::get('/tin-tuc/{tintuc}', array('as'=>'frontend.tintuc.show','uses'=>'Prod
 Route::post('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@postCreateOrder'));
 Route::get('/search', array('as' => 'frontend.search', 'uses' => 'ProductsController@search'));
 Route::get('/searchnew', array('as' => 'frontend.search.new', 'uses' => 'ProductsController@searchNew'));
+Route::post('/comment/{product_id}', array('as' => 'frontend.product.comment', 'uses' => 'ProductsController@postComment'));

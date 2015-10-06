@@ -96,4 +96,12 @@ class ProductsController extends \FrontendController {
 		// dd($name);
 		return View::make('frontend.search_new')->with(compact('results'));
 	}
+
+	public function postComment($product_id){
+		$input = Input::all();
+		Product::findOrFail($product_id);
+		Common::create($input, 'comment');
+
+		return Redirect::route('frontend.product.show', $product_id)->with(['message'=>'Cảm ơn bạn đã comment cho chúng tôi!']);
+	}
 }
