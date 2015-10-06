@@ -44,7 +44,7 @@ Route::group(['prefix' => 'admin'], function () {
 //Frontend
 // dd(Request::segments()[0]);
 Route::get('/', array('as'=>'frontend.product.index','uses'=>'ProductsController@index'));
-Route::get('/product/{product}', array('as'=>'frontend.product.show','uses'=>'ProductsController@show'));
+Route::get('/{product_name}/{id}', array('as'=>'frontend.product.show','uses'=>'ProductsController@showName'));
 Route::get('/{name}/{id}', array('as'=>'frontend.sort.show','uses'=>'ProductsController@getProductBySort'));
 Route::resource('/cart','CartController', array('only'=>['index', 'update', 'destroy','store']));
 Route::post('/cart/customer', array('as'=>'cart.customer.add','uses'=>'CartController@postInfoCustomer'));

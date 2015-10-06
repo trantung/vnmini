@@ -48,7 +48,7 @@ class ProductsController extends \FrontendController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function showName($name,$id)
 	{
 		$product = Product::findOrFail($id);
 		$product_relates = CommonProduct::getRelateProduct($product);
@@ -99,9 +99,10 @@ class ProductsController extends \FrontendController {
 
 	public function postComment($product_id){
 		$input = Input::all();
-		Product::findOrFail($product_id);
+		$product = Product::findOrFail($product_id);
+		$name_seo = CommonProduct::getNameSeo($product->name_seo);
 		Common::create($input, 'comment');
 
-		return Redirect::route('frontend.product.show', $product_id)->with(['message'=>'Cảm ơn bạn đã comment cho chúng tôi!']);
+		return Redirect::route('frontend.product.show', [$name_seo,$product_id])->with(['message'=>'Cảm ơn bạn đã comment cho chúng tôi!']);
 	}
 }

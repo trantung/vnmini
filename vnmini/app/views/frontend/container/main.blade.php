@@ -24,12 +24,15 @@
                 <div id="all-item" class="tab-pane fade in active">
                     <div class="row">
                         @foreach($products as $product)
+                        <?php 
+                            $name_seo = CommonProduct::getNameSeo($product->name_seo);
+                        ?>
                             <div class="col-md-3 col-sm-3 col-xs-6">
                                 <div class="item">
-                                    <a href ="{{ route('frontend.product.show', $product->id) }}">
+                                    <a href ="{{ route('frontend.product.show', ['name_seo'=>$name_seo,'product_id'=>$product->id]) }}">
                                         <img src="{{ asset($product->image_url) }}">
                                     </a>
-                                    <a href ="{{ route('frontend.product.show', $product->id) }}">
+                                    <a href ="{{ route('frontend.product.show', ['name_seo'=>$name_seo,'product_id'=>$product->id]) }}">
                                         <h3>{{ uniToVni($product->name) }}</h3>
                                     </a>
                                     <div class="cost">
@@ -41,7 +44,7 @@
                                         </span>{{ $product->origin_price }}<span>đ</span>
                                     @endif
                                     </div>
-                                    <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', $product->id) }}');">Thêm vào giỏ</button>
+                                    <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$name_seo,'product_id'=>$product->id]) }}');">Thêm vào giỏ</button>
                                 </div>
                             </div>
                         @endforeach

@@ -122,4 +122,11 @@ class CommonProduct
     public static function getRelateProduct(Product $product){
     	return $product->category->products()->paginate(FRONTEND_PAGINATE_PRODUCT_RELATE);
     }
+
+    public static function getNameSeo($name){
+    	$lowerName = mb_strtolower($name);
+    	$nameSeo = str_replace(' ', '_', $lowerName);
+    	
+    	return $nameSeo;
+    }
 }
