@@ -52,7 +52,8 @@ class ProductsController extends \FrontendController {
 	{
 		$product = Product::findOrFail($id);
 		$product_relates = CommonProduct::getRelateProduct($product);
-		return View::make('frontend.products.show', compact('product', 'product_relates'));
+		$promotion = Promotion::findOrFail(1);
+		return View::make('frontend.products.show', compact('product', 'product_relates', 'promotion'));
 	}
 
 	public function getProductBySort($name, $id){
