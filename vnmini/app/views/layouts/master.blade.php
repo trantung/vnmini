@@ -212,13 +212,19 @@ $(document).ready(function(){
                         <a href="{{ route('admin.shop.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin cửa hàng</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.promotion.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin khuyến mãi</a>
+                        <a href="{{ route('admin.promotion.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin chiết khấu</a>
                     </li>
                     @if(Auth::user()->isAdmin())
                         <li>
                             <a href="{{ route('admin.user.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý user</a>
                         </li>
                     @endif
+                    <li>
+                        <a href="{{ route('admin.descriptionseo.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin seo cho description</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.footer.index') }}"><i class="fa fa-fw fa-dashboard"></i>Quản lý thông tin footer</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

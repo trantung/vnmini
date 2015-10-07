@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="page-header">
+    <h1>Sửa hoá đơn</h1>
+</div>
 @include('admin.error-message')
 {{ Form::open(array("route"=>array('admin.order.update', $order->id), 'method' => 'PUT', "class"=>"form-horizontal",'files'=>true))}}
     <div class="form-group col-sm-4 col-md-8">

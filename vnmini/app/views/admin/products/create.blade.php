@@ -1,5 +1,8 @@
 @extends('layouts.master')
 @section('content')
+<div class="page-header">
+    <h1>Tạo mới sản phẩm</h1>
+</div>
 @include('admin.error-message')
 <form action="{{ route('admin.products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
     <div class="form-group col-sm-4 col-md-8">

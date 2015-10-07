@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-    <h1>BannerImgae / Show </h1>
+    <h1>Chi tiết ảnh banner</h1>
 </div>
 <table class="table">
     <thead>

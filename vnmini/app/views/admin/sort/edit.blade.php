@@ -19,7 +19,13 @@
                         <tr>
                             <td>Tên</td>
                             <td>
-                                <input type="text" name = "name" value="{{ $sort->name }}" style="width: 100%" required>
+                                <input type="text" name = "name" value="{{ $sort->name }}" class="form-control" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tên SEO</td>
+                            <td>
+                                <input type="text" name = "name_seo" value="{{ $sort->name_seo }}" class="form-control" required>
                             </td>
                         </tr>
                     </tbody>

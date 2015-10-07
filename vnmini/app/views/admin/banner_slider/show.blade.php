@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-    <h1>BannerImgae / Show </h1>
+    <h1>Tạo mới ảnh slide</h1>
 </div>
 <table class="table">
     <thead>

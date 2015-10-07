@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-    <h1>Categories / Show </h1>
+    <h1>Chi tiết category</h1>
 </div>
 
 <table class="table">

@@ -11,6 +11,7 @@ class Common
 	public static function update($id, $input)
 	{
 		$name = self::commonName();
+		dd($name);
 		$name::find($id)->update($input);
 	}
 
@@ -73,6 +74,12 @@ class Common
 		}
 		if ($name = 'comment') {
 			return 'Comment';
+		}
+		if ($name = 'descriptionseo') {
+			return 'DescriptionSeo';
+		}
+		if ($name = 'footer') {
+			return 'Footer';
 		}
 	}
 

@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
-@section('content')
+@section('content')tức
+<div class="page-header">
+    <h1>Sửa comment</h1>
+</div>
 <div id="content">
 {{ Form::open(['route' => ['admin.comment.update', $comment->id], 'method' => 'PUT']) }}
     <div class="page-header">

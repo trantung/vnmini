@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="page-header">
-        <h1>News</h1>
+        <h1>Tạo mới tin tức</h1>
     </div>
 @include('admin.error-message')
     <div class="row">

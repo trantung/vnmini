@@ -3,7 +3,7 @@
 @section('content')
 @include('admin.error-message')
     <div class="page-header">
-        <h1>Categories / Edit </h1>
+        <h1>Sửa ảnh banner</h1>
     </div>
     <div class="row">
         <div class="col-md-12">

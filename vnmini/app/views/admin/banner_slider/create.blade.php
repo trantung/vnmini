@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="page-header">
+    <h1>Tạo mới slide banner</h1>
+</div>
 @include('admin.error-message')
     <div class="page-header">
         <h1>Slide </h1>

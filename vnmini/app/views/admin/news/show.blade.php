@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="page-header">
+    <h1>Chi tiết tin tức</h1>
+</div>
 <div id="content">
     <div class="page-header">
         <h1>Chi Bài Viết </h1>

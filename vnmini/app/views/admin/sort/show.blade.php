@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-    <h1>Thể loại </h1>
+    <h1>Chi tiết thể loại </h1>
 </div>
 <table class="table">
     <thead>

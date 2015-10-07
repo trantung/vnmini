@@ -39,6 +39,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('products', 'ProductController');
     Route::post('image/delete/{id}', array('uses' => 'ImageController@delete', 'as' => 'admin.image.delete'));
     Route::resource('promotion', 'PromotionController');
+    Route::resource('descriptionseo', 'SeoController');
+    Route::resource('footer', 'FooterController');
 
 });
 //Frontend
