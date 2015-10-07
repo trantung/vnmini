@@ -69,9 +69,8 @@ class SeoController extends AdminController {
 	public function update($id)
 	{
 		$input = Input::except('_method');
-		// dd($name = Request::segment(2));
 		Common::update($id, $input);
-		return Redirect::route('admin.seo.index')->with('message', 'update thành công');
+		return Redirect::route('admin.descriptionseo.index')->with('message', 'update thành công');
 	}
 
 
