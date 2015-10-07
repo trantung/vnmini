@@ -12,6 +12,12 @@
                     <label for="name">Tên:</label>
                     <input type="text" class="form-control" id="name" value="{{ $shop->name }}" name="name" required>
                 </div>
+                <div class="form-group"> 
+                    <label>Logo cửa hàng</label>
+                    {{ Form::file('logo',"", array('class'=>'form-control','id'=>'img')) }}
+                    <br />
+                    <img src="{{ asset($shop->logo) }}" class="img-rounded" alt="Cinque Terre" width="500" height="236" id="blah">
+                </div>
                 <div class="form-group">
                     <label for="add">Địa chỉ:</label>
                     <input type="text" class="form-control" id="add" value="{{ $shop->address }}" name="address" required>
@@ -38,9 +44,9 @@
                 </div>
                 <div class="form-group"> 
                     <label>Ảnh cửa hàng</label>
-                    {{Form::file('image_url',"", array('class'=>'form-control','id'=>'img'))}}
+                    {{ Form::file('image_url',"", array('class'=>'form-control','id'=>'img')) }}
                     <br />
-                    <img src="{{ asset( $shop->image_url) }}" class="img-rounded" alt="Cinque Terre" width="500" height="236" id="blah">
+                    <img src="{{ asset( $shop->image_url) }}" class="img-rounded" alt="Cinque Terre" width="500" height="236">
                 </div>
                 <div class="form-group">
                     <label>Vị trí</label>

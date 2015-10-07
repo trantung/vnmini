@@ -98,6 +98,7 @@ class CommonProduct
 			$filename = $file->getClientOriginalName();
 			$uploadSuccess   =  $file->move($destinationPath, $filename);
 		}
+		// dd($path.'/'.$filename);
 		return $path.'/'.$filename;
 	}
 

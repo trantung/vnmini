@@ -68,25 +68,27 @@ class ShopController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except('_method', '_token');
+		if (!Input::file('image_url') && !Input::file('logo')) {
+			Common::update($id, Input::except('_method', '_token', 'image_url', 'logo'));
+			return Redirect::route('admin.shop.index')->with('message', 'Update thành công');
+		}
+		$inputAll = Input::except('_method', '_token');
+		$input = Input::except('_method', '_token', 'image_url', 'logo');
 		if (Input::file('image_url')) {
-			$rule = CommonProduct::validateImage($input);
-			$validator = Validator::make($input, $rule);
+			$rule = CommonProduct::validateImage($inputAll);
+			$validator = Validator::make($inputAll, $rule);
 			if ($validator->fails()) {
 	            return Redirect::route('admin.shop.index')
-	                ->withInput($input)
+	                ->withInput($inputAll)
 	                ->withErrors($validator);
 	        }
-			$shop = new Shop;
-	        $input['image_url'] = CommonProduct::uploadImage($input, PATH_SHOP);
-			Common::update($id, $input);
-			return Redirect::route('admin.shop.index')->with('message', 'Update thành công');
+	        $input['image_url'] = CommonProduct::uploadImage($inputAll, PATH_SHOP);
 		}
-		else {
-			Common::update($id, Input::except('_method', '_token', 'image_url'));
-			return Redirect::route('admin.shop.index')->with('message', 'Update thành công');
+		if (Input::file('logo')) {
+	        $input['logo'] = CommonShop::uploadLogo($inputAll, PATH_SHOP);
 		}
-		
+		Common::update($id, $input);
+		return Redirect::route('admin.shop.index')->with('message', 'Update thành công');
 	}
 
 

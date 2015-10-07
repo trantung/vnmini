@@ -31,7 +31,6 @@ class CreateFooterTable extends Migration {
 	public function down()
 	{
         Schema::drop('footers');
-		
 	}
 
 }

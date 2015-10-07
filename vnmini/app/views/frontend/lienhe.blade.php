@@ -18,11 +18,11 @@
                 {{ $info->description }}
                 <br />
                 <address>
-                    <span>Liên hệ: Vnmini.net. </span><br>
-                    Địa chỉ: {{ $info->address }}<br>
-                    Hotline: {{ $info->mobile }}<br>
-                    Facebook Page: <a href="https://www.facebook.com/Vnmini.net">https://www.facebook.com/Vnmini.net</a><br>
-                    Email: <a href="mailto:vnmini18@gmail.com">Vnmini18@gmail.com</a> <br>
+                    <span>Liên hệ: {{ $footer->contact }} </span><br>
+                    Địa chỉ: {{ $footer->address }}<br>
+                    Hotline: {{ $footer->hotline }}<br>
+                    Facebook Page: <a href="https://www.facebook.com/Vnmini.net">{{ FB_PAGE }}</a><br>
+                    Email: <a href="mailto:vnmini18@gmail.com">{{ $footer->email }}</a> <br>
                 </address>
             </div>
         </div>

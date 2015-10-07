@@ -7,8 +7,8 @@
         <!-- <meta charset="utf-8"> -->
         <!-- <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-        <title>vnnote</title>
-        <link rel="shortcut icon" href="img/logo.png" />
+        <title>{{ $info->name }}</title>
+        <link rel="shortcut icon" href="img/logo_short.png" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <meta name="description" content="{{ $des->description }}">
         <meta name="keyword" content="{{ $des->keyword }}">

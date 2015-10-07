@@ -1,7 +1,7 @@
 <header class="container">
     <div class="logo"> 
         <a href="/">
-            <img src="{{ asset('img/logo.png') }}">
+            <img src="{{ asset($info->logo) }}">
         </a>
     </div>
     <div class="row">

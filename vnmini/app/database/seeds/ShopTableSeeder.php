@@ -19,6 +19,7 @@ Cam kết về chất lượng sản phẩm cung cấp: Vnmini.net cung cấp s�
 					'contact' => 'Anh Hùng',
 					'tel' => '0949998587',
 					'mobile' => '0949998587',
+					'logo' => 'img/logo.png'
 			]);
 	}
 
