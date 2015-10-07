@@ -65,7 +65,15 @@
                             <div class="input-group-addon arrow-down">arrow down</div>
                             <button name="add_cart" id ="button-cart" value="{{ $product->id }}">Thêm vào giỏ</button>
                         </div>
-                        <br /><br />
+
+                        <br />
+                        <div class="block">
+                            <h2>{{ nl2br(uniToVni($promotion->title)) }}</h2>
+                            <div class="description">
+                                {{ $promotion->description }}
+                            </div>
+                        </div>
+                        <br />
                         <div id="success"></div>
                     </div>
                 </div>

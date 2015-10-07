@@ -45,6 +45,7 @@ class CommonProduct
 		$rule = [
 			'category_id' => 'required',
 			'name' => 'required',
+			'name_seo' => 'required',
 			'code' => 'required',
 			'quantity' => 'required|integer|min:0',
 			'origin_price' => 'required|integer|min:1000|'.'greater_than:new_price,' . $input['new_price'],
