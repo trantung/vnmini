@@ -9,7 +9,8 @@ class FooterController extends AdminController {
 	 */
 	public function index()
 	{
-		dd('footer');
+		$footer = Footer::findOrFail(1);
+		return View::make('admin.footer.index')->with(compact('footer'));
 	}
 
 
@@ -67,7 +68,9 @@ class FooterController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::except('_method');
+		Common::update($id, $input);
+		return Redirect::route('admin.footer.index')->with('message', 'update thành công');
 	}
 
 

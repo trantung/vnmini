@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="img/logo.png" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <meta name="description" content="{{ $des->description }}">
-        <meta name="description" content="{{ $des->keyword }}">
+        <meta name="keyword" content="{{ $des->keyword }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">

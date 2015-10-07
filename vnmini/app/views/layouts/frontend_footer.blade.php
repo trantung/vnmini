@@ -4,11 +4,11 @@
             <div class="col-md-7 col-sm-7">
                 <div class="contact">
                     <h4>liên hệ</h4>
-                    <span>VNMINI.NET</span>
+                    <span>{{ $info->contact }}</span>
                     <address>
                         Địa chỉ : {{ $info->address }} <br>
-                        Hotline : {{ $info->mobile }}<br>
-                        Email : <a href="mailto:vnmini18@gmail.com">vnmini18@gmail.com</a> <br>
+                        Hotline : {{ $info->hotline }}<br>
+                        Email : <a href="mailto:vnmini18@gmail.com">{{ $info->email }}</a> <br>
                         Web : <a href ="{{ route('frontend.product.index') }}" >{{ url() }}</a><br>
                     </address>
                     <div class="fb-like"></div>
