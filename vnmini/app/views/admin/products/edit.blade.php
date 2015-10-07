@@ -12,6 +12,10 @@
         {{ Form::text('name', $product->name, ['class' => 'form-control']) }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
+        <label>Tên sản phẩm SEO</label>
+        {{ Form::text('name_seo', $product->name_seo, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
         <label>Mã sản phẩm:</label>
         {{ Form::text('code', $product->code, ['class' => 'form-control']) }}
     </div>
