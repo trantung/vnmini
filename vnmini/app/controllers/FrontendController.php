@@ -7,7 +7,8 @@ class FrontendController extends BaseController {
 		$partner_slider = array();
 		$galary_slider = [];
 		$sliders = BannerSlider::all();
-		$info = Footer::findOrfail(1);
+		$footer = Footer::findOrfail(1);
+		$info = Shop::findOrfail(1);
 		$bannerText = BannerImage::all()->toArray();
 		$des = DescriptionSeo::findOrfail(1);
 		foreach ($sliders as $slider) {
@@ -24,6 +25,7 @@ class FrontendController extends BaseController {
 		View::share('partner_slider',$partner_slider);
 		View::share('bannerText',$bannerText);
 		View::share('des',$des);
+		View::share('footer',$footer);
 	}
 
 	/**
