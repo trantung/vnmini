@@ -11,7 +11,7 @@
 @section('content')
     <section class="main-content">
     <div class="container">
-            @include('frontend.container.article', $product)
+        @include('frontend.container.article', $product)
         @if(!$product_relates->isEmpty())
         	@include('frontend.container.article_relate', $product_relates)
         @endif

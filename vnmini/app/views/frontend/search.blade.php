@@ -13,9 +13,9 @@
     <div class="container">
         <div class="block-1">
             <h2 class="block-title search-result">{{ uniToVni('KẾT QUẢ') }}</h2>
-
+            <div>Tìm thấy {{ count($results) }} sản phẩm</div>
+            <br/>
             <div class="bs-example">
-           
                 <div class="tab-content">
                     <div id="all-item" class="tab-pane fade in active">
                         <div class="row">

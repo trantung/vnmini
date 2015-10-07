@@ -40,15 +40,15 @@
                             {{ $product->origin_price }} <span>đ</span>
                         @endif
                     </div>
-                @if(!is_null($product->images))
-                    <div class="item-thumbnail">
-                        <ul>
-                        @foreach($product->images as $relate_image)
-                            <li><img src="{{ asset($relate_image->image_url) }}"></li>
-                        @endforeach
-                        </ul>
-                    </div>
-                @endif
+                    @if(!is_null($product->images))
+                        <div class="item-thumbnail">
+                            <ul>
+                            @foreach($product->images as $relate_image)
+                                <li><img src="{{ asset($relate_image->image_url) }}"></li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="form-quantity">
                         <label>số lượng</label>
                         <div class="quantity">
@@ -65,8 +65,8 @@
                             <div class="input-group-addon arrow-down">arrow down</div>
                             <button name="add_cart" id ="button-cart" value="{{ $product->id }}">Thêm vào giỏ</button>
                         </div>
-
                         <br />
+                        @if($product->new_price)
                         <div class="block">
                             <h2>{{ nl2br(uniToVni($promotion->title)) }}</h2>
                             <div class="description">
@@ -74,6 +74,7 @@
                             </div>
                         </div>
                         <br />
+                        @endif
                         <div id="success"></div>
                     </div>
                 </div>
@@ -88,7 +89,6 @@
                     <div class="tab-content">
                         <div id="all-item" class="tab-pane fade in active">
                             <p>{{ $product->description }} </p>
-                            <p>Thông tin giảm giá của sản phẩm</p>
                         </div>
                         <!-- all-item -->
                         <div id="section-1" class="tab-pane fade">

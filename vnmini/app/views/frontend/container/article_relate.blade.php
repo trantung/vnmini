@@ -4,15 +4,12 @@
         <div class="row">
             <div class="slider slick-auto-2">
             @foreach($product_relates as $product)
-            <?php 
-                 $name_seo = CommonProduct::getNameSeo($product->name_seo);
-            ?>
                 <div>
                     <div class="item">
-                        <a href ="{{ route('frontend.product.show', ['name_seo'=>$name_seo,'product_id'=>$product->id]) }}">
+                        <a href ="{{ route('frontend.product.show', ['name_seo'=> $product->name_,'product_id'=>$product->id]) }}">
                             <img src="{{ asset($product->image_url) }}">
                         </a>
-                        <a href ="{{ route('frontend.product.show', ['name_seo'=>$name_seo,'product_id'=>$product->id]) }}">
+                        <a href ="{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}">
                             <h3>{{ $product->name }}</h3>
                         </a>
                         <div class="cost">
@@ -24,7 +21,7 @@
                                 </span>{{ $product->origin_price }}<span>đ</span>
                             @endif
                         </div>
-                        <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$name_seo,'product_id'=>$product->id]) }}');">Thêm vào giỏ</button>
+                        <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}');">Thêm vào giỏ</button>
                     </div>
                 </div>
             @endforeach

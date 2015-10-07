@@ -85,8 +85,6 @@ class ProductsController extends \FrontendController {
 	public function search()
 	{
 		$input = Input::all();
-		// dd($input);
-		// dd($name);
 		$results = CommonProduct::search($input);
 		return View::make('frontend.search')->with(compact('results'));
 	}
@@ -94,7 +92,6 @@ class ProductsController extends \FrontendController {
 	{
 		$input = Input::all();
 		dd($input);
-		// dd($name);
 		return View::make('frontend.search_new')->with(compact('results'));
 	}
 
@@ -103,7 +100,6 @@ class ProductsController extends \FrontendController {
 		$product = Product::findOrFail($product_id);
 		$name_seo = CommonProduct::getNameSeo($product->name_seo);
 		Common::create($input, 'comment');
-
 		return Redirect::route('frontend.product.show', [$name_seo,$product_id])->with(['message'=>'Cảm ơn bạn đã comment cho chúng tôi!']);
 	}
 }
