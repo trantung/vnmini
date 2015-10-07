@@ -1,6 +1,7 @@
 <article class="main-content">
     <div class="container production">
         <div class="row">
+        @include('admin.error-message')
             <div class="col-md-8 col-sm-8">
                 <div class="detail-image">
                     <img src="{{ asset($product->image_url) }}">
@@ -91,20 +92,21 @@
                         </div>
                         <!-- all-item -->
                         <div id="section-1" class="tab-pane fade">
-                            <form class="clearfix">
+                            <form class="clearfix" action="{{ route('frontend.product.comment', $product->id) }}" method="post">
                                 <div class="form-group">
                                     <label>Họ tên <span class="text-note">*</span></label>
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" name="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email <span class="text-note">*</span></label>
-                                    <input type="email" class="form-control" name="email">
+                                    <input type="email" class="form-control" name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label >Đánh giá </label>
-                                    <textarea class="form-control"></textarea>
+                                    <textarea class="form-control" name="content" required></textarea>
                                 </div>
-                                <button type="submit" name="submit"> Gửi đi</button> 
+                                <input type="hidden" value="{{ $product->id }} " name="product_id" />
+                                <button type="submit"> Gửi đi</button> 
                             </form>
                         </div>
                     </div>

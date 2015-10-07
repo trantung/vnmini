@@ -71,6 +71,9 @@ class Common
 		if ($name = 'customer') {
 			return 'Customer';
 		}
+		if ($name = 'comment') {
+			return 'Comment';
+		}
 	}
 
 	public static function deleteRelate($list, $modelName)
