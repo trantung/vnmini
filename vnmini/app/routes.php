@@ -53,7 +53,7 @@ Route::post('/cart/customer', array('as'=>'cart.customer.add','uses'=>'CartContr
 Route::get('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@getCreateOrder'));
 Route::get('/lien-he', array('as'=>'frontend.lienhe','uses'=>'ProductsController@getLienhe'));
 Route::get('/tin-tuc', array('as'=>'frontend.tintuc','uses'=>'ProductsController@getTintuc'));
-Route::get('/tin-tuc/{tintuc}', array('as'=>'frontend.tintuc.show','uses'=>'ProductsController@showTintuc'));
+Route::get('/tin-tuc/{tintuc}/detail', array('as'=>'frontend.tintuc.show','uses'=>'ProductsController@showTintuc'));
 Route::post('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@postCreateOrder'));
 Route::get('/search', array('as' => 'frontend.search', 'uses' => 'ProductsController@search'));
 Route::get('/searchnew', array('as' => 'frontend.search.new', 'uses' => 'ProductsController@searchNew'));

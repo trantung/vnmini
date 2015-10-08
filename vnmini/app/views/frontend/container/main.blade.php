@@ -58,8 +58,6 @@
                     <!-- row 1 -->
                 </div>
                 <!-- all-item -->
-            
-                <!-- category-1 -->
             </div>
         </div>
     </div>
