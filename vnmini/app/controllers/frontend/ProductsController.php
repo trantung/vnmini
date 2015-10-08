@@ -91,8 +91,14 @@ class ProductsController extends \FrontendController {
 	public function searchNew()
 	{
 		$input = Input::all();
-		dd($input);
-		return View::make('frontend.search_new')->with(compact('results'));
+		if (!$input['name']) {
+			$news = AdminNew::orderBy('created_at', 'DESC')->paginate(PAGINATE_NEWS);
+		}
+		else {
+			$news = AdminNew::where('title', 'LIKE', '%'.$input['name'].'%')
+					->orderBy('created_at', 'DESC')->paginate(PAGINATE_NEWS);
+		}
+		return View::make('frontend.search_new')->with(compact('news'));
 	}
 
 	public function postComment($product_id){
