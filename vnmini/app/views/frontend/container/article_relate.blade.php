@@ -6,7 +6,7 @@
             @foreach($product_relates as $product)
                 <div>
                     <div class="item">
-                        <a href ="{{ route('frontend.product.show', ['name_seo'=> $product->name_,'product_id'=>$product->id]) }}">
+                        <a href ="{{ route('frontend.product.show', ['name_seo'=> $product->name_seo, 'product_id'=>$product->id]) }}">
                             <img src="{{ asset($product->image_url) }}">
                         </a>
                         <a href ="{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}">
