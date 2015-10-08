@@ -58,3 +58,4 @@ Route::post('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@
 Route::get('/search', array('as' => 'frontend.search', 'uses' => 'ProductsController@search'));
 Route::get('/searchnew', array('as' => 'frontend.search.new', 'uses' => 'ProductsController@searchNew'));
 Route::post('/comment/{product_id}', array('as' => 'frontend.product.comment', 'uses' => 'ProductsController@postComment'));
+Route::get('/{sort_name}/{sort_id}/{cate_id}/{cate_name}', array('as' => 'frontend.sort.category.product', 'uses' => 'ProductsController@getProductByCategory'));
