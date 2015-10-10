@@ -32,7 +32,6 @@ define('ACCEPT', 1);
 define('NO_APPROVE', 1);
 define('APPROVE', 2);
 define('NO_SHIP', 3);
-define('SHIP', 4);
 define('PAY', 5);
 define('PAGINATE_ORDER', 10);
 //Shop

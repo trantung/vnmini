@@ -122,7 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider'
+		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider'
 
 	),
 
@@ -191,6 +192,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
 	),
 
