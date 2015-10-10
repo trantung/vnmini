@@ -127,4 +127,37 @@ class CommonOrder
 		})->orderBy('created_at', 'desc')->paginate(PAGINATE_ORDER);
 		return $orders;
 	}
+
+	public static function writeExcel($file_path, $order_id){
+
+		$order = Order::findOrFail($order_id);
+		$objPHPExcel = \PHPExcel_IOFactory::load($file_path);
+        $objWorksheet = $objPHPExcel->getActiveSheet();
+        $highestRow = $objWorksheet->getHighestRow();
+        $newRow = $highestRow+1;
+        $orderProducts = $order->orderproducts;
+        $text = "";
+        $money = $order->value_origin;
+        $discount = $order->value_discount;
+        $create_date = date('Y-m-d',strtotime($order->created_at));
+        $updated_date = date('Y-m-d',strtotime($order->updated_at));
+        foreach($order->orderproducts as $key => $orderProduct){
+
+			$text.=$orderProduct->product->name.':'.CommonOrder::getQuantityProduct($order->id, $orderProduct->product->id).', ';
+        }
+        $text.='Giảm giá: '.$discount.', '.'Tổng tiền: '.$money;
+        $objWorksheet->SetCellValue(ORDER_STT.$newRow, $newRow);
+        $objWorksheet->SetCellValue(ORDER_CODE.$newRow, $order->code);
+        $objWorksheet->SetCellValue(ORDER_STATUS.$newRow, $order->status);
+        $objWorksheet->SetCellValue(ORDER_USER_ADDRESS.$newRow, $order->customer->address);
+        $objWorksheet->SetCellValue(ORDER_USER_PHONE.$newRow, $order->customer->phone);
+        $objWorksheet->SetCellValue(ORDER_USER_EMAIL.$newRow, $order->customer->email);
+        $objWorksheet->SetCellValue(ORDER_DETAIL.$newRow, $text);
+        $objWorksheet->SetCellValue(ORDER_CREATED_DATE.$newRow, $create_date);
+        $objWorksheet->SetCellValue(ORDER_UPDATED_DATE.$newRow, $updated_date);
+        $objWriter = new \PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save($file_path);
+
+        return 1;
+	}
 }
