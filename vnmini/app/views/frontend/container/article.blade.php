@@ -57,10 +57,12 @@
                             <span type="button" id="sub-quantity">Click me</span>
                         </div>
                         <h3 style="color:red;" id="qual_require"></h3>
-                        <div class="input-group">
-                            <div class="input-group-addon arrow-right">arrow right</div>
-                            <button name="buy">Thanh toán</button>
-                        </div>
+                        @if(Cart::count() > 0)
+                            <div class="input-group">
+                                <div class="input-group-addon arrow-right">arrow right</div>
+                                <a href = "{{ route('cart.index') }}"><button name="buy">Thanh toán</button></a>
+                            </div>
+                        @endif
                         <div class="input-group">
                             <div class="input-group-addon arrow-down">arrow down</div>
                             <button name="add_cart" id ="button-cart" value="{{ $product->id }}">Thêm vào giỏ</button>
