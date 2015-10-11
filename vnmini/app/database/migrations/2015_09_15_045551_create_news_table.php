@@ -16,7 +16,7 @@ class CreateNewsTable extends Migration {
             $table->increments('id');
             $table->integer('user_id');
             $table->string('title', 256)->nullable();
-            $table->string('description', 256)->nullable();
+            $table->text('description', 256)->nullable();
             $table->string('image_url', 256)->nullable();
             $table->softDeletes();
             $table->timestamps();

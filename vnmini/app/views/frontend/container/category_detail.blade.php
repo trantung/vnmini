@@ -2,7 +2,7 @@
     $sort_name = CommonProduct::getNameSeo($sort->name);
 ?>
 <div class="block-1">
-    <h2 class="block-title">{{ $sort->name }}</h2>
+    <h2 class="block-title">{{ uniToVni($sort->name) }}</h2>
     <div class="bs-example">
     <div class="">                
         <ul class="nav navbar-nav tabs">
