@@ -104,7 +104,7 @@
     });
 
     //zoom
-    $('.zoom-image').zoom({ on:'grab' });
+    // $('.zoom-image').zoom({ on:'grab' });
 
     // fix menu top.
     $(window).scroll(function(){
