@@ -11,7 +11,11 @@
 @section('content')
     <section class="main-content">
         <div class="container">
-            @include('frontend.container.sort_detail', $sort)
+            @if(!isset($categories))
+                @include('frontend.container.sort_detail', compact('sort'))
+            @else
+                @include('frontend.container.category_detail', compact('products', 'categories', 'sort'))
+            @endif
             <!-- block 1 -->
             {{-- @include('frontend.container.section2') --}}
             <!-- block 2 -->

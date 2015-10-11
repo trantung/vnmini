@@ -117,7 +117,10 @@ class CommonProduct
 		}
 	}
 
-	public static function getAllProduct(array $category_ids){
+	public static function getAllProduct(array $category_ids, $paginate = NULL){
+		if(is_null($paginate)){
+        	return Product::whereIn('category_id', $category_ids)->limit(8)->get();
+		}
         return Product::whereIn('category_id', $category_ids)->paginate(FRONTEND_PAGINATE_PRODUCT);
     }
 
@@ -127,7 +130,7 @@ class CommonProduct
 
     public static function getNameSeo($name){
     	$lowerName = mb_strtolower($name);
-    	$nameSeo = str_replace(' ', '_', $lowerName);
+    	$nameSeo = str_replace(' ', '-', $lowerName);
     	
     	return $nameSeo;
     }

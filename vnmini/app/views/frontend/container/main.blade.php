@@ -1,15 +1,21 @@
 @foreach($sorts as $sort)
+    <?php 
+        $sort_name = CommonProduct::getNameSeo($sort->name);
+    ?>
     <div class="block-1">
         <h2 class="block-title">{{ $sort->name }}</h2>
         <div class="bs-example">
         <div class="">                
             <ul class="nav navbar-nav tabs">
                 <li class="active">
-                    <a data-toggle="tab" href="#all-item" class="first">Tất cả</a>
+                    <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}" class="first">Tất cả</a>
                 </li>
                 @foreach($sort->categories as $category)
+                    <?php 
+                        $cate_name = CommonProduct::getNameSeo($category->name);
+                    ?>
                     <li>
-                        <a data-toggle="tab" href="#category-{{ $category->id }}">
+                        <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>$category->id, 'cate_name'=>$cate_name]) }}">
                             {{ $category->name }}
                         </a>
                     </li>
@@ -52,43 +58,6 @@
                     <!-- row 1 -->
                 </div>
                 <!-- all-item -->
-            @foreach($sort->categories as $category)
-                <?php 
-                    $products = CommonCategory::getProduct($category);
-                ?>
-                <div id="category-{{ $category->id }}" class="tab-pane fade">
-                    <div class="row">
-                    @foreach($products as $key => $product)
-                        <div class="col-md-3 col-sm-3 col-xs-6">
-                            <div class="item">
-                                <a href ="{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}">
-                                    <img src="{{ asset($product->image_url) }}">
-                                </a>
-                                <a href ="{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}">
-                                    <h3>{{ $product->name }}</h3>
-                                </a>
-                                <div class="cost">
-                                    @if(!empty($product->new_price))
-                                        <span class="price">
-                                            {{ $product->origin_price }}<span>đ</span>
-                                        </span>{{ $product->new_price }}<span>đ</span>
-                                    @else
-                                        </span>{{ $product->origin_price }}<span>đ</span>
-                                    @endif
-                                </div>
-                                <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}');">Thêm vào giỏ</button>
-                            </div>
-                        </div>
-                        @if($key%4 == 0)
-                            </div> {{-- close row and create new row (line) --}}
-                            <div class="row">
-                        @endif
-                    @endforeach    
-                    </div>
-                    <!-- row 1 -->
-                </div>
-            @endforeach
-                <!-- category-1 -->
             </div>
         </div>
     </div>

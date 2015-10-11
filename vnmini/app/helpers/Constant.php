@@ -32,7 +32,6 @@ define('ACCEPT', 1);
 define('NO_APPROVE', 1);
 define('APPROVE', 2);
 define('NO_SHIP', 3);
-define('SHIP', 4);
 define('PAY', 5);
 define('PAGINATE_ORDER', 10);
 //Shop
@@ -43,5 +42,17 @@ define('DISCOUNT', 0.1);
 define('SHIP', 100);
 //subject email
 define('SUBJECT_EMAIL', 'Vnmini thông báo');
+
+//define col in orders.xlsx
+define('ORDER_STT', 'A');
+define('ORDER_CODE', 'B');
+define('ORDER_STATUS', 'C');
+define('ORDER_USER_ADDRESS', 'D');
+define('ORDER_USER_PHONE', 'E');
+define('ORDER_USER_EMAIL', 'F');
+define('ORDER_DETAIL', 'G');
+define('ORDER_CREATED_DATE', 'H');
+define('ORDER_UPDATED_DATE', 'I');
+
 
 

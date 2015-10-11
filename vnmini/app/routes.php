@@ -47,7 +47,6 @@ Route::group(['prefix' => 'admin'], function () {
 // dd(Request::segments()[0]);
 Route::get('/', array('as'=>'frontend.product.index','uses'=>'ProductsController@index'));
 Route::get('/{product_name}/{id}/chi-tiet', array('as'=>'frontend.product.show','uses'=>'ProductsController@showName'));
-Route::get('/{name}/{id}', array('as'=>'frontend.sort.show','uses'=>'ProductsController@getProductBySort'));
 Route::resource('/cart','CartController', array('only'=>['index', 'update', 'destroy','store']));
 Route::post('/cart/customer', array('as'=>'cart.customer.add','uses'=>'CartController@postInfoCustomer'));
 Route::get('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@getCreateOrder'));
@@ -58,3 +57,5 @@ Route::post('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@
 Route::get('/search', array('as' => 'frontend.search', 'uses' => 'ProductsController@search'));
 Route::get('/searchnew', array('as' => 'frontend.search.new', 'uses' => 'ProductsController@searchNew'));
 Route::post('/comment/{product_id}', array('as' => 'frontend.product.comment', 'uses' => 'ProductsController@postComment'));
+Route::get('/{name}/{id}', array('as'=>'frontend.sort.show','uses'=>'ProductsController@getProductBySort'));
+Route::get('/{sort_name}/{sort_id}/{cate_id}/{cate_name}', array('as' => 'frontend.sort.category.product', 'uses' => 'ProductsController@getProductByCategory'));

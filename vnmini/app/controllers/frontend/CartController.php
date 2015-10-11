@@ -147,6 +147,8 @@ class CartController extends \FrontendController {
                 });
                 Cart::destroy();
                 DB::commit();
+                $file_path = public_path().'/orders.xlsx';
+                CommonOrder::writeExcel($file_path, $orderId);
                 return View::make('frontend.carts.cart_complete')->with(compact('code'));
             } catch (\Exception $e) {
                 DB::rollback();

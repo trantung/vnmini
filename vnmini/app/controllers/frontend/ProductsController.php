@@ -108,4 +108,23 @@ class ProductsController extends \FrontendController {
 		Common::create($input, 'comment');
 		return Redirect::route('frontend.product.show', [$name_seo,$product_id])->with(['message'=>'Cảm ơn bạn đã comment cho chúng tôi!']);
 	}
+
+	public function getProductByCategory($sort_name,$sort_id, $cate_id, $cate_name){
+		
+		$sort = Sort::findOrFail($sort_id);
+
+		if($cate_id !=0){
+
+			$category = Category::findOrFail($cate_id);
+			$products = $category->products()->paginate(PAGINATE_PRODUCT);
+		}
+		else{
+
+			$category_ids = CommonSort::getCategoryId($sort);
+			$products = CommonProduct::getAllProduct($category_ids, PAGINATE_PRODUCT);
+		}
+
+		$categories = $sort->categories;
+		return View::make('frontend.categories.show')->with(compact('products', 'categories', 'sort'));
+	}
 }
