@@ -72,6 +72,8 @@ class OrderController extends AdminController {
 	{
 		$input = Input::all();
 		$orderId = CommonOrder::updateOrder($input, $id);
+		$file_path = public_path().'/orders.xlsx';
+		CommonOrder::updateExcel($file_path, $orderId);
 		if(!$orderId) {
 			return Redirect::route('admin.order.edit', $id)->with('message', 'Lỗi: Số lượng sản phẩm đặt mua vượt quá số lượng trong kho/lỗi không mong muốn');
 		}

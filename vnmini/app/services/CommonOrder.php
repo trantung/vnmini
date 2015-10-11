@@ -128,13 +128,18 @@ class CommonOrder
 		return $orders;
 	}
 
-	public static function writeExcel($file_path, $order_id){
+	public static function writeExcel($file_path, $order_id, $currentRow = NULL){
 
 		$order = Order::findOrFail($order_id);
 		$objPHPExcel = \PHPExcel_IOFactory::load($file_path);
         $objWorksheet = $objPHPExcel->getActiveSheet();
         $highestRow = $objWorksheet->getHighestRow();
-        $newRow = $highestRow+1;
+        if(!is_null($currentRow)){
+        	$newRow = $currentRow;
+        }
+        else{
+        	$newRow = $highestRow+1;
+        }
         $orderProducts = $order->orderproducts;
         $text = "";
         $money = $order->value_origin;
@@ -159,5 +164,28 @@ class CommonOrder
         $objWriter->save($file_path);
 
         return 1;
+	}
+
+	public static function updateExcel($file_path, $order_id){
+		$order = Order::findOrFail($order_id);
+		$objPHPExcel = \PHPExcel_IOFactory::load($file_path);
+        $objWorksheet = $objPHPExcel->getActiveSheet();
+        $highestColumn = $objWorksheet->getHighestColumn();
+        $highestRow = $objWorksheet->getHighestRow();
+        $code = (float) $order->code;
+        $currentRow = null;
+        $data = $objWorksheet->toArray(null, true, true, true);
+        for($row = 2; $row<=$highestRow; $row++){
+            if($data[$row][ORDER_CODE] == $code ){
+            	$currentRow = $row;
+            	break;
+            }
+
+        }
+
+		if( !is_null($currentRow))
+        	CommonOrder::writeExcel($file_path, $order_id, $currentRow);
+
+       return 1;
 	}
 }
