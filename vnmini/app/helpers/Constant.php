@@ -47,12 +47,13 @@ define('SUBJECT_EMAIL', 'Vnmini thông báo');
 define('ORDER_STT', 'A');
 define('ORDER_CODE', 'B');
 define('ORDER_STATUS', 'C');
-define('ORDER_USER_ADDRESS', 'D');
-define('ORDER_USER_PHONE', 'E');
-define('ORDER_USER_EMAIL', 'F');
-define('ORDER_DETAIL', 'G');
-define('ORDER_CREATED_DATE', 'H');
-define('ORDER_UPDATED_DATE', 'I');
+define('ORDER_CUSTOMER_NAME', 'D');
+define('ORDER_USER_ADDRESS', 'E');
+define('ORDER_USER_PHONE', 'F');
+define('ORDER_USER_EMAIL', 'G');
+define('ORDER_DETAIL', 'H');
+define('ORDER_CREATED_DATE', 'I');
+define('ORDER_UPDATED_DATE', 'J');
 
 
 

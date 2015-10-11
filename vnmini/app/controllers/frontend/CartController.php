@@ -146,6 +146,7 @@ class CartController extends \FrontendController {
                             ->subject(SUBJECT_EMAIL);
                 });
                 Cart::destroy();
+                Session::forget('customer');
                 DB::commit();
                 $file_path = public_path().'/orders.xlsx';
                 CommonOrder::writeExcel($file_path, $orderId);

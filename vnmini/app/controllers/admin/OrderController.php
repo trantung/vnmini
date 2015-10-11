@@ -105,4 +105,10 @@ class OrderController extends AdminController {
 		$orders = CommonOrder::getSearchResult($input);
 		return View::make('admin.order.index')->with(compact('orders'));
 	}
+
+	public function getDownload()
+	{
+		$linkDownload = '/orders.xlsx';
+		return $linkDownload;
+	}
 }

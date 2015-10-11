@@ -3,25 +3,27 @@
         $sort_name = CommonProduct::getNameSeo($sort->name);
     ?>
     <div class="block-1">
-        <h2 class="block-title">{{ $sort->name }}</h2>
+        <h2 class="block-title">{{ uniToVni($sort->name) }}</h2>
         <div class="bs-example">
-        <div class="">                
-            <ul class="nav navbar-nav tabs">
-                <li class="active">
-                    <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}" class="first">Tất cả</a>
-                </li>
-                @foreach($sort->categories as $category)
-                    <?php 
-                        $cate_name = CommonProduct::getNameSeo($category->name);
-                    ?>
-                    <li>
-                        <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>$category->id, 'cate_name'=>$cate_name]) }}">
-                            {{ $category->name }}
-                        </a>
+        @if($sort->id !=3)
+            <div class="">                
+                <ul class="nav navbar-nav tabs">
+                    <li class="active">
+                        <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}" class="first">Tất cả</a>
                     </li>
-                @endforeach       
-            </ul>
-        </div>
+                    @foreach($sort->categories as $category)
+                        <?php 
+                            $cate_name = CommonProduct::getNameSeo($category->name);
+                        ?>
+                        <li>
+                            <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>$category->id, 'cate_name'=>$cate_name]) }}">
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                    @endforeach       
+                </ul>
+            </div>
+        @endif
             <div class="tab-content">
             <?php 
                 $category_ids = CommonSort::getCategoryId($sort);

@@ -12,7 +12,7 @@
             <!-- detail -->
             <div class="col-md-4 col-sm-4 right">
                 <div class="">
-                    <h2>{{ $product->name }} </h2>
+                    <h2>{{ uniToVni($product->name) }} </h2>
                     <div class="description">
                         <label>Mã sản phẩm :</label> {{ $product->code }} <br>
                         <label>Kích thước :</label> {{ $product->size }} <br>
@@ -66,7 +66,7 @@
                             <button name="add_cart" id ="button-cart" value="{{ $product->id }}">Thêm vào giỏ</button>
                         </div>
                         <br />
-                        @if($product->new_price)
+                        @if(!$product->new_price)
                         <div class="block">
                             <h2>{{ nl2br(uniToVni($promotion->title)) }}</h2>
                             <div class="description">

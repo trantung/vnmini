@@ -134,21 +134,21 @@ class CommonOrder
 		$objPHPExcel = \PHPExcel_IOFactory::load($file_path);
         $objWorksheet = $objPHPExcel->getActiveSheet();
         $highestRow = $objWorksheet->getHighestRow();
-        $newRow = $highestRow+1;
+        $newRow = $highestRow + 1;
         $orderProducts = $order->orderproducts;
         $text = "";
-        $money = $order->value_origin;
+        $money = $order->value;
         $discount = $order->value_discount;
-        $create_date = date('Y-m-d',strtotime($order->created_at));
-        $updated_date = date('Y-m-d',strtotime($order->updated_at));
+        $create_date = $order->created_at;
+        $updated_date = $order->updated_at;
         foreach($order->orderproducts as $key => $orderProduct){
-
 			$text.=$orderProduct->product->name.':'.CommonOrder::getQuantityProduct($order->id, $orderProduct->product->id).', ';
         }
         $text.='Giảm giá: '.$discount.', '.'Tổng tiền: '.$money;
         $objWorksheet->SetCellValue(ORDER_STT.$newRow, $newRow);
         $objWorksheet->SetCellValue(ORDER_CODE.$newRow, $order->code);
-        $objWorksheet->SetCellValue(ORDER_STATUS.$newRow, $order->status);
+        $objWorksheet->SetCellValue(ORDER_STATUS.$newRow, returnStatusOrder($order->status));
+        $objWorksheet->SetCellValue(ORDER_CUSTOMER_NAME.$newRow, $order->customer->fullname);
         $objWorksheet->SetCellValue(ORDER_USER_ADDRESS.$newRow, $order->customer->address);
         $objWorksheet->SetCellValue(ORDER_USER_PHONE.$newRow, $order->customer->phone);
         $objWorksheet->SetCellValue(ORDER_USER_EMAIL.$newRow, $order->customer->email);

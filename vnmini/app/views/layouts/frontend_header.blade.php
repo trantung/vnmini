@@ -1,4 +1,4 @@
-<header class="container">
+<header class="container" id="fixed-top">
     <div class="logo"> 
         <a href="/">
             <img src="{{ asset($info->logo) }}">
@@ -40,9 +40,16 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="first"><a href="/">Home</a></li>
+                    <li class="first"><a href="/">{{ uniToVni('TRANG CHỦ') }}</a></li>
                     @foreach($sorts as $sort)
-                        <li><a href="{{ route('frontend.sort.show', [$sort->name_seo, $sort->id]) }}">{{ $sort->name }}</a></li>
+                        <li>
+                            <a href="{{ route('frontend.sort.show', [$sort->name_seo, $sort->id]) }}"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="sub-menu-{{$sort->id}}" class="dropdown" >{{ uniToVni($sort->name) }}</a>
+                            <ul class="sub-menu dropdown-menu" aria-labelledby="sub-menu-1">
+                                @foreach($sort->categories as $category)
+                                    <li><a href="{{ route('frontend.sort.category.product', [$sort->name_seo, $sort->id, $category->id, $category->name_seo]) }}">{{ uniToVni($category->name) }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                     @endforeach
                     <li><a href="{{ route('frontend.tintuc') }}">Tin töùc</a></li>
                     <li><a href="{{ route('frontend.lienhe') }}">Lieân heä</a></li>

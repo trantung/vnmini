@@ -103,46 +103,15 @@
       );
     });
 
+    //zoom
+    $('.zoom-image').zoom({ on:'grab' });
+
+    // fix menu top.
+    $(window).scroll(function(){
+      if ($(this).scrollTop() > 137) {
+          $('#fixed-top').addClass('fixed');
+      } else {
+          $('#fixed-top').removeClass('fixed');
+      }
+    });
 });
-
-//Add product to cart
-var cart = {
-  'add': function(url){
-    location=url;
-  },
-  'update': function(url,key) {
-    $.ajax({
-      url: url,
-      type: 'PUT',
-      data: 'quantity=' + $('input[name=quantity'+key+']').val(),
-      dataType: 'json',
-      success: function(json) {
-        window.location.reload(); 
-      }
-    });
-  },
-  'remove': function(url,key) {
-    console.log(url);
-    $.ajax({
-      url: url,
-      type: 'DELETE',
-      data: 'key=' + key,
-      dataType: 'json',
-      beforeSend: function() {
-        $('#cart > button').button('');
-      },
-      success: function(json) {
-        $('#content').parent().before('<div class="alert alert-warning"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-        $('#cart > button').button('reset');
-
-        $('#cart-total').html(json['total']);
-        // var pathname = window.location.pathname;
-        var url      = window.location.href;
-        $('#cart').load(url+' #cart');
-        $('#content').load(url+' #content');
-        setTimeout(function() {$('.alert').fadeOut(1000)},3000)
-      }
-      
-    });
-  }
-}
