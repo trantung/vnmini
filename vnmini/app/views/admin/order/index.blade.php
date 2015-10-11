@@ -2,8 +2,8 @@
 @section('content')
 	<div class="page-header">
 		<h1>Hoá đơn</h1>
+	 	<a href="/orders.xlsx" class="btn btn-large pull-right"><i class="icon-download-alt"> </i> Download hoá đơn excel </a>
 	</div>
-	 <a href="/orders.xlsx" class="btn btn-large pull-right"><i class="icon-download-alt"> </i> Download hoá đơn excel </a>
 @include('admin.error-message')
 	<link href="{{ asset('admins/css/jquery-ui.css') }}" rel="stylesheet">
 	<script src="{{ asset('admins/js/jquery-ui.min.js')}}"></script>

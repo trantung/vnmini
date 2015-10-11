@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto&subset=latin,vietnamese);
-/* line 5, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,45 +21,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../usr/local/rvm/gems/ruby-1.9.1-p431/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -103,8 +103,12 @@ h2 {
   color: black;
   text-transform: uppercase;
 }
-
 /* line 5, ../sass/vn_mini/_common.scss */
+h2.search-result {
+  margin-bottom: 20px;
+}
+
+/* line 7, ../sass/vn_mini/_common.scss */
 .page-title {
   font-family: "VNI-Univer", sans-serif;
   font-size: 22px;
@@ -112,29 +116,29 @@ h2 {
   text-transform: uppercase;
 }
 
-/* line 6, ../sass/vn_mini/_common.scss */
+/* line 8, ../sass/vn_mini/_common.scss */
 th, strong {
   font-weight: bold;
 }
 
-/* line 7, ../sass/vn_mini/_common.scss */
+/* line 9, ../sass/vn_mini/_common.scss */
 .text-note {
   color: #c51230;
 }
 
-/* line 8, ../sass/vn_mini/_common.scss */
+/* line 10, ../sass/vn_mini/_common.scss */
 p.text-note {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-/* line 9, ../sass/vn_mini/_common.scss */
+/* line 11, ../sass/vn_mini/_common.scss */
 .tabs {
   margin-bottom: 30px;
   border-bottom: 1px solid #cacaca;
   width: 100%;
 }
-/* line 10, ../sass/vn_mini/_common.scss */
+/* line 12, ../sass/vn_mini/_common.scss */
 .tabs li a {
   color: #767676;
   text-transform: uppercase;
@@ -142,24 +146,24 @@ p.text-note {
   font-family: "Arial", sans-serif;
   font-size: 12px;
 }
-/* line 11, ../sass/vn_mini/_common.scss */
+/* line 13, ../sass/vn_mini/_common.scss */
 .tabs li a:hover, .tabs li a:focus {
   color: #ff0000;
   background: white;
 }
 @media (min-width: 768px) {
-  /* line 14, ../sass/vn_mini/_common.scss */
+  /* line 16, ../sass/vn_mini/_common.scss */
   .tabs li a.first {
     padding-left: 0;
   }
 }
 
-/* line 19, ../sass/vn_mini/_common.scss */
+/* line 21, ../sass/vn_mini/_common.scss */
 .slick-auto, .slick-auto-2 {
   position: relative;
   margin: 10px 0 30px;
 }
-/* line 20, ../sass/vn_mini/_common.scss */
+/* line 22, ../sass/vn_mini/_common.scss */
 .slick-auto .slick-arrow, .slick-auto-2 .slick-arrow {
   position: absolute;
   top: 50%;
@@ -171,83 +175,83 @@ p.text-note {
   border-top: 5px solid white;
   border-bottom: 5px solid white;
 }
-/* line 21, ../sass/vn_mini/_common.scss */
+/* line 23, ../sass/vn_mini/_common.scss */
 .slick-auto .slick-arrow.slick-prev, .slick-auto-2 .slick-arrow.slick-prev {
   left: -10px;
   border-left: 5px solid white;
   border-right: 5px solid black;
 }
-/* line 22, ../sass/vn_mini/_common.scss */
+/* line 24, ../sass/vn_mini/_common.scss */
 .slick-auto .slick-arrow.slick-next, .slick-auto-2 .slick-arrow.slick-next {
   right: -10px;
   border-left: 5px solid black;
   border-right: 5px solid white;
 }
-/* line 23, ../sass/vn_mini/_common.scss */
+/* line 25, ../sass/vn_mini/_common.scss */
 .slick-auto .slick-arrow:focus, .slick-auto-2 .slick-arrow:focus {
   outline: none;
 }
-/* line 25, ../sass/vn_mini/_common.scss */
+/* line 27, ../sass/vn_mini/_common.scss */
 .slick-auto div:focus, .slick-auto-2 div:focus {
   outline: none;
 }
-/* line 26, ../sass/vn_mini/_common.scss */
+/* line 28, ../sass/vn_mini/_common.scss */
 .slick-auto img, .slick-auto-2 img {
   display: block;
   margin: 0 auto;
 }
-/* line 27, ../sass/vn_mini/_common.scss */
+/* line 29, ../sass/vn_mini/_common.scss */
 .slick-auto img:focus, .slick-auto-2 img:focus {
   outline: none;
 }
 
-/* line 30, ../sass/vn_mini/_common.scss */
+/* line 32, ../sass/vn_mini/_common.scss */
 .slick-auto-2 {
   margin-top: 38px;
 }
-/* line 33, ../sass/vn_mini/_common.scss */
+/* line 35, ../sass/vn_mini/_common.scss */
 .slick-auto-2 .item {
   padding: 0 5px;
 }
-/* line 34, ../sass/vn_mini/_common.scss */
+/* line 36, ../sass/vn_mini/_common.scss */
 .slick-auto-2 .slick-arrow {
   top: 120px;
   border-width: 10px;
 }
-/* line 35, ../sass/vn_mini/_common.scss */
+/* line 37, ../sass/vn_mini/_common.scss */
 .slick-auto-2 .slick-arrow.slick-prev {
   left: -20px;
   border-width: 10px;
 }
 @media (max-width: 768px) {
-  /* line 35, ../sass/vn_mini/_common.scss */
+  /* line 37, ../sass/vn_mini/_common.scss */
   .slick-auto-2 .slick-arrow.slick-prev {
     display: none !important;
   }
 }
-/* line 38, ../sass/vn_mini/_common.scss */
+/* line 40, ../sass/vn_mini/_common.scss */
 .slick-auto-2 .slick-arrow.slick-next {
   right: -20px;
   border-width: 10px;
 }
 @media (max-width: 768px) {
-  /* line 38, ../sass/vn_mini/_common.scss */
+  /* line 40, ../sass/vn_mini/_common.scss */
   .slick-auto-2 .slick-arrow.slick-next {
     display: none !important;
   }
 }
 
-/* line 44, ../sass/vn_mini/_common.scss */
+/* line 46, ../sass/vn_mini/_common.scss */
 .form-control {
   border-color: #c51230;
 }
 
-/* line 48, ../sass/vn_mini/_common.scss */
+/* line 50, ../sass/vn_mini/_common.scss */
 .form-quantity .quantity {
   position: relative;
   max-width: 210px;
 }
-/* line 49, ../sass/vn_mini/_common.scss */
+/* line 51, ../sass/vn_mini/_common.scss */
 .form-quantity .quantity input {
   width: 100%;
   font-family: "Arial", sans-serif;
@@ -258,7 +262,7 @@ p.text-note {
   padding-left: 5px;
   padding-right: 10px;
 }
-/* line 50, ../sass/vn_mini/_common.scss */
+/* line 52, ../sass/vn_mini/_common.scss */
 .form-quantity .quantity span {
   right: 165px;
   position: absolute;
@@ -270,45 +274,35 @@ p.text-note {
   border-left: 5px solid white;
   border-right: 5px solid white;
 }
-/* line 51, ../sass/vn_mini/_common.scss */
+/* line 53, ../sass/vn_mini/_common.scss */
 .form-quantity .quantity span#add-quantity {
   border-top: 5px solid white;
   border-bottom: 5px solid black;
   top: 5px;
 }
-.form-quantity .quantity span.add-quantity {
-  border-top: 5px solid white;
-  border-bottom: 5px solid black;
-  top: 5px;
-}
-/* line 52, ../sass/vn_mini/_common.scss */
+/* line 54, ../sass/vn_mini/_common.scss */
 .form-quantity .quantity span#sub-quantity {
   border-top: 5px solid black;
   border-bottom: 5px solid white;
   bottom: 5px;
 }
-.form-quantity .quantity span.sub-quantity {
-  border-top: 5px solid black;
-  border-bottom: 5px solid white;
-  bottom: 5px;
-}
-/* line 53, ../sass/vn_mini/_common.scss */
+/* line 55, ../sass/vn_mini/_common.scss */
 .form-quantity .quantity span:focus {
   outline: none;
 }
 
 @media (min-width: 768px) {
-  /* line 60, ../sass/vn_mini/_common.scss */
+  /* line 62, ../sass/vn_mini/_common.scss */
   header .navbar-default .navbar-collapse .navbar-nav li.first a {
     margin-left: 0;
   }
 
-  /* line 63, ../sass/vn_mini/_common.scss */
+  /* line 65, ../sass/vn_mini/_common.scss */
   .bottom .contact {
     margin-left: -15px;
   }
 
-  /* line 65, ../sass/vn_mini/_common.scss */
+  /* line 67, ../sass/vn_mini/_common.scss */
   .right {
     float: right;
   }
@@ -334,15 +328,15 @@ p.text-note {
 }
 /* line 3, ../sass/vn_mini/_service.scss */
 .services .service.ship {
-  background: url("../img/ship.png") 0 0 no-repeat;
+  background: url("../images/ship.png") 0 0 no-repeat;
 }
 /* line 4, ../sass/vn_mini/_service.scss */
 .services .service.pay {
-  background: url("../img/pay.png") 0 0 no-repeat;
+  background: url("../images/pay.png") 0 0 no-repeat;
 }
 /* line 5, ../sass/vn_mini/_service.scss */
 .services .service.phone {
-  background: url("../img/phone.png") 0 0 no-repeat;
+  background: url("../images/phone.png") 0 0 no-repeat;
 }
 /* line 7, ../sass/vn_mini/_service.scss */
 .services h4 {
@@ -654,11 +648,11 @@ p.text-note {
 }
 /* line 64, ../sass/vn_mini/_main-content.scss */
 .main-content .production .form-quantity .input-group .input-group-addon.arrow-right {
-  background: url("../img/arrow-right.png") 0 0 no-repeat;
+  background: url("../images/arrow-right.png") 0 0 no-repeat;
 }
 /* line 65, ../sass/vn_mini/_main-content.scss */
 .main-content .production .form-quantity .input-group .input-group-addon.arrow-down {
-  background: url("../img/arrow-down.png") 0 0 no-repeat;
+  background: url("../images/arrow-down.png") 0 0 no-repeat;
 }
 /* line 67, ../sass/vn_mini/_main-content.scss */
 .main-content .production .form-quantity .input-group button {
@@ -1054,7 +1048,13 @@ header .navbar-default .navbar-collapse .navbar-nav {
   margin-top: 18px;
 }
 /* line 9, ../sass/vn_mini/_header.scss */
-header .navbar-default .navbar-collapse .navbar-nav li a {
+header .navbar-default .navbar-collapse .navbar-nav > li.open > a {
+  color: #ff0000;
+  background: white;
+  box-shadow: none;
+}
+/* line 10, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav > li a {
   color: black;
   text-shadow: none;
   text-transform: uppercase;
@@ -1064,27 +1064,61 @@ header .navbar-default .navbar-collapse .navbar-nav li a {
   margin: 0 0 0 20px;
   line-height: 1;
 }
-/* line 10, ../sass/vn_mini/_header.scss */
-header .navbar-default .navbar-collapse .navbar-nav li a:hover {
+/* line 11, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav > li a:hover, header .navbar-default .navbar-collapse .navbar-nav > li a:focus {
   color: #ff0000;
+  background: white;
 }
 @media (max-width: 1208px) {
-  /* line 9, ../sass/vn_mini/_header.scss */
-  header .navbar-default .navbar-collapse .navbar-nav li a {
+  /* line 10, ../sass/vn_mini/_header.scss */
+  header .navbar-default .navbar-collapse .navbar-nav > li a {
     font-size: 14px;
   }
 }
 @media (max-width: 768px) {
-  /* line 9, ../sass/vn_mini/_header.scss */
-  header .navbar-default .navbar-collapse .navbar-nav li a {
+  /* line 10, ../sass/vn_mini/_header.scss */
+  header .navbar-default .navbar-collapse .navbar-nav > li a {
     line-height: 1.5;
   }
 }
+/* line 16, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav > li ul.sub-menu {
+  background: #fff;
+  border-top: 1px solid #000;
+  top: 33px;
+}
 /* line 17, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav > li ul.sub-menu a {
+  margin: 0 20px 0 20px;
+  padding: 10px 0;
+  display: block;
+  width: auto;
+}
+@media (max-width: 768px) {
+  /* line 17, ../sass/vn_mini/_header.scss */
+  header .navbar-default .navbar-collapse .navbar-nav > li ul.sub-menu a {
+    margin: 0 20px 0 30px;
+    padding: 0;
+  }
+}
+/* line 19, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav > li ul.sub-menu a:hover, header .navbar-default .navbar-collapse .navbar-nav > li ul.sub-menu a:focus {
+  background: #fff;
+}
+/* line 23, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav > li.open ul.sub-menu a {
+  color: black;
+}
+/* line 24, ../sass/vn_mini/_header.scss */
+header .navbar-default .navbar-collapse .navbar-nav > li.open ul.sub-menu a:hover, header .navbar-default .navbar-collapse .navbar-nav > li.open ul.sub-menu a:focus {
+  color: #ff0000;
+  background: white;
+}
+/* line 30, ../sass/vn_mini/_header.scss */
 header .navbar-default .header-right {
   position: relative;
 }
-/* line 19, ../sass/vn_mini/_header.scss */
+/* line 32, ../sass/vn_mini/_header.scss */
 header .navbar-default .cart {
   margin-left: 10px;
   font-family: "Arial", sans-serif;
@@ -1095,44 +1129,44 @@ header .navbar-default .cart {
   right: -80px;
 }
 @media (max-width: 1350px) {
-  /* line 19, ../sass/vn_mini/_header.scss */
+  /* line 32, ../sass/vn_mini/_header.scss */
   header .navbar-default .cart {
     top: -40px;
     right: 15px;
   }
 }
 @media (max-width: 770px) {
-  /* line 19, ../sass/vn_mini/_header.scss */
+  /* line 32, ../sass/vn_mini/_header.scss */
   header .navbar-default .cart {
     right: 15px;
   }
 }
-/* line 22, ../sass/vn_mini/_header.scss */
+/* line 35, ../sass/vn_mini/_header.scss */
 header .navbar-default .cart label {
   vertical-align: middle;
 }
-/* line 23, ../sass/vn_mini/_header.scss */
+/* line 36, ../sass/vn_mini/_header.scss */
 header .navbar-default .cart label .cart-item {
   display: block;
 }
-/* line 25, ../sass/vn_mini/_header.scss */
+/* line 38, ../sass/vn_mini/_header.scss */
 header .navbar-default .cart a {
   display: inline-block;
   vertical-align: middle;
-  background: url("../img/cart.png") 0 0 no-repeat;
+  background: url("../images/cart.png") 0 0 no-repeat;
   text-indent: -9999px;
   height: 39px;
   width: 39px;
 }
 @media (max-width: 1208px) {
-  /* line 25, ../sass/vn_mini/_header.scss */
+  /* line 38, ../sass/vn_mini/_header.scss */
   header .navbar-default .cart a {
     width: 25px;
     height: 25px;
     background-size: 100%;
   }
 }
-/* line 30, ../sass/vn_mini/_header.scss */
+/* line 43, ../sass/vn_mini/_header.scss */
 header .navbar-default .home-search {
   margin-top: 7px;
   margin-bottom: 0;
@@ -1143,12 +1177,12 @@ header .navbar-default .home-search {
   /*  padding-right:0; */
 }
 @media (min-width: 1280px) {
-  /* line 30, ../sass/vn_mini/_header.scss */
+  /* line 43, ../sass/vn_mini/_header.scss */
   header .navbar-default .home-search {
     margin-right: 15px;
   }
 }
-/* line 32, ../sass/vn_mini/_header.scss */
+/* line 45, ../sass/vn_mini/_header.scss */
 header .navbar-default .home-search input[type="text"] {
   width: 100%;
   border-color: #575757;
@@ -1156,36 +1190,36 @@ header .navbar-default .home-search input[type="text"] {
   box-shadow: none;
 }
 @media (min-width: 1208px) {
-  /* line 32, ../sass/vn_mini/_header.scss */
+  /* line 45, ../sass/vn_mini/_header.scss */
   header .navbar-default .home-search input[type="text"] {
     width: 300px;
   }
 }
-/* line 35, ../sass/vn_mini/_header.scss */
+/* line 48, ../sass/vn_mini/_header.scss */
 header .navbar-default .home-search .input-group-addon {
   background-color: white;
   padding: 0;
   border-color: #575757;
 }
-/* line 36, ../sass/vn_mini/_header.scss */
+/* line 49, ../sass/vn_mini/_header.scss */
 header .navbar-default .home-search .input-group-addon input[type="submit"] {
-  background: white url("../img/search-bg.png") 0 5px no-repeat;
+  background: white url("../images/search-bg.png") 0 5px no-repeat;
   border: none;
   text-indent: -9999px;
   padding: 6px 15px;
   border-left: 1px solid #575757;
   box-shadow: none;
 }
-/* line 37, ../sass/vn_mini/_header.scss */
+/* line 50, ../sass/vn_mini/_header.scss */
 header .navbar-default .home-search .input-group-addon input[type="submit"]:focus {
   outline: none;
 }
 
-/* line 44, ../sass/vn_mini/_header.scss */
+/* line 57, ../sass/vn_mini/_header.scss */
 .slide img {
   width: 100%;
 }
-/* line 45, ../sass/vn_mini/_header.scss */
+/* line 58, ../sass/vn_mini/_header.scss */
 .slide .carousel-control {
   width: 50px;
   height: 100px;
@@ -1195,29 +1229,38 @@ header .navbar-default .home-search .input-group-addon input[type="submit"]:focu
 }
 
 @media (max-width: 767px) {
-  /* line 49, ../sass/vn_mini/_header.scss */
+  /* line 62, ../sass/vn_mini/_header.scss */
   .logo {
     width: 200px;
   }
 
-  /* line 50, ../sass/vn_mini/_header.scss */
+  /* line 63, ../sass/vn_mini/_header.scss */
   .navbar-toggle {
     margin-left: 15px;
     margin-right: 0;
   }
 }
 @media (max-width: 480px) {
-  /* line 54, ../sass/vn_mini/_header.scss */
+  /* line 67, ../sass/vn_mini/_header.scss */
   .logo {
     width: 185px;
   }
-  /* line 55, ../sass/vn_mini/_header.scss */
+  /* line 68, ../sass/vn_mini/_header.scss */
   .logo img {
     width: 100%;
   }
 
-  /* line 57, ../sass/vn_mini/_header.scss */
+  /* line 70, ../sass/vn_mini/_header.scss */
   .cart label {
     line-height: 1.2;
   }
+}
+/* line 72, ../sass/vn_mini/_header.scss */
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  background: white;
 }
