@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'kyppyly@gmail.com', 'name' => 'Vnmini'),
+	'from' => array('address' => 'vnmini2015@gmail.com', 'name' => 'Vnmini'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'kyppyly',
+	'username' => 'vnmini2015@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'hoangvanthai',
+	'password' => 'tunglaso1',
 
 	/*
 	|--------------------------------------------------------------------------

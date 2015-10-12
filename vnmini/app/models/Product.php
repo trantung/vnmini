@@ -12,7 +12,7 @@ class Product extends Eloquent
     					'size', 'material', 'quantity',
     					'origin_price', 'new_price',
     					'image_url', 'description',
-    					'introduce', 'information', 'status', 'name_seo'
+    					'introduce', 'information', 'status', 'name_seo', 'big_image_url'
     					];
     protected $dates = ['deleted_at'];
 

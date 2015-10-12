@@ -158,4 +158,16 @@ class CartController extends \FrontendController {
         }
         return Redirect::route('frontend.product.index');
     }
+
+    public function test()
+    {
+        // dd(123);
+        $data = [];
+        Mail::send('emails.template', $data, function($message){
+            // dd(5555);
+            $message->to('trantunghn196@gmail.com');
+                    // ->subject(SUBJECT_EMAIL);
+        });
+        dd(345);
+    }
 }

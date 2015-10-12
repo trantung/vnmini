@@ -50,6 +50,7 @@ class CommonProduct
 			'quantity' => 'required|integer|min:0',
 			'origin_price' => 'required|integer|min:1000|'.'greater_than:new_price,' . $input['new_price'],
 			'new_price' => 'integer|min:0',
+			'big_image_url' => 'required',
 			];
 		$imageRule = self::validateImage($input);
 		$rule = array_merge($rule, $imageRule);
@@ -89,17 +90,26 @@ class CommonProduct
 		return $imageRelateId;
 	}
 
-	public static function uploadImage($input, $path)
+	public static function uploadImage($input, $path, $big_image_url = null)
 	{
 		$destinationPath = public_path().$path;
 		$filename = 'nothumnail.jpg';
+		if ($big_image_url != null) {
+			if(Input::hasFile('big_image_url')){
+				$file = Input::file('big_image_url');
+				$filename = $file->getClientOriginalName();
+				$uploadSuccess   =  $file->move($destinationPath, $filename);
+				return $path.'/'.$filename;
+			}
+		}
 		if(Input::hasFile('image_url')){
 			$file = Input::file('image_url');
 			$filename = $file->getClientOriginalName();
 			$uploadSuccess   =  $file->move($destinationPath, $filename);
+			return $path.'/'.$filename;
 		}
 		// dd($path.'/'.$filename);
-		return $path.'/'.$filename;
+		// return $path.'/'.$filename;
 	}
 
 	public static function updateRelateImage($input, $productId)
@@ -133,5 +143,26 @@ class CommonProduct
     	$nameSeo = str_replace(' ', '-', $lowerName);
     	
     	return $nameSeo;
+    }
+
+    public static function getImageUrl($input, $id)
+    {
+    	if($input['image_url']) {
+    		$image_url = self::uploadImage($input, PATH_PRODUCT.'/'.$id);
+    	}
+    	else {
+    		$image_url = Product::find($id)->image_url;
+    	}
+    	return $image_url;
+    }
+    public static function getBigImageUrl($input, $id)
+    {
+    	if($input['big_image_url']) {
+    		$image_url = self::uploadImage($input, PATH_PRODUCT.'/'.$id, 1);
+    	}
+    	else {
+    		$image_url = Product::find($id)->big_image_url;
+    	}
+    	return $image_url;
     }
 }

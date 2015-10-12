@@ -1,4 +1,6 @@
-<header class="container" id="fixed-top">
+<header id="fixed-top">
+ <div class="container" >
+
     <div class="logo"> 
         <a href="/">
             <img src="{{ asset($info->logo) }}">
@@ -59,5 +61,5 @@
             <!-- /.navbar-collapse -->
         </nav>
     </div>
-    
+</div>
 </header>
