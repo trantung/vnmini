@@ -14,7 +14,7 @@
                 $cate_name = CommonProduct::getNameSeo($category->name);
             ?>
                 <li>
-                    <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>$category->id, 'cate_name'=>$cate_name]) }}">
+                    <a  class="{{ getClass($category->id, Request::segments()) }}" href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>$category->id, 'cate_name'=>$cate_name]) }}">
                         {{ $category->name }}
                     </a>
                 </li>

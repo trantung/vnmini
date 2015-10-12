@@ -147,3 +147,10 @@ function removeEndString($input)
     $result = array_pop($inputExplode);
     return implode(' ', $inputExplode);
 }
+function getClass($categoryId, $segment)
+{
+    if ($categoryId == $segment[2]) {
+        return 'active';
+    }
+    return 1 ;
+}

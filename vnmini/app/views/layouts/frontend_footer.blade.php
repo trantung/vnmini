@@ -20,7 +20,7 @@
             <input id = "longitude" type="hidden" value="{{ $info->long }}">
             <div class="col-md-5 col-sm-2 col-xs-3">
                 <div class="map">
-                    <div class="col-md-3 col-md-offset-2 col-sm-2 col-xs-2 " id="mapview" style="width:330px;height:250px; margin-right: 3px !important;"></div>
+                    <div class="col-md-3 col-md-offset-2 col-sm-2 col-xs-2 " id="mapview" style="width:320px;height:250px; margin-right: 3px !important;"></div>
                 </div>
             </div>
         </div>
