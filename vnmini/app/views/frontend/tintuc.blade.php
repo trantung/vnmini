@@ -41,7 +41,7 @@
                                                 <a href="{{ route('frontend.tintuc.show', $new->id) }}">{{ $new->title }}</a>
                                                 </div>
                                                 <div class="item-snippet">
-                                                {{ substr($new->description, 0, 50) }}....
+                                                    {{ removeEndString(substr($new->description, 0, 200)) }} ...
                                                 </div>
                                             </div>
                                         </li>

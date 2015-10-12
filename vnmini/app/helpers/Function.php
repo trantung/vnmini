@@ -141,3 +141,9 @@ function uniToVni($unicode)
     $vni = UConvert::toVni($unicode, UConvert::UNICODE);
     return $vni;
 }
+function removeEndString($input)
+{
+    $inputExplode = explode(' ', $input);
+    $result = array_pop($inputExplode);
+    return implode(' ', $inputExplode);
+}
