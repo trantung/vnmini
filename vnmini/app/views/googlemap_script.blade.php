@@ -16,5 +16,4 @@ var defaultLng = (document.getElementById('longitude').value!=0) ? document.getE
         $('[name="image_url"]').change(function(){
         readURL(this);
     });
-        initSample();
     </script>

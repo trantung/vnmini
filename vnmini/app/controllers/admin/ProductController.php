@@ -42,6 +42,7 @@ class ProductController extends AdminController {
         }
 		$productId = Common::create($input);
         $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId);
+        $input['big_image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId);
 		Common::update($productId, ['image_url' => $input['image_url']]);
 		$input['status'] = CommonProduct::getStatus($input);
 		if (!$productId) {
@@ -105,8 +106,14 @@ class ProductController extends AdminController {
         	$input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$id);
 			Common::update($id, $input);
 		}
-		if (!$input['image_url']) {
-			$input['image_url'] = Product::find($id)->image_url;
+		if ($input['big_image_url']) {
+        	$input['big_image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$id);
+			Common::update($id, $input);
+		}
+		if (!$input['image_url'] && !$input['big_image_url']) {
+			$product = Product::find($id);
+			$input['image_url'] = $product->image_url;
+			$input['big_image_url'] = $product->big_image_url;
 			Common::update($id, $input);
 		}
 		return Redirect::route('admin.products.index')->with('message', 'Update thành công');

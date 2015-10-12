@@ -17,16 +17,19 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
         <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
         <!-- slick Css -->
         <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.css"/>
         <!-- Site CSS -->
         <link rel="stylesheet" href="{{ asset('stylesheets/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('stylesheets/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('stylesheets/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('stylesheets/jquery.wm-zoom-1.0.css') }}">
         @yield('css')
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
          <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places" style=""></script>
+         <script type="text/javascript" src="{{ asset('script/jquery.wm-zoom-1.0.min.js') }}"></script>
     </head>
 <body>
 <div id="fb-root"></div>
@@ -66,6 +69,7 @@
     <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
     <script type="text/javascript" src="lib/zoom-master/jquery.zoom.min.js"></script>
     <script type="text/javascript" src="{{ asset('script/script.js') }}"></script>
+    
    
    @yield('script')
 </html>

@@ -47,6 +47,5 @@
         $('[name="image"]').change(function(){
         readURL(this);
     });
-        initSample();
     </script>
 @endsection

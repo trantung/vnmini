@@ -3,8 +3,10 @@
         <div class="row">
         @include('admin.error-message')
             <div class="col-md-8 col-sm-8">
-                <div class="detail-image">
-                    <img src="{{ asset($product->image_url) }}">
+                <div class=" wm-zoom-container my-zoom">
+                    <div class="wm-zoom-box">
+                        <img src="{{ asset($product->image_url) }}" class="wm-zoom-default-img" alt="alternative text" data-hight-src="{{ asset($product->big_image_url) }}" data-loader-src="{{ asset('img/loader.gif') }}">
+                    </div>
                 </div>
                 <!-- image -->
                 
@@ -118,7 +120,16 @@
     </div>
 </article>
 @section('script')
-<script type="text/javascript"><!--
+<script type="text/javascript">
+    $('.my-zoom').WMZoom({
+        config : {
+            stageW : 500,
+            stageH : 330,
+            inner  : false,
+            position : 'right', // [top, right, bottom, left]
+            margin : 10
+        }
+    });
     $('#button-cart').on('click', function() {
         $.ajax({
             url: '{{ route("cart.store") }}',

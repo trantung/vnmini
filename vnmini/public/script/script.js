@@ -109,7 +109,6 @@
     // fix menu top.
     $(window).scroll(function(){
       if ($(this).scrollTop() > 137) {
-        console.log(123);
           $('#fixed-top').addClass('fixed');
       } else {
           $('#fixed-top').removeClass('fixed');

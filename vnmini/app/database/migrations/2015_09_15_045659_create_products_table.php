@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration {
             $table->string('origin_price', 256)->nullable();
             $table->string('new_price', 256)->nullable();
             $table->string('image_url', 256)->nullable();
+            $table->string('big_image_url', 256)->nullable();
             $table->text('description')->nullable();
             $table->string('introduce', 256)->nullable();
             $table->string('information', 256)->nullable();

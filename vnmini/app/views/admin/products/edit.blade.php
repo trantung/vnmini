@@ -56,8 +56,15 @@
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Ảnh đại diện</label>
-        {{Form::file('image_url',"", array('class'=>'form-control','id'=>'imgInp'))}}
-        <img src="{{ asset($product->image_url) }}" class="img-rounded" width="304" height="236" id="blah">
+        <input name="image_url" type="file" class="form-control" id="imgInp">
+        <img src="{{ asset($product->image_url) }}" class="img-rounded" alt="Image" width="500" height="236" id="blah1">
+        
+    </div>
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Ảnh lớn</label>
+        <input name="big_image_url" type="file" class="form-control" id="imgInp2">
+        <img src="{{ asset($product->big_image_url) }}" class="img-rounded" alt="Image" width="500" height="236" id="blah2">
+        
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Ảnh liên quan</label>
@@ -84,4 +91,23 @@
 {{ Form::close() }}
 @include('admin.script')
 @include('admin.image_relate')
+@stop
+@section('script_close')
+<script type="text/javascript">
+        function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(id).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    $('#imgInp').change(function(){
+        readURL(this, '#blah1');
+    });
+    $('#imgInp2').change(function(){
+        readURL(this, '#blah2');
+    });
+</script>
 @stop
