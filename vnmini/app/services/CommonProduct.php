@@ -50,7 +50,6 @@ class CommonProduct
 			'quantity' => 'required|integer|min:0',
 			'origin_price' => 'required|integer|min:1000|'.'greater_than:new_price,' . $input['new_price'],
 			'new_price' => 'integer|min:0',
-			'big_image_url' => 'required',
 			];
 		$imageRule = self::validateImage($input);
 		$rule = array_merge($rule, $imageRule);
