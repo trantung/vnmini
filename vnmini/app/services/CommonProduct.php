@@ -126,14 +126,12 @@ class CommonProduct
 		}
 	}
 
-	public static function getAllProduct(array $category_ids, $paginate = NULL){
-		if(is_null($paginate)){
+	public static function getAllProduct(array $category_ids, $paginate = FRONTEND_PAGINATE_PRODUCT){
         	return DB::table("products")
         		->join("product_categories", "products.id","=", "product_categories.product_id")
 				->join("categories", "product_categories.category_id","=", "categories.id")
-    			->distinct("products.id")->get();
-		}
-        return Product::whereIn('category_id', $category_ids)->paginate(FRONTEND_PAGINATE_PRODUCT);
+    			->distinct("products.id")->paginate($paginate);
+		
     }
 
     public static function getRelateProduct(Product $product){

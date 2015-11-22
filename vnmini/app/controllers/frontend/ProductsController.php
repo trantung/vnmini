@@ -57,7 +57,7 @@ class ProductsController extends \FrontendController {
 	}
 
 	public function getProductBySort($name, $id){
-		$sort = Sort::findOrFail($id);
+		$sort = Category::findOrFail($id);
 		return View::make('frontend.categories.show', compact('sort'));
 	}
 
@@ -111,16 +111,14 @@ class ProductsController extends \FrontendController {
 
 	public function getProductByCategory($sort_name,$sort_id, $cate_id, $cate_name){
 		
-		$sort = Sort::findOrFail($sort_id);
+		$sort = Category::findOrFail($sort_id);
 
 		if($cate_id !=0){
-
 			$category = Category::findOrFail($cate_id);
 			$products = $category->products()->paginate(PAGINATE_PRODUCT);
 		}
 		else{
-
-			$category_ids = CommonSort::getCategoryId($sort);
+			$category_ids = CommonSort::getCategoryId($sort->id);
 			$products = CommonProduct::getAllProduct($category_ids, PAGINATE_PRODUCT);
 		}
 
