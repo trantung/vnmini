@@ -8,7 +8,7 @@ class ProductRelate extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'product_relates';
-    protected $fillable = ['product_id', 'category_id', 'relate_code'];
+    protected $fillable = ['product_id', 'relate_id', 'relate_code'];
     protected $dates = ['deleted_at'];
 
     public function product() 

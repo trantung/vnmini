@@ -41,5 +41,9 @@ class Product extends Eloquent
     {
         return $this->belongsTo('Type', 'type_id', 'id');
     }
+    public function relates()
+    {
+        return $this->hasMany('ProductRelate', 'product_id', 'id');
+    }
 
 }

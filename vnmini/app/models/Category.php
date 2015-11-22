@@ -13,7 +13,7 @@ class Category extends Eloquent
 
     public function products()
     {
-        return $this->belongsToMany('Product', 'order_products', 'category_id', 'product_id');
+        return $this->belongsToMany('Product', 'product_categories', 'category_id', 'product_id');
     }
     public function sort() 
     {
