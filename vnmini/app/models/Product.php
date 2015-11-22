@@ -8,7 +8,7 @@ class Product extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'products';
-    protected $fillable = ['category_id', 'code', 'name',
+    protected $fillable = ['type_id', 'code', 'name',
     					'size', 'material', 'quantity',
     					'origin_price', 'new_price',
     					'image_url', 'description',
@@ -16,9 +16,10 @@ class Product extends Eloquent
     					];
     protected $dates = ['deleted_at'];
 
-    public function category() 
+    public function categories() 
     {
-        return $this->belongsTo('Category', 'category_id', 'id');
+        return $this->belongsToMany('Category', 'product_categories', 'product_id', 'category_id');
+
     }
 
     public function orderproducts()
@@ -35,4 +36,10 @@ class Product extends Eloquent
     {
         return $this->belongsToMany('Order', 'order_products', 'product_id', 'order_id');
     }
+
+    public function type()
+    {
+        return $this->belongsTo('Type', 'type_id', 'id');
+    }
+
 }
