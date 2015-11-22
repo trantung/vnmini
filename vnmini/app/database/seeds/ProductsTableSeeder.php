@@ -9,7 +9,6 @@ class ProductsTableSeeder extends Seeder {
         [
         	[
 		"type_id"=> 1,
-                'weight_number' =>1,
 		"code"		=> 123,
                 "name"     =>"VÒNG ĐÁ MĂT HÔ NÂU VÀNG",
                 "name_seo"     =>"VÒNG ĐÁ MĂT HÔ NÂU VÀNG",
@@ -26,7 +25,6 @@ class ProductsTableSeeder extends Seeder {
         	],
         	[
 		"type_id"=> 1,
-                'weight_number' =>2,
 		"code"		=> 2222,
                 "name"     =>"VÒNG ĐÁ NHAM THẠCH NÚI LƯẢ",
                 "name_seo"     =>"VÒNG ĐÁ NHAM THẠCH NÚI LƯẢ",
@@ -43,7 +41,6 @@ class ProductsTableSeeder extends Seeder {
         	],
         	[
 		"type_id"=> 2,
-                'weight_number' =>3,
 		"code"		=> 333,
                 "name"     =>"VÒNG ĐÁ THẠCH ANH TÍM",
                 "name_seo"     =>"VÒNG ĐÁ THẠCH ANH TÍM",
@@ -60,7 +57,6 @@ class ProductsTableSeeder extends Seeder {
         	],
         	[
 		"type_id"=> 3,
-                'weight_number' =>4,
 		"code"		=> 4444,
                 "name"     =>"VÒNG ĐÁ THẠCH ANH HÔNG",
                 "name_seo"     =>"VÒNG ĐÁ THẠCH ANH HÔNG",
@@ -77,7 +73,6 @@ class ProductsTableSeeder extends Seeder {
         	],
         	[
 		"type_id"=> 4,
-                'weight_number' =>5,
 		"code"		=> 5555,
                 "name"     =>"VÒNG ĐÁ MĂT HÔ NÂU VÀNG 5",
                 "name_seo"     =>"VÒNG ĐÁ MĂT HÔ NÂU VÀNG 5",
@@ -94,7 +89,6 @@ class ProductsTableSeeder extends Seeder {
         	],
         	[
 		"type_id"=> 5,
-                'weight_number' =>6,
 		"code"		=> 6666,
                 "name"     =>"VÒNG ĐÁ NHAM THẠCH NÚI LƯẢ 6",
                 "name_seo"     =>"VÒNG ĐÁ NHAM THẠCH NÚI LƯẢ 6",
@@ -111,7 +105,6 @@ class ProductsTableSeeder extends Seeder {
         	],
         	[
 		"type_id"=> 5,
-                'weight_number' =>7,
 		"code"		=> 7777,
                 "name"     =>"VÒNG ĐÁ THẠCH ANH TÍM 7",
                 "name_seo"     =>"VÒNG ĐÁ THẠCH ANH TÍM 7",

@@ -3,6 +3,7 @@ class CommonCategory
 {
 	public static function getCategories()
 	{
+		$cat = Category::find(2);
 		$categories = Category::orderBy('id', 'asc');
 		$categories = $categories->lists('name', 'id');
 		return $categories;

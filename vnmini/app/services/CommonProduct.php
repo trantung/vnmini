@@ -168,7 +168,7 @@ class CommonProduct
 	public static function getCategoryProduct($id)
 	{
 		$product = Product::find($id);
-		$listCategory = $product->productCategories->lists('name', 'id');
+		$listCategory = $product->categories->lists('id', 'name');
+		return $listCategory;
 	}
-
 }

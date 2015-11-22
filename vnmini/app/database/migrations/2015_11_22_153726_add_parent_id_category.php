@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSeoNameSort extends Migration {
+class AddParentIdCategory extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,8 +12,8 @@ class AddSeoNameSort extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('sorts', function(Blueprint $table) {
-            $table->string('name_seo', 256)->after('name')->nullable();
+		Schema::table('categories', function(Blueprint $table) {
+            $table->integer('parent_id')->after('id')->nullable();
         });
 	}
 
@@ -24,7 +24,7 @@ class AddSeoNameSort extends Migration {
 	 */
 	public function down()
 	{
-		//
+
 	}
 
 }
