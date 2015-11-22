@@ -10,7 +10,7 @@
                             <img src="{{ asset($product->image_url) }}">
                         </a>
                         <a href ="{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}">
-                            <h3>{{ $product->name }}</h3>
+                            <h3>{{ uniToVni($product->name) }}</h3>
                         </a>
                         <div class="cost">
                             @if(!empty($product->new_price))
@@ -21,7 +21,7 @@
                                 </span>{{ $product->origin_price }}<span>đ</span>
                             @endif
                         </div>
-                        <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}');">Thêm vào giỏ</button>
+                        <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}');">Thanh Toán</button>
                     </div>
                 </div>
             @endforeach

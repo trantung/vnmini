@@ -67,7 +67,7 @@
                         @endif
                         <div class="input-group">
                             <div class="input-group-addon arrow-down">arrow down</div>
-                            <button name="add_cart" id ="button-cart" value="{{ $product->id }}">Thêm vào giỏ</button>
+                            <button name="add_cart" id ="button-cart" value="{{ $product->id }}">Thanh Toán</button>
                         </div>
                         <br />
                         @if(!$product->new_price)

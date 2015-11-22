@@ -53,7 +53,7 @@
                                         </span>{{ $product->origin_price }}<span>đ</span>
                                     @endif
                                     </div>
-                                    <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$name_seo,'product_id'=>$product->id]) }}');">Thêm vào giỏ</button>
+                                    <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$name_seo,'product_id'=>$product->id]) }}');">Thanh Toán</button>
                                 </div>
                             </div>
                         @endforeach

@@ -135,7 +135,7 @@ class CommonProduct
     }
 
     public static function getRelateProduct(Product $product){
-    	return $product->category->products()->paginate(FRONTEND_PAGINATE_PRODUCT_RELATE);
+    	return $product->relates()->paginate(FRONTEND_PAGINATE_PRODUCT_RELATE);
     }
 
     public static function getNameSeo($name){
