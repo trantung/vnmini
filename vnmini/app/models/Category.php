@@ -27,4 +27,5 @@ class Category extends Eloquent
     public function product_categories(){
         return $this->hasMany('ProductCategory', 'category_id', 'id');
     }
+
 }

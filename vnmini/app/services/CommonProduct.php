@@ -43,7 +43,7 @@ class CommonProduct
 	public static function validate($input)
 	{
 		$rule = [
-			'type_id' => 'required',
+			'category_id' => 'required',
 			'name' => 'required',
 			'name_seo' => 'required',
 			'code' => 'required',
@@ -54,7 +54,7 @@ class CommonProduct
 		$imageRule = self::validateImage($input);
 		$rule = array_merge($rule, $imageRule);
 		$message = [
-			'type_id.required' => 'Phải chọn loại sản phẩm',
+			'category_id.required' => 'Phải chọn loại sản phẩm',
 			'name.required' => 'Tên sản phẩm phải có',
 			'code.required' => 'Mã sản phẩm phải có',
 			'quantity.required' => 'Số lượng sản phẩm phải có',
@@ -128,7 +128,10 @@ class CommonProduct
 
 	public static function getAllProduct(array $category_ids, $paginate = NULL){
 		if(is_null($paginate)){
-        	return Product::whereIn('category_id', $category_ids)->limit(8)->get();
+        	return DB::table("products")
+        		->join("product_categories", "products.id","=", "product_categories.product_id")
+				->join("categories", "product_categories.category_id","=", "categories.id")
+    			->distinct("products.id")->get();
 		}
         return Product::whereIn('category_id', $category_ids)->paginate(FRONTEND_PAGINATE_PRODUCT);
     }
@@ -164,11 +167,4 @@ class CommonProduct
     	}
     	return $image_url;
     }
-
-	public static function getCategoryProduct($id)
-	{
-		$product = Product::find($id);
-		$listCategory = $product->categories->lists('id', 'name');
-		return $listCategory;
-	}
 }
