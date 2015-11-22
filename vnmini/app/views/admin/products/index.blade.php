@@ -34,7 +34,6 @@
 	    <tr>
 	        <th>Tên</th>
 	        <th>Mã sản phẩm</th>
-	        <th>Loại sản phẩm</th>
 	        <th>Giá gốc</th>
 	        <th>Giá KM</th>
 	        <th>Khuyến Mại</th>
@@ -44,7 +43,6 @@
 	    	<tr>
 	        <td><a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}">{{$product->name}}</a></td>
 	        <td>{{ $product->code }}</td>
-	        <td>{{ $product->category->name }}</td>
 	        <td>{{ $product->origin_price }}</td>
 	        <td>{{ $product->new_price }}</td>
 	        <td>{{statusName($product->status, NO_PROMOTION, PROMOTION)}}</td>
