@@ -7,8 +7,14 @@
 <form action="{{ route('admin.products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
     <div class="form-group col-sm-4 col-md-8">
         <label for="category">Select Category:</label>
-        {{ Form::select('category_id' , ['' => 'Select category'] + CommonCategory::getCategories(), null, ['class' => 'form-control']) }}
+        {{ Form::select('category_id[]', CommonCategory::getCategories(), null, ['class' => 'form-control', 'multiple'=>'multiple']) }}
     </div>
+    
+    <div class="form-group col-sm-4 col-md-8">
+         <label for="category">Select Type:</label>
+        {{ Form::select('type_id' , ['' => 'Select type'] + CommonCategory::getTypeProduct(), null, ['class' => 'form-control']) }}
+    </div>
+
     <div class="form-group col-sm-4 col-md-8">
         <label>Tên sản phẩm:</label>
         {{ Form::text('name', '', ['class' => 'form-control']) }}

@@ -18,4 +18,9 @@ class CommonCategory
 	public static function getProduct(Category $category){
 		return $category->products()->paginate(FRONTEND_PAGINATE_PRODUCT);
 	}
+
+	public static function getTypeProduct()
+	{
+		return Type::lists('name', 'id');
+	}
 }

@@ -8,7 +8,7 @@
 {{Form::open(array("route"=>array('admin.products.update', $product->id), 'method' => 'PUT', "class"=>"form-horizontal",'files'=>true))}}
     <div class="form-group col-sm-4 col-md-8">
         <label for="category">Select Category:</label>
-        {{ Form::select('category_id' , ['' => 'Select category'] + CommonCategory::getCategories(), $product->category->id, ['class' => 'form-control']) }}
+        {{ Form::select('category_id[]', CommonCategory::getCategories(), CommonProduct::getTypeList($product->id), ['class' => 'form-control', 'multiple'=>'multiple']) }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Tên sản phẩm:</label>

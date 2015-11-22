@@ -33,7 +33,7 @@ class ProductController extends AdminController {
 	 */
 	public function store()
 	{
-		$input = Input::except('_token', 'image_relate');
+		$input = Input::except('_token', 'image_relate', 'category_id');
 		$validator = CommonProduct::validate($input);
 		if ($validator->fails()) {
             return Redirect::route('admin.products.create')
@@ -41,6 +41,10 @@ class ProductController extends AdminController {
                 ->withErrors($validator);
         }
 		$productId = Common::create($input);
+		$product = Product::find($productId);
+		foreach (Input::get('category_id') as $categoryId) {
+			$product->categories()->attach($categoryId);
+		}
         $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId);
         $input['big_image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId, 1);
 		Common::update($productId, ['image_url' => $input['image_url']]);
