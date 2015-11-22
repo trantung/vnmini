@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('PromotionTableSeeder');
 		$this->call('DescriptionSeoSeeder');
 		$this->call('FooterTableSeeder');
+		$this->call('ProductCategoryTableSeeder');
 	}
 }

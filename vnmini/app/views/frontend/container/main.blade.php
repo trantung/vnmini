@@ -23,10 +23,11 @@
                     @endforeach       
                 </ul>
             </div>
+
         @endif
             <div class="tab-content">
             <?php 
-                $category_ids = CommonSort::getCategoryId($sort);
+                $category_ids = CommonSort::getCategoryId($sort->id);
                 $products = CommonProduct::getAllProduct($category_ids);
             ?>
                 <div id="all-item" class="tab-pane fade in active">
