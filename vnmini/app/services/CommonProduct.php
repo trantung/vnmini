@@ -165,4 +165,10 @@ class CommonProduct
     	}
     	return $image_url;
     }
+    public static function getCategoryProduct($id)
+	{
+		$product = Product::find($id);
+		$listCategory = $product->categories->lists('id', 'name');
+		return $listCategory;
+	}
 }
