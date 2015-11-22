@@ -33,7 +33,7 @@ class ProductController extends AdminController {
 	 */
 	public function store()
 	{
-		$input = Input::except('_token', 'image_relate', 'category_id');
+		$input = Input::except('_token', 'image_relate', 'category_id', 'relate_id', 'primary_name');
 		$validator = CommonProduct::validate($input);
 		if ($validator->fails()) {
             return Redirect::route('admin.products.create')
@@ -45,15 +45,19 @@ class ProductController extends AdminController {
 		foreach (Input::get('category_id') as $categoryId) {
 			$product->categories()->attach($categoryId);
 		}
+       
         $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId);
         $input['big_image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId, 1);
-		Common::update($productId, ['image_url' => $input['image_url']]);
+		Common::update($productId, ['image_url' => $input['image_url'], 'big_image_url' => $input['big_image_url']]);
 		$input['status'] = CommonProduct::getStatus($input);
 		if (!$productId) {
 			return Redirect::route('admin.products.index')->with('message', 'Tạo mới thất bại');
 		}
 		if (Input::get('image_relate')) {
 			CommonProduct::createImageRelate(Input::only('image_relate'), $productId);
+		}
+		if (Input::get('relate_id')) {
+			ProductRelate::create(['product_id' => Input::get('relate_id'), 'relate_id' => $productId]);
 		}
 		return Redirect::route('admin.products.index')->with('message', 'Tạo mới thành công');
 	}
@@ -95,7 +99,7 @@ class ProductController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except('_token','image', 'image_relate', 'category_id');
+		$input = Input::except('_token','image', 'image_relate', 'category_id','relate_id');
 		$validator = CommonProduct::validate($input);
 		if ($validator->fails()) {
             return Redirect::route('admin.products.edit', $id)
@@ -111,6 +115,9 @@ class ProductController extends AdminController {
 		Common::update($id, $input);
 		$product = Product::find($id);
 		$product->categories()->sync(Input::get('category_id'));
+		if(Input::get('relate_id')){
+			ProductRelate::where('relate_id', $id)->first()->update(['product_id' => Input::get('relate_id')]);
+		}
 		return Redirect::route('admin.products.index')->with('message', 'Update thành công');
 	}
 

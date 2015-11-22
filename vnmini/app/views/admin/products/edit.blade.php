@@ -26,6 +26,12 @@
         <label>Mã sản phẩm:</label>
         {{ Form::text('code', $product->code, ['class' => 'form-control']) }}
     </div>
+    @if(ProductRelate::where('relate_id', $product->id)->first())
+        <div class="form-group col-sm-4 col-md-8">
+            <label>Sản phẩm chính</label>
+            {{ Form::text('relate_id', Product::find(ProductRelate::where('relate_id', $product->id)->first()->product_id)->name, ['class' => 'form-control']) }}
+        </div>
+    @endif
     <div class="form-group col-sm-4 col-md-8">
         <label>Kích cỡ:</label>
         {{ Form::text('size', $product->size, ['class' => 'form-control']) }}

@@ -28,6 +28,11 @@
         {{ Form::text('code', '', ['class' => 'form-control']) }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
+            <label>Sản phẩm chính</label>
+            {{ Form::text('primary_name', null, ['class' => 'form-control', 'id' => 'name']) }}
+            {{ Form::hidden('relate_id', null, ['class' => 'form-control', 'id' => 'relate_id']) }}
+        </div>
+    <div class="form-group col-sm-4 col-md-8">
         <label>Kích cỡ:</label>
         {{ Form::text('size', '', ['class' => 'form-control']) }}
     </div>
@@ -97,5 +102,20 @@
     $('#imgInp2').change(function(){
         readURL(this, '#blah2');
     });
+
+    $("#name").change(function(){
+        $.ajax({
+            url: '/product/ajax',
+            type: 'POST',
+            success: function(response) {
+                owner_json = response.data;
+                var availableTags = $.map(owner_json, function(el) { return el; });
+                $( '#relate_id' ).autocomplete({
+                    source: availableTags
+                });
+                console.log(1);            }
+        });  
+    })
+    
 </script>
 @stop

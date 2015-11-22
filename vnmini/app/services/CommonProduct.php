@@ -43,7 +43,7 @@ class CommonProduct
 	public static function validate($input)
 	{
 		$rule = [
-			'category_id' => 'required',
+			'type_id' => 'required',
 			'name' => 'required',
 			'name_seo' => 'required',
 			'code' => 'required',
@@ -54,7 +54,7 @@ class CommonProduct
 		$imageRule = self::validateImage($input);
 		$rule = array_merge($rule, $imageRule);
 		$message = [
-			'category_id.required' => 'Phải chọn loại sản phẩm',
+			'type_id.required' => 'Phải chọn loại sản phẩm',
 			'name.required' => 'Tên sản phẩm phải có',
 			'code.required' => 'Mã sản phẩm phải có',
 			'quantity.required' => 'Số lượng sản phẩm phải có',

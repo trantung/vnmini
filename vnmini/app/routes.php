@@ -45,6 +45,9 @@ Route::group(['prefix' => 'admin'], function () {
 });
 //Frontend
 // dd(Request::segments()[0]);
+Route::post('/product/ajax', function(){
+    return Product::lists('name', 'id');
+});
 Route::get('/', array('as'=>'frontend.product.index','uses'=>'ProductsController@index'));
 Route::get('/{product_name}/{id}/chi-tiet', array('as'=>'frontend.product.show','uses'=>'ProductsController@showName'));
 Route::resource('/cart','CartController', array('only'=>['index', 'update', 'destroy','store']));
