@@ -33,7 +33,7 @@ class Common
 			return 'Product';		
 		}
 		if ($name == 'sort') {
-			return 'Sort';		
+			return 'Category';		
 		}
 		if ($name == 'image') {
 			return 'AdminImage';		

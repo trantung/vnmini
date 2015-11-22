@@ -18,7 +18,7 @@
         <td>{{$category->id}}</td>
         <td>{{$category->name}}</td>
         <td>
-            @if($category->sort_id)
+            @if($category->sort)
                 {{ $category->sort->name }}
             @endif
         </td>

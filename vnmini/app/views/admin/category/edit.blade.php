@@ -32,7 +32,7 @@
                             <td>Thể loại</td>
                             <td>
                                 <div class="row form-group  col-md-3 col-sm-3">
-                                    {{ Form::select('sort_id' , [$category->sort_id => $category->sort->name] + CommonCategory::getSortCategory(), null, ['class' => 'form-control']) }}
+                                    {{ Form::select('parent_id' , [$category->parent_id => $category->sort->name] + CommonCategory::getSortCategory(), null, ['class' => 'form-control']) }}
                                 </div>
                             </td>
                         </tr>

@@ -9,7 +9,7 @@ class CategoryController extends AdminController {
 	 */
 	public function index()
 	{
-		$categories = Category::orderBy('created_at', 'desc')->paginate(PAGINATE_CATEGORY);
+		$categories = Category::whereNotNull('parent_id')->orderBy('created_at', 'desc')->paginate(PAGINATE_CATEGORY);
 		return View::make('admin.category.index')->with(compact('categories'));
 	}
 
@@ -75,7 +75,7 @@ class CategoryController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except('_token');
+		$input = Input::except('_token','_method');
 		Common::update($id, $input);
 		return Redirect::route('admin.category.index')->with('message','Update thành công!');
 	}
@@ -89,8 +89,6 @@ class CategoryController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		$listProductId = Category::find($id)->products;
-		Common::deleteRelate($listProductId, 'Product');
 		Common::delete($id);
 		return Redirect::route('admin.category.index')->with('message','Xóa thành công!');
 	}
