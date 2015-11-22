@@ -11,7 +11,7 @@ class CommonCategory
 
 	public static function getSortCategory()
 	{
-		$sort = Sort::orderBy('id', 'asc');
+		$sort = Category::whereNull('parent_id')->orderBy('id', 'asc');
 		$sort = $sort->lists('name', 'id');
 		return $sort;
 	}

@@ -22,9 +22,10 @@
                 <tr>
                     <td>{{$category->id}}</td>
                     <td>{{$category->name}}</td>
-                    <td>@if($category->sort_id)
+                    <td>
+                    @if($category->sort)
                         {{ $category->sort->name }}
-                        @endif
+                    @endif
                     </td>
                     <td class="text-right">
                         <a class="btn btn-primary" href="{{ action('CategoryController@show', $category->id) }}">View</a>

@@ -9,7 +9,7 @@ class SortController extends AdminController {
 	 */
 	public function index()
 	{
-		$sorts = Sort::orderBy('created_at', 'desc')->paginate(PAGINATE_SORT);
+		$sorts = Category::whereNull('parent_id')->orderBy('created_at', 'desc')->paginate(PAGINATE_SORT);
 		return View::make('admin.sort.index')->with(compact('sorts'));
 	}
 
@@ -44,7 +44,7 @@ class SortController extends AdminController {
 	 */
 	public function show($id)
 	{
-		$sort = Sort::find($id);
+		$sort = Category::find($id);
 		return View::make('admin.sort.show')->with(compact('sort'));
 	}
 
@@ -57,7 +57,7 @@ class SortController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$sort = Sort::find($id);
+		$sort = Category::find($id);
 		return View::make('admin.sort.edit')->with(compact('sort'));
 	}
 
@@ -84,12 +84,12 @@ class SortController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		$listCategoryId = Sort::find($id)->categories;
-		foreach ($listCategoryId as $key => $value) {
-			$listProductId = Category::find($value->id)->products;
-			Common::deleteRelate($listProductId, 'Product');
-		}
-		Common::deleteRelate($listCategoryId, 'Category');
+		// $listCategoryId = Category::find($id)->categories;
+		// foreach ($listCategoryId as $key => $value) {
+		// 	$listProductId = Category::find($value->id)->products;
+		// 	Common::deleteRelate($listProductId, 'Product');
+		// }
+		// Common::deleteRelate($listCategoryId, 'Category');
 		Common::delete($id);
 		return Redirect::route('admin.sort.index')->with('message', 'Xoá thành công');
 	}
