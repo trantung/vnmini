@@ -16,6 +16,7 @@ class CategoriesTableSeeder extends Seeder {
 				'name_seo'=>'trang-suc-theo-menh',
 				'status'=>1,
 				'sort_id'=>1,
+				'weight_number' => 1,
 				'created_at'=>date('Y-m-d:H-i-s'),
 			],
 			[
@@ -23,6 +24,7 @@ class CategoriesTableSeeder extends Seeder {
 				'name_seo'=>'trang-suc-name',
 				'status'=>1,
 				'sort_id'=>1,
+				'weight_number' => 2,
 				'created_at'=>date('Y-m-d:H-i-s'),
 			],
 			[
@@ -30,6 +32,7 @@ class CategoriesTableSeeder extends Seeder {
 				'name_seo'=>'trang-suc-nu',
 				'status'=>1,
 				'sort_id'=>1,
+				'weight_number' => 3,
 				'created_at'=>date('Y-m-d:H-i-s'),
 			],
 			[
@@ -37,6 +40,7 @@ class CategoriesTableSeeder extends Seeder {
 				'name_seo'=>'phu-kien-nam',
 				'status'=>1,
 				'sort_id'=>2,
+				'weight_number' => 4,
 				'created_at'=>date('Y-m-d:H-i-s'),
 			],
 			[
@@ -44,6 +48,7 @@ class CategoriesTableSeeder extends Seeder {
 				'name_seo'=>'phu-kien-nu',
 				'status'=>1,
 				'sort_id'=>2,
+				'weight_number' => 5,
 				'created_at'=>date('Y-m-d:H-i-s'),
 			],
 			[
@@ -51,6 +56,7 @@ class CategoriesTableSeeder extends Seeder {
 				'name_seo'=>'phu-kien-thoi-trang',
 				'status'=>1,
 				'sort_id'=>2,
+				'weight_number' => 6,
 				'created_at'=>date('Y-m-d:H-i-s'),
 			],
 			[
@@ -58,6 +64,7 @@ class CategoriesTableSeeder extends Seeder {
 				'name_seo'=>'khuyen-mai',
 				'status'=>1,
 				'sort_id'=>3,
+				'weight_number' => 7,
 				'created_at'=>date('Y-m-d:H-i-s'),
 			],
 
