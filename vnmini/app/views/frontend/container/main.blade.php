@@ -23,9 +23,11 @@
                     @endforeach       
                 </ul>
             </div>
+
         @endif
             <div class="tab-content">
             <?php 
+            dd($sort->product_cates);
                 $category_ids = CommonSort::getCategoryId($sort);
                 $products = CommonProduct::getAllProduct($category_ids);
             ?>
