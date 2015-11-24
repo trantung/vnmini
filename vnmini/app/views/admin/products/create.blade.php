@@ -1,4 +1,21 @@
 @extends('layouts.master')
+@section('css_open')
+<style type="text/css">
+    .product_list_id{
+        display: none;
+    }
+    ul{
+        background-color:#fff;
+        list-style-type:none;
+    }
+    li:hover
+    {
+        background-color:#c3c6e0;
+        cursor:pointer;
+    }
+</style>
+@stop
+
 @section('content')
 <div class="page-header">
     <h1>Tạo mới sản phẩm</h1>
@@ -29,8 +46,10 @@
     </div>
     <div class="form-group col-sm-4 col-md-8">
             <label>Sản phẩm chính</label>
-            {{ Form::text('primary_name', null, ['class' => 'form-control', 'id' => 'name']) }}
-            {{ Form::hidden('relate_id', null, ['class' => 'form-control', 'id' => 'relate_id']) }}
+            {{ Form::text('primary_name', null, ['class' => 'form-control', 'id' => 'primary_name', 'onkeyup'=>"autocomplet()"]) }}
+            <ul id="product_list_id" class="list-group"></ul>
+
+            {{ Form::hidden('primary_id', null, ['class' => 'form-control', 'id' => 'primary_id']) }}
         </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Kích cỡ:</label>
@@ -117,5 +136,43 @@
         });  
     })
     
+
+    // autocomplet : this function will be executed every time we change the text
+function autocomplet() {
+    var min_length = 0; // min caracters to display the autocomplete
+    var keyword = $('#primary_name').val();
+    if (keyword.length >= min_length) {
+        $.ajax({
+            url: '{{ route("admin.product.ajax") }}',
+            type: 'POST',
+            data: {keyword:keyword},
+            success:function(data){
+                $('#product_list_id').show();
+                $('#product_list_id').html(data);
+            }
+        });
+    } else {
+        $('#product_list_id').hide();
+    }
+}
+
+// set_item : this function will be executed when we select an item
+function set_item(item, id) {
+    // change input value
+    $('#primary_name').val(item);
+    $('#primary_id').val(id);
+    // hide proposition list
+    $('#product_list_id').hide();
+}
+
+$('li').mouseover(function()
+  {
+          
+    $('li:hover').css('background','red'); 
+  });
+$('li').mouseout(function()
+  {
+          $(this).css('background', 'transparent');
+  });
 </script>
 @stop

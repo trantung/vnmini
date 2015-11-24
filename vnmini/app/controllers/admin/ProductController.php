@@ -42,10 +42,17 @@ class ProductController extends AdminController {
         }
 		$productId = Common::create($input);
 		$product = Product::find($productId);
-		foreach (Input::get('category_id') as $categoryId) {
-			$product->categories()->attach($categoryId);
+		if(is_array(Input::get('category_id'))){
+			foreach (Input::get('category_id') as $categoryId) {
+				$product->categories()->attach($categoryId);
+				$product->save();
+			}
 		}
-       
+       	else {
+       		$product->categories()->attach(Input::get('category_id'));
+       		$product->save();
+       	}
+
         $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId);
         $input['big_image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId, 1);
 		Common::update($productId, ['image_url' => $input['image_url'], 'big_image_url' => $input['big_image_url']]);
@@ -153,6 +160,19 @@ class ProductController extends AdminController {
 		$products = CommonProduct::search($input);
 		$categories = Category::all(['id', 'name']);
 		return View::make('admin.products.index')->with(compact('products', 'categories'));
+	}
+
+	public function ajaxListProducts(){
+		$input = Input::all();
+		$name = '%'.$input["keyword"].'%';
+		$products = Product::where('name', 'LIKE', $name)->get();
+		$li = "";
+		if(!$products->isEmpty()){
+			foreach ($products as $product) {
+				$li .= '<li class="list-group-item" onclick="set_item(\''.str_replace("'", "\'", $product->name).'\', \''.str_replace("'", "\'", $product->id).'\')">'.$product->name.'</li>';
+			}
+		}
+		return $li;
 	}
 
 }

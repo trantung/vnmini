@@ -5,12 +5,11 @@
     <h1>Chi tiết sản phẩm</h1>
 </div>
 <div id="content">
-    <div class="page-header">
-        <h1>Chi tiết sản phẩm </h1>
-    </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Thể loại</label>
-        {{ $product->category->name }}
+        <label>Thể loại: </label>
+       @foreach($product->categories as $pCate)
+            {{ $pCate->name.', ' }}
+       @endforeach
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Tên sản phẩm:</label>
@@ -53,11 +52,11 @@
         {{ $product->information }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Ảnh đại diện</label>
+        <label>Ảnh đại diện: </label>
         <img src="{{ asset( $product->image_url ) }}" class="img-rounded" width="304" height="236" id="blah">
     </div>
     <div class="form-group col-sm-4 col-md-8">
-        <label>Ảnh liên quan</label>
+        <label>Ảnh liên quan: </label>
         @foreach($imageRelates as $key => $image)
             <div>
                 Ảnh liên quan thứ {{ $key + 1 }}
