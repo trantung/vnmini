@@ -9,8 +9,9 @@
                     </div>
                 </div>
                 <!-- image -->
-                
+               
             </div>
+
             <!-- detail -->
             <div class="col-md-4 col-sm-4 right">
                 <div class="">
@@ -67,7 +68,7 @@
                         @endif
                         <div class="input-group">
                             <div class="input-group-addon arrow-down">arrow down</div>
-                            <button name="add_cart" id ="button-cart" value="{{ $product->id }}">Thanh Toán</button>
+                            <button name="add_cart" id ="button-cart" value="{{ $product->id }}">Thêm vào giỏ</button>
                         </div>
                         <br />
                         @if(!$product->new_price)
@@ -85,6 +86,43 @@
             </div>
             <!-- left detail -->
             <div class="col-md-8 col-sm-8">
+            @if(CommonProduct::getProductRelate($product) !=null)
+            <?php 
+                $pRelate = CommonProduct::getProductRelate($product);
+            ?>
+                <div class="relationship">
+                    <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th> Sản phẩm </th>
+                                <th width="35%"> </th>
+                                <th> Giá Vnmini.net</th>
+                                <th> Giá khuyến mãi</th>
+                                <th> Đặt mua</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($pRelate as $p)
+                            <tr>
+                                <td>{{ $p->code }}</td>
+                                <td> {{ $p->name.' '.$p->type->name }} </td>
+                                @if($p->new_price)
+                                    <span class="price">{{ $p->origin_price }}<span>đ</span></span>
+                                    {{ $p->new_price }} <span>đ</span>
+                                @else
+                                    {{ $p->origin_price }} <span>đ</span>
+                                @endif
+                                <td class="red"> {{ $p->discounts }}</td>
+                                <td> <button name="add_cart" id ="button-cart" value="{{ $p->id }}">Thêm vào giỏ</button></td>
+                            </tr>
+                        @endforeach   
+                        </tbody>
+                    </table>
+                   
+                </div>
+                </div>
+            @endif
                 <div class="detail">
                     <ul class="nav navbar-nav tabs">
                         <li class="active"><a data-toggle="tab" href="#all-item" class="active" aria-expanded="true">Moâ taû</a></li>
@@ -119,6 +157,7 @@
         </div>
     </div>
 </article>
+
 @section('script')
 <script type="text/javascript">
     $('.my-zoom').WMZoom({

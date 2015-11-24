@@ -127,9 +127,10 @@ class CommonProduct
 	}
 
 	public static function getAllProduct(array $category_ids, $paginate = FRONTEND_PAGINATE_PRODUCT){
-        	return DB::table("products")
-        		->join("product_categories", "products.id","=", "product_categories.product_id")
+        	return Product::join("product_categories", "products.id","=", "product_categories.product_id")
 				->join("categories", "product_categories.category_id","=", "categories.id")
+				->select("products.*", "categories.name", "product_categories.weight_number")
+				->orderBy('product_categories.weight_number', 'ASC')
     			->distinct("products.id")->paginate($paginate);
 		
     }
@@ -170,5 +171,22 @@ class CommonProduct
 		$product = Product::find($id);
 		$listCategory = $product->categories->lists('id', 'name');
 		return $listCategory;
+	}
+
+	public static function getProductRelate(Product $product){
+
+		$arrId = [];
+
+		if(!$product->relates->isEmpty()){
+
+			foreach ($product->relates as $relate) {
+				
+				$arrId[] = $relate->relate_id;
+
+			}
+
+			return Product::whereIn('id', $arrId)->get();
+		}
+
 	}
 }

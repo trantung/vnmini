@@ -49,5 +49,4 @@ class Product extends Eloquent
     {
         return $this->hasMany('ProductRelate', 'product_id', 'id');
     }
-
 }
