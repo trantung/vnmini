@@ -52,9 +52,11 @@ class ProductController extends AdminController {
        		$product->categories()->attach(Input::get('category_id'));
        		$product->save();
        	}
-
         $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId);
+
         $input['big_image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId, 1);
+        // dd($input['image_url']);
+		
 		Common::update($productId, ['image_url' => $input['image_url'], 'big_image_url' => $input['big_image_url']]);
 		$input['status'] = CommonProduct::getStatus($input);
 		if (!$productId) {
@@ -66,6 +68,7 @@ class ProductController extends AdminController {
 		if (Input::get('relate_id')) {
 			ProductRelate::create(['product_id' => Input::get('relate_id'), 'relate_id' => $productId]);
 		}
+		
 		return Redirect::route('admin.products.index')->with('message', 'Tạo mới thành công');
 	}
 

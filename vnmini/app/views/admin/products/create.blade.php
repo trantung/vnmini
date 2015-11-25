@@ -49,7 +49,7 @@
             {{ Form::text('primary_name', null, ['class' => 'form-control', 'id' => 'primary_name', 'onkeyup'=>"autocomplet()"]) }}
             <ul id="product_list_id" class="list-group"></ul>
 
-            {{ Form::hidden('primary_id', null, ['class' => 'form-control', 'id' => 'primary_id']) }}
+            {{ Form::hidden('relate_id', null, ['class' => 'form-control', 'id' => 'primary_id']) }}
         </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Kích cỡ:</label>

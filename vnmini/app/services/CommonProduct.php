@@ -107,8 +107,6 @@ class CommonProduct
 			$uploadSuccess   =  $file->move($destinationPath, $filename);
 			return $path.'/'.$filename;
 		}
-		// dd($path.'/'.$filename);
-		// return $path.'/'.$filename;
 	}
 
 	public static function updateRelateImage($input, $productId)
@@ -129,7 +127,7 @@ class CommonProduct
 	public static function getAllProduct(array $category_ids, $paginate = FRONTEND_PAGINATE_PRODUCT){
         	return Product::join("product_categories", "products.id","=", "product_categories.product_id")
 				->join("categories", "product_categories.category_id","=", "categories.id")
-				->select("products.*", "categories.name", "product_categories.weight_number")
+				->select("products.*", "categories.name as category_name", "product_categories.weight_number")
 				->orderBy('product_categories.weight_number', 'ASC')
     			->distinct("products.id")->paginate($paginate);
 		
@@ -176,7 +174,6 @@ class CommonProduct
 	public static function getProductRelate(Product $product){
 
 		$arrId = [];
-
 		if(!$product->relates->isEmpty()){
 
 			foreach ($product->relates as $relate) {
@@ -187,6 +184,7 @@ class CommonProduct
 
 			return Product::whereIn('id', $arrId)->get();
 		}
+		dd($product->relates);
 
 	}
 }
