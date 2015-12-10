@@ -165,7 +165,6 @@ class CommonProduct
 	}
 
 	public static function getProductRelate(Product $product){
-
 		$arrId = [];
 		if(!$product->relates->isEmpty()){
 
@@ -177,7 +176,5 @@ class CommonProduct
 
 			return Product::whereIn('id', $arrId)->get();
 		}
-		dd($product->relates);
-
 	}
 }

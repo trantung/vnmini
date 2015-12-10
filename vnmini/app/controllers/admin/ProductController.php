@@ -55,8 +55,6 @@ class ProductController extends AdminController {
         $input['image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$productId, 'image_url');
 
         $input['big_image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$productId, 'big_image_url');
-        // dd($input['image_url']);
-		
 		Common::update($productId, ['image_url' => $input['image_url'], 'big_image_url' => $input['big_image_url']]);
 		$input['status'] = CommonProduct::getStatus($input);
 		if (!$productId) {
@@ -120,12 +118,12 @@ class ProductController extends AdminController {
         if (Input::only('image_relate')) {
 			CommonProduct::createImageRelate(Input::only('image_relate'), $id);
         }
-        if($input['image_url']){
+        if(!empty($input['image_url'])){
         	$input['image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$id, 'image_url');
         }else{
 			$input['image_url'] = CommonProduct::getImageUrl($input, $id);
         }
-        if($input['image_url']){
+        if(!empty($input['big_image_url'])){
         	$input['big_image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$id, 'big_image_url');
         }else{
 			$input['big_image_url'] = CommonProduct::getBigImageUrl($input, $id);
