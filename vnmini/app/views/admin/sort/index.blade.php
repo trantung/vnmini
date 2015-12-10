@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="page-header">
-    <h1>Sort</h1>
+    <h1>Loại sản phẩm</h1>
 </div>
 @include('admin.error-message')
 <div class="row">
@@ -12,6 +12,7 @@
                     <th>ID</th>
                     <th>Tên</th>
                     <th>Tên SEO</th>
+                    <th>INDEX</th>
                     <th class="text-right">OPTIONS</th>
                 </tr>
             </thead>
@@ -21,6 +22,7 @@
                 <td>{{ $sort->id }}</td>
                 <td>{{ $sort->name }}</td>
                 <td>{{ $sort->name_seo }}</td>
+                <td>{{ $sort->weight_number }}</td>
                 <td class="text-right">
                     <a class="btn btn-primary" href="{{ action('SortController@show', $sort->id) }}">View</a>
                     <a class="btn btn-warning " href="{{ action('SortController@edit', $sort->id) }}">Edit</a>

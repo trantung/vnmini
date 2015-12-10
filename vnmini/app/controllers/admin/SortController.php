@@ -70,7 +70,7 @@ class SortController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except('_token');
+		$input = Input::except('_token', '_method');
 		Common::update($id, $input);
 		return Redirect::route('admin.sort.index')->with('message','Update thành công!');
 	}

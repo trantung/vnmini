@@ -89,24 +89,17 @@ class CommonProduct
 		return $imageRelateId;
 	}
 
-	public static function uploadImage($input, $path, $big_image_url = null)
+	public static function uploadImage($path, $field)
 	{
 		$destinationPath = public_path().$path;
 		$filename = 'nothumnail.jpg';
-		if ($big_image_url != null) {
-			if(Input::hasFile('big_image_url')){
-				$file = Input::file('big_image_url');
-				$filename = $file->getClientOriginalName();
-				$uploadSuccess   =  $file->move($destinationPath, $filename);
-				return $path.'/'.$filename;
-			}
-		}
-		if(Input::hasFile('image_url')){
-			$file = Input::file('image_url');
+		if(Input::hasFile($field)){
+			$file = Input::file($field);
 			$filename = $file->getClientOriginalName();
 			$uploadSuccess   =  $file->move($destinationPath, $filename);
 			return $path.'/'.$filename;
 		}
+		return "";
 	}
 
 	public static function updateRelateImage($input, $productId)

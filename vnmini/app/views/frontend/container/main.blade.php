@@ -11,7 +11,10 @@
                     <li class="active">
                         <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}" class="first">Tất cả</a>
                     </li>
-                    @foreach($sort->categories as $category)
+                    <?php 
+                        $sub_cate = $sort->categories()->orderBy("weight_number", 'asc')->get();
+                    ?>
+                    @foreach($sub_cate as $category)
                         <?php 
                             $cate_name = CommonProduct::getNameSeo($category->name);
                         ?>

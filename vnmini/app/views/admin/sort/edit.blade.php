@@ -28,6 +28,12 @@
                                 <input type="text" name = "name_seo" value="{{ $sort->name_seo }}" class="form-control" required>
                             </td>
                         </tr>
+                        <tr>
+                            <td>Index</td>
+                            <td>
+                                <input type="text" name = "weight_number" value="{{ $sort->weight_number }}" class="form-control" required>
+                            </td>
+                        </tr>
                     </tbody>
                   </table>
             <a class="btn btn-default" href="{{ action('SortController@index') }}">Back</a>

@@ -11,7 +11,7 @@
                         Email : <a href="mailto:vnmini18@gmail.com">{{ $footer->email }}</a> <br>
                         Web : <a href ="{{ route('frontend.product.index') }}" >{{ url() }}</a><br>
                     </address>
-                    <div class="fb-like"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="true" data-font="lucida grande"></div>
                     <br />
                     <div class="fb-share-button" data-href="{{ FB_PAGE }}" data-layout="button_count"></div>
                 </div>

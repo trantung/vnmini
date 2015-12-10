@@ -9,12 +9,14 @@
         <tr>
             <th>ID</th>
             <th>Tên</th>
+            <th>Index</th>
         </tr>
     </thead>
     <tbody>
         <tr class="success">
             <td>{{$sort->id}}</td>
             <td>{{$sort->name}}</td>
+            <td>{{$sort->weight_number}}</td>
         </tr>
     </tbody>
 </table>
