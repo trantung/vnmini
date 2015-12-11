@@ -44,13 +44,17 @@
                 <ul class="nav navbar-nav">
                     <li class="first"><a href="/">{{ uniToVni('TRANG CHỦ') }}</a></li>
                     @foreach($sorts as $sort)
-                        <li>
-                            <a href="{{ route('frontend.sort.show', [$sort->name_seo, $sort->id]) }}"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="sub-menu-{{$sort->id}}" class="dropdown" >{{ uniToVni($sort->name) }}</a>
+                        <li class="dropdown">
+                            <a href=" 
+
+                            {{ route('frontend.sort.category.product', ['sort_name'=>$sort->name_seo,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}" aria-haspopup="true" aria-expanded="false" id="sub-menu-{{$sort->id}}" class="dropdown" >{{ uniToVni($sort->name) }}</a>
+                            @if(!$sort->categories->isEmpty())
                             <ul class="sub-menu dropdown-menu" aria-labelledby="sub-menu-1">
                                 @foreach($sort->categories as $category)
                                     <li><a href="{{ route('frontend.sort.category.product', [$sort->name_seo, $sort->id, $category->id, $category->name_seo]) }}">{{ uniToVni($category->name) }}</a></li>
                                 @endforeach
                             </ul>
+                            @endif
                         </li>
                     @endforeach
                     <li><a href="{{ route('frontend.tintuc') }}">Tin töùc</a></li>
@@ -62,4 +66,25 @@
         </nav>
     </div>
 </div>
+<script type="text/javascript">
+    
+        $('.dropdown').hover(
+      function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn();
+      }, 
+      function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut();
+      }
+    );
+
+    $('.dropdown-menu').hover(
+      function() {
+        $(this).stop(true, true);
+      },
+      function() {
+        $(this).stop(true, true).delay(200).fadeOut();
+      }
+    );
+
+</script>
 </header>

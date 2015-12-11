@@ -7,7 +7,7 @@
     <div class="">                
         <ul class="nav navbar-nav tabs">
             <li class="active">
-                <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}" class="first">Tất cả</a>
+                <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}">Tất cả</a>
             </li>
             @foreach($categories as $category)
              <?php 

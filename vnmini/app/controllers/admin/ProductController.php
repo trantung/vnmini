@@ -52,11 +52,9 @@ class ProductController extends AdminController {
        		$product->categories()->attach(Input::get('category_id'));
        		$product->save();
        	}
-        $input['image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId);
+        $input['image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$productId, 'image_url');
 
-        $input['big_image_url'] = CommonProduct::uploadImage($input, PATH_PRODUCT.'/'.$productId, 1);
-        // dd($input['image_url']);
-		
+        $input['big_image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$productId, 'big_image_url');
 		Common::update($productId, ['image_url' => $input['image_url'], 'big_image_url' => $input['big_image_url']]);
 		$input['status'] = CommonProduct::getStatus($input);
 		if (!$productId) {
@@ -110,6 +108,7 @@ class ProductController extends AdminController {
 	public function update($id)
 	{
 		$input = Input::except('_token','image', 'image_relate', 'category_id','relate_id');
+
 		$validator = CommonProduct::validate($input);
 		if ($validator->fails()) {
             return Redirect::route('admin.products.edit', $id)
@@ -119,9 +118,17 @@ class ProductController extends AdminController {
         if (Input::only('image_relate')) {
 			CommonProduct::createImageRelate(Input::only('image_relate'), $id);
         }
+        if(!empty($input['image_url'])){
+        	$input['image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$id, 'image_url');
+        }else{
+			$input['image_url'] = CommonProduct::getImageUrl($input, $id);
+        }
+        if(!empty($input['big_image_url'])){
+        	$input['big_image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$id, 'big_image_url');
+        }else{
+			$input['big_image_url'] = CommonProduct::getBigImageUrl($input, $id);
+        }
 		$input['status'] = CommonProduct::getStatus($input);
-		$input['image_url'] = CommonProduct::getImageUrl($input, $id);
-		$input['big_image_url'] = CommonProduct::getBigImageUrl($input, $id);
 		Common::update($id, $input);
 		$product = Product::find($id);
 		$product->categories()->sync(Input::get('category_id'));

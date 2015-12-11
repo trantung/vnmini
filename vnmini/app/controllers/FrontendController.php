@@ -3,7 +3,7 @@
 class FrontendController extends BaseController {
 
 	public function __construct(){
-		$sorts = Category::whereNull("parent_id")->get();
+		$sorts = Category::whereNull("parent_id")->orderBy('weight_number', 'asc')->get();
 		$partner_slider = array();
 		$galary_slider = [];
 		$sliders = BannerSlider::all();
