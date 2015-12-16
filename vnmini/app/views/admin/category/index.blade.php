@@ -11,7 +11,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Tên</th>
-                        <th>Thể loại</th>
+                        <th>Thư mục cha</th>
+                        <th>Index</th>
                         <th class="text-right">OPTIONS</th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@
                         {{ $category->sort->name }}
                     @endif
                     </td>
+                    <td>{{$category->weight_number}}</td>
                     <td class="text-right">
                         <a class="btn btn-primary" href="{{ action('CategoryController@show', $category->id) }}">View</a>
                         <a class="btn btn-warning " href="{{ action('CategoryController@edit', $category->id) }}">Edit</a>

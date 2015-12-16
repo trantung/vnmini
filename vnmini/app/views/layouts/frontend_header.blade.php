@@ -50,7 +50,7 @@
                             {{ route('frontend.sort.category.product', ['sort_name'=>$sort->name_seo,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}" aria-haspopup="true" aria-expanded="false" id="sub-menu-{{$sort->id}}" class="dropdown" >{{ uniToVni($sort->name) }}</a>
                             @if(!$sort->categories->isEmpty())
                             <ul class="sub-menu dropdown-menu" aria-labelledby="sub-menu-1">
-                                @foreach($sort->categories as $category)
+                                @foreach($sort->categories->sortBy('weight_number') as $category)
                                     <li><a href="{{ route('frontend.sort.category.product', [$sort->name_seo, $sort->id, $category->id, $category->name_seo]) }}">{{ uniToVni($category->name) }}</a></li>
                                 @endforeach
                             </ul>

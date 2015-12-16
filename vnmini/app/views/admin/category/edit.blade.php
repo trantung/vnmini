@@ -36,6 +36,14 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                            <td>Index</td>
+                            <td>
+                                <div class="row form-group  col-md-3 col-sm-3">
+                                    <input type="text" name = "weight_number" value="{{ $category->weight_number }}" class="form-control" required>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                   </table>
             <a class="btn btn-default" href="{{ action('CategoryController@index') }}">Back</a>
