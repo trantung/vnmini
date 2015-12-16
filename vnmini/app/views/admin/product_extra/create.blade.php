@@ -21,7 +21,7 @@
     <h1>Tạo mới sản phẩm phụ</h1>
 </div>
 @include('admin.error-message')
-{{ Form::open(array('action' => array('ProductExtraController@store'))) }}
+{{ Form::open(array('action' => array('ProductExtraController@store'), 'files' => true)) }}
     <div class="form-group col-sm-4 col-md-8">
          <label for="category">Select Type:</label>
         {{ Form::select('type_id' , ['' => 'Select type'] + CommonCategory::getTypeProduct(), null, ['class' => 'form-control']) }}
@@ -50,7 +50,11 @@
         <label>Giá Khuyến Mãi</label>
         {{ Form::text('new_price', '', ['class' => 'form-control']) }}
     </div>
-
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Ảnh đại diện</label>
+        <input name="image_url" type="file" class="form-control" id="imgInp">
+        <img src="" class="img-rounded" alt="Image" width="500" height="236" id="blah1">
+    </div>
     <div class="form-group col-sm-4 col-md-8">
         <a class="btn btn-success" href="{{route('admin.products.index')}}">Back</a>
         <button type="submit" class="btn btn-primary">Submit</button>

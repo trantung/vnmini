@@ -22,7 +22,7 @@ class CategoriesTableSeeder extends Seeder {
 			[
 				'name'=>'TRANG SÚC NAM',
 				'parent_id'=>1,
-				'name_seo'=>'trang-suc-name',
+				'name_seo'=>'trang-suc-nam',
 				'status'=>1,
 				'weight_number' => 2,
 				'created_at'=>date('Y-m-d:H-i-s'),

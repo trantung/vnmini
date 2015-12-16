@@ -39,6 +39,8 @@ class ProductExtraController extends AdminController {
 		$input = Input::except('_token', 'relate_id');
 		$input['status'] = CommonProduct::getStatus($input);
 		$relate['relate_id'] = Product::create($input)->id;
+		$input['image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$relate['relate_id'], 'image_url');
+		Product::find($relate['relate_id'])->update(['image_url' => $input['image_url']]);
 		ProductRelate::create($relate);
 		return Redirect::action('ProductController@index')->with('message', 'Tạo mới sản phẩm phụ thành công');
 	}
