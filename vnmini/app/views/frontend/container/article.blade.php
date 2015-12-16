@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <!-- image -->
-               
+
             </div>
 
             <!-- detail -->
@@ -24,14 +24,14 @@
                             @if(!empty($product->introduce))
                                 {{ $product->introduce }}
                             @else
-                                {{ 'chưa có' }} 
+                                {{ 'chưa có' }}
                             @endif
                              <br>
                         <label>Thông tin khác :</label>
                             @if(!empty($product->information))
                                 {{ $product->information }}
                             @else
-                                {{ 'chưa có' }} 
+                                {{ 'chưa có' }}
                             @endif
                              <br>
                     </div>
@@ -87,7 +87,7 @@
             <!-- left detail -->
             <div class="col-md-8 col-sm-8">
             @if(CommonProduct::getProductRelate($product) !=null)
-            <?php 
+            <?php
                 $pRelate = CommonProduct::getProductRelate($product);
             ?>
                 <div class="relationship">
@@ -95,8 +95,8 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th> Sản phẩm </th>
-                                <th width="35%"> </th>
+                                <th> Mã sản phẩm </th>
+                                <th> Tên Sản phẩm </th>
                                 <th> Giá Vnmini.net</th>
                                 <th> Giá khuyến mãi</th>
                                 <th> Đặt mua</th>
@@ -107,19 +107,14 @@
                             <tr>
                                 <td>{{ $p->code }}</td>
                                 <td> {{ $p->name.' '.$p->type->name }} </td>
-                                @if($p->new_price)
-                                    <span class="price">{{ $p->origin_price }}<span>đ</span></span>
-                                    {{ $p->new_price }} <span>đ</span>
-                                @else
-                                    {{ $p->origin_price }} <span>đ</span>
-                                @endif
-                                <td class="red"> {{ $p->discounts }}</td>
+                                <td>{{ $p->origin_price }} <span>đ</span></td>
+                                <td class="red"> {{ $p->new_price }} <span>đ</span></td>
                                 <td> <button name="add_cart" id ="button-cart" value="{{ $p->id }}">Thêm vào giỏ</button></td>
                             </tr>
-                        @endforeach   
+                        @endforeach
                         </tbody>
                     </table>
-                   
+
                 </div>
                 </div>
             @endif
@@ -148,7 +143,7 @@
                                     <textarea class="form-control" name="content" required></textarea>
                                 </div>
                                 <input type="hidden" value="{{ $product->id }} " name="product_id" />
-                                <button type="submit"> Gửi đi</button> 
+                                <button type="submit"> Gửi đi</button>
                             </form>
                         </div>
                     </div>
@@ -205,7 +200,7 @@
                     $('#success').after(msg);
                     setTimeout(function(){// wait for 5 secs(2)
                            location.reload(); // then reload the page.(3)
-                      }, 3000); 
+                      }, 3000);
                 }
             }
         });
