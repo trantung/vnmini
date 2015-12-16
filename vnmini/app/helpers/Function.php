@@ -148,9 +148,13 @@ function removeEndString($input)
     return implode(' ', $inputExplode);
 }
 function getClass($categoryId, $segment)
-{
-    if ($categoryId == $segment[2]) {
+{   
+    $class = array();
+    if ($categoryId == 0 && $segment[2] == 0) {
         return 'active';
     }
-    return 1 ;
+    if ($categoryId == $segment[2] && $categoryId != 0) {
+        return 'active';
+    }
+    return null ;
 }

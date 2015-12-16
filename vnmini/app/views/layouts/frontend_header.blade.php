@@ -45,9 +45,7 @@
                     <li class="first"><a href="/">{{ uniToVni('TRANG CHỦ') }}</a></li>
                     @foreach($sorts as $sort)
                         <li class="dropdown">
-                            <a href=" 
-
-                            {{ route('frontend.sort.category.product', ['sort_name'=>$sort->name_seo,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}" aria-haspopup="true" aria-expanded="false" id="sub-menu-{{$sort->id}}" class="dropdown" >{{ uniToVni($sort->name) }}</a>
+                            <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort->name_seo,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tat-ca']) }}" aria-haspopup="true" aria-expanded="false" id="sub-menu-{{$sort->id}}" class="dropdown" >{{ uniToVni($sort->name) }}</a>
                             @if(!$sort->categories->isEmpty())
                             <ul class="sub-menu dropdown-menu" aria-labelledby="sub-menu-1">
                                 @foreach($sort->categories->sortBy('weight_number') as $category)
