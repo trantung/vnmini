@@ -6,9 +6,11 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"fzaninotto/faker": "v1.3.0",
-		"laravel/framework": "4.2.*",
     	"gloudemans/shoppingcart": "~1.2",
-	    "anhskohbo/u-convert": "dev-master"
+	    "anhskohbo/u-convert": "dev-master",
+	    "ext-mbstring": "*",
+        "ext-gd": "*",
+	    "intervention/image": "dev-master"
 	},
 	"require-dev": {
 	    "way/generators": "~2.0",

@@ -55,5 +55,6 @@ define('ORDER_DETAIL', 'H');
 define('ORDER_CREATED_DATE', 'I');
 define('ORDER_UPDATED_DATE', 'J');
 
-
-
+//resize thumbnail slide product
+define('PRODUCT_SLIDE_THUMB_WIDTH', 50);
+define('PRODUCT_SLIDE_THUMB_HEIGHT', 50);
