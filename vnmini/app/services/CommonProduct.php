@@ -136,6 +136,17 @@ class CommonProduct
     	return $product->relates()->paginate(FRONTEND_PAGINATE_PRODUCT_RELATE);
     }
 
+    public static function getRelateProductFooter($id){
+    	$cate = ProductCategory::where('product_id', $id)->first();
+    	if ($cate) {
+    		$cateId = $cate->category_id;
+    		$list = ProductCategory::where('category_id', $cateId)->lists('product_id');
+    		$productRelates = Product::whereIn('id', $list)->paginate(FRONTEND_PAGINATE_PRODUCT_RELATE);
+    		return $productRelates;
+    	}
+    	return null;
+    }
+
     public static function getNameSeo($name){
     	$lowerName = mb_strtolower($name);
     	$nameSeo = str_replace(' ', '-', $lowerName);
