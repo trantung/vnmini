@@ -57,7 +57,7 @@
                     <div class="form-quantity">
                         <label>số lượng</label>
                         <div class="quantity">
-                            <input type="text" id="quantity" value="0" name="quantity">
+                            <input type="text" id="quantity" value="1" name="quantity">
                             <span type="button" id="add-quantity">Click me</span>
                             <span type="button" id="sub-quantity">Click me</span>
                         </div>
@@ -119,6 +119,7 @@
                         </table>
                     </div>
                 </div>
+                <div class="clearfix"></div>
                 @endif
                 <div class="detail">
                     <ul class="nav navbar-nav tabs">
