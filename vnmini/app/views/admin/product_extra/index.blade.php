@@ -4,16 +4,6 @@
 @include('admin.error-message')
 <div class="manage-menu">
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-7.5">
-			<div>
-				<a href="{{ route('admin.products.create') }}" class="btn btn-info">Tạo mới sản phẩm chính</a>
-			</div>
-			<br/>
-			<div>
-				<a href="{{ action('ProductExtraController@create') }}" class="btn btn-info">Tạo mới sản phẩm phụ</a>
-				<a href="{{ action('ProductExtraController@index') }}" class="btn btn-info">Danh sách sản phẩm phụ</a>
-			</div>
-		</div>
 		<div class="col-xs-12 col-sm-6 col-md-1.5">
 			<span>Chọn category: </span>
 		</div>
@@ -55,18 +45,15 @@
 	        <td>{{statusName($product->status, NO_PROMOTION, PROMOTION)}}</td>
 	        <td>
 	            <div style=" display: table" >
-			        <div style = "display: table-cell;  vertical-align: center;">
-		                <a href="{{ route('admin.products.show',['product_id'=>$product->id]) }}" class="btn btn-info">Chi tiết</a>
+		            <div style = "display: table-cell;  vertical-align: center;">
+		                <a href="{{ action('ProductExtraController@edit', $product->id) }}" class="btn btn-warning">Sửa</a>
 		            </div>
 		            <div style = "display: table-cell;  vertical-align: center;">
-		                <a href="{{ route('admin.products.edit',['product_id'=>$product->id]) }}" class="btn btn-warning">Sửa</a>
-		            </div>
-		            <div style = "display: table-cell;  vertical-align: center;">
-		            <form action="{{ route('admin.products.destroy',['product_id'=>$product->id]) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Xoá sản phẩm này? Bạn có chắc chắn không?')) { return true } else {return false };">
-		            	<input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit" class = "btn btn-danger" value="Xoá" />
-			        </form>
-			         </div>
+			            <form action="{{ action('ProductExtraController@destroy', $product->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Xoá sản phẩm này? Bạn có chắc chắn không?')) { return true } else {return false };">
+			            	<input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}">
+	                        <input type="submit" class = "btn btn-danger" value="Xoá" />
+				        </form>
+			        </div>
 	            </div>
 	        </td>
 	      </tr>

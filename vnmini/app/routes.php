@@ -35,8 +35,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('order/search', array('as' => 'admin.order.search', 'uses' => 'OrderController@search'));
     Route::resource('order', 'OrderController');
     Route::resource('shop', 'ShopController', array('only' => array('index', 'update')));
+    
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));
+    Route::resource('products/extra', 'ProductExtraController');
     Route::resource('products', 'ProductController');
+
     Route::post('image/delete/{id}', array('uses' => 'ImageController@delete', 'as' => 'admin.image.delete'));
     Route::resource('promotion', 'PromotionController');
     Route::resource('descriptionseo', 'SeoController');

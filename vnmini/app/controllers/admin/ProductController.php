@@ -9,7 +9,10 @@ class ProductController extends AdminController {
 	 */
 	public function index()
 	{
-		$products = Product::orderBy('created_at', 'desc')->paginate(PAGINATE_PRODUCT);
+		$input = ProductRelate::lists('relate_id');
+		$id = Product::lists('id');
+		$result = array_diff($id, $input);
+		$products = Product::whereIn('id', $result)->paginate(PAGINATE_PRODUCT);
 		$categories = Category::all(['id', 'name']);
 		return View::make('admin.products.index')->with(compact('products', 'categories'));
 	}
