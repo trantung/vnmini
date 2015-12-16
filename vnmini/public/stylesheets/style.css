@@ -23,3 +23,6 @@ h1 {
 .main-content .relationship .table-bordered {
 	border-style: solid !important;
 }
+.relationship {
+	float: left;
+}
