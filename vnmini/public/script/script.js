@@ -24,7 +24,7 @@
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 80000,
+    autoplaySpeed: 200,
     responsive: [
      {
         breakpoint: 1208,
@@ -36,8 +36,8 @@
       {
         breakpoint: 767,
         settings: {
-          centerPadding: '40px',
-          slidesToShow: 2
+          // centerPadding: '40px',
+          slidesToShow: 3
         }
       },
       {
