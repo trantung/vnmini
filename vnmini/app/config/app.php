@@ -123,7 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
-		'Intervention\Image\ImageServiceProvider',
+		// 'Intervention\Image\ImageServiceProvider',
 
 	),
 
@@ -192,7 +192,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
-		'Image'           => 'Intervention\Image\Facades\Image',
+		// 'Image'           => 'Intervention\Image\Facades\Image',
 
 	),
 
