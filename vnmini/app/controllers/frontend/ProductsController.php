@@ -51,7 +51,7 @@ class ProductsController extends \FrontendController {
 	public function showName($name,$id)
 	{
 		$product = Product::findOrFail($id);
-		$product_relates = CommonProduct::getRelateProduct($product);
+		$product_relates = CommonProduct::getRelateProductFooter($id);
 		$promotion = Promotion::findOrFail(1);
 		return View::make('frontend.products.show', compact('product', 'product_relates', 'promotion'));
 	}
