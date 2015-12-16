@@ -80,7 +80,7 @@ class CommonProduct
 				$path = PATH_PRODUCT;
 				$destinationPath = public_path().$path.'/'.$productId;
 				$filename = $value->getClientOriginalName();
-				self::resizeImage(public_path().$path.'_thumb/'.$productId, $filename, PRODUCT_SLIDE_THUMB_WIDTH, 	PRODUCT_SLIDE_THUMB_HEIGHT);
+				//self::resizeImage(public_path().$path.'_thumb/'.$productId, $filename, PRODUCT_SLIDE_THUMB_WIDTH, 	PRODUCT_SLIDE_THUMB_HEIGHT);
 				$uploadSuccess   =  $value->move($destinationPath, $filename);
 				$adminImage['product_id'] = $productId;
 				$adminImage['image_url'] = PATH_PRODUCT.'/'.$productId.'/'.$filename;
@@ -155,7 +155,7 @@ class CommonProduct
     }
     public static function getBigImageUrl($input, $id)
     {
-    	if($input['big_image_url']) {
+    	if(isset($input['big_image_url'])) {
     		$image_url = self::uploadImage($input, PATH_PRODUCT.'/'.$id, 1);
     	}
     	else {

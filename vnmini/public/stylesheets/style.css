@@ -7,3 +7,19 @@
 	    overflow: hidden;
 	}
 }
+.main-content .production h1 {
+    color: #c0001c;
+}
+h1 {
+    color: #000;
+    font-family: "VNI-Revue",sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+.main-content {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.table-bordered {
+	border-style: solid;
+}

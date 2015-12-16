@@ -2,20 +2,26 @@
     <div class="container production">
         <div class="row">
         @include('admin.error-message')
-            <div class="col-md-8 col-sm-8">
-                <div class=" wm-zoom-container my-zoom">
-                    <div class="wm-zoom-box">
-                        <img src="{{ asset($product->image_url) }}" class="wm-zoom-default-img" alt="alternative text" data-hight-src="{{ asset($product->big_image_url) }}" data-loader-src="{{ asset('img/loader.gif') }}">
-                    </div>
+            <div class="col-md-6 col-sm-6">
+                @if(!is_null($product->images))
+                <div class="detail_image">
+                <ul id="etalage">
+                    @foreach($product->images as $relate_image)
+                     <li>
+                        <img class="etalage_source_image" src="{{ asset($relate_image->image_url) }}" title="" />
+                        <!--<img class="etalage_thumb_image" src="imgs/detail1a.jpg" />-->
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="clearfix"></div>
                 </div>
-                <!-- image -->
-
+                @endif
             </div>
 
             <!-- detail -->
-            <div class="col-md-4 col-sm-4 right">
-                <div class="">
-                    <h2>{{ uniToVni($product->name) }} </h2>
+            <div class="col-md-6 col-sm-6">
+                <div class="detail_content">
+                    <h1>{{ uniToVni($product->name) }} </h1>
                     <div class="description">
                         <label>Mã sản phẩm :</label> {{ $product->code }} <br>
                         <label>Kích thước :</label> {{ $product->size }} <br>
@@ -43,15 +49,7 @@
                             {{ $product->origin_price }} <span>đ</span>
                         @endif
                     </div>
-                    @if(!is_null($product->images))
-                        <div class="item-thumbnail">
-                            <ul>
-                            @foreach($product->images as $relate_image)
-                                <li><img src="{{ asset($relate_image->image_url) }}"></li>
-                            @endforeach
-                            </ul>
-                        </div>
-                    @endif
+
                     <div class="form-quantity">
                         <label>số lượng</label>
                         <div class="quantity">
@@ -68,7 +66,7 @@
                         @endif
                         <div class="input-group">
                             <div class="input-group-addon arrow-down">arrow down</div>
-                            <button name="add_cart" id ="button-cart" value="{{ $product->id }}">Thêm vào giỏ</button>
+                            <button name="add_cart" id ="button-cart" onclick="addCart({{ $product->id }})" value="{{ $product->id }}">Thêm vào giỏ</button>
                         </div>
                         <br />
                         @if(!$product->new_price)
@@ -84,40 +82,40 @@
                     </div>
                 </div>
             </div>
-            <!-- left detail -->
-            <div class="col-md-8 col-sm-8">
-            @if(CommonProduct::getProductRelate($product) !=null)
-            <?php
-                $pRelate = CommonProduct::getProductRelate($product);
-            ?>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                @if(CommonProduct::getProductRelate($product) !=null)
+                <?php
+                    $pRelate = CommonProduct::getProductRelate($product);
+                ?>
                 <div class="relationship">
                     <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th> Mã sản phẩm </th>
-                                <th> Tên Sản phẩm </th>
-                                <th> Giá Vnmini.net</th>
-                                <th> Giá khuyến mãi</th>
-                                <th> Đặt mua</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($pRelate as $p)
-                            <tr>
-                                <td>{{ $p->code }}</td>
-                                <td> {{ $p->name.' '.$p->type->name }} </td>
-                                <td>{{ $p->origin_price }} <span>đ</span></td>
-                                <td class="red"> {{ $p->new_price }} <span>đ</span></td>
-                                <td> <button name="add_cart" id ="button-cart" value="{{ $p->id }}">Thêm vào giỏ</button></td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> Mã sản phẩm </th>
+                                    <th> Tên Sản phẩm </th>
+                                    <th> Giá Vnmini.net</th>
+                                    <th> Giá khuyến mãi</th>
+                                    <th> Đặt mua</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($pRelate as $p)
+                                <tr>
+                                    <td>{{ $p->code }}</td>
+                                    <td> {{ $p->name.' '.$p->type->name }} </td>
+                                    <td>{{ $p->origin_price }} <span>đ</span></td>
+                                    <td class="red"> {{ $p->new_price }} <span>đ</span></td>
+                                    <td> <button name="add_cart" id ="button-cart" onclick="addCart({{ $p->id }})" value="{{ $p->id }}">Thêm vào giỏ</button></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                </div>
-            @endif
+                @endif
                 <div class="detail">
                     <ul class="nav navbar-nav tabs">
                         <li class="active"><a data-toggle="tab" href="#all-item" class="active" aria-expanded="true">Moâ taû</a></li>
@@ -155,20 +153,12 @@
 
 @section('script')
 <script type="text/javascript">
-    $('.my-zoom').WMZoom({
-        config : {
-            stageW : 500,
-            stageH : 330,
-            inner  : false,
-            position : 'right', // [top, right, bottom, left]
-            margin : 10
-        }
-    });
-    $('#button-cart').on('click', function() {
+    function addCart(product_id)
+    {
         $.ajax({
             url: '{{ route("cart.store") }}',
             type: 'post',
-            data: {quantity:$('#quantity').val(), product_id:$(this).val()},
+            data: {quantity:$('#quantity').val(), product_id:product_id},
             dataType:'json',
             beforeSend: function() {
                 $('.alert, .text-danger').remove();
@@ -204,8 +194,42 @@
                 }
             }
         });
-    });
-    //-->
+    }
 </script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+
+        var src_img_width = 900;
+        var src_img_height = 900;
+        var width, height, thumb_position, small_thumb_count;
+        small_thumb_count = 4;
+        width = jQuery(".detail_image").width()-10;
+        height = width;
+        thumb_position = "bottom";
+
+        $('#etalage').etalage({
+            thumb_image_width: width,
+            thumb_image_height: height,
+            source_image_width: src_img_width,
+            source_image_height: src_img_height,
+            zoom_area_width: width,
+            zoom_area_height: height,
+            zoom_enable: false,
+            small_thumbs:small_thumb_count,
+            smallthumb_hide_single: false,
+            smallthumbs_position: thumb_position,
+            small_thumbs_width_offset: 0,
+            show_hint: false,
+            show_icon: false,
+            autoplay: false
+        });
+
+        if(jQuery(window).width()<768){
+            jQuery(".etalage li.etalage_thumb").zoom();
+        }
+    });
+</script>
+
 @stop
 <!-- article -->

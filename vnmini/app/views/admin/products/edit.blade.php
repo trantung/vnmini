@@ -75,8 +75,7 @@
             {{-- <div class="form-group col-sm-4 col-md-8">
                 <label>Ảnh lớn</label>
                 <input name="big_image_url" type="file" class="form-control" id="imgInp2">
-                <img src="{{ asset($product->big_image_url) }}" class="img-rounded" alt="Image" width="500" height="236" id="blah2">
-
+                <img src=" --}}{{-- asset($product->big_image_url) --}}{{-- " class="img-rounded" alt="Image" width="500" height="236" id="blah2">
             </div> --}}
             <div class="form-group col-sm-4 col-md-8">
                 <label>Ảnh liên quan</label>
