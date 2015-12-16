@@ -33,7 +33,7 @@ class CommonProduct
 		if ($input['image_url']) {
 			$input['file_extension'] = strtolower(Input::file('image_url')->getClientOriginalExtension());
 		}
-		$imageRule = [			
+		$imageRule = [
 			'image_url' => "image|max:$maxSize",
 			'file_extension' => "$mimeTypes",
 			];
@@ -71,7 +71,7 @@ class CommonProduct
 			];
 		return Validator::make($input, $rule, $message);
 	}
-	
+
 	public static function createImageRelate($input, $productId)
 	{
 		$imageRelateId = [];
@@ -80,6 +80,7 @@ class CommonProduct
 				$path = PATH_PRODUCT;
 				$destinationPath = public_path().$path.'/'.$productId;
 				$filename = $value->getClientOriginalName();
+				self::resizeImage(public_path().$path.'_thumb/'.$productId, $filename, PRODUCT_SLIDE_THUMB_WIDTH, 	PRODUCT_SLIDE_THUMB_HEIGHT);
 				$uploadSuccess   =  $value->move($destinationPath, $filename);
 				$adminImage['product_id'] = $productId;
 				$adminImage['image_url'] = PATH_PRODUCT.'/'.$productId.'/'.$filename;
@@ -102,6 +103,11 @@ class CommonProduct
 		return "";
 	}
 
+	public static function resizeImage($destinationPath, $filename, $width, $height)
+    {
+        Image::make(sprintf(''.$destinationPath.'/%s', $filename))->resize($width, $heigh)->save();
+    }
+
 	public static function updateRelateImage($input, $productId)
 	{
 		foreach ($input['image'] as $key => $value) {
@@ -123,7 +129,7 @@ class CommonProduct
 				->select("products.*", "categories.name as category_name", "product_categories.weight_number")
 				->orderBy('product_categories.weight_number', 'ASC')
     			->distinct("products.id")->paginate($paginate);
-		
+
     }
 
     public static function getRelateProduct(Product $product){
@@ -133,7 +139,7 @@ class CommonProduct
     public static function getNameSeo($name){
     	$lowerName = mb_strtolower($name);
     	$nameSeo = str_replace(' ', '-', $lowerName);
-    	
+
     	return $nameSeo;
     }
 
@@ -169,7 +175,7 @@ class CommonProduct
 		if(!$product->relates->isEmpty()){
 
 			foreach ($product->relates as $relate) {
-				
+
 				$arrId[] = $relate->relate_id;
 
 			}

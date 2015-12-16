@@ -72,12 +72,12 @@
                 <img src="{{ asset($product->image_url) }}" class="img-rounded" alt="Image" width="500" height="236" id="blah1">
 
             </div>
-            <div class="form-group col-sm-4 col-md-8">
+            {{-- <div class="form-group col-sm-4 col-md-8">
                 <label>Ảnh lớn</label>
                 <input name="big_image_url" type="file" class="form-control" id="imgInp2">
                 <img src="{{ asset($product->big_image_url) }}" class="img-rounded" alt="Image" width="500" height="236" id="blah2">
 
-            </div>
+            </div> --}}
             <div class="form-group col-sm-4 col-md-8">
                 <label>Ảnh liên quan</label>
                 @if($imageRelates->count() > 0)
@@ -107,7 +107,7 @@
         <label>Danh sách sản phẩm liên quan</label>
         <ul>
             @foreach($productRelates as $value)
-                <li>{{ Product::find($value)->name }}</li>
+                <li><a href="{{ route('admin.products.show',['product_id'=>$value]) }}">{{ Product::find($value)->name }}</a></li>
             @endforeach
         </ul>
         @endif
