@@ -6,8 +6,12 @@
                 @if(!is_null($product->images))
                 <div class="detail_image">
                 <ul id="etalage">
+                    <li>
+                        <img class="etalage_source_image" src="{{ asset($product->image_url) }}" title="" />
+                        <!--<img class="etalage_thumb_image" src="imgs/detail1a.jpg" />-->
+                    </li>
                     @foreach($product->images as $relate_image)
-                     <li>
+                    <li>
                         <img class="etalage_source_image" src="{{ asset($relate_image->image_url) }}" title="" />
                         <!--<img class="etalage_thumb_image" src="imgs/detail1a.jpg" />-->
                     </li>
