@@ -126,6 +126,7 @@ class CommonProduct
 	public static function getAllProduct(array $category_ids, $paginate = FRONTEND_PAGINATE_PRODUCT){
         	return Product::join("product_categories", "products.id","=", "product_categories.product_id")
 				->join("categories", "product_categories.category_id","=", "categories.id")
+				->whereIn('categories.id', $category_ids)
 				->select("products.*", "categories.name as category_name", "product_categories.weight_number")
 				->orderBy('product_categories.weight_number', 'ASC')
     			->distinct("products.id")->paginate($paginate);
