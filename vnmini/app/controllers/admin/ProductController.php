@@ -57,8 +57,8 @@ class ProductController extends AdminController {
        	}
         $input['image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$productId, 'image_url');
 
-        $input['big_image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$productId, 'big_image_url');
-		Common::update($productId, ['image_url' => $input['image_url'], 'big_image_url' => $input['big_image_url']]);
+        // $input['big_image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$productId, 'big_image_url');
+		Common::update($productId, ['image_url' => $input['image_url']]);
 		$input['status'] = CommonProduct::getStatus($input);
 		if (!$productId) {
 			return Redirect::route('admin.products.index')->with('message', 'Tạo mới thất bại');
@@ -66,9 +66,9 @@ class ProductController extends AdminController {
 		if (Input::get('image_relate')) {
 			CommonProduct::createImageRelate(Input::only('image_relate'), $productId);
 		}
-		if (Input::get('relate_id')) {
-			ProductRelate::create(['product_id' => Input::get('relate_id'), 'relate_id' => $productId]);
-		}
+		// if (Input::get('relate_id')) {
+		// 	ProductRelate::create(['product_id' => Input::get('relate_id'), 'relate_id' => $productId]);
+		// }
 		
 		return Redirect::route('admin.products.index')->with('message', 'Tạo mới thành công');
 	}

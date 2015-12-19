@@ -13,16 +13,27 @@ class CommonProduct
 	public static function search($searchInput)
 	{
 		$products = Product::where(function ($query) use ($searchInput) {
-			if (isset($searchInput['category_id'])) {
-				$query->where('category_id', $searchInput['category_id']);
-			}
 			if (strlen($searchInput['name'])) {
 				$query->where('name', 'LIKE', '%'.$searchInput['name'].'%');
 			}
 			if (strlen(isset($searchInput['code']))) {
 				$query->where('code', 'LIKE', '%'.$searchInput['code'].'%');
 			}
-		})->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+			// if (isset($searchInput['category_id'])) {
+			// 	$query ->join("product_categories", "products.id","=", "product_categories.product_id")
+			// 			->where('product_categories.product_id', $searchInput['category_id']);
+				
+			// }
+		});
+		if (isset($searchInput['category_id'])) {
+			$products = $products->join("product_categories", "products.id","=", "product_categories.product_id")
+					->where('product_categories.product_id', $searchInput['category_id'])
+					->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+			
+		}
+		else {
+			$products = $products->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+		}
 		return $products;
 	}
 
