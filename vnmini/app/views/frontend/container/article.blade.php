@@ -2,7 +2,7 @@
     <div class="container production">
         <div class="row">
         @include('admin.error-message')
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-4 col-sm-4">
                 @if(!is_null($product->images))
                 <div class="detail_image">
                 <ul id="etalage">
@@ -21,9 +21,10 @@
                 </div>
                 @endif
             </div>
+            <div class="col-sm-4"></div>
 
             <!-- detail -->
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-4 col-sm-4">
                 <div class="detail_content">
                     <h1>{{ uniToVni($product->name) }} </h1>
                     <div class="description">
