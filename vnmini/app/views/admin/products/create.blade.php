@@ -45,13 +45,6 @@
         {{ Form::text('code', '', ['class' => 'form-control']) }}
     </div>
     <div class="form-group col-sm-4 col-md-8">
-            <label>Sản phẩm chính</label>
-            {{ Form::text('primary_name', null, ['class' => 'form-control', 'id' => 'primary_name', 'onkeyup'=>"autocomplet()"]) }}
-            <ul id="product_list_id" class="list-group"></ul>
-
-            {{ Form::hidden('relate_id', null, ['class' => 'form-control', 'id' => 'primary_id']) }}
-        </div>
-    <div class="form-group col-sm-4 col-md-8">
         <label>Kích cỡ:</label>
         {{ Form::text('size', '', ['class' => 'form-control']) }}
     </div>
@@ -87,11 +80,6 @@
         <label>Ảnh đại diện</label>
         <input name="image_url" type="file" class="form-control" id="imgInp">
         <img src="" class="img-rounded" alt="Image" width="500" height="236" id="blah1">
-    </div>
-    <div class="form-group col-sm-4 col-md-8">
-        <label>Ảnh lớn:</label>
-        <input name="big_image_url" type="file" class="form-control" id="imgInp2">
-        <img src="" class="img-rounded" alt="Image" width="500" height="236" id="blah2">
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Ảnh liên quan</label>

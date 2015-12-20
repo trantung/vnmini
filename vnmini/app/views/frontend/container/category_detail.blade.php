@@ -1,20 +1,15 @@
-<?php 
-    $sort_name = CommonProduct::getNameSeo($sort->name);
-?>
 <div class="block-1">
     <h2 class="block-title">{{ uniToVni($sort->name) }}</h2>
     <div class="bs-example">
     <div class="">                
         <ul class="nav navbar-nav tabs">
+
             <li class="active">
-                <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}">Tất cả</a>
+                <a class="{{ getClass(0, Request::segments()) }}" href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort->name_seo,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tat-ca']) }}">Tất cả</a>
             </li>
             @foreach($categories as $category)
-             <?php 
-                $cate_name = CommonProduct::getNameSeo($category->name);
-            ?>
                 <li>
-                    <a  class="{{ getClass($category->id, Request::segments()) }}" href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>$category->id, 'cate_name'=>$cate_name]) }}">
+                    <a  class="{{ getClass($category->id, Request::segments()) }}" href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort->name_seo,'sort_id'=>$sort->id, 'cate_id'=>$category->id, 'cate_name'=>$category->name_seo]) }}">
                         {{ $category->name }}
                     </a>
                 </li>

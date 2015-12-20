@@ -115,7 +115,8 @@ class ProductsController extends \FrontendController {
 
 		if($cate_id !=0){
 			$category = Category::findOrFail($cate_id);
-			$products = $category->products()->paginate(PAGINATE_PRODUCT);
+			$products = $category->products()
+						->paginate(PAGINATE_PRODUCT);
 		}
 		else{
 			$category_ids = CommonSort::getCategoryId($sort->id);

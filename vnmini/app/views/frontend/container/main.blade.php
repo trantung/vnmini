@@ -9,7 +9,7 @@
             <div class="">                
                 <ul class="nav navbar-nav tabs">
                     <li class="active">
-                        <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tất-cả']) }}" class="first">Tất cả</a>
+                        <a href="{{ route('frontend.sort.category.product', ['sort_name'=>$sort_name,'sort_id'=>$sort->id, 'cate_id'=>0, 'cate_name'=>'tat-ca']) }}" class="first">Tất cả</a>
                     </li>
                     <?php 
                         $sub_cate = $sort->categories()->orderBy("weight_number", 'asc')->get();
