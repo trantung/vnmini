@@ -81,7 +81,6 @@
                                 {{ $promotion->description }}
                             </div>
                         </div>
-                        <br />
                         @endif
                         <div id="success"></div>
                     </div>
