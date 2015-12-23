@@ -111,8 +111,8 @@
                                 <tr>
                                     <td>{{ $p->code }}</td>
                                     <td> {{ $p->name.' '.$p->type->name }} </td>
-                                    <td>{{ $p->origin_price }} <span>đ</span></td>
-                                    <td class="red"> {{ $p->new_price }} <span>đ</span></td>
+                                    <td>{{ $p->origin_price }} <span> đ</span></td>
+                                    <td class="red"> <?php if($p->new_price > 0){echo $p->new_price . '<span> đ</span>';} ?></td>
                                     <td> <button name="add_cart" id ="button-cart" onclick="addCart({{ $p->id }})" value="{{ $p->id }}">Thêm vào giỏ</button></td>
                                 </tr>
                             @endforeach
