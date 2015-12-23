@@ -168,3 +168,10 @@ function getWeight($product)
     return '';
 }
 
+function getZero($number = null)
+{
+    if($number != '') {
+        return $number;
+    }
+    return 0;
+}
