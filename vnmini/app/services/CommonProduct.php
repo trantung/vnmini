@@ -20,10 +20,10 @@ class CommonProduct
 		else{
 			$products = Product::orderBy('id', 'desc');
 		}
-		if ($searchInput['name'] != '') {
+		if (!empty($searchInput['name'])) {
 			$products = $products->where('name', 'LIKE', '%'.$searchInput['name'].'%');
 		}
-		if ($searchInput['code'] != '') {
+		if (!empty($searchInput['code'])) {
 			$products = $products->where('code', 'LIKE', '%'.$searchInput['code'].'%');
 		}
 		$products = $products->paginate(PAGINATE_PRODUCT);
