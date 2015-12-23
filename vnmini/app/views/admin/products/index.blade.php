@@ -14,6 +14,7 @@
 				<a href="{{ action('ProductExtraController@create') }}" class="btn btn-info">Tạo mới sản phẩm phụ</a>
 				<a href="{{ action('ProductExtraController@index') }}" class="btn btn-info">Danh sách sản phẩm phụ</a>
 			</div>
+			<br/>
 			<div><a onclick="updateIndexData();" class="btn btn-success">Cập nhật Index</a></div>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-1.5">
