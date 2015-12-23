@@ -19,6 +19,13 @@
 @section('content')
 <div class="page-header">
     <h1>Chi tiết sản phẩm phụ</h1>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <a href="{{ action('ProductExtraController@index') }}" class="btn btn-info">Danh sách sản phẩm phụ</a>
+        </div>
+    </div>
+
 </div>
 @include('admin.error-message')
 {{ Form::open(['action' => ['ProductExtraController@update', $product->id], 'method' => 'PUT', 'files' => true ]) }}
@@ -37,7 +44,7 @@
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Sản phẩm chính</label>
-        {{ Form::text('primary_name', $primaryName, ['class' => 'form-control', 'id' => 'primary_name', 'onkeyup'=>"autocomplet()"]) }}    
+        {{ Form::text('primary_name', $primaryName, ['class' => 'form-control', 'id' => 'primary_name', 'onkeyup'=>"autocomplet()"]) }}
         <ul id="product_list_id" class="list-group"></ul>
         {{ Form::hidden('product_id', $primary->product_id, ['class' => 'form-control', 'id' => 'primary_id']) }}
     </div>
@@ -59,7 +66,7 @@
     <div class="form-group col-sm-4 col-md-8">
         <a class="btn btn-success" href="{{ action('ProductExtraController@index') }}">Back</a>
         <button type="submit" class="btn btn-primary">Submit</button>
-    </div>           
+    </div>
 {{ Form::close() }}
 @include('admin.script')
 @stop
@@ -92,9 +99,9 @@
                     source: availableTags
                 });
                 console.log(1);            }
-        });  
+        });
     })
-    
+
 
     // autocomplet : this function will be executed every time we change the text
 function autocomplet() {
@@ -102,7 +109,7 @@ function autocomplet() {
     var keyword = $('#primary_name').val();
     if (keyword.length >= min_length) {
         $.ajax({
-            url: '{{ route("admin.product.ajax") }}',
+            url: '{{ route("admin.products.ajax") }}',
             type: 'POST',
             data: {keyword:keyword},
             success:function(data){
@@ -126,8 +133,8 @@ function set_item(item, id) {
 
 $('li').mouseover(function()
   {
-          
-    $('li:hover').css('background','red'); 
+
+    $('li:hover').css('background','red');
   });
 $('li').mouseout(function()
   {

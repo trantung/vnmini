@@ -3,6 +3,13 @@
 @section('content')
 <div class="page-header">
     <h1>Sửa sản phẩm</h1>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <a href="{{ action('ProductController@index') }}" class="btn btn-info">Danh sách sản phẩm chính</a>
+        </div>
+    </div>
+
 </div>
 @include('admin.error-message')
 <div class="row">

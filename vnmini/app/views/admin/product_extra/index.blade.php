@@ -4,25 +4,20 @@
 @include('admin.error-message')
 <div class="manage-menu">
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-1.5">
-			<span>Chọn category: </span>
+		<div class="col-sm-6">
+			<a href="{{ action('ProductExtraController@create') }}" class="btn btn-info">Tạo mới sản phẩm phụ</a>
 		</div>
-	  	<div class="col-xs-6 col-md-4">
-		  	<form action="{{ route('admin.products.search') }}" method="GET" accept-charset="utf-8">
-			  	<div class="row">
-			  			<div class="col-sm-10">
-        					{{ Form::select('category_id' , ['' => 'Chọn category'] + CommonCategory::getCategories(), returnInputSelect('category_id'), ['class' => 'form-control']) }}
-						</div>
-				        <div class="col-sm-2">
-				        	<input type="submit" id="search" class='btn btn-primary'>
-				        </div>
-			  	</div>
+	  	<div class="col-sm-6">
+		  	<form action="{{ route('admin.productsExtra.search') }}" method="GET" accept-charset="utf-8">
 			  	<div>
               		<input type="text" class="form-control" id="product_name" name="name" placeholder = "tên sản phẩm" >
 			  	</div>
 			  	<div>
               		<input type="text" class="form-control" id="product_code" name="code" placeholder = "mã sản phẩm" >
 			  	</div>
+			  	<div>
+		        	<input type="submit" id="search" class='btn btn-primary'>
+		        </div>
 		  	</form>
 	  	</div>
 	</div>

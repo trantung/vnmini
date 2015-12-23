@@ -39,6 +39,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('products/updateIndexData', 'ProductController@updateIndexData');
 
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));
+    Route::get('productsExtra/search', array('as' => 'admin.productsExtra.search', 'uses' => 'ProductExtraController@search'));
     Route::resource('products/extra', 'ProductExtraController');
     Route::resource('products', 'ProductController');
 

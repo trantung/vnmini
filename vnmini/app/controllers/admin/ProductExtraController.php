@@ -15,6 +15,15 @@ class ProductExtraController extends AdminController {
 		return View::make('admin.product_extra.index')->with(compact('products', 'categories'));
 	}
 
+	public function search()
+	{
+		$input = Input::all();
+		if (!$input['name'] && !$input['code']) {
+			return Redirect::route('admin.product_extra.index');
+		}
+		$products = CommonProduct::search($input);
+		return View::make('admin.product_extra.index')->with(compact('products'));
+	}
 
 	/**
 	 * Show the form for creating a new resource.

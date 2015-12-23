@@ -19,8 +19,17 @@
 @section('content')
 <div class="page-header">
     <h1>Tạo mới sản phẩm</h1>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <a href="{{ action('ProductController@index') }}" class="btn btn-info">Danh sách sản phẩm chính</a>
+        </div>
+    </div>
+
 </div>
+
 @include('admin.error-message')
+
 <form action="{{ route('admin.products.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data" role="form">
     <div class="form-group col-sm-4 col-md-8">
         <label for="category">Select Category:</label>
