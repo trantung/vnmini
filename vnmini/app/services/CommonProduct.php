@@ -12,28 +12,34 @@ class CommonProduct
 
 	public static function search($searchInput)
 	{
-		$products = Product::where(function ($query) use ($searchInput) {
-			if (strlen($searchInput['name'])) {
-				$query->where('name', 'LIKE', '%'.$searchInput['name'].'%');
-			}
-			if (strlen(isset($searchInput['code']))) {
-				$query->where('code', 'LIKE', '%'.$searchInput['code'].'%');
-			}
-			// if (isset($searchInput['category_id'])) {
-			// 	$query ->join("product_categories", "products.id","=", "product_categories.product_id")
-			// 			->where('product_categories.product_id', $searchInput['category_id']);
-				
-			// }
-		});
-		if (isset($searchInput['category_id'])) {
-			$products = $products->join("product_categories", "products.id","=", "product_categories.product_id")
-					->where('product_categories.product_id', $searchInput['category_id'])
-					->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+		if ($searchInput['category_id']) {
+			$products = Product::join("product_categories", "products.id","=", "product_categories.product_id")
+					->where('product_categories.product_id', $searchInput['category_id']);
+					// ->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
 			
 		}
-		else {
-			$products = $products->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+		else{
+			$products = Product::orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
 		}
+		// $products = Product::where(function ($query) use ($searchInput) {
+		if ($searchInput['name']) {
+			$products = $products->where('name', 'LIKE', '%'.$searchInput['name'].'%');
+		}
+		if ($searchInput['code']) {
+			$products = $products->where('code', 'LIKE', '%'.$searchInput['code'].'%');
+		}
+		// dd(1);
+		// $products = $products->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+		// });
+		// if ($searchInput['category_id']) {
+		// 	$products = $products->join("product_categories", "products.id","=", "product_categories.product_id")
+		// 			->where('product_categories.product_id', $searchInput['category_id'])
+		// 			->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+			
+		// }
+		// else {
+		// 	$products = $products->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+		// }
 		return $products;
 	}
 

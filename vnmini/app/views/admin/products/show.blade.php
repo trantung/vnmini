@@ -11,6 +11,12 @@
             {{ $pCate->name.', ' }}
        @endforeach
     </div>
+
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Index number:</label>
+        {{ $weightNumber }}
+    </div>
+
     <div class="col-sm-3">
     @if($productRelates)
     <label>Danh sách sản phẩm liên quan</label>

@@ -158,3 +158,13 @@ function getClass($categoryId, $segment)
     }
     return null ;
 }
+
+function getWeight($product)
+{
+    $index = ProductCategory::where('product_id', $product->id)->first();
+    if ($index) {
+        return $index->weight_number;
+    }
+    return '';
+}
+

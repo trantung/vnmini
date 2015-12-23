@@ -26,6 +26,11 @@
         <label for="category">Select Category:</label>
         {{ Form::select('category_id[]', CommonCategory::getCategories(), null, ['class' => 'form-control', 'multiple'=>'multiple']) }}
     </div>
+
+    <div class="form-group col-sm-4 col-md-8">
+        <label for="category">Select index number:</label>
+        {{ Form::text('weight_number', null, ['class' => 'form-control']) }}
+    </div>
     
     <div class="form-group col-sm-4 col-md-8">
          <label for="category">Select Type:</label>

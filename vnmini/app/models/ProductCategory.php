@@ -8,7 +8,7 @@ class ProductCategory extends Eloquent
 {
 	use SoftDeletingTrait;
     protected $table = 'product_categories';
-    protected $fillable = ['product_id', 'category_id'];
+    protected $fillable = ['product_id', 'category_id', 'weight_number'];
     protected $dates = ['deleted_at'];
 
     public function product()

@@ -12,9 +12,10 @@ class ProductController extends AdminController {
 		$input = ProductRelate::lists('relate_id');
 		$id = Product::lists('id');
 		$result = array_diff($id, $input);
-		$products = Product::whereIn('id', $result)->paginate(PAGINATE_PRODUCT);
+		$products = Product::whereIn('id', $result)->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
 		$categories = Category::all(['id', 'name']);
-		return View::make('admin.products.index')->with(compact('products', 'categories'));
+		$total = $products->getTotal();
+		return View::make('admin.products.index')->with(compact('products', 'categories', 'total'));
 	}
 
 
@@ -36,7 +37,8 @@ class ProductController extends AdminController {
 	 */
 	public function store()
 	{
-		$input = Input::except('_token', 'image_relate', 'category_id', 'relate_id', 'primary_name');
+		$weightNumber = Input::get('weight_number');
+		$input = Input::except('_token', 'image_relate', 'category_id', 'relate_id', 'primary_name', 'weight_number');
 		$validator = CommonProduct::validate($input);
 		if ($validator->fails()) {
             return Redirect::route('admin.products.create')
@@ -45,16 +47,8 @@ class ProductController extends AdminController {
         }
 		$productId = Common::create($input);
 		$product = Product::find($productId);
-		if(is_array(Input::get('category_id'))){
-			foreach (Input::get('category_id') as $categoryId) {
-				$product->categories()->attach($categoryId);
-				$product->save();
-			}
-		}
-       	else {
-       		$product->categories()->attach(Input::get('category_id'));
-       		$product->save();
-       	}
+		$product->categories()->attach(Input::get('category_id'));
+		ProductCategory::where('product_id', $productId)->update(['weight_number' => $weightNumber]);
         $input['image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$productId, 'image_url');
 
         // $input['big_image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$productId, 'big_image_url');
@@ -84,8 +78,15 @@ class ProductController extends AdminController {
 	{
 		$product = Product::find($id);
 		$imageRelates = $product->images;
+		$number = ProductCategory::where('product_id', $id)->first();
+		if ($number) {
+			$weightNumber = $number->weight_number;
+		}
+		else{
+			$weightNumber = null;
+		}
 		$productRelates = ProductRelate::where('product_id', $id)->lists('relate_id');
-		return View::make('admin.products.show')->with(compact('product', 'imageRelates', 'productRelates'));
+		return View::make('admin.products.show')->with(compact('product', 'imageRelates', 'productRelates', 'weightNumber'));
 	}
 
 
@@ -99,8 +100,15 @@ class ProductController extends AdminController {
 	{
 		$product = Product::find($id);
 		$productRelates = ProductRelate::where('product_id', $id)->lists('relate_id');
+		$number = ProductCategory::where('product_id', $id)->first();
+		if ($number) {
+			$weightNumber = $number->weight_number;
+		}
+		else{
+			$weightNumber = null;
+		}
 		$imageRelates = $product->images;
-		return View::make('admin.products.edit')->with(compact('product', 'imageRelates', 'productRelates'));
+		return View::make('admin.products.edit')->with(compact('product', 'imageRelates', 'productRelates', 'weightNumber'));
 	}
 
 
@@ -112,8 +120,8 @@ class ProductController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except('_token','image', 'image_relate', 'category_id','relate_id');
-
+		$weightNumber = Input::get('weight_number');
+		$input = Input::except('_token','image', 'image_relate', 'category_id','relate_id', 'weight_number');
 		$validator = CommonProduct::validate($input);
 		if ($validator->fails()) {
             return Redirect::route('admin.products.edit', $id)
@@ -128,15 +136,16 @@ class ProductController extends AdminController {
         }else{
 			$input['image_url'] = CommonProduct::getImageUrl($input, $id);
         }
-        if(!empty($input['big_image_url'])){
-        	$input['big_image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$id, 'big_image_url');
-        }else{
-			$input['big_image_url'] = CommonProduct::getBigImageUrl($input, $id);
-        }
+   //      if(!empty($input['big_image_url'])){
+   //      	$input['big_image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$id, 'big_image_url');
+   //      }else{
+			// $input['big_image_url'] = CommonProduct::getBigImageUrl($input, $id);
+   //      }
 		$input['status'] = CommonProduct::getStatus($input);
 		Common::update($id, $input);
 		$product = Product::find($id);
 		$product->categories()->sync(Input::get('category_id'));
+		ProductCategory::where('product_id', $id)->update(['weight_number' => $weightNumber]);
 		if(Input::get('relate_id')){
 			ProductRelate::where('relate_id', $id)->first()->update(['product_id' => Input::get('relate_id')]);
 		}
