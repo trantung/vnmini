@@ -84,7 +84,8 @@ class ProductController extends AdminController {
 	{
 		$product = Product::find($id);
 		$imageRelates = $product->images;
-		return View::make('admin.products.show')->with(compact('product', 'imageRelates'));
+		$productRelates = ProductRelate::where('product_id', $id)->lists('relate_id');
+		return View::make('admin.products.show')->with(compact('product', 'imageRelates', 'productRelates'));
 	}
 
 
