@@ -11,6 +11,16 @@
             {{ $pCate->name.', ' }}
        @endforeach
     </div>
+    <div class="col-sm-3">
+    @if($productRelates)
+    <label>Danh sách sản phẩm liên quan</label>
+    <ul>
+        @foreach($productRelates as $value)
+            <li><a href="{{ route('admin.products.show',['product_id'=>$value]) }}">{{ Product::find($value)->name }}</a></li>
+        @endforeach
+    </ul>
+    @endif
+    </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Tên sản phẩm:</label>
         {{ $product->name }}
@@ -64,6 +74,7 @@
             </div>
         @endforeach
     </div>
+
     <div class="form-group col-sm-4 col-md-8"> 
         <a class="btn btn-default" href="{{ route('admin.products.index') }}">Quay lại</a>
         <a class="btn btn-warning" href="{{ route('admin.products.edit', $product->id) }}">Chỉnh sửa</a>
