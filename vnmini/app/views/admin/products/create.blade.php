@@ -136,7 +136,7 @@ function autocomplet() {
     var keyword = $('#primary_name').val();
     if (keyword.length >= min_length) {
         $.ajax({
-            url: '{{ route("admin.product.ajax") }}',
+            url: '{{ route("admin.products.ajax") }}',
             type: 'POST',
             data: {keyword:keyword},
             success:function(data){

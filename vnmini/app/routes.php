@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('order/search', array('as' => 'admin.order.search', 'uses' => 'OrderController@search'));
     Route::resource('order', 'OrderController');
     Route::resource('shop', 'ShopController', array('only' => array('index', 'update')));
-
+    
     Route::post('products/updateIndexData', 'ProductController@updateIndexData');
 
     Route::get('products/search', array('as' => 'admin.products.search', 'uses' => 'ProductController@search'));
@@ -47,7 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('descriptionseo', 'SeoController');
     Route::resource('footer', 'FooterController');
     Route::post('/product/ajax', array('as' => 'admin.products.ajax', 'uses' => 'ProductController@ajaxListProducts'));
-
+    
 });
 //Frontend
 // dd(Request::segments()[0]);

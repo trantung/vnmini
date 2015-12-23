@@ -14,32 +14,20 @@ class CommonProduct
 	{
 		if ($searchInput['category_id']) {
 			$products = Product::join("product_categories", "products.id","=", "product_categories.product_id")
-					->where('product_categories.product_id', $searchInput['category_id']);
-					// ->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+					->where('product_categories.category_id', $searchInput['category_id'])
+					->orderBy('products.id', 'desc');
 			
 		}
 		else{
-			$products = Product::orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
+			$products = Product::orderBy('id', 'desc');
 		}
-		// $products = Product::where(function ($query) use ($searchInput) {
 		if ($searchInput['name']) {
 			$products = $products->where('name', 'LIKE', '%'.$searchInput['name'].'%');
 		}
 		if ($searchInput['code']) {
 			$products = $products->where('code', 'LIKE', '%'.$searchInput['code'].'%');
 		}
-		// dd(1);
-		// $products = $products->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
-		// });
-		// if ($searchInput['category_id']) {
-		// 	$products = $products->join("product_categories", "products.id","=", "product_categories.product_id")
-		// 			->where('product_categories.product_id', $searchInput['category_id'])
-		// 			->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
-			
-		// }
-		// else {
-		// 	$products = $products->orderBy('id', 'desc')->paginate(PAGINATE_PRODUCT);
-		// }
+		$products = $products->paginate(PAGINATE_PRODUCT);
 		return $products;
 	}
 
