@@ -140,7 +140,7 @@ class CommonProduct
 				->whereIn('categories.id', $category_ids)
 				->select("products.*", "categories.name as category_name", "product_categories.weight_number")
 				->orderBy('product_categories.weight_number', 'ASC')
-    			->distinct("products.id")->paginate($paginate);
+    			->distinct("products.id")->groupBy('products.id')->paginate($paginate);
 
     }
 
