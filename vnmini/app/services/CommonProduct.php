@@ -206,4 +206,13 @@ class CommonProduct
 			return Product::whereIn('id', $arrId)->get();
 		}
 	}
+
+	public static function getWeightNumber($productId) {
+		$ProductCategory = ProductCategory::where('product_id', $productId)->first();
+		if($ProductCategory) {
+			return getZero($ProductCategory->weight_number);
+		} else {
+			return 0;
+		}
+	}
 }

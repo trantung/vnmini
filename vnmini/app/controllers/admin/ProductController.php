@@ -190,4 +190,14 @@ class ProductController extends AdminController {
 		return $li;
 	}
 
+	public function updateIndexData()
+	{
+		$ids = Input::get('id');
+		$weightNumber = Input::get('weight_number');
+		foreach($ids as $key => $value) {
+			ProductCategory::where('product_id', $value)->update(['weight_number' => $weightNumber[$key]]);
+		}
+		dd(1);
+	}
+
 }

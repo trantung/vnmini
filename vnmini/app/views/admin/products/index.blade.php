@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@include('admin.products.scriptindex')
 @include('admin.error-message')
 <div class="manage-menu">
 	<div class="row">
@@ -13,6 +14,7 @@
 				<a href="{{ action('ProductExtraController@create') }}" class="btn btn-info">Tạo mới sản phẩm phụ</a>
 				<a href="{{ action('ProductExtraController@index') }}" class="btn btn-info">Danh sách sản phẩm phụ</a>
 			</div>
+			<div><a onclick="updateIndexData();" class="btn btn-success">Cập nhật Index</a></div>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-1.5">
 			<span>Chọn category: </span>
@@ -44,6 +46,7 @@
 	        <th>Giá gốc</th>
 	        <th>Giá KM</th>
 	        <th>Khuyến Mại</th>
+	        <th>Index</th>
 	        <th>Hành động</th>
 	    </tr>
 	    @foreach($products as $product)
@@ -52,7 +55,11 @@
 	        <td>{{ $product->code }}</td>
 	        <td>{{ $product->origin_price }}</td>
 	        <td>{{ $product->new_price }}</td>
-	        <td>{{statusName($product->status, NO_PROMOTION, PROMOTION)}}</td>
+	        <td>{{ statusName($product->status, NO_PROMOTION, PROMOTION) }}</td>
+	        <td>
+	        	<input type="hidden" name="id[]" value="{{ $product->id }}" />
+	        	<input type="text" name="weight_number[]" value="{{ CommonProduct::getWeightNumber($product->id) }}" class="only_number" style="width: 50px; text-align: center;" />
+	        </td>
 	        <td>
 	            <div style=" display: table" >
 			        <div style = "display: table-cell;  vertical-align: center;">

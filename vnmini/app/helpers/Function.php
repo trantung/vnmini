@@ -158,3 +158,11 @@ function getClass($categoryId, $segment)
     }
     return null ;
 }
+// show 0 for null
+function getZero($number = null)
+{
+    if($number != '') {
+        return $number;
+    }
+    return 0;
+}
