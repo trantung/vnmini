@@ -5,9 +5,23 @@
 }
 @media (max-width: 786px) {
 	.main-content .cost {
-	    font-size: 18px;
+	    font-size: 15px;
 	    max-height: none;
 	    overflow: hidden;
+	}
+	.main-content .item h3 {
+	    height: 30px;
+	}
+	.main-content .production .detail {
+	    margin-top: 20px;
+	    margin-bottom: 20px;
+	}
+	.main-content .production .form-quantity {
+		margin-bottom: 0;
+	}
+	.main-content .relationship {
+		margin-top: 10px;
+		float: none;
 	}
 }
 .main-content .production h1 {

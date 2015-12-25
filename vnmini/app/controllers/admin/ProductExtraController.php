@@ -108,13 +108,13 @@ class ProductExtraController extends AdminController {
 	{
 		$productId = Input::get('product_id');
 		$input = Input::except('_token', '_method', 'primary_name', 'product_id');
-		ProductRelate::where('relate_id', $id)->update(['product_id' => $productId]);
 		if(!empty($input['image_url'])){
-			$input['image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$id, 'image_url');
+        	$input['image_url'] = CommonProduct::uploadImage(PATH_PRODUCT.'/'.$id, 'image_url');
         }else{
 			$input['image_url'] = CommonProduct::getImageUrl($input, $id);
         }
-        Product::find($id)->update($input);
+		ProductRelate::where('relate_id', $id)->update(['product_id' => $productId]);
+		Product::find($id)->update($input);
 		return Redirect::action('ProductExtraController@index')->with('message', 'update thành công');
 	}
 

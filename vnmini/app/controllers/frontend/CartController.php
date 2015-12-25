@@ -114,6 +114,7 @@ class CartController extends \FrontendController {
 
     public function postCreateOrder(){
         $customer = Session::get('customer', null);
+        $order = array();
         if(!is_null($customer)){
             DB::beginTransaction();
             try {
