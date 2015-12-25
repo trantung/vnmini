@@ -5,7 +5,7 @@
             <div class="col-sm-8">
 
                 <div class="row">
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-sm-6">
                         @if(!is_null($product->images))
                         <div class="detail_image">
                         <ul id="etalage">
@@ -24,7 +24,7 @@
                         </div>
                         @endif
                     </div>
-                    <div class="col-sm-4"></div>
+                    <div class="col-sm-6"></div>
                 </div>
 
                 @if(CommonProduct::getProductRelate($product) !=null)
