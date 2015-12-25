@@ -13,8 +13,8 @@
 	    height: 30px;
 	}
 	.main-content .production .detail {
-	    margin-top: 20px;
-	    margin-bottom: 20px;
+	    margin-top: 15px;
+	    margin-bottom: 10px;
 	}
 	.main-content .production .form-quantity {
 		margin-bottom: 0;
@@ -42,4 +42,15 @@ h1 {
 }
 .relationship {
 	float: left;
+}
+.main-content .relationship {
+    margin-top: 10px;
+}
+.main-content .production {
+	min-height: 0;
+}
+.main-content .production .detail {
+    max-width: 720px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
