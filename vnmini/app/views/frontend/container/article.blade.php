@@ -2,26 +2,64 @@
     <div class="container production">
         <div class="row">
         @include('admin.error-message')
-            <div class="col-md-4 col-sm-4">
-                @if(!is_null($product->images))
-                <div class="detail_image">
-                <ul id="etalage">
-                    <li>
-                        <img class="etalage_source_image" src="{{ asset($product->image_url) }}" title="" />
-                        <!--<img class="etalage_thumb_image" src="imgs/detail1a.jpg" />-->
-                    </li>
-                    @foreach($product->images as $relate_image)
-                    <li>
-                        <img class="etalage_source_image" src="{{ asset($relate_image->image_url) }}" title="" />
-                        <!--<img class="etalage_thumb_image" src="imgs/detail1a.jpg" />-->
-                    </li>
-                    @endforeach
-                </ul>
-                <div class="clearfix"></div>
+            <div class="col-sm-8">
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        @if(!is_null($product->images))
+                        <div class="detail_image">
+                        <ul id="etalage">
+                            <li>
+                                <img class="etalage_source_image" src="{{ asset($product->image_url) }}" title="" />
+                                <!--<img class="etalage_thumb_image" src="imgs/detail1a.jpg" />-->
+                            </li>
+                            @foreach($product->images as $relate_image)
+                            <li>
+                                <img class="etalage_source_image" src="{{ asset($relate_image->image_url) }}" title="" />
+                                <!--<img class="etalage_thumb_image" src="imgs/detail1a.jpg" />-->
+                            </li>
+                            @endforeach
+                        </ul>
+                        <div class="clearfix"></div>
+                        </div>
+                        @endif
+                    </div>
+                    <div class="col-sm-4"></div>
                 </div>
+
+                @if(CommonProduct::getProductRelate($product) !=null)
+                <?php
+                    $pRelate = CommonProduct::getProductRelate($product);
+                ?>
+                <div class="relationship">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> Mã sản phẩm </th>
+                                    <th> Tên Sản phẩm </th>
+                                    <th> Giá Vnmini.net</th>
+                                    <th> Giá khuyến mãi</th>
+                                    <th> Đặt mua</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($pRelate as $p)
+                                <tr>
+                                    <td>{{ $p->code }}</td>
+                                    <td> {{ $p->name.' '.$p->type->name }} </td>
+                                    <td>{{ $p->origin_price }} <span> đ</span></td>
+                                    <td class="red"> <?php if($p->new_price > 0){echo $p->new_price . '<span> đ</span>';} ?></td>
+                                    <td> <button name="add_cart" id ="button-cart" onclick="addCart({{ $p->id }})" value="{{ $p->id }}">Thêm vào giỏ</button></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
                 @endif
             </div>
-            <div class="col-sm-4"></div>
 
             <!-- detail -->
             <div class="col-md-4 col-sm-4">
@@ -89,38 +127,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                @if(CommonProduct::getProductRelate($product) !=null)
-                <?php
-                    $pRelate = CommonProduct::getProductRelate($product);
-                ?>
-                <div class="relationship">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th> Mã sản phẩm </th>
-                                    <th> Tên Sản phẩm </th>
-                                    <th> Giá Vnmini.net</th>
-                                    <th> Giá khuyến mãi</th>
-                                    <th> Đặt mua</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($pRelate as $p)
-                                <tr>
-                                    <td>{{ $p->code }}</td>
-                                    <td> {{ $p->name.' '.$p->type->name }} </td>
-                                    <td>{{ $p->origin_price }} <span> đ</span></td>
-                                    <td class="red"> <?php if($p->new_price > 0){echo $p->new_price . '<span> đ</span>';} ?></td>
-                                    <td> <button name="add_cart" id ="button-cart" onclick="addCart({{ $p->id }})" value="{{ $p->id }}">Thêm vào giỏ</button></td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                @endif
+
                 <div class="detail">
                     <ul class="nav navbar-nav tabs">
                         <li class="active"><a data-toggle="tab" href="#all-item" class="active" aria-expanded="true">Moâ taû</a></li>
