@@ -33,7 +33,7 @@ class BannerSlideController extends AdminController {
 	public function store()
 	{
 		$input = Input::except('_token');
-        $input['image_url'] = CommonProduct::uploadImage($input, PATH_BANNER_SLIDE);
+        $input['image_url'] = CommonProduct::uploadImage(PATH_BANNER_SLIDE, 'image_url');
         $bannerSlideId = Common::create($input);
         if (!$bannerSlideId) {
 			return Redirect::route('admin.bannerslide.index')->with('message', 'Tạo mới thất bại');
