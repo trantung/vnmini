@@ -189,7 +189,10 @@ class ProductController extends AdminController {
 	public function ajaxListProducts(){
 		$input = Input::all();
 		$name = '%'.$input["keyword"].'%';
-		$products = Product::where('name', 'LIKE', $name)->get();
+		$lists = Product::where('name', 'LIKE', $name)->lists('id');
+		$listRelate = ProductRelate::lists('relate_id');
+		$productArray = array_diff($lists, $listRelate);
+		$products = Product::whereIn('id', $productArray)->get();
 		$li = "";
 		if(!$products->isEmpty()){
 			foreach ($products as $product) {
