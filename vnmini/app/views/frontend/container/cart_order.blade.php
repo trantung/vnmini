@@ -20,9 +20,9 @@
                         @foreach($items as $item)
                             <tr>
                                 <td width="50%">{{ $item->name }}</td>
-                                <td >{{ $item->price }} đ</td>
+                                <td >{{ get_full_price_in_vnd($item->price) }} đ</td>
                                 <td >{{ $item->qty }}</td>
-                                <td >{{ $item->subtotal }} đ</td>
+                                <td >{{ get_full_price_in_vnd($item->subtotal) }} đ</td>
                             </tr>
                         @endforeach
                             <tr>
@@ -36,7 +36,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="text-right">Tổng cộng</td>
-                                <td >{{ Cart::total() }} đ</td>
+                                <td >{{ get_full_price_in_vnd(Cart::total()) }} đ</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="text-right">Chiết khấu</td>
@@ -50,7 +50,7 @@
                             
                             <tr>
                                 <td colspan="3" class="text-right"><strong>Tổng tiền thanh toán</strong></td>
-                                <td ><strong>{{ $value }} đ</strong></td>
+                                <td ><strong>{{ get_full_price_in_vnd($value) }} đ</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -92,7 +92,7 @@
                             </div>
                             <!-- right -->
                         </div>
-                        <div class="cost"> {{ $item->price }} đ </div>
+                        <div class="cost"> {{ get_full_price_in_vnd($item->price) }} đ </div>
                     </div>
                 @endforeach
                 </div>

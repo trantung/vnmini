@@ -83,7 +83,7 @@
                             </div>
                             <!-- right -->
                         </div>
-                        <div class="cost"> {{ $item->price }} đ </div>
+                        <div class="cost"> {{ get_full_price_in_vnd($item->price) }} đ </div>
                     </div>
                 @endforeach
                 </div>

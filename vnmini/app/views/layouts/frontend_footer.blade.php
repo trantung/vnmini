@@ -1,7 +1,7 @@
 <section class="bottom">
     <div class="container">
         <div class="row">
-            <div class="col-md-7 col-sm-5 col-xs-12">
+            <div class="col-sm-6">
                 <div class="contact">
                     <h4>liên hệ</h4>
                     <span>{{ $footer->contact }}</span>
@@ -18,9 +18,9 @@
             </div>
             <input id = "latitude" type="hidden" value="{{ $info->lat }}">
             <input id = "longitude" type="hidden" value="{{ $info->long }}">
-            <div class="col-md-5 col-sm-2 col-xs-12">
+            <div class="col-sm-6">
                 <div class="map">
-                    <div class="col-md-3 col-md-offset-2 col-sm-2 col-xs-12 " id="mapview" style="width:320px;height:250px; margin-right: 3px !important; max-width: 100%;"></div>
+                    <div class="col-md-3 col-md-offset-2 col-sm-2 col-xs-12" id="mapview" style="width:320px;height:250px; margin-right: 3px !important; max-width: 100%;"></div>
                 </div>
             </div>
         </div>
