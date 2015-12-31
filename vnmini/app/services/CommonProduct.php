@@ -13,9 +13,9 @@ class CommonProduct
 	public static function search($searchInput)
 	{
 		if (!empty($searchInput['category_id'])) {
-			$products = Product::join("product_categories", "products.id","=", "product_categories.product_id")
-					->where('product_categories.category_id', $searchInput['category_id'])
-					->orderBy('products.id', 'desc');
+		$products = Product::join("product_categories", "products.id","=", "product_categories.product_id")
+		 ->where('product_categories.category_id', $searchInput['category_id'])
+		 ->orderBy('products.id', 'desc');
 		}
 		else{
 			$products = Product::orderBy('id', 'desc');
@@ -29,7 +29,6 @@ class CommonProduct
 		$products = $products->paginate(PAGINATE_PRODUCT);
 		return $products;
 	}
-
 	public static function validateImage($input)
 	{
 		$maxSize = MAX_SIZE_IMAGE;
