@@ -5,7 +5,7 @@
     </div>
 @include('admin.error-message')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12">                                                                 
             <form role="form" action="{{ route('admin.shop.update', $shop->id) }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT" />
                 <div class="form-group">

@@ -82,10 +82,10 @@ class ShopController extends AdminController {
 	                ->withInput($inputAll)
 	                ->withErrors($validator);
 	        }
-	        $input['image_url'] = CommonProduct::uploadImage($inputAll, PATH_SHOP);
+	        $input['image_url'] = CommonProduct::uploadImage(PATH_SHOP, 'image_url');
 		}
 		if (Input::file('logo')) {
-	        $input['logo'] = CommonShop::uploadLogo($inputAll, PATH_SHOP);
+	        $input['logo'] = CommonShop::uploadLogo(PATH_SHOP, 'logo');
 		}
 		Common::update($id, $input);
 		return Redirect::route('admin.shop.index')->with('message', 'Update thành công');
