@@ -54,3 +54,24 @@ h1 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.popular-posts .item img {
+    height: 150px;
+    width: 150px;
+}
+.page-new .sidebar .popular-posts a {
+	font-weight: bold;
+}
+.page-new .new .content img {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+}
+.page-new .new {
+    margin-top: 20px;
+}
+.item-snippet p,
+.item-snippet p strong {
+	font-weight: normal !important;
+}
