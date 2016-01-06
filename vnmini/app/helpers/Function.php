@@ -175,3 +175,13 @@ function getZero($number = null)
     }
     return 0;
 }
+
+function get_full_price_in_vnd($number)
+{
+    if ($number > 0)
+        $text = number_format($number, 0, ",", ".");
+    else
+        $text = 0;
+
+    return $text;
+}

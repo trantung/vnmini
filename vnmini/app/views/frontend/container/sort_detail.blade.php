@@ -34,10 +34,10 @@
                                     <div class="cost">
                                     @if(!empty($product->new_price))
                                         <span class="price">
-                                            {{ $product->origin_price }}<span>đ</span>
-                                        </span>{{ $product->new_price }}<span>đ</span>
+                                            {{ get_full_price_in_vnd($product->origin_price) }}<span>đ</span>
+                                        </span>{{ get_full_price_in_vnd($product->new_price) }}<span>đ</span>
                                     @else
-                                        </span>{{ $product->origin_price }}<span>đ</span>
+                                        </span>{{ get_full_price_in_vnd($product->origin_price) }}<span>đ</span>
                                     @endif
                                     </div>
                                     <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}');">Thanh Toán</button>
@@ -66,10 +66,10 @@
                                 <div class="cost">
                                     @if(!empty($product->new_price))
                                         <span class="price">
-                                            {{ $product->origin_price }}<span>đ</span>
-                                        </span>{{ $product->new_price }}<span>đ</span>
+                                            {{ get_full_price_in_vnd($product->origin_price) }}<span>đ</span>
+                                        </span>{{ get_full_price_in_vnd($product->new_price) }}<span>đ</span>
                                     @else
-                                        </span>{{ $product->origin_price }}<span>đ</span>
+                                        </span>{{ get_full_price_in_vnd($product->origin_price) }}<span>đ</span>
                                     @endif
                                 </div>
                                 <button class="add-to-cart" onclick="cart.add('{{ route('frontend.product.show', ['name_seo'=>$product->name_seo,'product_id'=>$product->id]) }}');">Thanh Toán</button>

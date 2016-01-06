@@ -20,9 +20,9 @@
                         @foreach($items as $item)
                             <tr>
                                 <td width="50%">{{ $item->name }}</td>
-                                <td >{{ $item->price }} đ</td>
+                                <td >{{ get_full_price_in_vnd($item->price) }} đ</td>
                                 <td >{{ $item->qty }}</td>
-                                <td >{{ $item->subtotal }} đ</td>
+                                <td >{{ get_full_price_in_vnd($item->subtotal) }} đ</td>
                             </tr>
                         @endforeach
                             <tr>
@@ -36,7 +36,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="text-right">Tổng cộng</td>
-                                <td >{{ Cart::total() }} đ</td>
+                                <td >{{ get_full_price_in_vnd(Cart::total()) }} đ</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="text-right">Chiết khấu</td>
@@ -50,7 +50,7 @@
                             
                             <tr>
                                 <td colspan="3" class="text-right"><strong>Tổng tiền thanh toán</strong></td>
-                                <td ><strong>{{ $value }} đ</strong></td>
+                                <td ><strong>{{ get_full_price_in_vnd($value) }} đ</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -85,14 +85,14 @@
                                         <span type="button" class="add-quantity" onclick="addQuantity('{{ 'quantity'. $item->product->id }}');">Click me</span>
                                         <span type="button" class="sub-quantity" onclick="subQuantity('{{ 'quantity'.$item->product->id }}');">Click me</span>
                                         <div class="input-group-addon">
-                                            <button value="1" class="input-group-addon arrow-right" onclick="cart.update('{{ route('cart.update', $item->rowid) }}', '{{ $item->product->id }}');">Thay đổi giỏ hàng</button>
+                                            <button value="1" class="input-group-addon arrow-right" onclick="cart.update('{{ route('cart.update', $item->product->id) }}', '{{ $item->product->id }}');">Thay đổi giỏ hàng</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- right -->
                         </div>
-                        <div class="cost"> {{ $item->price }} đ </div>
+                        <div class="cost"> {{ get_full_price_in_vnd($item->price) }} đ </div>
                     </div>
                 @endforeach
                 </div>

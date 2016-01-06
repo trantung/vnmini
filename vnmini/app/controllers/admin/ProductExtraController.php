@@ -21,7 +21,7 @@ class ProductExtraController extends AdminController {
 		if (!$input['name'] && !$input['code']) {
 			return Redirect::route('admin.product_extra.index');
 		}
-		$products = CommonProduct::search($input);
+		$products = CommonProduct::searchExtraProducts($input);
 		return View::make('admin.product_extra.index')->with(compact('products'));
 	}
 

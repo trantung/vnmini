@@ -14,12 +14,11 @@
             <section class="main-content page-new">
                 <div class="container">
                     <div class=" col-md-7 col-sm-7">
-                        <h1 class="page-title">{{ $article->title }}</h1>
+                        <h1 class="page-title">{{ uniToVni($article->title) }}</h1>
                         <div class="new">
                             <div class="content">
                                 <img src="{{ asset($article->image_url) }}">
                                 {{ $article->description }}
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -41,7 +40,7 @@
                                                 <a href="{{ route('frontend.tintuc.show', $new->id) }}">{{ $new->title }}</a>
                                                 </div>
                                                 <div class="item-snippet">
-                                                    {{ removeEndString(substr($new->description, 0, 200)) }} ...
+                                                    {{ removeEndString(substr(strip_tags($new->description), 0, 220)) }} ...
                                                 </div>
                                             </div>
                                         </li>

@@ -10,7 +10,7 @@
 	    overflow: hidden;
 	}
 	.main-content .item h3 {
-	    height: 30px;
+	    height: 45px;
 	}
 	.main-content .production .detail {
 	    margin-top: 15px;
@@ -53,4 +53,25 @@ h1 {
     max-width: 720px;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.popular-posts .item img {
+    height: 150px;
+    width: 150px;
+}
+.page-new .sidebar .popular-posts a {
+	font-weight: bold;
+}
+.page-new .new .content img {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+}
+.page-new .new {
+    margin-top: 20px;
+}
+.item-snippet p,
+.item-snippet p strong {
+	font-weight: normal !important;
 }

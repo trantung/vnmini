@@ -12,13 +12,18 @@ class CommonProduct
 
 	public static function search($searchInput)
 	{
+		$input = ProductRelate::lists('relate_id');
+		$id = Product::lists('id');
+		$result = array_diff($id, $input);
+
 		if (!empty($searchInput['category_id'])) {
 		$products = Product::join("product_categories", "products.id","=", "product_categories.product_id")
 		 ->where('product_categories.category_id', $searchInput['category_id'])
+		 ->whereIn('products.id', $result)
 		 ->orderBy('products.id', 'desc');
 		}
 		else{
-			$products = Product::orderBy('id', 'desc');
+			$products = Product::orderBy('id', 'desc')->whereIn('id', $result);
 		}
 		if (!empty($searchInput['name'])) {
 			$products = $products->where('name', 'LIKE', '%'.$searchInput['name'].'%');
@@ -207,4 +212,30 @@ class CommonProduct
 			return 0;
 		}
 	}
+	public static function searchProductsFrontend($searchInput)
+	{
+		$input = ProductRelate::lists('relate_id');
+		$id = Product::lists('id');
+		$result = array_diff($id, $input);
+		$products = Product::whereIn('id', $result)
+			->where('name', 'LIKE', '%'.$searchInput['name'].'%')
+			->orderBy('id', 'desc')
+			->paginate(PAGINATE_PRODUCT);
+		return $products;
+	}
+
+	public static function searchExtraProducts($searchInput)
+	{
+		$input = ProductRelate::lists('relate_id');
+		$products = Product::orderBy('id', 'desc')->whereIn('id', $input);
+		if (!empty($searchInput['name'])) {
+			$products = $products->where('name', 'LIKE', '%'.$searchInput['name'].'%');
+		}
+		if (!empty($searchInput['code'])) {
+			$products = $products->where('code', 'LIKE', '%'.$searchInput['code'].'%');
+		}
+		$products = $products->paginate(PAGINATE_PRODUCT);
+		return $products;
+	}
+
 }

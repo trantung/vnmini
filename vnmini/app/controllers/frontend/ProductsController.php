@@ -85,7 +85,7 @@ class ProductsController extends \FrontendController {
 	public function search()
 	{
 		$input = Input::all();
-		$results = CommonProduct::search($input);
+		$results = CommonProduct::searchProductsFrontend($input);
 		return View::make('frontend.search')->with(compact('results'));
 	}
 	public function searchNew()
