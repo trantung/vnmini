@@ -54,6 +54,7 @@ Route::group(['prefix' => 'admin'], function () {
 // dd(Request::segments()[0]);
 Route::get('/', array('as'=>'frontend.product.index','uses'=>'ProductsController@index'));
 Route::get('/{product_name}/{id}/chi-tiet', array('as'=>'frontend.product.show','uses'=>'ProductsController@showName'));
+Route::post('/updateCart', array('as'=>'updateCart','uses'=>'CartController@updateCart'));
 Route::resource('/cart','CartController', array('only'=>['index', 'update', 'destroy','store']));
 Route::post('/cart/customer', array('as'=>'cart.customer.add','uses'=>'CartController@postInfoCustomer'));
 Route::get('/cart/order', array('as'=>'cart.order.add','uses'=>'CartController@getCreateOrder'));

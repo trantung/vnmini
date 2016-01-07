@@ -76,7 +76,7 @@
                                         <span type="button" class="add-quantity" onclick="addQuantity('{{ 'quantity'. $item->product->id }}');">Click me</span>
                                         <span type="button" class="sub-quantity" onclick="subQuantity('{{ 'quantity'.$item->product->id }}');">Click me</span>
                                         <div class="input-group-addon">
-                                            <button value="1" class="input-group-addon arrow-right" onclick="cart.update('{{ route('cart.update', $item->rowid) }}', '{{ $item->product->id }}');">Thay đổi giỏ hàng</button>
+                                            <button value="1" class="input-group-addon arrow-right" onclick="updateCart('{{ route('updateCart') }}', '{{ $item->product->id }}', '{{ $item->rowid }}');">Thay đổi giỏ hàng</button>
                                         </div>
                                     </div>
                                 </div>

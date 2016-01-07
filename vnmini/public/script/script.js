@@ -126,14 +126,18 @@ var cart = {
   'add': function(url){
     location=url;
   },
-  'update': function(url,key) {
+  'update': function(url,key,id) {
     $.ajax({
       url: url,
       type: 'PUT',
-      data: 'quantity=' + $('input[name=quantity'+key+']').val(),
+      data: {
+        'quantity': $('input[name=quantity'+key+']').val(),
+        'id': id
+      },
       dataType: 'json',
       success: function(json) {
-        window.location.reload(); 
+        // console.log(json);
+        window.location.reload();
       }
     });
   },
@@ -161,4 +165,21 @@ var cart = {
       
     });
   }
+}
+
+function updateCart(url,key,id)
+{
+  $.ajax({
+      url: url,
+      type: 'POST',
+      data: {
+        'quantity': $('input[name=quantity'+key+']').val(),
+        'id': id
+      },
+      dataType: 'json',
+      success: function(json) {
+        // console.log(json);
+        window.location.reload();
+      }
+    });
 }

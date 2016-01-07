@@ -76,6 +76,18 @@ class CartController extends \FrontendController {
         return Response::json(['success'=>'Cập nhật thành công!', 'total'=>Cart::count()]);
 	}
 
+    public function updateCart()
+    {
+        $data = Input::all();
+        $item = Cart::get($data['id']);
+        if(is_null($item)){
+            return Response::json(['error'=>'Không tồn tại sản phẩm']);
+        }
+        Cart::update($data['id'], $data['quantity']);
+        return Response::json(['success'=>'Cập nhật thành công!', 'total'=>Cart::count()]);
+    }
+
+
 
 	/**
 	 * Remove the specified resource from storage.
