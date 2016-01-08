@@ -30,18 +30,20 @@
                 </thead>
                 <tbody>
                 @foreach($comments as $comment)
-                <tr>
-                    <td>{{$comment->id}}</td>
-                    <td>{{ $comment->product->name }}</td>
-                    <td>{{ $comment->email }}</td>
-                    <td>{{ returnStatusComment($comment->status) }}</td>
-                    <td>{{ $comment->created_at }}</td>
-                    <td class="text-right">
-                        <a class="btn btn-primary" href="{{ action('CommentController@show', $comment->id) }}">View</a>
-                        <a class="btn btn-warning " href="{{ action('CommentController@edit', $comment->id) }}">Edit</a>
-                        <form action="{{ action('CommentController@destroy', $comment->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <button class="btn btn-danger" type="submit">Delete</button></form>
-                    </td>
-                </tr>
+                    @if($comment->product)
+                        <tr>
+                            <td>{{$comment->id}}</td>
+                            <td>{{ $comment->product->name }}</td>
+                            <td>{{ $comment->email }}</td>
+                            <td>{{ returnStatusComment($comment->status) }}</td>
+                            <td>{{ $comment->created_at }}</td>
+                            <td class="text-right">
+                                <a class="btn btn-primary" href="{{ action('CommentController@show', $comment->id) }}">View</a>
+                                <a class="btn btn-warning " href="{{ action('CommentController@edit', $comment->id) }}">Edit</a>
+                                <form action="{{ action('CommentController@destroy', $comment->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token" value="{{ csrf_token() }}"> <button class="btn btn-danger" type="submit">Delete</button></form>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>
