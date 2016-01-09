@@ -42,6 +42,10 @@
                 <label>Mô tả</label>
                 <textarea class="form-control" rows="6" id="editor1" name="description" required>{{ $shop->description }}</textarea>
                 </div>
+                <div class="form-group">
+                <label>Thông báo đặt hàng thành công</label>
+                <textarea class="form-control" rows="6" name="ordermessage">{{ $shop->ordermessage }}</textarea>
+                </div>
                 <div class="form-group"> 
                     <label>Ảnh cửa hàng</label>
                     {{ Form::file('image_url',"", array('class'=>'form-control','id'=>'img')) }}

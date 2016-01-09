@@ -154,10 +154,20 @@ class CartController extends \FrontendController {
                         'items' => Cart::content(),
                         'order' => $order
                     ];
-                Mail::send('emails.email', $data, function($message) use ($customer, $data){
-                    $message->to($customer['email'])
-                            ->subject(SUBJECT_EMAIL);
-                });
+                try{
+                    Mail::send('emails.email', $data, function($message) use ($customer, $data){
+                        $message->to($customer['email'])
+                                ->subject(SUBJECT_EMAIL);
+                    });
+                    //send mail to admin
+                    Mail::send('emails.email', $data, function($message) use ($customer, $data){
+                        $message->to('vnmini2015@gmail.com')
+                                ->subject(SUBJECT_EMAIL);
+                    });
+                }
+                catch (\Exception $e) {
+                    return 1;
+                }
                 Cart::destroy();
                 Session::forget('customer');
                 DB::commit();

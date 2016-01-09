@@ -17,8 +17,8 @@
                 <div class="order row">
                     <h2>ñôn haøng ñaõ nhaän ñöôïc</h2>
                     <div class="content">
-                        <p> <strong>cảm ơn bạn đã đặt mua sản phẩm của chúng tôi ! </strong></p>
-                        <p>Mã số đơn hàng của bạn là: <strong>{{ $code }}</strong>. <br> {{ Config::get('cart_complete.message') }}</p>
+                        <p> <strong>Cảm ơn bạn đã đặt mua sản phẩm của chúng tôi ! </strong></p>
+                        <p>Mã số đơn hàng của bạn là: <strong>{{ $code }}</strong>. <br> {{ Shop::first()->ordermessage }}</p>
                     </div>
                     <a href ="/">
                       <button>Tiếp tục mua hàng</button>

@@ -10,7 +10,7 @@ class Shop extends Eloquent
     protected $table = 'shops';
     protected $fillable = ['user_id', 'name', 'description',
     					'address', 'contact', 'tel', 'mobile',
-    					'image_url', 'lat', 'long', 'logo'
+    					'image_url', 'lat', 'long', 'logo', 'ordermessage'
     					];
     protected $dates = ['deleted_at'];
 
