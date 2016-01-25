@@ -48,7 +48,10 @@
         <ul id="product_list_id" class="list-group"></ul>
         {{ Form::hidden('relate_id', null, ['class' => 'form-control', 'id' => 'primary_id']) }}
     </div>
-
+    <div class="form-group col-sm-4 col-md-8">
+        <label>Số lượng:</label>
+        {{ Form::text('quantity', '', ['class' => 'form-control']) }}
+    </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Giá gốc:</label>
         {{ Form::text('origin_price', '', ['class' => 'form-control']) }}

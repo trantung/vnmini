@@ -37,7 +37,8 @@
     </div>
     <div class="form-group col-sm-4 col-md-8">
         <label>Sản phẩm chính</label>
-        {{ Form::text('primary_name', $name, ['class' => 'form-control', 'id' => 'primary_name', 'onkeyup'=>"autocomplet()"]) }}    </div>
+        {{ Form::text('primary_name', $name, ['class' => 'form-control', 'id' => 'primary_name', 'onkeyup'=>"autocomplet()"]) }}    
+        </div>
   
     <div class="form-group col-sm-4 col-md-8">
         <label>Giá gốc:</label>
